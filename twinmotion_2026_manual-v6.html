@@ -2824,10 +2824,10 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>Les matériaux sont l’endroit où un rendu se distingue le plus visiblement d’un rendu professionnel, et ce n’est presque jamais une question de résolution de texture. C’est une question de compréhension de ce que décrivent réellement les quatre canaux PBR.</p>
+    <p>C’est sur les matériaux qu’un rendu se sépare le plus visiblement d’un travail professionnel, et presque jamais pour une question de résolution de texture. Tout tient à ce que décrivent réellement les quatre canaux PBR.</p>
 
     <h3>7.1 Le PBR en quatre canaux</h3>
-    <p>Le rendu physiquement réaliste décrit une surface par des propriétés physiques mesurables plutôt que par des curseurs artistiques. Quatre canaux font presque tout le travail.</p>
+    <p>Le rendu physiquement réaliste décrit une surface par des grandeurs mesurables, non par des curseurs d’artiste. Quatre canaux suffisent à presque tout.</p>
 
     <div class="tbl-wrap">
       <table>
@@ -2865,7 +2865,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier, faites-la varier</span>
-      <p>Les surfaces réelles ne sont pas uniformément rugueuses. Un mur de béton est plus lisse là où on l’a touché, plus rugueux là où il a vieilli. Même une légère carte de variation de rugosité, ou une petite différence entre deux bétons voisins, suffit à empêcher un rendu de se lire comme un dessin d’ordinateur.</p>
+      <p>Aucune surface réelle n’est uniformément rugueuse. Un mur de béton se lisse là où les mains passent et se creuse là où il vieillit. Une simple carte de variation, ou un léger écart entre deux bétons voisins, suffit à empêcher l’image de se lire comme un dessin d’ordinateur.</p>
     </div>
 
     <h3>7.3 Pourquoi vos murs blancs rendent gris</h3>
@@ -2877,21 +2877,21 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ol>
 
     <h3>7.4 Un verre qui se lit comme du verre</h3>
-    <p>Le verre est le matériau le plus souvent raté, et la correction relève généralement de la soustraction plutôt que de l’ajout.</p>
+    <p>Le verre est le matériau le plus souvent manqué, et il se corrige par retrait bien plus que par ajout.</p>
     <ul>
       <li><strong>Ne le rendez pas totalement transparent.</strong> Le vrai verre d’un bâtiment est visible : il porte les reflets du ciel, des alentours, de lui-même. Une vitre parfaitement claire se lit comme un trou.</li>
-      <li><strong>Les reflets font tout.</strong> Ce qui vend le verre, c’est ce qu’il reflète. Ce qui signifie que le verre ne paraît juste qu’une fois qu’il existe un environnement digne d’être reflété, voir chapitre 9.</li>
+      <li><strong>Les reflets font tout.</strong> Ce qui fait le verre, c’est ce qu’il reflète. Autrement dit, il ne sonne juste qu’une fois qu’il existe un environnement digne d’être reflété (chapitre 9).</li>
       <li><strong>N’activez pas Nanite dessus</strong> (chapitre 6). Les matériaux translucides ne sont pas pris en charge.</li>
       <li><strong>Rappelez-vous la limite documentée de Lumen :</strong> les matériaux translucides ne s’affichent pas correctement <em>dans les réflexions</em>. Si un garde-corps vitré paraît faux à l’intérieur d’un reflet, c’est le comportement attendu du moteur, non une erreur de votre part.</li>
     </ul>
 
     <h3>7.5 La bibliothèque n’est pas de la triche</h3>
-    <p>Twinmotion est livré avec une vaste bibliothèque de matériaux, plus l’accès aux surfaces Quixel Megascans scannées d’après des matériaux réels. Elles sont meilleures que tout ce que vous fabriquerez à la main ce semestre, et les utiliser est une pratique professionnelle normale.</p>
+    <p>Twinmotion est livré avec une vaste bibliothèque de matériaux et donne accès aux surfaces Quixel Megascans, scannées sur des matériaux réels. Elles valent mieux que tout ce que vous fabriquerez à la main ce semestre, et s’en servir relève de la pratique professionnelle courante.</p>
     <p>Ce qui est évalué, c’est la <strong>sélection et l’échelle</strong>, pas la paternité :</p>
     <ul>
       <li>L’appareillage de brique est-il à la bonne taille pour le bâtiment ? Une brique doit mesurer environ 215 mm de long dans le rendu. On laisse très facilement les textures de brique au double ou à la moitié de la taille réelle, et le bâtiment perd silencieusement son échelle.</li>
       <li>Le matériau correspond-il à la construction proposée, ou l’avez-vous choisi parce que la vignette était jolie ?</li>
-      <li>La répétition est-elle visible ? Toute texture répétée sur une grande surface fait apparaître un motif. Cassez-le par de la variation, de la salissure, ou une texture à plus grande échelle.</li>
+      <li>La répétition se voit-elle ? Toute texture répétée sur une grande surface finit par dessiner un motif. Cassez-le par de la variation, des salissures, ou une texture de plus grande échelle.</li>
     </ul>
 
     <h3>7.6 Travailler efficacement <span class="lv-tag lv-y3">Y3</span></h3>
@@ -2936,9 +2936,9 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <div class="exercise">
       <div class="hd">Étape 7 · La palette de matériaux</div>
       <h4>Ce que vous faites</h4>
-      <p>Constituez une palette d’au maximum <strong>six</strong> matériaux pour tout le projet  : la contrainte est volontaire et c’est ainsi que les vrais bâtiments se prescrivent. Pour chacun, notez la couleur de base, la rugosité, l’état de la métallicité, et la dimension réelle à laquelle vous avez calé la texture.</p>
+      <p>Constituez une palette de <strong>six</strong> matériaux au plus pour tout le projet. La contrainte est délibérée : c’est ainsi que se prescrit un vrai bâtiment. Pour chacun, notez la couleur de base, la rugosité, l’état de la métallicité, et la dimension réelle à laquelle vous avez calé la texture.</p>
       <h4>Ce que cela produit</h4>
-      <p>Une nomenclature de matériaux qui rejoint votre journal de projet, et une scène qui ressemble enfin à une proposition plutôt qu’à une étude de volumes. Les noms de matériaux de votre fichier source doivent correspondre à cette nomenclature, ce qui garde le livrable A lisible pour qui l’ouvrira.</p>
+      <p>Une nomenclature qui rejoint votre journal de projet, et une scène qui ressemble enfin à une proposition plutôt qu’à une étude de volumes. Les noms de matériaux de votre fichier source doivent reprendre cette nomenclature : le livrable A restera ainsi lisible pour qui l’ouvrira.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>Six matériaux ou moins, chacun défendable comme décision constructive et non comme vignette qui vous a plu.</li>
@@ -3074,7 +3074,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>Twinmotion propose trois voies de rendu. Choisir entre elles n’est pas un classement de qualité : c’est une décision sur ce que vous fabriquez et sur le matériel dont vous disposez. Se tromper en semaine deux se découvre en semaine onze.</p>
+    <p>Twinmotion offre trois moteurs de rendu. Choisir entre eux ne revient pas à les classer par qualité, mais à décider ce que vous fabriquez et avec quel matériel. Une erreur commise en semaine deux se découvre en semaine onze.</p>
 
     <h3>8.1 Les trois moteurs</h3>
     <div class="tbl-wrap">
@@ -3102,7 +3102,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </figure>
 
     <h3>8.2 Activer Lumen, trois étapes, dans l’ordre</h3>
-    <p>Lumen n’apparaît pas si les prérequis ne sont pas remplis, d’où l’impression qu’il est absent.</p>
+    <p>Lumen reste introuvable tant que les prérequis ne sont pas remplis, d’où l’impression qu’il a disparu.</p>
     <ol>
       <li>Activez DirectX 12 dans <span class="path">Édition &gt; Préférences &gt; Paramètres &gt; Prise en charge matérielle graphique</span>. Redémarrez si demandé.</li>
       <li>Réglez la <strong>Qualité</strong> sur <strong>High</strong> ou <strong>Ultra</strong>. Lumen est indisponible en dessous.</li>
@@ -3133,7 +3133,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         <li><strong>Les matériaux miroir ne reflètent pas la scène aussi fidèlement qu’attendu.</strong></li>
       </ul>
     </div>
-    <p>Chacune est une contrainte réelle avec laquelle composer plutôt que lutter. Si votre image repose sur un miroir reflétant fidèlement la pièce, il vous faut le Path Tracer.</p>
+    <p>Chacune est une contrainte réelle, avec laquelle il faut composer plutôt que lutter. Si votre image repose sur un miroir qui reflète fidèlement la pièce, il vous faut le Path Tracer.</p>
 
     <h3>8.5 Le Path Tracer : les prérequis d’abord</h3>
     <div class="callout c-doc">
@@ -3168,7 +3168,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier  : le livrable mixte</span>
-      <p>La réponse professionnelle est généralement « les deux ». Éclairez et composez tout sous Lumen parce qu’il est interactif ; puis basculez au Path Tracer les deux ou trois images qui portent votre projet pour l’export final. On ne choisit pas un moteur pour un projet, on en choisit un par image.</p>
+      <p>La réponse professionnelle tient en deux mots : les deux. Éclairez et composez sous Lumen, puisqu’il est interactif, puis basculez au Path Tracer les deux ou trois images qui portent votre projet, pour l’export final. On ne choisit pas un moteur pour un projet : on en choisit un par image.</p>
     </div>
 
     <div class="exercise">
@@ -3356,7 +3356,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-teach">
       <span class="lbl">Pourquoi 15 h en juin est la réponse paresseuse</span>
-      <p>Le plein midi d’été place le soleil presque à la verticale : ombres courtes, façades plates, aucune mise en forme du volume. C’est le réglage par défaut parce qu’il est lumineux, et il est lumineux parce qu’il ne dit rien. Un soleil bas d’hiver rase la façade et en révèle l’épaisseur. Demandez-vous à quoi <em>sert</em> le bâtiment, puis choisissez l’heure qui le montre  : la terrasse du café à 10 h, la façade ouest à 18 h en septembre. L’heure du jour est un argument sur le projet.</p>
+      <p>Le plein midi d’été place le soleil presque à la verticale : ombres courtes, façades plates, aucun modelé. C’est le réglage par défaut parce qu’il est lumineux, et il est lumineux parce qu’il ne dit rien. Un soleil bas rase la façade et en révèle l’épaisseur. Demandez-vous à quoi <em>sert</em> le bâtiment, puis choisissez l’heure qui le montre : la terrasse du café à 10 h, la façade ouest à 18 h en septembre. L’heure du jour est un argument sur le projet.</p>
     </div>
 
     <div class="callout c-tip">
@@ -3386,7 +3386,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ul>
 
     <h3>9.3 Les environnements HDRI</h3>
-    <p>Un HDRI est une photographie à 360° portant de vraies valeurs lumineuses : il peut donc à la fois <em>être</em> votre arrière-plan et <em>éclairer</em> votre scène. Sous <strong>HDRI environment</strong> :</p>
+    <p>Un HDRI est une photographie à 360° porteuse de vraies valeurs lumineuses : il peut donc à la fois <em>servir</em> d’arrière-plan et <em>éclairer</em> votre scène.</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Réglage</th><th>Ce qu’il fait</th></tr></thead>
@@ -3400,7 +3400,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>9.4 Le montage hybride, et le raccourci automatique</h3>
-    <p>Le problème classique : votre HDRI montre un soleil à une position donnée, mais la lumière directionnelle de Twinmotion pointe ailleurs, si bien que les ombres de votre rendu contredisent les ombres du ciel derrière. L’œil le repère immédiatement, même sans savoir le nommer.</p>
+    <p>Le problème classique : votre HDRI montre un soleil à un endroit, la lumière directionnelle de Twinmotion en désigne un autre, et les ombres du rendu contredisent celles du ciel. L’œil le repère aussitôt, même sans savoir le nommer.</p>
     <p>Vous pouvez le corriger à la main, en alignant la hauteur et l’azimut du soleil Twinmotion sur le disque solaire du HDRI. Cela fonctionne, et cela vaut la peine de le faire une fois pour comprendre ce qu’on aligne.</p>
 
     <div class="callout c-fix">
@@ -3417,7 +3417,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-warn">
       <span class="lbl">Cela ne marche que si la lumière concorde</span>
-      <p>Caler la perspective est la moitié facile. Si la direction de votre soleil ne correspond pas aux ombres déjà présentes dans la photographie, le photomontage échoue quelle que soit la perfection de l’alignement. Lisez d’abord la photographie : repérez les ombres existantes, déduisez-en la position du soleil, et réglez le vôtre en conséquence avant de commencer à aligner.</p>
+      <p>Caler la perspective n’est que la moitié facile. Si la direction de votre soleil ne rejoint pas les ombres déjà présentes dans la photographie, le photomontage échoue, si parfait soit l’alignement. Lisez d’abord l’image : repérez les ombres, déduisez-en la position du soleil, réglez le vôtre en conséquence, puis seulement alignez.</p>
     </div>
 
     <h3>9.6 Végétation et contexte</h3>
@@ -3648,7 +3648,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>Les intérieurs sont plus difficiles que les extérieurs parce que presque toute la lumière visible a rebondi au moins une fois. Ils constituent donc le véritable test de tout ce qui précède aux chapitres 3 et 6, et l’endroit où les mauvaises décisions prises deux semaines plus tôt finissent par se voir.</p>
+    <p>Un intérieur est plus difficile qu’un extérieur parce que presque toute la lumière qu’on y voit a rebondi au moins une fois. Il constitue donc le véritable examen de tout ce qui précède aux chapitres 3 et 6, et l’endroit où les mauvaises décisions prises deux semaines plus tôt finissent par se voir.</p>
 
     <h3>10.1 Ce qu’est réellement le Surface Cache</h3>
     <div class="callout c-doc">
@@ -3662,7 +3662,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ul>
 
     <h3>10.2 La vue de diagnostic, apprenez-la, elle sauve des soirées entières</h3>
-    <p>Twinmotion expose directement le Surface Cache. Cliquez sur l’<strong>icône de mode d’affichage en haut à droite de la fenêtre 3D</strong> et choisissez <strong>Lumen surface</strong>.</p>
+    <p>Twinmotion donne accès au Surface Cache. Cliquez sur l’<strong>icône de mode d’affichage, en haut à droite de la fenêtre 3D</strong>, et choisissez <strong>Lumen surface</strong>.</p>
     <p>Votre modèle s’affiche alors sous forme de couverture de cartes. Lisez-la ainsi :</p>
     <ul>
       <li><strong>Couverture complète et continue</strong> sur les murs, les sols et leurs jonctions : c’est bon.</li>
@@ -3689,7 +3689,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-teach">
       <span class="lbl">Notez ce que les quatre ont en commun</span>
-      <p>Aucune ne se corrige dans le panneau d’éclairage. Toute cause de fuite de lumière est un problème de <em>modélisation</em> ou d’<em>import</em>. Si vous tentez de résoudre une fuite en ajustant l’intensité lumineuse, vous traitez un symptôme, et vous y passerez des heures.</p>
+      <p>Aucune ne se corrige dans le panneau d’éclairage. Toute fuite de lumière est un problème de <em>modélisation</em> ou d’<em>import</em>. Tenter de la résoudre en jouant sur l’intensité, c’est traiter le symptôme, et y passer des heures.</p>
     </div>
 
     <figure class="shot" id="fig-09-03-fr">
@@ -3705,7 +3705,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </figure>
 
     <h3>10.4 Intérieurs en lumière du jour : le problème d’exposition</h3>
-    <p>Un intérieur éclairé par des fenêtres présente un écart de luminosité énorme  : le ciel extérieur peut être cent fois plus lumineux que le mur d’en face. Un appareil photo ne peut pas tenir les deux. Twinmotion non plus, sans votre aide.</p>
+    <p>Un intérieur éclairé par des fenêtres présente un écart de luminosité considérable : le ciel peut y être cent fois plus lumineux que le mur d’en face. Aucun appareil photo ne tient les deux. Twinmotion non plus, sans votre aide.</p>
     <ul>
       <li>Sous <span class="path">Ambiance &gt; Camera &gt; Exposure &amp; WB</span>, essayez de désactiver l’<strong>Auto-exposure</strong> pour un résultat maîtrisé. L’exposition automatique court après la fenêtre et assombrit votre pièce.</li>
       <li>Activez <strong>Local exposure</strong> et utilisez <em>Highlights</em> et <em>Shadows</em> (0–1 chacun) pour récupérer du détail aux deux extrémités indépendamment. C’est le réglage le plus utile en intérieur.</li>
@@ -3719,7 +3719,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier, éclairez l’architecture, pas la pièce</span>
-      <p>On est tenté d’éclairer un intérieur en posant une lampe au milieu du plafond jusqu’à ce que la pièce soit assez claire. Les concepteurs éclairent des surfaces : laver le mur, raser le bois, poser une flaque de lumière sur la table. Demandez-vous où vous voulez que l’œil aille, et éclairez cela. Une pièce où tout est éclairé également n’a aucune hiérarchie, donc aucune atmosphère.</p>
+      <p>On est tenté d’éclairer un intérieur en posant une lampe au milieu du plafond jusqu’à ce que la pièce soit assez claire. Un concepteur, lui, éclaire des surfaces : laver le mur, raser le bois, poser une flaque de lumière sur la table. Demandez-vous où vous voulez que l’œil aille, et éclairez cela. Une pièce uniformément éclairée n’a aucune hiérarchie, donc aucune atmosphère.</p>
     </div>
 
     <h3>10.6 Les matériaux émissifs</h3>
@@ -3731,7 +3731,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-warn">
       <span class="lbl">À utiliser avec parcimonie</span>
-      <p>Les canaux d’éclairage brisent délibérément la physique. C’est exactement pour cela qu’ils sont utiles, et exactement pour cela qu’en abuser produit des images subtilement fausses. Sortez-en un quand un élément isolé demande du contrôle, pas comme méthode de travail générale.</p>
+      <p>Les canaux d’éclairage brisent délibérément la physique. C’est précisément ce qui les rend utiles, et précisément ce qui rend leur abus visible : les images en deviennent subtilement fausses. Sortez-en un quand un élément isolé demande du contrôle, jamais comme méthode de travail.</p>
     </div>
 
     <h3>10.8 Équilibrer intérieur et extérieur</h3>
@@ -3954,11 +3954,11 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>La caméra est le moment où votre rendu cesse d’être une maquette pour devenir une image. Tout ce chapitre se joue sous <span class="path">Ambiance &gt; Camera</span>, et l’essentiel est emprunté à la photographie d’architecture  : une discipline riche d’un siècle de jugement accumulé, dans laquelle vous avez le droit de puiser.</p>
+    <p>La caméra est l’instant où votre rendu cesse d’être une maquette pour devenir une image. Tout ce chapitre se joue sous <span class="path">Ambiance &gt; Camera</span>, et l’essentiel est emprunté à la photographie d’architecture, discipline riche d’un siècle de jugement accumulé où vous avez tout droit de puiser.</p>
 
     <h3>11.1 La hauteur d’œil n’est pas négociable</h3>
-    <p>Placez votre caméra à <strong>1,50–1,70 m</strong> pour toute vue qu’un être humain pourrait occuper. C’est l’erreur la plus fréquente de toutes : la caméra flotte à trois mètres, ou tombe à hauteur de genou, et le bâtiment se lit comme une maquette sur une table plutôt que comme un lieu où l’on pourrait se tenir.</p>
-    <p>Des exceptions délibérées existent  : une vue aérienne pour expliquer un plan-masse, une contre-plongée pour dramatiser un auvent, mais ce doivent être des arguments, pas des accidents. Si vous ne savez pas dire pourquoi la caméra est là, mettez-la à 1,60 m.</p>
+    <p>Placez la caméra entre <strong>1,50 et 1,70 m</strong> pour toute vue qu’un être humain pourrait occuper. C’est l’erreur la plus répandue : la caméra flotte à trois mètres, ou tombe à hauteur de genou, et le bâtiment se lit comme une maquette posée sur une table, non comme un lieu où l’on pourrait se tenir.</p>
+    <p>Des exceptions délibérées existent, comme une vue aérienne pour expliquer un plan-masse ou une contre-plongée pour dramatiser un auvent. Mais ce doivent être des arguments, non des accidents. Si vous ne savez pas dire pourquoi la caméra est là, mettez-la à 1,60 m.</p>
 
     <h3>11.2 La focale est un argument sur le bâtiment</h3>
     <p>Sous <strong>Lens</strong>, vous pouvez travailler en <em>Field of view</em> (5°–170°) ou, plus utilement, cocher <strong>Use focal length</strong> et raisonner en millimètres (2–1500 mm) comme un photographe.</p>
@@ -3993,7 +3993,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </figure>
 
     <h3>11.3 Le redressement des verticales  : le réglage qui professionnalise instantanément un rendu</h3>
-    <p>Quand on incline la caméra vers le haut, les verticales fuient. Les photographes d’architecture corrigent cela avec un objectif à décentrement ; la convention veut que <strong>les verticales restent verticales</strong>.</p>
+    <p>Inclinez la caméra vers le haut et les verticales fuient. Les photographes d’architecture corrigent cela par un objectif à décentrement ; la convention veut que <strong>les verticales restent verticales</strong>.</p>
     <p>Twinmotion propose deux outils sous <strong>Lens</strong> :</p>
     <ul>
       <li><strong>Parallelism</strong>  : l’interrupteur de correction des verticales. À activer sur presque toute vue extérieure et toute vue intérieure frontale.</li>
@@ -4019,7 +4019,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ul>
 
     <h3>11.6 Constituer un jeu de caméras qui raconte</h3>
-    <p>On est tenté de photographier chaque pièce. Les concepteurs choisissent quatre ou cinq images qui construisent un argument.</p>
+    <p>On est tenté de photographier chaque pièce. Un concepteur en retient quatre ou cinq, qui construisent un argument.</p>
     <p>Un jeu défendable pour un projet de studio :</p>
     <ol>
       <li><strong>L’approche</strong>, comment on arrive, en contexte. Établit le site et l’échelle.</li>
@@ -4031,7 +4031,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier, nommez vos caméras</span>
-      <p>Nommez-les <code>01-approche</code>, <code>02-seuil</code>, et non <code>Camera 7</code>. Vous en aurez vingt. Les nommer par intention oblige aussi à dire à quoi chacune sert, ce qui révèle vite les trois qui ne servent à rien.</p>
+      <p>Nommez-les <code>01-approche</code>, <code>02-seuil</code>, jamais <code>Camera 7</code> : vous en aurez vingt. Nommer par intention oblige à dire à quoi chacune sert, et révèle aussitôt les trois qui ne servent à rien.</p>
     </div>
 
     <figure class="diagram" id="fig-10-1-fr">
@@ -4071,7 +4071,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <h4>Ce que vous faites</h4>
       <p>Constituez exactement <strong>cinq</strong> caméras. Chacune à une hauteur justifiée, avec une focale énoncée, et <strong>Parallelism</strong> activé partout où la convention l’attend. Nommez-les par intention, <code>01-approche</code>, <code>02-seuil</code>  : jamais <code>Camera 7</code>. Écrivez pour chacune une légende d’une ligne disant ce qu’elle défend du projet.</p>
       <h4>Ce que cela produit</h4>
-      <p>Ces cinq caméras <em>sont</em> le <strong>livrable B</strong>. L’étape 12 ne fait que les rendre en qualité finale ; le travail de composition se joue ici, et c’est lui qui détermine réellement si les images valent quelque chose.</p>
+      <p>Ces cinq caméras <em>sont</em> le <strong>livrable B</strong>. L’étape 12 se contentera de les rendre en qualité finale ; le travail de composition se joue ici, et c’est lui qui décide si les images valent quelque chose.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>Chaque caméra a sa légende. Toute caméra sans légende possible est supprimée et remplacée.</li>
@@ -4198,7 +4198,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>Le Path Tracer calcule la lumière physiquement au lieu de l’approximer. Le prix est le temps, et la compétence consiste à savoir combien en dépenser. Les prérequis figurent au chapitre 8, si vous ne pouvez pas l’exécuter, passez au 11.4, valable pour tous les moteurs.</p>
+    <p>Le Path Tracer calcule la lumière au lieu de l’approximer. Cela se paie en temps, et tout le savoir-faire consiste à décider combien en dépenser. Les prérequis figurent au chapitre 8 ; si vous ne pouvez pas l’exécuter, passez au 12.4, valable pour tous les moteurs.</p>
 
     <h3>12.1 Les cinq réglages</h3>
     <p>Sous <span class="path">Ambiance &gt; Render &gt; Path tracer</span> :</p>
@@ -4248,9 +4248,9 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>12.3 Apprenez à lire le bruit, pas à recopier des chiffres</h3>
-    <p>Il n’existe pas de nombre d’échantillons correct. Cela dépend de votre scène, de votre résolution et de la part de lumière indirecte.</p>
+    <p>Il n’existe pas de bon nombre d’échantillons dans l’absolu : tout dépend de votre scène, de sa résolution et de la part de lumière indirecte.</p>
     <p>Comment juger : <strong>zoomez à 100 % dans la zone d’ombre la plus sombre.</strong> Le bruit y apparaît toujours en premier, car ces pixels ont reçu le moins de chemins lumineux aboutis. Quand les ombres sont propres, toute l’image l’est. Rendre au-delà n’achète rien.</p>
-    <p>Les intérieurs demandent bien plus d’échantillons que les extérieurs, parfois quatre ou cinq fois plus, parce que presque toute la lumière intérieure a rebondi, et que c’est la lumière rebondie qui coûte cher à résoudre.</p>
+    <p>Un intérieur réclame bien plus d’échantillons qu’un extérieur, parfois quatre ou cinq fois plus : presque toute sa lumière a rebondi, et c’est le rebond qui coûte cher à résoudre.</p>
 
     <h3>12.4 La résolution, et ce pour quoi vous fabriquez réellement l’image</h3>
     <p>Twinmotion exporte jusqu’en <strong>8K</strong> avec un matériel suffisant. Les réglages d’export propres à une image s’ouvrent en cliquant <strong>Image</strong> dans le panneau Export ; certains réglages sont globaux à toutes les images, d’autres propres à chacune.</p>
@@ -4277,7 +4277,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier, étalonnez la série, pas l’image</span>
-      <p>Décidez votre étalonnage une fois, puis appliquez-le à toutes les caméras. Une double page où une image est chaude et contrastée et la suivante froide et plate se lit comme de la négligence, même par quelqu’un incapable d’en expliquer la raison.</p>
+      <p>Arrêtez votre étalonnage une fois pour toutes, puis appliquez-le à chaque caméra. Une double page où une image est chaude et la suivante froide se lit comme de la négligence, même par quelqu’un qui ne saurait pas l’expliquer.</p>
     </div>
 
     <figure class="shot" id="fig-11-1-fr">
@@ -4389,7 +4389,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>La vidéo est l’endroit où les projets manquent le plus souvent de temps, et c’est une arithmétique parfaitement prévisible. Ce chapitre traite autant de planification que d’images-clés.</p>
+    <p>C’est en vidéo que les projets manquent le plus souvent de temps, et cela relève d’une arithmétique parfaitement prévisible. Ce chapitre traite autant de planification que d’images-clés.</p>
 
     <h3>13.1 Le calcul, avant toute chose</h3>
     <p>Faites ce calcul la première semaine de l’étape vidéo, pas la veille du rendu.</p>
@@ -4414,7 +4414,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <h3>13.2 Des trajectoires qui ne rendent pas malade</h3>
     <ul>
-      <li><strong>Déplacez-vous lentement.</strong> Presque toutes les animations étudiantes vont trop vite. Une caméra qui dérive est élégante ; une caméra qui fonce donne la nausée et masque l’architecture travaillée pendant dix semaines.</li>
+      <li><strong>Déplacez-vous lentement.</strong> Presque toutes les animations vont trop vite. Une caméra qui dérive a de l’élégance ; une caméra qui fonce donne la nausée et escamote l’architecture travaillée dix semaines durant.</li>
       <li><strong>Adoucissez les départs et les arrivées.</strong> Une trajectoire qui démarre et s’arrête brutalement se lit comme mécanique. Interpolation douce aux extrémités de chaque mouvement.</li>
       <li><strong>Une idée par plan.</strong> Ne faites pas un travelling avant en panoramique droite tout en montant en grue. Choisissez un mouvement et tenez-vous-y.</li>
       <li><strong>Gardez l’horizon horizontal</strong> sauf raison précise. Une caméra inclinée est un effet fort, presque jamais le bon en architecture.</li>
@@ -4434,7 +4434,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier  : les plans fixes sont autorisés</span>
-      <p>Une caméra totalement immobile avec de la végétation, des personnages et une lumière qui bougent est un plan. C’est aussi presque gratuit à calculer comparé à une caméra mobile, et cela se lit souvent comme plus assuré. Vous n’êtes pas obligé de voler.</p>
+      <p>Une caméra parfaitement immobile, avec végétation, personnages et lumière en mouvement, constitue un plan à part entière. Elle coûte en outre presque rien à calculer face à une caméra mobile, et se lit souvent comme plus assurée. Rien ne vous oblige à voler.</p>
     </div>
 
     <h3>13.4 La fréquence d’images</h3>
@@ -4446,7 +4446,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li><strong>Rendez les plans séparément</strong> et montez-les ensuite, plutôt que d’animer une seule longue trajectoire. Si le plan 4 est raté, vous recalculez huit secondes et non quatre minutes.</li>
       <li><strong>Exportez une séquence d’images plutôt qu’un fichier vidéo unique</strong> pour tout rendu long. Si la machine plante à l’image 700 sur 900, vous reprenez à 700 au lieu de tout recommencer.</li>
       <li><strong>Assemblez dans un logiciel de montage</strong>, DaVinci Resolve est gratuit et largement suffisant. Coupes, titres et son s’y ajoutent.</li>
-      <li><strong>Le son compte plus qu’on ne le croit.</strong> Même une ambiance simple, oiseaux, circulation, pas, transforme la réception d’une visite silencieuse en jury. Cela ne coûte rien.</li>
+      <li><strong>Le son compte plus qu’on ne le croit.</strong> Une simple ambiance (oiseaux, circulation, pas) transforme la réception d’une visite silencieuse en jury. Elle ne coûte rien.</li>
     </ul>
 
     <div class="exercise">
@@ -4541,7 +4541,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>Tout ce qui précède produisait des images plates. Ce chapitre traite des livrables qui permettent à quelqu’un d’autre de se déplacer dans votre projet, et de la dernière décision, la moins technique : que montrer réellement.</p>
+    <p>Tout ce qui précède produisait des images plates. Ce chapitre traite des livrables qui laissent quelqu’un d’autre circuler dans votre projet, et de la dernière décision, la moins technique de toutes : que montrer.</p>
 
     <h3>14.1 Panoramas et jeux de panoramas</h3>
     <p>Un panorama à 360° permet à un spectateur de regarder autour de lui depuis un point fixe. Exportés localement en <strong>JPG ou PNG</strong>, les panoramas se téléversent n’importe où ; les réglages d’export propres à chacun s’ouvrent en cliquant <strong>Panorama</strong> dans le panneau Export.</p>
@@ -4549,7 +4549,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier, pourquoi la téléportation compte</span>
-      <p>La téléportation par hotspot entre panoramas fixes évite délibérément le déplacement continu, ce qui minimise le mal des transports que provoque souvent une visite VR en déplacement libre. Pour un jury où plusieurs personnes se passeront un casque, un jeu de panoramas est à la fois plus robuste et plus confortable qu’une visite temps réel.</p>
+      <p>La téléportation par hotspot entre panoramas fixes évite délibérément le déplacement continu, ce qui réduit le mal des transports qu’une visite en VR libre provoque souvent. Pour un jury où le casque passera de main en main, un jeu de panoramas est à la fois plus robuste et plus confortable qu’une visite temps réel.</p>
     </div>
 
     <p>Où placer les panoramas : même discipline que le jeu de caméras du chapitre 11. Six points de vue bien choisis valent mieux que trente. Placez-les là où une personne s’arrêterait naturellement  : l’entrée, le centre de l’espace principal, le seuil vers le jardin.</p>
@@ -4565,7 +4565,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-warn">
       <span class="lbl">Vérifiez avant d’en dépendre</span>
-      <p>Les services cloud ont des exigences de compte, des limites de stockage et des conditions qui évoluent. Vérifiez ce que couvre votre licence éducative <em>avant</em> de bâtir un rendu autour d’un lien Cloud, et gardez toujours une solution de repli locale, images exportées et fichier vidéo, au cas où le réseau du jury ne coopérerait pas. Ne laissez jamais un lien hypertexte être l’unique copie de votre travail.</p>
+      <p>Les services cloud imposent des comptes, des quotas et des conditions qui changent. Vérifiez ce que couvre votre licence éducative <em>avant</em> de bâtir un rendu autour d’un lien, et gardez toujours une solution de repli locale, images exportées et fichier vidéo, au cas où le réseau du jury ne coopérerait pas. Ne laissez jamais un lien être l’unique copie de votre travail.</p>
     </div>
 
     <h3>14.3 La VR <span class="lv-tag lv-y3">Y3</span></h3>
@@ -4573,7 +4573,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <p>La VR excelle avant tout pour une chose : <strong>vérifier que vos espaces ont bien la taille que vous croyez.</strong> Hauteurs sous plafond, largeurs de couloir et seuils de porte se lisent tout autrement à l’échelle 1:1 que sur un écran. Utilisez-la comme outil de conception pendant le projet, pas seulement comme un tour de présentation à la fin.</p>
 
     <h3>14.4 Que montrer réellement</h3>
-    <p>Vous savez désormais produire bien plus de matière que quiconque n’en regardera. La compétence finale est la soustraction.</p>
+    <p>Vous savez désormais produire bien plus de matière que personne n’en regardera. La dernière compétence est celle du retrait.</p>
 
     <div class="tbl-wrap">
       <table>
@@ -4588,7 +4588,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-teach">
       <span class="lbl">Ce qu’il faut retenir de tout ce livre</span>
-      <p>Personne n’a jamais obtenu une meilleure note parce qu’un rendu comportait davantage d’échantillons. On obtient de meilleures notes parce qu’une image a fait comprendre un bâtiment. Chaque chapitre technique de ce livre n’existe que pour lever les obstacles entre votre idée et cette compréhension  : la technique n’est jamais le sujet, et un rendu magnifiquement exécuté qui ne défend rien est un échec bien éclairé.</p>
+      <p>Personne n’a jamais gagné de points parce qu’un rendu comptait davantage d’échantillons. On en gagne parce qu’une image a fait comprendre un bâtiment. Chaque chapitre technique de ce livre ne sert qu’à lever les obstacles entre votre idée et cette compréhension : la technique n’est jamais le sujet, et un rendu magnifiquement exécuté qui ne défend rien reste un échec bien éclairé.</p>
     </div>
 
     <div class="exercise">
