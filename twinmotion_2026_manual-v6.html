@@ -1630,11 +1630,11 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
   </div>
 
   <div class="fr-only">
-    <p>Ce chapitre est l’heure la plus rentable de tout le cours. Tout s’y passe <em>avant</em> d’ouvrir Twinmotion, et bien le faire élimine la majorité des problèmes que les chapitres suivants devraient sinon réparer.</p>
+    <p>Voici l’heure la plus rentable de tout le cours. Tout s’y joue <em>avant</em> même d’ouvrir Twinmotion, et le faire correctement supprime d’avance la plupart des ennuis que les chapitres suivants devraient sinon réparer.</p>
 
     <h3>3.1 L’orientation des faces : le problème endroit/envers</h3>
-    <p>Chaque face dans SketchUp a deux côtés. La <strong>face avant</strong> est blanche par défaut ; la <strong>face arrière</strong> est d’un bleu-gris. Ce n’est pas cosmétique. Les moteurs de rendu utilisent la direction vers laquelle pointe la face, sa <em>normale</em>, pour déterminer comment la lumière la frappe.</p>
-    <p>Quand une face est inversée, Twinmotion peut la rendre noire, la rendre invisible depuis l’extérieur, et calculera dans tous les cas son éclairage comme si la surface était tournée vers l’intérieur. Un mur composé de faces d’orientations mélangées produit un aspect tacheté qu’on prend facilement pour un problème d’éclairage.</p>
+    <p>Toute face possède deux côtés dans SketchUp : l’endroit, blanc par défaut, et l’envers, d’un bleu-gris. La distinction n’a rien de cosmétique. Les moteurs de rendu se fient à la direction vers laquelle pointe la face, sa <em>normale</em>, pour calculer comment la lumière la frappe.</p>
+    <p>Une face inversée peut apparaître noire, ou disparaître vue de l’extérieur ; dans tous les cas, Twinmotion calculera son éclairage comme si elle regardait vers l’intérieur. Un mur aux orientations mélangées prend alors cet aspect tacheté qu’on impute volontiers à l’éclairage.</p>
 
     <div class="callout c-doc">
       <span class="lbl">Documenté, comment le voir</span>
@@ -1654,7 +1654,7 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
     </div>
 
     <h3>3.2 L’épaisseur : pourquoi les murs en papier laissent fuir la lumière</h3>
-    <p>L’illumination globale Lumen de Twinmotion trace les rebonds de la lumière dans la scène. Un mur modélisé en une seule face n’a aucune épaisseur : c’est physiquement un plan de profondeur nulle, et la lumière indirecte contourne son arête, produisant un halo le long de la jonction sol-mur qu’aucun réglage d’éclairage ne fera disparaître.</p>
+    <p>L’illumination globale de Lumen suit les rebonds de la lumière dans la scène. Un mur réduit à une seule face n’a aucune épaisseur : physiquement, c’est un plan de profondeur nulle. La lumière indirecte en contourne l’arête et dépose le long de la jonction sol-mur un halo qu’aucun réglage d’éclairage ne fera disparaître.</p>
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier</span>
@@ -1667,12 +1667,12 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
     </div>
 
     <h3>3.3 Groupes, composants et le contrat de réimportation</h3>
-    <p>Twinmotion construit son arbre de scène à partir de votre structure SketchUp. Cet arbre est aussi le contrat qui rend la réimportation sûre.</p>
+    <p>Twinmotion bâtit son arbre de scène sur votre structure SketchUp. Cet arbre est aussi le contrat qui rend la réimportation sûre.</p>
     <ul>
-      <li><strong>Groupez tout ce qui a du sens.</strong> Une géométrie libre non groupée arrive dans Twinmotion comme une masse indifférenciée qu’on ne peut ni sélectionner, ni masquer, ni texturer indépendamment.</li>
+      <li><strong>Groupez tout ce qui mérite de l’être.</strong> Une géométrie libre, non groupée, arrive dans Twinmotion sous forme de masse indifférenciée : impossible de la sélectionner, de la masquer ou de la texturer séparément.</li>
       <li><strong>Utilisez des composants pour les objets répétés.</strong> Fenêtres, portes, chaises, garde-corps. Une définition de composant utilisée quarante fois est bien plus légère que quarante copies de géométrie brute.</li>
       <li><strong>Nommez vos groupes.</strong> <code>MUR-EXT-BRIQUE</code> vaut mieux que <code>Groupe#47</code>. À la réimportation d’un modèle révisé, Twinmotion fait la correspondance par le nom.</li>
-      <li><strong>Restez peu imbriqué.</strong> Les hiérarchies très profondes deviennent pénibles à naviguer dans le graphe de scène Twinmotion. Trois niveaux est une limite de travail confortable.</li>
+      <li><strong>Limitez l’imbrication.</strong> Une hiérarchie trop profonde devient pénible à parcourir dans le graphe de scène. Trois niveaux constituent une limite de travail confortable.</li>
     </ul>
 
     <div class="callout c-fix">
@@ -1693,7 +1693,7 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
     </figure>
 
     <h3>3.4 Les balises (calques) <span class="lv-tag lv-y2">Y2</span></h3>
-    <p>Les balises SketchUp, appelées Calques avant 2020, contrôlent la visibilité. Elles sont transmises à Twinmotion et constituent le moyen le plus rapide d’y isoler des parties du modèle.</p>
+    <p>Les balises SketchUp, que l’on appelait Calques avant 2020, gouvernent la visibilité. Elles passent dans Twinmotion et offrent le moyen le plus rapide d’y isoler une partie du modèle.</p>
     <p>Un système de balises praticable pour un projet de studio :</p>
     <pre>SITE-TERRAIN        EXT-MUR             INT-CLOISON
 SITE-PLANTATION     EXT-VITRAGE         INT-SOL
@@ -1703,7 +1703,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <p>Le préfixe compte plus que les noms exacts : un tri alphabétique doit regrouper les choses apparentées.</p>
 
     <h3>3.5 La purge : le nettoyage en deux minutes</h3>
-    <p>Les fichiers SketchUp accumulent composants, matériaux et styles inutilisés, surtout après avoir importé du mobilier depuis la 3D Warehouse. Cela alourdit le fichier et ralentit l’import.</p>
+    <p>Un fichier SketchUp accumule composants, matériaux et styles inutilisés, surtout après quelques emprunts à la 3D Warehouse. Le fichier s’alourdit et l’import ralentit d’autant.</p>
     <div class="callout c-doc">
       <span class="lbl">Documenté</span>
       <p><span class="path">Fenêtre &gt; Infos sur le modèle &gt; Statistiques &gt; Purger les éléments inutilisés</span>. Lancez-le avant chaque export. C’est non destructif pour tout ce qui est réellement utilisé.</p>
@@ -1722,7 +1722,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </figure>
 
     <h3>3.6 Budget polygonal et mobilier de la Warehouse <span class="lv-tag lv-y3">Y3</span></h3>
-    <p>La 3D Warehouse regorge de modèles réalisés par des gens qui ne pensaient pas au rendu temps réel. Un seul fauteuil « réaliste » peut porter 400 000 polygones  : plus qu’une maison entière bien construite.</p>
+    <p>La 3D Warehouse regorge de modèles conçus par des gens qui n’avaient pas le rendu temps réel en tête. Un seul fauteuil « réaliste » peut peser 400 000 polygones : davantage qu’une maison entière bien construite.</p>
     <p>Vérifiez avant de vous engager : <span class="path">Fenêtre &gt; Infos sur le modèle &gt; Statistiques</span> affiche le nombre d’arêtes et de faces. Comparez avant et après l’insertion d’un modèle Warehouse. Si une chaise ajoute six chiffres, supprimez-la et cherchez ailleurs, ou remplacez-la par un asset de la bibliothèque Twinmotion une fois sur place  : les assets intégrés sont déjà optimisés pour le moteur.</p>
 
     <div class="callout c-tip">
@@ -1787,7 +1787,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <h4>Ce que vous faites</h4>
       <p>Déroulez la checklist en huit points sur le modèle SketchUp de votre projet. Notez l’état de chaque point <em>avant</em> de le corriger, puis corrigez. Arrêtez maintenant votre système de nommage et votre système de balises, et n’y touchez plus  : l’étape 5 vous montrera pourquoi.</p>
       <h4>Ce que cela produit</h4>
-      <p>La première version aboutie du <strong>livrable A</strong>, votre <code>.skp</code> rendu. Ce n’est pas un fichier de travail qu’on remet au passage : c’est un travail évalué, et il est évalué sur les points de ce chapitre, orientation, fermeture, épaisseur, structure, nommage, purge.</p>
+      <p>La première version aboutie du <strong>livrable A</strong>, le <code>.skp</code> que vous remettrez. Ce n’est pas un fichier de travail rendu au passage, mais une pièce évaluée, et évaluée sur les points de ce chapitre : orientation, fermeture, épaisseur, structure, nommage, purge.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>Une orbite complète en Monochrome ne révèle aucune face inversée.</li>
@@ -1963,28 +1963,28 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>On passe à Rhino quand SketchUp commence à résister : façades à double courbure, escaliers précis, résilles paramétriques, mobilier organique. Le prix de cette précision est une étape supplémentaire  : la géométrie de Rhino n’est pas faite de polygones, et Twinmotion ne sait dessiner que des polygones. Ce chapitre traite du contrôle de cette conversion, plutôt que de la subir.</p>
+    <p>On passe à Rhino dès que SketchUp résiste : façades à double courbure, escaliers précis, résilles paramétriques, mobilier organique. Cette précision se paie d’une étape supplémentaire, car la géométrie de Rhino n’est pas faite de polygones et Twinmotion ne sait dessiner que cela.</p>
 
     <h3>4.1 Ce que personne n’explique : une surface NURBS n’a aucun polygone</h3>
-    <p>Une surface NURBS est une équation. Elle est parfaitement lisse à n’importe quel niveau de zoom parce qu’il n’y a rien à zoomer, et non de facettes, pas de sommets, pas de résolution. C’est ainsi que Rhino peut tenir une façade courbe de 40 mètres au dixième de millimètre sans que le fichier devienne énorme.</p>
+    <p>Une surface NURBS est une équation. Elle reste parfaitement lisse à tout niveau de zoom parce qu’il n’y a rien à y zoomer : ni facettes, ni sommets, ni résolution. C’est ainsi que Rhino tient une façade courbe de 40 mètres au dixième de millimètre sans que le fichier devienne énorme.</p>
     <p>Mais aucun moteur de rendu ne sait dessiner une équation. À l’export, Rhino <strong>tessellise</strong> : il approxime chaque surface par un maillage de triangles. Combien de triangles, et où il les place, dépend entièrement des réglages choisis. Mal choisis, vous obtenez soit une courbe facettée qui se lit comme une erreur, soit un fichier de quatre millions de polygones qui met Twinmotion à genoux.</p>
 
     <div class="callout c-teach">
       <span class="lbl">Le modèle mental</span>
-      <p>La tessellation, c’est comme exporter un dessin vectoriel en image matricielle. Il faut choisir une résolution, cette résolution est définitive, et la bonne réponse dépend entièrement de la distance à laquelle on regardera.</p>
+      <p>La tessellation s’apparente à l’export d’un dessin vectoriel en image matricielle. Il faut choisir une résolution, ce choix est définitif, et la bonne réponse dépend entièrement de la distance à laquelle on regardera.</p>
     </div>
 
     <h3>4.2 Il existe deux maillages, et on les confond facilement</h3>
-    <p>Rhino conserve un <strong>maillage d’affichage</strong>  : l’approximation grossière que vous voyez ombrée dans la fenêtre, réglée par <span class="path">Propriétés du document &gt; Maillage</span>. C’est un aperçu, optimisé pour la fluidité.</p>
-    <p>À l’export, Rhino génère un <strong>maillage d’export</strong> distinct à partir des réglages de la boîte de dialogue d’exportation. Les deux sont indépendants. Un modèle parfaitement lisse à l’écran peut s’exporter facetté, et inversement, parce que vous avez réglé le mauvais.</p>
+    <p>Rhino entretient un <strong>maillage d’affichage</strong>, l’approximation grossière que vous voyez ombrée dans la fenêtre, réglée par <span class="path">Propriétés du document &gt; Maillage</span>. Ce n’est qu’un aperçu, optimisé pour la fluidité.</p>
+    <p>À l’export, Rhino fabrique un <strong>maillage d’export</strong> distinct, à partir des réglages de la boîte de dialogue. Les deux sont indépendants. Un modèle parfaitement lisse à l’écran peut donc sortir facetté, et réciproquement, parce que vous avez réglé le mauvais.</p>
 
     <div class="callout c-warn">
       <span class="lbl">La confusion classique</span>
-      <p>« Mais c’est lisse dans Rhino ! » — oui, parce que vous regardez le maillage d’affichage. Ce que Twinmotion reçoit, c’est le maillage d’export. Jugez votre export en ouvrant le fichier exporté, pas en regardant la fenêtre Rhino.</p>
+      <p>« Mais c’est lisse dans Rhino ! » Évidemment : vous regardez le maillage d’affichage. Ce que reçoit Twinmotion, c’est le maillage d’export. Jugez votre export en ouvrant le fichier exporté, jamais en contemplant la fenêtre Rhino.</p>
     </div>
 
     <h3>4.3 Les réglages de maillage qui comptent vraiment <span class="lv-tag lv-y3">Y3</span></h3>
-    <p>La boîte de dialogue de maillage de Rhino propose un curseur de densité simple et un panneau <em>Contrôles détaillés</em>. Apprenez-en trois et ignorez le reste jusqu’à avoir une raison précise.</p>
+    <p>La boîte de dialogue de maillage propose un curseur de densité et un panneau <em>Contrôles détaillés</em>. Retenez-en trois et laissez le reste de côté tant que vous n’avez pas une raison précise d’y toucher.</p>
 
     <div class="tbl-wrap">
       <table>
@@ -2011,21 +2011,21 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier, mailler selon la distance, pas par habitude</span>
-      <p>N’appliquez pas un réglage unique à tout le modèle. La main courante que la caméra frôle à 40 cm et le plan de toiture vu à 60 m ne méritent pas le même budget de triangles. Exportez par lots avec des réglages différents si cela compte. C’est exactement ce type de jugement qui distingue un rendu de 3<sup>e</sup> année d’un rendu de 2<sup>e</sup>.</p>
+      <p>N’appliquez pas un réglage unique à tout le modèle. La main courante que la caméra frôle à 40 cm et le plan de toiture vu à 60 m ne réclament pas le même budget de triangles. Exportez par lots, avec des réglages distincts, quand cela compte. C’est précisément ce genre de jugement qui sépare un rendu de 3<sup>e</sup> année d’un rendu de 2<sup>e</sup>.</p>
     </div>
 
     <div class="callout c-fix">
       <span class="lbl">Remarque sur les noms exacts</span>
-      <p>Les libellés des options de maillage de Rhino ont légèrement évolué selon les versions. Les trois notions ci-dessus sont stables, mais si un libellé de votre boîte de dialogue ne correspond pas mot pour mot, faites confiance à la boîte de dialogue et vérifiez la documentation McNeel de votre version plutôt que de croire que vous vous êtes trompé d’endroit.</p>
+      <p>Les libellés ont évolué d’une version de Rhino à l’autre. Les trois notions ci-dessus, elles, sont stables : si un intitulé ne correspond pas mot pour mot, fiez-vous à votre boîte de dialogue et consultez la documentation McNeel de votre version, plutôt que de conclure que vous vous êtes trompé d’endroit.</p>
     </div>
 
     <h3>4.4 QuadRemesh, pour tout ce qui est organique <span class="lv-tag lv-y3">Y3</span></h3>
-    <p>La tessellation standard répartit les triangles selon la courbure, ce qui, sur une géométrie complexe ou raccordée, donne un maillage irrégulier et laid. La commande <code>QuadRemesh</code> reconstruit un objet en maillage de quadrilatères réguliers à la densité que vous fixez.</p>
-    <p>À utiliser sur : le mobilier SubD, les terrains sculptés, tout assemblage de nombreuses surfaces ajustées, et tout ce sur quoi vous comptez activer Nanite, Nanite exige précisément une géométrie régulière et bien répartie.</p>
+    <p>La tessellation standard répartit les triangles selon la courbure, ce qui donne, sur une géométrie complexe ou raccordée, un maillage irrégulier et disgracieux. La commande <code>QuadRemesh</code> reconstruit l’objet en quadrilatères réguliers, à la densité que vous fixez.</p>
+    <p>À réserver au mobilier SubD, aux terrains sculptés, à tout assemblage de surfaces ajustées, et à tout ce sur quoi vous comptez activer Nanite, qui exige justement une géométrie régulière et bien répartie.</p>
     <p>Les paramètres à connaître :</p>
     <ul>
       <li><strong>Nombre de quads cible</strong>  : le budget. Commencez bas, vous pourrez relancer.</li>
-      <li><strong>Taille adaptative</strong>, autorise des quads plus petits dans les zones très courbes. Généralement à conserver.</li>
+      <li><strong>Taille adaptative</strong> : autorise des quads plus petits dans les zones très courbes. À conserver en général.</li>
       <li><strong>Préserver / détecter les arêtes vives</strong>, garde les arêtes nettes au lieu de les arrondir. Indispensable sur toute arête volontaire.</li>
       <li><strong>Symétrie</strong>, si l’objet est symétrique, utilisez-la. Deux fois moins de travail et un résultat réellement symétrique.</li>
     </ul>
@@ -2132,7 +2132,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   <h2 class="chapter en-only">Exporting .SKP and .GLB</h2>
   <h2 class="chapter fr-only">Exporter .SKP et .GLB</h2>
   <div class="en-only">
-    <p>A short chapter, because if Chapters 4 and 4 were done properly this one is mostly clicking OK. The value here is knowing which format to choose and why, so you stop guessing.</p>
+    <p>A short chapter, because if Chapters 3 and 4 were done properly this one is mostly clicking OK. The value here is knowing which format to choose and why, so you stop guessing.</p>
 
     <h3>5.1 What Twinmotion will accept</h3>
     <div class="callout c-doc">
@@ -2226,14 +2226,14 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>Chapitre court, car si les chapitres 3 et 3 ont été bien faits, celui-ci se résume surtout à cliquer sur OK. Son intérêt est de savoir quel format choisir et pourquoi, pour cesser de deviner.</p>
+    <p>Chapitre bref : si les chapitres 3 et 4 ont été menés sérieusement, celui-ci se réduit à cliquer sur OK. Tout son intérêt tient à une seule chose, savoir quel format choisir et pourquoi, afin de cesser de deviner.</p>
 
     <h3>5.1 Ce que Twinmotion accepte</h3>
     <div class="callout c-doc">
       <span class="lbl">Documenté, formats de géométrie pris en charge</span>
       <p><code>.udatasmith</code> · <code>.gltf</code> · <code>.glb</code> · <code>.fbx</code> · <code>.skp</code> · <code>.obj</code> · <code>.c4d</code> · <code>.3ds</code> · <code>.dae</code> · <code>.dxf</code> · <code>.iv</code> · <code>.lw</code> · <code>.lwb</code> · <code>.lwm</code> · <code>.lwo</code> · <code>.lws</code> · <code>.lxo</code> · <code>.ply</code> · <code>.stl</code> · <code>.wrl</code> · <code>.wrl97</code> · <code>.vrml</code> · <code>.x</code></p>
     </div>
-    <p>Cette longue liste vous est largement inutile. Pour ce cours il existe exactement deux bonnes réponses, et une troisième utile :</p>
+    <p>Cette longue liste ne vous servira presque jamais. Pour ce cours, il n’existe que deux bonnes réponses, et une troisième à connaître :</p>
 
     <div class="tbl-wrap">
       <table>
@@ -2248,20 +2248,20 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier</span>
-      <p>N’exportez pas SketchUp en <code>.fbx</code> ou <code>.obj</code> « parce qu’un tutoriel le disait ». Vous perdez la structure de groupes qui rend la réimportation possible, et vous n’y gagnez rien. Pointez simplement Twinmotion sur le <code>.skp</code>.</p>
+      <p>N’exportez pas en <code>.fbx</code> ni en <code>.obj</code> sous prétexte qu’un tutoriel le conseille. Vous y perdez la structure de groupes dont dépend la réimportation, sans rien gagner en échange. Pointez simplement Twinmotion sur le <code>.skp</code>.</p>
     </div>
 
     <h3>5.2 Exporter depuis SketchUp : il n’y a pas d’export</h3>
-    <p>Enregistrez votre fichier. C’est l’export. Déroulez la checklist du chapitre 3, enregistrez, et importez ce <code>.skp</code> directement dans Twinmotion.</p>
+    <p>Enregistrez votre fichier : voilà l’export. Déroulez la checklist du chapitre 3, enregistrez, puis importez ce <code>.skp</code> directement dans Twinmotion.</p>
     <p>Deux remarques pratiques :</p>
     <ul>
-      <li><strong>Conservez une copie « rendu » distincte.</strong> <code>projet_v07_RENDU.skp</code>, et non votre fichier de travail. Vous voudrez purger la géométrie de construction, les repères et les variantes pour la version de rendu, sans le faire de façon destructive sur le fichier dans lequel vous concevez encore.</li>
+      <li><strong>Gardez une copie « rendu » séparée.</strong> <code>projet_v07_RENDU.skp</code>, jamais votre fichier de travail. Vous voudrez en purger la géométrie de construction, les repères et les variantes, sans toucher au fichier dans lequel vous concevez encore.</li>
       <li><strong>Les <code>.skp</code> très anciens peuvent être refusés.</strong> Si un fichier refuse de s’ouvrir, réenregistrez-le depuis un SketchUp récent avant d’accuser Twinmotion.</li>
     </ul>
 
     <h3>5.3 Exporter en <code>.glb</code> depuis Rhino</h3>
     <p>Sélectionnez les objets voulus, puis <span class="path">Fichier &gt; Exporter la sélection</span> et choisissez le format glTF binaire (<code>.glb</code>). C’est dans la boîte d’options que tout se joue.</p>
-    <p>Ce qu’il faut viser, exprimé en intentions plutôt qu’en noms de cases, les libellés exacts varient selon les versions de Rhino :</p>
+    <p>Voici ce qu’il faut obtenir, formulé en intentions plutôt qu’en noms de cases, car les libellés changent d’une version de Rhino à l’autre :</p>
     <ul>
       <li><strong>Intégrer les textures</strong> dans le fichier plutôt que les référencer à l’extérieur. C’est tout l’intérêt du <code>.glb</code> par rapport au <code>.gltf</code>.</li>
       <li><strong>Exporter les matériaux</strong>, en utilisant vos matériaux Physically Based et non les couleurs d’affichage.</li>
@@ -2307,9 +2307,9 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <div class="exercise">
       <div class="hd">Étape 5 · L’aller-retour</div>
       <h4>Ce que vous faites</h4>
-      <p>Exportez votre modèle nettoyé, importez-le dans Twinmotion, appliquez trois matériaux distincts et posez une caméra. Retournez ensuite dans votre logiciel de modélisation, faites une <em>vraie</em> modification au projet, déplacez un mur, ajoutez une ouverture, enregistrez, et mettez l’import à jour.</p>
+      <p>Exportez votre modèle nettoyé, importez-le dans Twinmotion, appliquez trois matériaux distincts et posez une caméra. Retournez ensuite dans votre logiciel de modélisation pour une <em>vraie</em> modification : déplacez un mur, ouvrez une baie. Enregistrez, puis mettez l’import à jour.</p>
       <h4>Ce que cela produit</h4>
-      <p>La preuve que vous pouvez faire évoluer votre projet sans perdre votre travail de rendu. C’est la chose la plus importante à établir avant que le projet ne devienne sérieux, car elle détermine si vous pourrez continuer à concevoir après la semaine six ou si votre propre fichier vous emprisonne.</p>
+      <p>La preuve que votre projet peut évoluer sans emporter votre travail de rendu. C’est le point le plus important à établir avant que les choses ne deviennent sérieuses : de là dépend votre liberté de concevoir encore après la semaine six, ou votre enfermement dans votre propre fichier.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>La modification est apparue dans Twinmotion et vos trois matériaux ont survécu.</li>
@@ -2417,7 +2417,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>6.4 Material substitution by CSV <span class="lv-tag lv-y3">Y3</span></h3>
-    <p>If you name your source materials consistently — as Chapters 4 and 4 told you to — you can write a small <code>.csv</code> mapping each source material name to a Twinmotion material, and have the substitution happen automatically on every import.</p>
+    <p>If you name your source materials consistently — as Chapters 3 and 4 told you to — you can write a small <code>.csv</code> mapping each source material name to a Twinmotion material, and have the substitution happen automatically on every import.</p>
     <p>This is genuinely worth the setup time on a project you will re-import fifteen times, and it is a strong thing to demonstrate in a Y3 portfolio: it shows you think about production, not just images. It is pointless if your materials are called <code>Material12</code>.</p>
 
     <h3>6.5 Rescuing a wrong-scale import</h3>
@@ -2509,10 +2509,10 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>C’est la boîte de dialogue la plus lourde de conséquences de tout le pipeline. Les choix qu’on y fait sont difficiles à annuler et déterminent si l’éclairage fonctionnera plus tard. Lisez ce chapitre avant d’importer, pas après.</p>
+    <p>Aucune boîte de dialogue du pipeline n’engage autant. Les choix qu’on y fait se défont mal, et de là dépend le bon fonctionnement de l’éclairage plus tard. Lisez ce chapitre avant d’importer, non après.</p>
 
     <h3>6.1 Le mode de fusion  : la décision qui conditionne toute la suite</h3>
-    <p>Quand Twinmotion importe une géométrie, il doit décider quelle part de la structure de votre fichier source conserver. Trois options :</p>
+    <p>À l’import, Twinmotion doit décider quelle part de la structure de votre fichier source il conserve. Trois options s’offrent à lui :</p>
 
     <div class="tbl-wrap">
       <table>
@@ -2543,8 +2543,8 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>6.2 Nanite, puissant, et plus étroit qu’il n’y paraît <span class="lv-tag lv-y3">Y3</span></h3>
-    <p>Nanite est le système de géométrie virtualisée d’Unreal Engine. Il permet au moteur d’afficher des maillages extrêmement denses efficacement, en ne diffusant que le détail réellement visible à l’écran. Sur une façade détaillée ou un modèle importé très lourd, c’est transformateur.</p>
-    <p>Il est aussi difficile sur ce qu’il accepte.</p>
+    <p>Nanite est le système de géométrie virtualisée d’Unreal Engine. Il permet au moteur d’afficher des maillages extrêmement denses en ne diffusant que le détail réellement visible à l’écran. Sur une façade travaillée ou un modèle importé très lourd, le gain est spectaculaire.</p>
+    <p>Il se montre en revanche très exigeant sur ce qu’il accepte.</p>
 
     <div class="callout c-doc">
       <span class="lbl">Documenté, ce que Nanite prend en charge ou non</span>
@@ -2568,7 +2568,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-warn">
       <span class="lbl">Le piège du verre</span>
-      <p>La panne Nanite la plus fréquente dans un projet étudiant est une façade vitrée. On active Nanite sur tout le bâtiment parce qu’il est lourd, et le verre devient opaque ou noir. Importez les vitrages comme objet distinct, ou désactivez Nanite dessus après coup. C’est l’information la plus utile de ce chapitre pour quiconque rend un bâtiment contemporain.</p>
+      <p>La panne Nanite la plus fréquente tient à une façade vitrée. On active Nanite sur tout le bâtiment parce qu’il est lourd, et le verre vire à l’opaque ou au noir. Importez les vitrages comme objet distinct, ou désactivez Nanite dessus après coup. C’est le renseignement le plus utile de ce chapitre pour qui rend un bâtiment contemporain.</p>
     </div>
 
     <h3>6.3 Le reste de la boîte de dialogue, en clair</h3>
@@ -2589,7 +2589,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>6.4 La substitution de matériaux par CSV <span class="lv-tag lv-y3">Y3</span></h3>
-    <p>Si vous nommez vos matériaux sources de façon cohérente, comme les chapitres 3 et 3 vous l’ont demandé, vous pouvez écrire un petit <code>.csv</code> associant chaque nom de matériau source à un matériau Twinmotion, et faire opérer la substitution automatiquement à chaque import.</p>
+    <p>Si vous nommez vos matériaux sources de façon cohérente, comme les chapitres 3 et 4 vous l’ont demandé, vous pouvez écrire un petit <code>.csv</code> associant chaque nom de matériau source à un matériau Twinmotion, et faire opérer la substitution automatiquement à chaque import.</p>
     <p>Cela vaut réellement le temps d’installation sur un projet réimporté quinze fois, et c’est un point fort à démontrer dans un portfolio de 3<sup>e</sup> année : cela prouve qu’on pense production, et pas seulement image. C’est en revanche inutile si vos matériaux s’appellent <code>Material12</code>.</p>
 
     <h3>6.5 Rattraper un import à la mauvaise échelle</h3>
@@ -2603,7 +2603,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier</span>
-      <p>Faites du test « personnage contre porte » le tout premier geste après chaque import, avant de toucher au moindre matériau. Cela prend quatre secondes et attrape l’erreur qui, autrement, ressurgit deux semaines plus tard quand votre éclairage intérieur refuse de se comporter normalement.</p>
+      <p>Faites du test « personnage contre porte » votre tout premier geste après chaque import, avant même de toucher à un matériau. Quatre secondes suffisent, et vous attrapez l’erreur qui, sinon, ressurgira deux semaines plus tard, quand votre éclairage intérieur refusera obstinément de se comporter.</p>
     </div>
 
     <h3>6.6 Mettre à jour un import sans perdre son travail</h3>
@@ -2623,7 +2623,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-teach">
       <span class="lbl">Pourquoi le chapitre 3 insistait tant</span>
-      <p>Tout ce qui concerne le nommage et le groupement au chapitre 3 n’existe que pour ce moment précis. Un modèle au nommage stable et réfléchi peut être révisé vingt fois sans coût. Un modèle rempli de <code>Groupe#82</code> doit être retexturé intégralement à chaque révision, ce qui explique que certains projets cessent discrètement d’évoluer après la semaine six. Une mauvaise hygiène de fichiers devient silencieusement une contrainte de conception.</p>
+      <p>Tout ce que le chapitre 3 dit du nommage et du groupement ne sert qu’à ce moment précis. Un modèle au nommage stable et réfléchi se révise vingt fois sans frais. Un modèle rempli de <code>Groupe#82</code> doit être retexturé intégralement à chaque révision : voilà pourquoi certains projets cessent d’évoluer après la semaine six. Une mauvaise hygiène de fichiers devient une contrainte de conception sans qu’on s’en aperçoive.</p>
     </div>
 
     <h3>6.7 L’autre voie : le Datasmith Direct Link</h3>
@@ -3483,7 +3483,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   <h2 class="chapter en-only">Interior lighting &amp; light leaks</h2>
   <h2 class="chapter fr-only">Éclairage intérieur &amp; fuites de lumière</h2>
   <div class="en-only">
-    <p>Interiors are harder than exteriors because almost all the light you see has bounced at least once. That makes them the real test of everything in Chapters 4 and 6 — and the place where poor decisions made two weeks ago finally show up.</p>
+    <p>Interiors are harder than exteriors because almost all the light you see has bounced at least once. That makes them the real test of everything in Chapters 3 and 6 — and the place where poor decisions made two weeks ago finally show up.</p>
 
     <h3>10.1 What the Surface Cache actually is</h3>
     <div class="callout c-doc">
@@ -3648,7 +3648,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>Les intérieurs sont plus difficiles que les extérieurs parce que presque toute la lumière visible a rebondi au moins une fois. Ils constituent donc le véritable test de tout ce qui précède aux chapitres 3 et 5, et l’endroit où les mauvaises décisions prises deux semaines plus tôt finissent par se voir.</p>
+    <p>Les intérieurs sont plus difficiles que les extérieurs parce que presque toute la lumière visible a rebondi au moins une fois. Ils constituent donc le véritable test de tout ce qui précède aux chapitres 3 et 6, et l’endroit où les mauvaises décisions prises deux semaines plus tôt finissent par se voir.</p>
 
     <h3>10.1 Ce qu’est réellement le Surface Cache</h3>
     <div class="callout c-doc">
