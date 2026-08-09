@@ -2,7 +2,11 @@
 
 A complete bilingual (EN/FR) production manual for architectural visualisation, written for design studio students in years 2 and 3.
 
-**[`twinmotion_2026_manual-v6.html`](twinmotion_2026_manual-v6.html)** — one self-contained file, ~430 KB. No build step, no dependencies, no internet connection required. Download it and open it in any browser.
+### 📖 **[Read it online → urbandronedesign.github.io/3DVIZ](https://urbandronedesign.github.io/3DVIZ/)**
+
+That is the link to give students — no download, no install, works on a phone.
+
+To use it offline instead, download **[`twinmotion_2026_manual-v6.html`](twinmotion_2026_manual-v6.html)** and open it in any browser. One self-contained file, ~430 KB, no build step and no dependencies. It works from a USB key with no internet connection.
 
 ---
 
