@@ -12,17 +12,19 @@ To use it offline instead, download **[`twinmotion_2026_manual-v6.html`](twinmot
 
 ## What's in it
 
-13 chapters following the actual order of production — model, export, import, light, render — plus a reference section.
+14 chapters following the actual order of production — set up, model, export, import, light, render — plus a reference section.
 
 | Part | Chapters |
 |---|---|
-| **I — Foundations** | The pipeline end to end · SketchUp model hygiene · Rhino NURBS, SubD & meshing |
+| **I — Foundations** | The pipeline end to end · **The project folder** · SketchUp model hygiene · Rhino NURBS, SubD & meshing |
 | **II — Getting in** | Exporting `.skp` and `.glb` · Import options decoded · Materials & PBR |
 | **III — Light** | Choosing a render engine · Exterior lighting & HDRI · Interior lighting & light leaks |
 | **IV — Output** | Cameras & composition · Stills & the Path Tracer · Video & animation · Panoramas, VR & delivery |
 | **Reference** | 95-entry student FAQ · 41-symptom troubleshooting index · 56-term bilingual glossary |
 
-Roughly 58,000 words across both languages.
+Roughly 66,000 words across both languages.
+
+Chapter 1 opens with a full-page schema of the whole pipeline — seven stages, the decisions belonging to each, and the return path showing that a fault noticed downstream was made upstream. The project folder is drawn as the container around all of it, because a project that is not portable is not really a project.
 
 ## Features
 
