@@ -259,6 +259,21 @@ body.show-figures .shot:not(.has-image){display:block}
 body.show-figures .shot-todo{display:block}
 
 /* ===== diagrams ===== */
+.diagram-wide{overflow-x:auto; overflow-y:hidden}
+.diagram-wide svg{min-width:640px}
+@media print{.diagram-wide{overflow:visible}.diagram-wide svg{min-width:0}}
+.dg-band{fill:var(--paper); stroke:var(--rule-2); stroke-width:1}
+.dg-gate{fill:var(--wash)}
+.dg-critical{fill:var(--paper); stroke:var(--warn); stroke-width:1.2}
+.dg-deliver{fill:var(--wash); stroke:var(--ink); stroke-width:1.2}
+.dg-num{fill:var(--ink)}
+.dg-numt{font:600 11px -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; fill:var(--paper); text-anchor:middle}
+.dg-tbs{font:600 11.5px -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; fill:var(--ink)}
+.dg-tsb{font:600 10.5px -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; fill:var(--ink)}
+.dg-tm{font:500 10.5px ui-monospace,"Cascadia Code",Consolas,monospace; fill:var(--accent)}
+.dg-return{fill:none; stroke:var(--warn); stroke-width:1.4; stroke-dasharray:5 4; marker-end:url(#ahb)}
+.dg-treturn{font:600 10px -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; fill:var(--warn); letter-spacing:.06em}
+
 .diagram{margin:2.2rem 0}
 .diagram svg{width:100%; height:auto; display:block; overflow:visible}
 .diagram figcaption{margin-top:.9rem}
@@ -667,18 +682,104 @@ body.show-figures .shot-todo{display:block}
     </div>
 
     <h3>1.3 The seven stages</h3>
-    <p>Every project in this course passes through the same seven stages. Learn the names; the rest of the book is organised around them.</p>
+    <p>Every project in this course passes through the same seven stages. Learn the names — the rest of the book is organised around them, and the schema below is the map you should be able to redraw from memory by the end.</p>
 
-    <pre><span class="cm"># The pipeline</span>
+    <figure class="diagram diagram-wide" id="fig-1-2">
+      <svg viewBox="0 0 720 892" role="img" aria-labelledby="t12">
+        <title id="t12">The whole pipeline: seven stages from model to deliverable, with the return path</title>
 
-  1  MODEL      SketchUp / Rhino        <span class="cm">→ geometry that is closed, oriented, and tidy</span>
-  2  PREPARE    purge · orient · tag    <span class="cm">→ Ch 2 &amp; 3</span>
-  3  EXPORT     .skp  /  .glb           <span class="cm">→ Ch 4</span>
-  4  IMPORT     collapse mode · units   <span class="cm">→ Ch 5   ← most failures happen here</span>
-  5  DRESS      materials · vegetation  <span class="cm">→ Ch 6</span>
-  6  LIGHT      sun · HDRI · IES        <span class="cm">→ Ch 7, 8, 9</span>
-  7  OUTPUT     stills · video · pano   <span class="cm">→ Ch 10–13</span>
-</pre>
+        <!-- ============ 1 MODEL ============ -->
+        <circle class="dg-num" cx="30" cy="46" r="12"/><text class="dg-numt" x="30" y="50">1</text>
+        <text class="dg-tb" x="56" y="30">MODEL</text>
+        <text class="dg-ts" x="126" y="30">Chapters 2 &#183; 3</text>
+        <rect class="dg-band" x="56" y="40" width="288" height="86" rx="2"/>
+        <text class="dg-tbs" x="70" y="62">SketchUp</text>
+        <text class="dg-tm" x="152" y="62">.skp</text>
+        <text class="dg-ts" x="70" y="82">Surfaces with a front and a back.</text>
+        <text class="dg-ts" x="70" y="98">Thickness only if you drew it.</text>
+        <text class="dg-ts" x="70" y="116">Orthogonal architecture.</text>
+        <rect class="dg-band" x="362" y="40" width="288" height="86" rx="2"/>
+        <text class="dg-tbs" x="376" y="62">Rhino 3D</text>
+        <text class="dg-tm" x="452" y="62">.3dm</text>
+        <text class="dg-ts" x="376" y="82">Equations, not polygons. You</text>
+        <text class="dg-ts" x="376" y="98">control the conversion to triangles.</text>
+        <text class="dg-ts" x="376" y="116">Curves, stairs, screens, furniture.</text>
+        <path class="dg-arrow" d="M353 138 L353 158"/>
+
+        <!-- ============ 2 PREPARE ============ -->
+        <circle class="dg-num" cx="30" cy="196" r="12"/><text class="dg-numt" x="30" y="200">2</text>
+        <text class="dg-tb" x="56" y="180">PREPARE</text>
+        <text class="dg-ts" x="146" y="180">the highest-value hour in the course</text>
+        <rect class="dg-band dg-gate" x="56" y="190" width="594" height="76" rx="2"/>
+        <text class="dg-ts" x="70" y="214">normals pointing outward &#183; volumes actually closed &#183; walls and slabs have real thickness</text>
+        <text class="dg-ts" x="70" y="234">groups and components named &#183; tags applied &#183; model purged &#183; geometry near the origin</text>
+        <text class="dg-tsb" x="70" y="256">Nothing crosses this line until it is true.</text>
+        <path class="dg-arrow" d="M353 278 L353 298"/>
+
+        <!-- ============ 3 EXPORT ============ -->
+        <circle class="dg-num" cx="30" cy="330" r="12"/><text class="dg-numt" x="30" y="334">3</text>
+        <text class="dg-tb" x="56" y="320">EXPORT</text>
+        <text class="dg-ts" x="132" y="320">Chapter 4</text>
+        <rect class="dg-band" x="56" y="310" width="288" height="42" rx="2"/>
+        <text class="dg-tm" x="70" y="328">.skp</text>
+        <text class="dg-ts" x="112" y="328">native &#8212; there is no export step</text>
+        <text class="dg-ts" x="70" y="344">save the file, import the file</text>
+        <rect class="dg-band" x="362" y="310" width="288" height="42" rx="2"/>
+        <text class="dg-tm" x="376" y="328">.glb</text>
+        <text class="dg-ts" x="418" y="328">binary &#8212; textures embedded</text>
+        <text class="dg-ts" x="376" y="344">mesh density is decided here</text>
+        <path class="dg-arrow" d="M353 364 L353 384"/>
+
+        <!-- ============ 4 IMPORT ============ -->
+        <circle class="dg-num" cx="30" cy="440" r="12"/><text class="dg-numt" x="30" y="444">4</text>
+        <text class="dg-tb dg-warn" x="56" y="406">IMPORT</text>
+        <text class="dg-ts" x="132" y="406">Chapter 5 &#183; where most projects break</text>
+        <rect class="dg-band dg-critical" x="56" y="416" width="594" height="76" rx="2"/>
+        <text class="dg-ts" x="70" y="440"><tspan class="dg-tsb">Keep hierarchy</tspan> &#8212; not Collapse all, or Lumen cannot build its cards</text>
+        <text class="dg-ts" x="70" y="460"><tspan class="dg-tsb">Units set explicitly</tspan> &#8212; check a figure against a door, never scale afterwards</text>
+        <text class="dg-ts" x="70" y="480"><tspan class="dg-tsb">Nanite</tspan> on heavy static geometry &#8212; never on glass</text>
+        <path class="dg-arrow" d="M353 504 L353 524"/>
+
+        <!-- ============ 5 DRESS ============ -->
+        <circle class="dg-num" cx="30" cy="566" r="12"/><text class="dg-numt" x="30" y="570">5</text>
+        <text class="dg-tb" x="56" y="546">DRESS</text>
+        <text class="dg-ts" x="122" y="546">Chapter 6</text>
+        <rect class="dg-band" x="56" y="556" width="594" height="44" rx="2"/>
+        <text class="dg-ts" x="70" y="578">materials described by roughness, not by shininess &#183; metallic is on only for bare metal</text>
+        <text class="dg-ts" x="70" y="594">texture scale checked against a human figure &#8212; a brick reads at 215 mm</text>
+        <path class="dg-arrow" d="M353 612 L353 632"/>
+
+        <!-- ============ 6 LIGHT ============ -->
+        <circle class="dg-num" cx="30" cy="692" r="12"/><text class="dg-numt" x="30" y="696">6</text>
+        <text class="dg-tb" x="56" y="654">LIGHT</text>
+        <text class="dg-ts" x="116" y="654">Chapters 7 &#183; 8 &#183; 9 &#8212; where light becomes physical</text>
+        <rect class="dg-band" x="56" y="664" width="594" height="76" rx="2"/>
+        <text class="dg-ts" x="70" y="688"><tspan class="dg-tsb">engine</tspan> &#183; Lumen for anything that moves, Path Tracer for hero stills</text>
+        <text class="dg-ts" x="70" y="708"><tspan class="dg-tsb">exterior</tspan> &#183; real site, north offset and hour set before any camera</text>
+        <text class="dg-ts" x="70" y="728"><tspan class="dg-tsb">interior</tspan> &#183; balance exposure, diagnose leaks in the Lumen surface view</text>
+        <path class="dg-arrow" d="M353 752 L353 772"/>
+
+        <!-- ============ 7 OUTPUT ============ -->
+        <circle class="dg-num" cx="30" cy="820" r="12"/><text class="dg-numt" x="30" y="824">7</text>
+        <text class="dg-tb" x="56" y="794">OUTPUT</text>
+        <text class="dg-ts" x="136" y="794">Chapters 10 &#183; 11 &#183; 12 &#183; 13</text>
+        <text class="dg-ts" x="70" y="820">frame it: eye height 1.6 m &#183; focal length &#183; parallelism on</text>
+        <rect class="dg-band dg-deliver" x="56" y="832" width="188" height="44" rx="2"/>
+        <text class="dg-tbs" x="70" y="852">A &#8212; the model</text>
+        <text class="dg-ts" x="70" y="868">.skp + .3dm, saved natively</text>
+        <rect class="dg-band dg-deliver" x="259" y="832" width="188" height="44" rx="2"/>
+        <text class="dg-tbs" x="273" y="852">B &#8212; the images</text>
+        <text class="dg-ts" x="273" y="868">five stills, graded as a set</text>
+        <rect class="dg-band dg-deliver" x="462" y="832" width="188" height="44" rx="2"/>
+        <text class="dg-tbs" x="476" y="852">C &#8212; the video</text>
+        <text class="dg-ts" x="476" y="868">60&#8211;90 s, same light</text>
+
+        <!-- ============ return path ============ -->
+        <path class="dg-return" d="M664 700 C 698 700, 698 230, 670 216"/>
+        <text class="dg-treturn" transform="translate(710,470) rotate(90)" text-anchor="middle">found here &#183; caused here</text>
+      </svg>
+      <figcaption><strong>Fig 1.2 — The whole pipeline.</strong> The return path is the part worth memorising: a fault you notice at stage 6 was almost always made at stage 2 or 4. A light leak is a thickness or collapse-mode problem. A model at the wrong size is a units problem. A black surface is a normals problem. None of them is fixed where you found it.</figcaption>
+    </figure>
 
     <div class="callout c-tip">
       <span class="lbl">Where projects go wrong</span>
@@ -794,18 +895,96 @@ body.show-figures .shot-todo{display:block}
     </div>
 
     <h3>1.3 Les sept étapes</h3>
-    <p>Chaque projet de ce cours traverse les mêmes sept étapes. Apprenez-en les noms : tout le livre est organisé autour d'elles.</p>
+    <p>Chaque projet de ce cours traverse les mêmes sept étapes. Apprenez-en les noms — tout le livre est organisé autour d'elles, et le schéma ci-dessous est la carte que vous devriez savoir redessiner de mémoire &#224; la fin.</p>
 
-    <pre><span class="cm"># Le pipeline</span>
+    <figure class="diagram diagram-wide" id="fig-1-2-fr">
+      <svg viewBox="0 0 720 892" role="img" aria-labelledby="t12f">
+        <title id="t12f">Le pipeline complet : sept étapes du modèle au livrable, avec le chemin de retour</title>
 
-  1  MODÉLISER   SketchUp / Rhino          <span class="cm">→ géométrie fermée, orientée, propre</span>
-  2  PRÉPARER    purger · orienter · taguer <span class="cm">→ Ch. 2 &amp; 3</span>
-  3  EXPORTER    .skp  /  .glb             <span class="cm">→ Ch. 4</span>
-  4  IMPORTER    mode de fusion · unités   <span class="cm">→ Ch. 5  ← c'est ici que ça casse</span>
-  5  HABILLER    matériaux · végétation    <span class="cm">→ Ch. 6</span>
-  6  ÉCLAIRER    soleil · HDRI · IES       <span class="cm">→ Ch. 7, 8, 9</span>
-  7  PRODUIRE    images · vidéo · pano     <span class="cm">→ Ch. 10–13</span>
-</pre>
+        <circle class="dg-num" cx="30" cy="46" r="12"/><text class="dg-numt" x="30" y="50">1</text>
+        <text class="dg-tb" x="56" y="30">MOD&#201;LISER</text>
+        <text class="dg-ts" x="152" y="30">Chapitres 2 &#183; 3</text>
+        <rect class="dg-band" x="56" y="40" width="288" height="86" rx="2"/>
+        <text class="dg-tbs" x="70" y="62">SketchUp</text>
+        <text class="dg-tm" x="152" y="62">.skp</text>
+        <text class="dg-ts" x="70" y="82">Des faces avec un endroit et un envers.</text>
+        <text class="dg-ts" x="70" y="98">L&#8217;&#233;paisseur, seulement si dessin&#233;e.</text>
+        <text class="dg-ts" x="70" y="116">Architecture orthogonale.</text>
+        <rect class="dg-band" x="362" y="40" width="288" height="86" rx="2"/>
+        <text class="dg-tbs" x="376" y="62">Rhino 3D</text>
+        <text class="dg-tm" x="452" y="62">.3dm</text>
+        <text class="dg-ts" x="376" y="82">Des &#233;quations, pas des polygones.</text>
+        <text class="dg-ts" x="376" y="98">Vous ma&#238;trisez la conversion.</text>
+        <text class="dg-ts" x="376" y="116">Courbes, escaliers, r&#233;silles, mobilier.</text>
+        <path class="dg-arrow" d="M353 138 L353 158"/>
+
+        <circle class="dg-num" cx="30" cy="196" r="12"/><text class="dg-numt" x="30" y="200">2</text>
+        <text class="dg-tb" x="56" y="180">PR&#201;PARER</text>
+        <text class="dg-ts" x="152" y="180">l&#8217;heure la plus rentable du cours</text>
+        <rect class="dg-band dg-gate" x="56" y="190" width="594" height="76" rx="2"/>
+        <text class="dg-ts" x="70" y="214">normales vers l&#8217;ext&#233;rieur &#183; volumes r&#233;ellement ferm&#233;s &#183; murs et dalles &#233;pais</text>
+        <text class="dg-ts" x="70" y="234">groupes et composants nomm&#233;s &#183; balises pos&#233;es &#183; mod&#232;le purg&#233; &#183; proche de l&#8217;origine</text>
+        <text class="dg-tsb" x="70" y="256">Rien ne franchit cette ligne avant que ce soit vrai.</text>
+        <path class="dg-arrow" d="M353 278 L353 298"/>
+
+        <circle class="dg-num" cx="30" cy="330" r="12"/><text class="dg-numt" x="30" y="334">3</text>
+        <text class="dg-tb" x="56" y="320">EXPORTER</text>
+        <text class="dg-ts" x="152" y="320">Chapitre 4</text>
+        <rect class="dg-band" x="56" y="310" width="288" height="42" rx="2"/>
+        <text class="dg-tm" x="70" y="328">.skp</text>
+        <text class="dg-ts" x="112" y="328">natif &#8212; il n&#8217;y a pas d&#8217;export</text>
+        <text class="dg-ts" x="70" y="344">enregistrez, puis importez</text>
+        <rect class="dg-band" x="362" y="310" width="288" height="42" rx="2"/>
+        <text class="dg-tm" x="376" y="328">.glb</text>
+        <text class="dg-ts" x="418" y="328">binaire &#8212; textures int&#233;gr&#233;es</text>
+        <text class="dg-ts" x="376" y="344">la densit&#233; du maillage se d&#233;cide ici</text>
+        <path class="dg-arrow" d="M353 364 L353 384"/>
+
+        <circle class="dg-num" cx="30" cy="440" r="12"/><text class="dg-numt" x="30" y="444">4</text>
+        <text class="dg-tb dg-warn" x="56" y="406">IMPORTER</text>
+        <text class="dg-ts" x="152" y="406">Chapitre 5 &#183; l&#224; o&#249; la plupart des projets cassent</text>
+        <rect class="dg-band dg-critical" x="56" y="416" width="594" height="76" rx="2"/>
+        <text class="dg-ts" x="70" y="440"><tspan class="dg-tsb">Keep hierarchy</tspan> &#8212; pas Collapse all, sinon Lumen ne construit pas ses cartes</text>
+        <text class="dg-ts" x="70" y="460"><tspan class="dg-tsb">Unit&#233;s explicites</tspan> &#8212; personnage contre porte, jamais de mise &#224; l&#8217;&#233;chelle apr&#232;s</text>
+        <text class="dg-ts" x="70" y="480"><tspan class="dg-tsb">Nanite</tspan> sur la g&#233;om&#233;trie statique lourde &#8212; jamais sur le verre</text>
+        <path class="dg-arrow" d="M353 504 L353 524"/>
+
+        <circle class="dg-num" cx="30" cy="566" r="12"/><text class="dg-numt" x="30" y="570">5</text>
+        <text class="dg-tb" x="56" y="546">HABILLER</text>
+        <text class="dg-ts" x="146" y="546">Chapitre 6</text>
+        <rect class="dg-band" x="56" y="556" width="594" height="44" rx="2"/>
+        <text class="dg-ts" x="70" y="578">mati&#232;res d&#233;crites par la rugosit&#233;, pas par la brillance &#183; m&#233;tallicit&#233; = m&#233;tal brut seul</text>
+        <text class="dg-ts" x="70" y="594">&#233;chelle des textures v&#233;rifi&#233;e contre un personnage &#8212; une brique se lit &#224; 215 mm</text>
+        <path class="dg-arrow" d="M353 612 L353 632"/>
+
+        <circle class="dg-num" cx="30" cy="692" r="12"/><text class="dg-numt" x="30" y="696">6</text>
+        <text class="dg-tb" x="56" y="654">&#201;CLAIRER</text>
+        <text class="dg-ts" x="146" y="654">Chapitres 7 &#183; 8 &#183; 9 &#8212; la lumi&#232;re devient physique</text>
+        <rect class="dg-band" x="56" y="664" width="594" height="76" rx="2"/>
+        <text class="dg-ts" x="70" y="688"><tspan class="dg-tsb">moteur</tspan> &#183; Lumen pour tout ce qui bouge, Path Tracer pour les images ma&#238;tresses</text>
+        <text class="dg-ts" x="70" y="708"><tspan class="dg-tsb">ext&#233;rieur</tspan> &#183; site r&#233;el, nord et heure r&#233;gl&#233;s avant toute cam&#233;ra</text>
+        <text class="dg-ts" x="70" y="728"><tspan class="dg-tsb">int&#233;rieur</tspan> &#183; &#233;quilibrer l&#8217;exposition, diagnostiquer en vue Lumen surface</text>
+        <path class="dg-arrow" d="M353 752 L353 772"/>
+
+        <circle class="dg-num" cx="30" cy="820" r="12"/><text class="dg-numt" x="30" y="824">7</text>
+        <text class="dg-tb" x="56" y="794">PRODUIRE</text>
+        <text class="dg-ts" x="152" y="794">Chapitres 10 &#183; 11 &#183; 12 &#183; 13</text>
+        <text class="dg-ts" x="70" y="820">cadrer : hauteur d&#8217;&#339;il 1,60 m &#183; focale &#183; Parallelism activ&#233;</text>
+        <rect class="dg-band dg-deliver" x="56" y="832" width="188" height="44" rx="2"/>
+        <text class="dg-tbs" x="70" y="852">A &#8212; le mod&#232;le</text>
+        <text class="dg-ts" x="70" y="868">.skp + .3dm, natifs</text>
+        <rect class="dg-band dg-deliver" x="259" y="832" width="188" height="44" rx="2"/>
+        <text class="dg-tbs" x="273" y="852">B &#8212; les images</text>
+        <text class="dg-ts" x="273" y="868">cinq fixes, &#233;talonn&#233;es ensemble</text>
+        <rect class="dg-band dg-deliver" x="462" y="832" width="188" height="44" rx="2"/>
+        <text class="dg-tbs" x="476" y="852">C &#8212; la vid&#233;o</text>
+        <text class="dg-ts" x="476" y="868">60&#8211;90 s, m&#234;me lumi&#232;re</text>
+
+        <path class="dg-return" d="M664 700 C 698 700, 698 230, 670 216"/>
+        <text class="dg-treturn" transform="translate(710,470) rotate(90)" text-anchor="middle">constat&#233; ici &#183; caus&#233; ici</text>
+      </svg>
+      <figcaption><strong>Fig 1.2 — Le pipeline complet.</strong> Le chemin de retour est ce qu&#8217;il faut retenir : un défaut constaté à l&#8217;étape 6 a presque toujours été créé à l&#8217;étape 2 ou 4. Une fuite de lumière est un problème d&#8217;épaisseur ou de mode de fusion. Un modèle à la mauvaise taille est un problème d&#8217;unités. Une surface noire est un problème de normales. Aucun ne se corrige là où on le trouve.</figcaption>
+    </figure>
 
     <div class="callout c-tip">
       <span class="lbl">Là où les projets déraillent</span>
