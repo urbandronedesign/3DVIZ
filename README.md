@@ -45,20 +45,24 @@ The manual runs on **one project**, carried through 13 stages. Students submit t
 
 Because the native model is submitted, the modelling-hygiene chapters are directly assessed rather than being preparation for something else.
 
-## Adding screenshots
+## Figures
 
-The manual ships with 22 labelled image placeholders. To fill one, save a screenshot into `images/` using **exactly** the filename listed in the manual's *Screenshot shot-list* section. The page detects the file and swaps the placeholder for your image automatically — no code editing.
+Eight of the manual's figures are **drawn diagrams** — inline SVG, in both languages, needing nothing from you. They cover the things a screenshot explains badly: why light rounds a zero-thickness wall, what tessellation costs in triangles, what `Collapse all` does to the scene graph, why parallelism matters.
 
-Shots you have not captured yet stay as labelled dashed boxes, so the manual is usable at every stage of completion.
+The remaining **11 are photographs** that cannot be drawn — six interface captures and five comparisons from a real project. The manual's *Screenshot capture guide* gives click-by-click instructions for each.
+
+To fill one, save it into `images/` using **exactly** the filename from the guide. The page detects it and swaps the placeholder automatically — no code editing. Anything not yet captured stays as a labelled dashed box, so the manual is usable at every stage of completion.
 
 ```
 images/
-  05-01-import-dialog.png          ← the single most useful shot
-  09-01-lumen-surface-view.png     ← second most useful
+  05-01-import-dialog.png          ← do this one first
+  09-01-lumen-surface-view.png     ← and this one second
   ...
 ```
 
 Recommended: PNG, 1600 px wide minimum, application window only, interface language matching the edition you are illustrating.
+
+> **Take them yourself.** Screenshots of software you are licensed to run are fine for teaching. Frames pulled from someone else's tutorial video, or images lifted from a blog, are their copyright — and this repo is public.
 
 ## Accuracy
 

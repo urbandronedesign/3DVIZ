@@ -251,9 +251,75 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
   pre{background:#f4f4f4}
   h3,h4{page-break-after:avoid}
 }
+
+/* ===== diagrams ===== */
+.diagram{margin:2.2rem 0}
+.diagram svg{width:100%; height:auto; display:block; overflow:visible}
+.diagram figcaption{margin-top:.9rem}
+.dg-frame{fill:none; stroke:var(--rule); stroke-width:1}
+.dg-fill{fill:var(--wash); stroke:none}
+.dg-solid{fill:var(--wash); stroke:var(--ink-3); stroke-width:1}
+.dg-ink{stroke:var(--ink); fill:none; stroke-width:1.4; stroke-linecap:round}
+.dg-good{stroke:var(--accent); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.dg-bad{stroke:var(--warn); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.dg-dash{stroke:var(--ink-3); fill:none; stroke-width:1; stroke-dasharray:4 3}
+.dg-grid{stroke:var(--rule-2); stroke-width:.8}
+.dg-tick{stroke:var(--ink-3); stroke-width:1}
+.dg-tree{stroke:var(--rule-2); fill:none; stroke-width:1}
+.dg-pt{fill:var(--paper); stroke:var(--ink); stroke-width:1.2}
+.dg-sun{fill:var(--wash); stroke:var(--ink); stroke-width:1.2}
+.dg-ray{stroke:var(--ink-3); fill:none; stroke-width:1; stroke-dasharray:3 3}
+.dg-dome{fill:none; stroke:var(--rule-2); stroke-width:1}
+.dg-arrow{stroke:var(--ink); fill:none; stroke-width:1.3; marker-end:url(#ah)}
+.dg-arrow-good{stroke:var(--accent); fill:none; stroke-width:1.5; marker-end:url(#ahg)}
+.dg-arrow-bad{stroke:var(--warn); fill:none; stroke-width:1.5; marker-end:url(#ahb)}
+.dg-leak{stroke:var(--warn); fill:none; stroke-width:1.6; stroke-dasharray:3 3}
+.dg-glow{fill:var(--warn); opacity:.16}
+.dg-shadow{fill:none; stroke:var(--ink-3); stroke-width:1}
+.dg-shadow-bad{fill:none; stroke:var(--warn); stroke-width:1}
+.dg-hatch{fill:url(#hatch); stroke:var(--ink-3); stroke-width:1}
+.dg-brick{fill:var(--wash)}
+.dg-mortar{stroke:var(--rule-2); stroke-width:.8; fill:none}
+.dg-figure{fill:none; stroke:var(--accent); stroke-width:1.6; stroke-linecap:round}
+.dg-cam{fill:var(--wash); stroke:var(--ink); stroke-width:1.2; stroke-linejoin:round}
+.dg-node{fill:var(--paper); stroke:var(--ink-3); stroke-width:1}
+.dg-node-bad{fill:var(--paper); stroke:var(--warn); stroke-width:1.2}
+.dg-t{font:400 12px -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; fill:var(--ink-2)}
+.dg-tb{font:600 12px -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; fill:var(--ink); letter-spacing:.03em}
+.dg-ts{font:400 10.5px -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; fill:var(--ink-3)}
+.dg-tn{font:500 10.5px ui-monospace,"Cascadia Code",Consolas,monospace; fill:var(--ink-2)}
+.dg-warn{fill:var(--warn)}
+.dg-ok{fill:var(--accent)}
+.dg-x{font:600 15px -apple-system,system-ui,sans-serif; fill:var(--warn)}
+@media print{
+  .diagram svg{max-height:8cm}
+  .dg-glow{opacity:.3}
+}
 </style>
 </head>
 <body class="lang-en">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"/></marker>
+<marker id="ahg" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--accent)"/></marker>
+<marker id="ahb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--warn)"/></marker>
+<pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="var(--rule-2)" stroke-width="1"/></pattern>
+<pattern id="bkL" width="72" height="34" patternUnits="userSpaceOnUse">
+            <rect width="72" height="34" class="dg-brick"/>
+            <path class="dg-mortar" d="M0 34 H72 M0 17 H72 M36 0 V17 M0 17 V34 M72 17 V34"/>
+          </pattern>
+          <pattern id="bkM" width="30" height="14" patternUnits="userSpaceOnUse">
+            <rect width="30" height="14" class="dg-brick"/>
+            <path class="dg-mortar" d="M0 14 H30 M0 7 H30 M15 0 V7 M0 7 V14 M30 7 V14"/>
+          </pattern>
+          <pattern id="bkS" width="13" height="6" patternUnits="userSpaceOnUse">
+            <rect width="13" height="6" class="dg-brick"/>
+            <path class="dg-mortar" d="M0 6 H13 M0 3 H13 M6.5 0 V3 M0 3 V6 M13 3 V6"/>
+          </pattern>
+          <g id="figr">
+            <circle cx="0" cy="-62" r="7"/>
+            <path d="M0 -55 V -26 M0 -48 L -11 -34 M0 -48 L 11 -34 M0 -26 L -9 0 M0 -26 L 9 0"/>
+          </g>
+</defs></svg>
 
 <div class="layout">
 
@@ -296,7 +362,7 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
   <a href="#troubleshoot"><span class="en-only">Symptom → Fix index</span><span class="fr-only">Index Symptôme → Solution</span></a>
   <a href="#faq"><span class="en-only">Student FAQ</span><span class="fr-only">FAQ Étudiants</span></a>
   <a href="#glossary"><span class="en-only">Glossary EN/FR</span><span class="fr-only">Glossaire EN/FR</span></a>
-  <a href="#shotlist"><span class="en-only">Screenshot shot-list</span><span class="fr-only">Liste des captures</span></a>
+  <a href="#shotlist"><span class="en-only">Screenshot capture guide</span><span class="fr-only">Guide de capture</span></a>
 </nav>
 
 <!-- ======================= MAIN ======================= -->
@@ -681,16 +747,58 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
     <p>You will not model once and render once. You will render, notice the balcony is wrong, go back to SketchUp, fix it, and re-import. Twinmotion supports this properly: re-importing an updated file over an existing one keeps your Twinmotion materials, lights and cameras, provided the object names in your source file did not change.</p>
     <p>That last clause is the whole trick, and it is why Chapter 2 spends so long on naming and grouping. <strong>Rename a group in SketchUp and you orphan every material you assigned to it in Twinmotion.</strong></p>
 
-    <figure class="shot" id="fig-1-1">
-      <div class="shot-frame">
-        <img src="images/01-01-pipeline-overview.png" alt="Pipeline overview diagram" onload="this.closest('.shot').classList.add('has-image')">
-        <div class="shot-todo">
-          <span class="id">SHOT 01-01</span>
-          <div class="what">Side-by-side of the same corner of the studio project in SketchUp (monochrome style), Rhino (shaded), and Twinmotion (Lumen). Same camera angle in all three if possible.</div>
-          <span class="file">images/01-01-pipeline-overview.png</span>
-        </div>
-      </div>
-      <figcaption>Fig 1.1 — The same geometry as each program understands it.</figcaption>
+    <figure class="diagram" id="fig-1-1">
+      <svg viewBox="0 0 720 250" role="img" aria-labelledby="t11">
+        <title id="t11">The same wall as SketchUp, Rhino and Twinmotion each understand it</title>
+        <!-- panel 1 : SketchUp -->
+        <text class="dg-tb" x="0" y="14">SketchUp</text>
+        <text class="dg-ts" x="0" y="30">thinks in surfaces</text>
+        <rect class="dg-frame" x="0" y="42" width="220" height="150"/>
+        <rect class="dg-fill" x="96" y="70" width="9" height="95"/>
+        <line class="dg-ink" x1="96" y1="70" x2="96" y2="165"/>
+        <line class="dg-ink" x1="105" y1="70" x2="105" y2="165"/>
+        <path class="dg-arrow" d="M108 118 L146 118"/>
+        <text class="dg-ts" x="150" y="115">front</text>
+        <text class="dg-ts" x="150" y="128">face</text>
+        <text class="dg-ts" x="18" y="121">back</text>
+        <line class="dg-tick" x1="96" y1="180" x2="105" y2="180"/>
+        <text class="dg-ts" x="60" y="196">no thickness of its own</text>
+        <text class="dg-t" x="0" y="222">A face has a front and a back.</text>
+        <text class="dg-t" x="0" y="238">Thickness exists only if you drew it.</text>
+
+        <!-- panel 2 : Rhino -->
+        <g transform="translate(250,0)">
+          <text class="dg-tb" x="0" y="14">Rhino</text>
+          <text class="dg-ts" x="0" y="30">thinks in mathematics</text>
+          <rect class="dg-frame" x="0" y="42" width="220" height="150"/>
+          <path class="dg-ink" d="M30 160 C 70 60, 150 60, 190 160"/>
+          <path class="dg-dash" d="M30 160 L 60 78 L 160 78 L 190 160"/>
+          <circle class="dg-pt" cx="30" cy="160" r="3.5"/>
+          <circle class="dg-pt" cx="60" cy="78" r="3.5"/>
+          <circle class="dg-pt" cx="160" cy="78" r="3.5"/>
+          <circle class="dg-pt" cx="190" cy="160" r="3.5"/>
+          <text class="dg-ts" x="52" y="182">control points, not vertices</text>
+          <text class="dg-t" x="0" y="222">An equation. Smooth at any zoom</text>
+          <text class="dg-t" x="0" y="238">because there is nothing to zoom into.</text>
+        </g>
+
+        <!-- panel 3 : Twinmotion -->
+        <g transform="translate(500,0)">
+          <text class="dg-tb" x="0" y="14">Twinmotion</text>
+          <text class="dg-ts" x="0" y="30">thinks in light</text>
+          <rect class="dg-frame" x="0" y="42" width="220" height="150"/>
+          <rect class="dg-solid" x="150" y="66" width="26" height="100"/>
+          <line class="dg-ink" x1="24" y1="166" x2="176" y2="166"/>
+          <circle class="dg-sun" cx="40" cy="80" r="9"/>
+          <path class="dg-ray" d="M50 88 L 108 152"/>
+          <path class="dg-ray" d="M108 152 L 148 104"/>
+          <path class="dg-ray" d="M148 104 L 96 76"/>
+          <text class="dg-ts" x="60" y="182">every surface returns light</text>
+          <text class="dg-t" x="0" y="222">Triangles, and light that bounces off</text>
+          <text class="dg-t" x="0" y="238">whatever you actually built.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 1.1 — The same wall, as each program understands it. Light does not care what you meant to draw.</figcaption>
     </figure>
 
     <div class="exercise">
@@ -766,6 +874,55 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
     <p>Vous ne modéliserez pas une fois pour rendre une fois. Vous allez rendre, constater que le balcon ne va pas, revenir dans SketchUp, corriger, et réimporter. Twinmotion gère cela correctement : réimporter un fichier mis à jour par-dessus l'existant conserve vos matériaux, lumières et caméras Twinmotion, <em>à condition que les noms d'objets du fichier source n'aient pas changé</em>.</p>
     <p>Cette dernière condition est toute l'astuce, et c'est pourquoi le chapitre 2 insiste tant sur le nommage et le groupement. <strong>Renommez un groupe dans SketchUp et vous orphelinez tous les matériaux que vous lui aviez attribués dans Twinmotion.</strong></p>
 
+    <figure class="diagram" id="fig-1-1-fr">
+      <svg viewBox="0 0 720 250" role="img" aria-labelledby="t11f">
+        <title id="t11f">Le même mur selon SketchUp, Rhino et Twinmotion</title>
+        <text class="dg-tb" x="0" y="14">SketchUp</text>
+        <text class="dg-ts" x="0" y="30">pense en surfaces</text>
+        <rect class="dg-frame" x="0" y="42" width="220" height="150"/>
+        <rect class="dg-fill" x="96" y="70" width="9" height="95"/>
+        <line class="dg-ink" x1="96" y1="70" x2="96" y2="165"/>
+        <line class="dg-ink" x1="105" y1="70" x2="105" y2="165"/>
+        <path class="dg-arrow" d="M108 118 L146 118"/>
+        <text class="dg-ts" x="150" y="115">face</text>
+        <text class="dg-ts" x="150" y="128">avant</text>
+        <text class="dg-ts" x="16" y="121">arrière</text>
+        <line class="dg-tick" x1="96" y1="180" x2="105" y2="180"/>
+        <text class="dg-ts" x="52" y="196">aucune épaisseur propre</text>
+        <text class="dg-t" x="0" y="222">Une face a un endroit et un envers.</text>
+        <text class="dg-t" x="0" y="238">L'épaisseur n'existe que si vous l'avez dessinée.</text>
+        <g transform="translate(250,0)">
+          <text class="dg-tb" x="0" y="14">Rhino</text>
+          <text class="dg-ts" x="0" y="30">pense en mathématiques</text>
+          <rect class="dg-frame" x="0" y="42" width="220" height="150"/>
+          <path class="dg-ink" d="M30 160 C 70 60, 150 60, 190 160"/>
+          <path class="dg-dash" d="M30 160 L 60 78 L 160 78 L 190 160"/>
+          <circle class="dg-pt" cx="30" cy="160" r="3.5"/>
+          <circle class="dg-pt" cx="60" cy="78" r="3.5"/>
+          <circle class="dg-pt" cx="160" cy="78" r="3.5"/>
+          <circle class="dg-pt" cx="190" cy="160" r="3.5"/>
+          <text class="dg-ts" x="34" y="182">points de contrôle, pas des sommets</text>
+          <text class="dg-t" x="0" y="222">Une équation. Lisse à tout niveau de zoom,</text>
+          <text class="dg-t" x="0" y="238">car il n'y a rien à zoomer.</text>
+        </g>
+        <g transform="translate(500,0)">
+          <text class="dg-tb" x="0" y="14">Twinmotion</text>
+          <text class="dg-ts" x="0" y="30">pense en lumière</text>
+          <rect class="dg-frame" x="0" y="42" width="220" height="150"/>
+          <rect class="dg-solid" x="150" y="66" width="26" height="100"/>
+          <line class="dg-ink" x1="24" y1="166" x2="176" y2="166"/>
+          <circle class="dg-sun" cx="40" cy="80" r="9"/>
+          <path class="dg-ray" d="M50 88 L 108 152"/>
+          <path class="dg-ray" d="M108 152 L 148 104"/>
+          <path class="dg-ray" d="M148 104 L 96 76"/>
+          <text class="dg-ts" x="46" y="182">chaque surface renvoie la lumière</text>
+          <text class="dg-t" x="0" y="222">Des triangles, et une lumière qui rebondit</text>
+          <text class="dg-t" x="0" y="238">sur ce que vous avez réellement construit.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 1.1 — Le même mur, tel que chaque logiciel le comprend. La lumière ignore ce que vous vouliez dessiner.</figcaption>
+    </figure>
+
     <div class="exercise">
       <div class="hd">Étape 1 · Répétition à blanc du pipeline</div>
       <h4>Ce que vous faites</h4>
@@ -812,16 +969,41 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
       <p>Extruding a closed shape downwards with Push/Pull produces a solid whose faces are all reversed. Students draw a floor slab, push it <em>down</em> to give it thickness, and generate an entire building of inside-out geometry without noticing — because in Shaded view with textures on, it looks fine. Always push <em>up</em>, or check in Monochrome afterwards.</p>
     </div>
 
-    <figure class="shot" id="fig-2-1">
-      <div class="shot-frame">
-        <img src="images/02-01-monochrome-audit.png" alt="Monochrome face audit" onload="this.closest('.shot').classList.add('has-image')">
-        <div class="shot-todo">
-          <span class="id">SHOT 02-01</span>
-          <div class="what">A student model in Monochrome style showing an obvious patch of blue reversed faces on a wall or roof. Ideally the same view in Shaded next to it, where the problem is invisible.</div>
-          <span class="file">images/02-01-monochrome-audit.png</span>
-        </div>
-      </div>
-      <figcaption>Fig 2.1 — Reversed faces are invisible in Shaded view and obvious in Monochrome.</figcaption>
+    <figure class="diagram" id="fig-2-1">
+      <svg viewBox="0 0 720 210" role="img" aria-labelledby="t21">
+        <title id="t21">Correct and reversed face normals seen from the camera</title>
+        <!-- correct -->
+        <text class="dg-tb" x="0" y="14">Correct</text>
+        <rect class="dg-frame" x="0" y="26" width="330" height="130"/>
+        <path class="dg-cam" d="M34 91 L58 77 L58 105 Z"/>
+        <text class="dg-ts" x="26" y="126">camera</text>
+        <rect class="dg-fill" x="228" y="46" width="8" height="90"/>
+        <line class="dg-ink" x1="228" y1="46" x2="228" y2="136"/>
+        <line class="dg-ink" x1="236" y1="46" x2="236" y2="136"/>
+        <path class="dg-arrow-good" d="M224 91 L 176 91"/>
+        <text class="dg-ts" x="150" y="80">normal</text>
+        <path class="dg-ray" d="M62 91 L 168 91"/>
+        <text class="dg-t" x="0" y="178">Normal points at the camera. White in</text>
+        <text class="dg-t" x="0" y="194">Monochrome. Renders and blocks light.</text>
+
+        <!-- reversed -->
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-warn" x="0" y="14">Reversed</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="130"/>
+          <path class="dg-cam" d="M34 91 L58 77 L58 105 Z"/>
+          <text class="dg-ts" x="26" y="126">camera</text>
+          <rect class="dg-hatch" x="228" y="46" width="8" height="90"/>
+          <line class="dg-bad" x1="228" y1="46" x2="228" y2="136"/>
+          <line class="dg-bad" x1="236" y1="46" x2="236" y2="136"/>
+          <path class="dg-arrow-bad" d="M240 91 L 288 91"/>
+          <text class="dg-ts" x="252" y="80">normal</text>
+          <path class="dg-ray" d="M62 91 L 168 91"/>
+          <text class="dg-x" x="186" y="97">&#215;</text>
+          <text class="dg-t" x="0" y="178">Normal points away. Blue-grey in Monochrome.</text>
+          <text class="dg-t" x="0" y="194">Renders black, vanishes, or leaks light.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 2.1 — In Shaded view with textures on, these two look identical. That is why the Monochrome audit exists.</figcaption>
     </figure>
 
     <h3>2.2 Thickness: why paper walls leak light</h3>
@@ -851,6 +1033,18 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
       <p>v5 stated a hard limit of "below 3 levels deep to prevent hierarchy errors". There is no documented nesting limit and no such error. Shallow nesting is a usability recommendation, not a technical constraint — deep nesting will not break your import, it will just make your scene graph miserable to work in.</p>
     </div>
 
+    <figure class="shot" id="fig-02-03">
+      <div class="shot-frame">
+        <img src="images/02-03-outliner-naming.png" alt="SketchUp Outliner" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Shot 02-03</span>
+          <div class="what">The SketchUp Outliner on a properly organised model, showing a systematic naming scheme.</div>
+          <span class="file">images/02-03-outliner-naming.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 2.2 &#8212; What a model built to be revised looks like from the inside.</figcaption>
+    </figure>
+
     <h3>2.4 Tags (layers) <span class="lv-tag lv-y2">Y2</span></h3>
     <p>SketchUp Tags — called Layers before 2020 — control visibility. They come across into Twinmotion and are the fastest way to isolate parts of the model once you are there.</p>
     <p>A workable tag scheme for a studio project:</p>
@@ -867,6 +1061,18 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
       <span class="lbl">Documented</span>
       <p><span class="path">Window &gt; Model Info &gt; Statistics &gt; Purge Unused</span> (FR: <span class="path">Fenêtre &gt; Infos sur le modèle &gt; Statistiques &gt; Purger les éléments inutilisés</span>). Run it before every export. It is non-destructive to anything actually in use.</p>
     </div>
+
+    <figure class="shot" id="fig-02-02">
+      <div class="shot-frame">
+        <img src="images/02-02-purge-dialog.png" alt="Model Info Statistics panel" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Shot 02-02</span>
+          <div class="what">Model Info &gt; Statistics showing the face count and the Purge Unused button, ideally on a heavy model.</div>
+          <span class="file">images/02-02-purge-dialog.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 2.3 &#8212; Run this before every export. It is non-destructive to anything in use.</figcaption>
+    </figure>
 
     <h3>2.6 Polygon budget and Warehouse furniture <span class="lv-tag lv-y3">Y3</span></h3>
     <p>The 3D Warehouse is full of models made by people who were not thinking about real-time rendering. A single "realistic" armchair can carry 400,000 polygons — more than an entire well-built house.</p>
@@ -963,6 +1169,18 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
       <p>La v5 énonçait une limite stricte de « moins de 3 niveaux d'imbrication pour éviter les erreurs de hiérarchie ». Il n'existe aucune limite documentée ni aucune erreur de ce type. La faible imbrication est une recommandation d'ergonomie, pas une contrainte technique : une imbrication profonde ne cassera pas votre import, elle rendra simplement votre graphe de scène pénible.</p>
     </div>
 
+    <figure class="shot" id="fig-02-03-fr">
+      <div class="shot-frame">
+        <img src="images/02-03-outliner-naming.png" alt="Panneau Structure SketchUp" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 02-03</span>
+          <div class="what">Le panneau Structure sur un mod&#232;le bien organis&#233;, montrant un nommage syst&#233;matique.</div>
+          <span class="file">images/02-03-outliner-naming.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 2.2 &#8212; L&#8217;aspect int&#233;rieur d&#8217;un mod&#232;le con&#231;u pour &#234;tre r&#233;vis&#233;.</figcaption>
+    </figure>
+
     <h3>2.4 Les balises (calques) <span class="lv-tag lv-y2">Y2</span></h3>
     <p>Les balises SketchUp — appelées Calques avant 2020 — contrôlent la visibilité. Elles sont transmises à Twinmotion et constituent le moyen le plus rapide d'y isoler des parties du modèle.</p>
     <p>Un système de balises praticable pour un projet de studio :</p>
@@ -979,6 +1197,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <span class="lbl">Documenté</span>
       <p><span class="path">Fenêtre &gt; Infos sur le modèle &gt; Statistiques &gt; Purger les éléments inutilisés</span>. Lancez-le avant chaque export. C'est non destructif pour tout ce qui est réellement utilisé.</p>
     </div>
+
+    <figure class="shot" id="fig-02-02-fr">
+      <div class="shot-frame">
+        <img src="images/02-02-purge-dialog.png" alt="Panneau Infos sur le mod&#232;le" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 02-02</span>
+          <div class="what">Infos sur le mod&#232;le &gt; Statistiques montrant le nombre de faces et le bouton Purger, id&#233;alement sur un mod&#232;le lourd.</div>
+          <span class="file">images/02-02-purge-dialog.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 2.3 &#8212; &#192; lancer avant chaque export. Non destructif pour tout ce qui sert.</figcaption>
+    </figure>
 
     <h3>2.6 Budget polygonal et mobilier de la Warehouse <span class="lv-tag lv-y3">Y3</span></h3>
     <p>La 3D Warehouse regorge de modèles réalisés par des gens qui ne pensaient pas au rendu temps réel. Un seul fauteuil « réaliste » peut porter 400 000 polygones — plus qu'une maison entière bien construite.</p>
@@ -1006,6 +1236,40 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         </tbody>
       </table>
     </div>
+
+    <figure class="diagram" id="fig-2-1-fr">
+      <svg viewBox="0 0 720 210" role="img" aria-labelledby="t21f">
+        <title id="t21f">Normales correcte et inversée vues depuis la caméra</title>
+        <text class="dg-tb" x="0" y="14">Correcte</text>
+        <rect class="dg-frame" x="0" y="26" width="330" height="130"/>
+        <path class="dg-cam" d="M34 91 L58 77 L58 105 Z"/>
+        <text class="dg-ts" x="24" y="126">caméra</text>
+        <rect class="dg-fill" x="228" y="46" width="8" height="90"/>
+        <line class="dg-ink" x1="228" y1="46" x2="228" y2="136"/>
+        <line class="dg-ink" x1="236" y1="46" x2="236" y2="136"/>
+        <path class="dg-arrow-good" d="M224 91 L 176 91"/>
+        <text class="dg-ts" x="146" y="80">normale</text>
+        <path class="dg-ray" d="M62 91 L 168 91"/>
+        <text class="dg-t" x="0" y="178">La normale vise la caméra. Blanche en</text>
+        <text class="dg-t" x="0" y="194">Monochrome. S'affiche et bloque la lumière.</text>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-warn" x="0" y="14">Inversée</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="130"/>
+          <path class="dg-cam" d="M34 91 L58 77 L58 105 Z"/>
+          <text class="dg-ts" x="24" y="126">caméra</text>
+          <rect class="dg-hatch" x="228" y="46" width="8" height="90"/>
+          <line class="dg-bad" x1="228" y1="46" x2="228" y2="136"/>
+          <line class="dg-bad" x1="236" y1="46" x2="236" y2="136"/>
+          <path class="dg-arrow-bad" d="M240 91 L 288 91"/>
+          <text class="dg-ts" x="248" y="80">normale</text>
+          <path class="dg-ray" d="M62 91 L 168 91"/>
+          <text class="dg-x" x="186" y="97">&#215;</text>
+          <text class="dg-t" x="0" y="178">La normale fuit. Bleu-gris en Monochrome.</text>
+          <text class="dg-t" x="0" y="194">Rend noir, disparaît, ou laisse fuir la lumière.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 2.1 — En vue Ombrée avec les textures, ces deux cas sont identiques. C'est la raison d'être de l'audit en Monochrome.</figcaption>
+    </figure>
 
     <div class="exercise">
       <div class="hd">Étape 2 · Hygiène du modèle SketchUp <span class="lv-tag">Livrable A</span></div>
@@ -1139,16 +1403,37 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       </table>
     </div>
 
-    <figure class="shot" id="fig-3-1">
-      <div class="shot-frame">
-        <img src="images/03-01-mesh-density-comparison.png" alt="Mesh density comparison" onload="this.closest('.shot').classList.add('has-image')">
-        <div class="shot-todo">
-          <span class="id">Shot 03-01</span>
-          <div class="what">The same curved element exported at three maximum-angle settings (e.g. 30° / 15° / 5°), shown in wireframe with the polygon count labelled under each.</div>
-          <span class="file">images/03-01-mesh-density-comparison.png</span>
-        </div>
-      </div>
-      <figcaption>Fig 3.1 — Smoothness is bought with triangles. Know the exchange rate.</figcaption>
+    <figure class="diagram" id="fig-3-1">
+      <svg viewBox="0 0 720 210" role="img" aria-labelledby="t31">
+        <title id="t31">One curve tessellated at three maximum-angle settings</title>
+        <g>
+          <text class="dg-tb" x="0" y="14">Maximum angle 30&#176;</text>
+          <rect class="dg-frame" x="0" y="26" width="210" height="120"/>
+          <path class="dg-dash" d="M24 128 A 90 90 0 0 1 186 128"/>
+          <path class="dg-bad" d="M24 128 L 40 74 L 105 48 L 170 74 L 186 128"/>
+          <text class="dg-ts" x="42" y="166">4 segments &#183; visibly faceted</text>
+          <text class="dg-ts" x="66" y="182">cheapest</text>
+        </g>
+        <g transform="translate(255,0)">
+          <text class="dg-tb" x="0" y="14">Maximum angle 15&#176;</text>
+          <rect class="dg-frame" x="0" y="26" width="210" height="120"/>
+          <path class="dg-dash" d="M24 128 A 90 90 0 0 1 186 128"/>
+          <path class="dg-good" d="M24 128 L 31 96 L 50 68 L 76 51 L 105 46 L 134 51 L 160 68 L 179 96 L 186 128"/>
+          <text class="dg-ts" x="30" y="166">8 segments &#183; smooth at building scale</text>
+          <text class="dg-ts" x="42" y="182">the architectural default</text>
+        </g>
+        <g transform="translate(510,0)">
+          <text class="dg-tb" x="0" y="14">Maximum angle 5&#176;</text>
+          <rect class="dg-frame" x="0" y="26" width="210" height="120"/>
+          <path class="dg-dash" d="M24 128 A 90 90 0 0 1 186 128"/>
+          <path class="dg-ink" d="M24 128 A 90 90 0 0 1 186 128"/>
+          <text class="dg-ts" x="36" y="166">24 segments &#183; smooth up close</text>
+          <text class="dg-ts" x="30" y="182">three times the triangle count</text>
+        </g>
+        <line class="dg-tick" x1="0" y1="200" x2="720" y2="200"/>
+        <text class="dg-ts" x="0" y="196">dashed line = the true NURBS surface</text>
+      </svg>
+      <figcaption>Fig 3.1 — Smoothness is bought with triangles. The right setting depends on how close the camera gets, not on how it looks at full zoom.</figcaption>
     </figure>
 
     <div class="exercise">
@@ -1275,6 +1560,39 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       </table>
     </div>
 
+    <figure class="diagram" id="fig-3-1-fr">
+      <svg viewBox="0 0 720 210" role="img" aria-labelledby="t31f">
+        <title id="t31f">Une courbe tessellée à trois réglages d'angle maximum</title>
+        <g>
+          <text class="dg-tb" x="0" y="14">Angle maximum 30&#176;</text>
+          <rect class="dg-frame" x="0" y="26" width="210" height="120"/>
+          <path class="dg-dash" d="M24 128 A 90 90 0 0 1 186 128"/>
+          <path class="dg-bad" d="M24 128 L 40 74 L 105 48 L 170 74 L 186 128"/>
+          <text class="dg-ts" x="40" y="166">4 segments &#183; nettement facetté</text>
+          <text class="dg-ts" x="62" y="182">le moins cher</text>
+        </g>
+        <g transform="translate(255,0)">
+          <text class="dg-tb" x="0" y="14">Angle maximum 15&#176;</text>
+          <rect class="dg-frame" x="0" y="26" width="210" height="120"/>
+          <path class="dg-dash" d="M24 128 A 90 90 0 0 1 186 128"/>
+          <path class="dg-good" d="M24 128 L 31 96 L 50 68 L 76 51 L 105 46 L 134 51 L 160 68 L 179 96 L 186 128"/>
+          <text class="dg-ts" x="20" y="166">8 segments &#183; lisse à l'échelle du bâtiment</text>
+          <text class="dg-ts" x="38" y="182">le réglage architectural</text>
+        </g>
+        <g transform="translate(510,0)">
+          <text class="dg-tb" x="0" y="14">Angle maximum 5&#176;</text>
+          <rect class="dg-frame" x="0" y="26" width="210" height="120"/>
+          <path class="dg-dash" d="M24 128 A 90 90 0 0 1 186 128"/>
+          <path class="dg-ink" d="M24 128 A 90 90 0 0 1 186 128"/>
+          <text class="dg-ts" x="34" y="166">24 segments &#183; lisse de très près</text>
+          <text class="dg-ts" x="28" y="182">trois fois plus de triangles</text>
+        </g>
+        <line class="dg-tick" x1="0" y1="200" x2="720" y2="200"/>
+        <text class="dg-ts" x="0" y="196">ligne pointillée = la vraie surface NURBS</text>
+      </svg>
+      <figcaption>Fig 3.1 — Le lissage s'achète en triangles. Le bon réglage dépend de la distance d'observation, pas de l'aspect en plein zoom.</figcaption>
+    </figure>
+
     <div class="exercise">
       <div class="hd">Étape 3 · Les éléments Rhino <span class="lv-tag">Livrable A</span></div>
       <h4>Ce que vous faites</h4>
@@ -1352,6 +1670,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <span class="lbl">Why this section names intentions, not checkboxes</span>
       <p>The v5 sheet listed a five-line export "configuration" as though it were a fixed dialog. It is not — McNeel has changed these options across Rhino versions, and a student following a stale label list concludes the manual is wrong. Match the intentions above to whatever your dialog actually offers, and consult McNeel's glTF page for your version if something is ambiguous.</p>
     </div>
+
+    <figure class="shot" id="fig-04-01">
+      <div class="shot-frame">
+        <img src="images/04-01-rhino-glb-export.png" alt="Rhino glTF export options" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Shot 04-01</span>
+          <div class="what">The Rhino glTF/GLB export options dialog, fully expanded. Capture the Rhino version your students actually use.</div>
+          <span class="file">images/04-01-rhino-glb-export.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 4.1 &#8212; Match the intentions in 4.3 to whatever your dialog offers; the labels move between versions.</figcaption>
+    </figure>
 
     <h3>4.4 Units, settled once</h3>
     <p>Most import disasters are unit disasters. The rule is simple:</p>
@@ -1451,6 +1781,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <span class="lbl">Pourquoi cette section nomme des intentions et non des cases</span>
       <p>La fiche v5 listait une « configuration » d'export en cinq lignes comme s'il s'agissait d'une boîte de dialogue figée. Ce n'est pas le cas — McNeel a fait évoluer ces options selon les versions, et un étudiant suivant une liste de libellés périmés en conclut que le manuel a tort. Faites correspondre les intentions ci-dessus à ce que propose réellement votre boîte de dialogue, et consultez la page glTF de McNeel en cas de doute.</p>
     </div>
+
+    <figure class="shot" id="fig-04-01-fr">
+      <div class="shot-frame">
+        <img src="images/04-01-rhino-glb-export.png" alt="Options d&#8217;export glTF de Rhino" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 04-01</span>
+          <div class="what">La bo&#238;te d&#8217;options d&#8217;export glTF/GLB de Rhino, enti&#232;rement d&#233;pli&#233;e. Capturez la version r&#233;ellement utilis&#233;e.</div>
+          <span class="file">images/04-01-rhino-glb-export.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 4.1 &#8212; Faites correspondre les intentions du 4.3 &#224; votre bo&#238;te de dialogue ; les libell&#233;s changent selon les versions.</figcaption>
+    </figure>
 
     <h3>4.4 Les unités, réglées une fois pour toutes</h3>
     <p>La plupart des désastres d'import sont des désastres d'unités. La règle est simple :</p>
@@ -1646,16 +1988,37 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <p><strong>When it is not:</strong> when you need a submittable, markable file; when your plugin version does not match your SketchUp version; when you are working across lab and home machines.</p>
     <p>The import options above still apply — Direct Link presents the same collapse and Nanite choices. Everything you have learned in this chapter carries over.</p>
 
-    <figure class="shot" id="fig-5-2">
-      <div class="shot-frame">
-        <img src="images/05-02-collapse-comparison.png" alt="Scene graph comparison" onload="this.closest('.shot').classList.add('has-image')">
-        <div class="shot-todo">
-          <span class="id">Shot 05-02</span>
-          <div class="what">The Twinmotion scene graph after importing the same model twice — once with Keep hierarchy, once with Collapse all — shown side by side so the loss of structure is obvious.</div>
-          <span class="file">images/05-02-collapse-comparison.png</span>
-        </div>
-      </div>
-      <figcaption>Fig 5.2 — What Collapse all actually costs you.</figcaption>
+    <figure class="diagram" id="fig-5-2">
+      <svg viewBox="0 0 720 240" role="img" aria-labelledby="t52">
+        <title id="t52">Scene graph after Keep hierarchy compared with Collapse all</title>
+        <g>
+          <text class="dg-tb" x="0" y="14">Keep hierarchy</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="150"/>
+          <rect class="dg-node" x="20" y="42" width="150" height="22" rx="2"/>
+          <text class="dg-tn" x="30" y="57">maison_v03</text>
+          <path class="dg-tree" d="M32 64 V 82 H 48"/>
+          <path class="dg-tree" d="M32 64 V 110 H 48"/>
+          <path class="dg-tree" d="M32 64 V 138 H 48"/>
+          <rect class="dg-node" x="48" y="72" width="160" height="20" rx="2"/>
+          <text class="dg-tn" x="58" y="86">EXT-MUR-BRIQUE</text>
+          <rect class="dg-node" x="48" y="100" width="160" height="20" rx="2"/>
+          <text class="dg-tn" x="58" y="114">EXT-VITRAGE</text>
+          <rect class="dg-node" x="48" y="128" width="160" height="20" rx="2"/>
+          <text class="dg-tn" x="58" y="142">INT-SOL-BOIS</text>
+          <text class="dg-t dg-ok" x="0" y="198">Selectable, re-materialled, updated by name.</text>
+          <text class="dg-t" x="0" y="214">Nanite available. Lumen builds good cards.</text>
+        </g>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-warn" x="0" y="14">Collapse all</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="150"/>
+          <rect class="dg-node-bad" x="20" y="86" width="188" height="24" rx="2"/>
+          <text class="dg-tn" x="30" y="102">maison_v03</text>
+          <text class="dg-ts" x="222" y="102">one mesh, one pivot</text>
+          <text class="dg-t dg-warn" x="0" y="198">Nothing selectable. Nanite unavailable.</text>
+          <text class="dg-t" x="0" y="214">Coarse Surface Cache &#8594; light bleeding.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 5.2 — What <em>Collapse all</em> actually costs you. Epic's Lumen documentation asks for Keep hierarchy for exactly this reason.</figcaption>
     </figure>
 
     <div class="exercise">
@@ -1802,6 +2165,51 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <p><strong>Quand ça ne l'est pas :</strong> quand il faut un fichier remettable et corrigeable ; quand la version du plugin ne correspond pas à votre version de SketchUp ; quand vous travaillez alternativement à l'atelier et chez vous.</p>
     <p>Les options d'import ci-dessus s'appliquent toujours — le Direct Link présente les mêmes choix de fusion et de Nanite. Tout ce que vous avez appris dans ce chapitre reste valable.</p>
 
+    <figure class="diagram" id="fig-5-2-fr">
+      <svg viewBox="0 0 720 240" role="img" aria-labelledby="t52f">
+        <title id="t52f">Graphe de scène après Keep hierarchy et après Collapse all</title>
+        <g>
+          <text class="dg-tb" x="0" y="14">Keep hierarchy</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="150"/>
+          <rect class="dg-node" x="20" y="42" width="150" height="22" rx="2"/>
+          <text class="dg-tn" x="30" y="57">maison_v03</text>
+          <path class="dg-tree" d="M32 64 V 82 H 48"/>
+          <path class="dg-tree" d="M32 64 V 110 H 48"/>
+          <path class="dg-tree" d="M32 64 V 138 H 48"/>
+          <rect class="dg-node" x="48" y="72" width="160" height="20" rx="2"/>
+          <text class="dg-tn" x="58" y="86">EXT-MUR-BRIQUE</text>
+          <rect class="dg-node" x="48" y="100" width="160" height="20" rx="2"/>
+          <text class="dg-tn" x="58" y="114">EXT-VITRAGE</text>
+          <rect class="dg-node" x="48" y="128" width="160" height="20" rx="2"/>
+          <text class="dg-tn" x="58" y="142">INT-SOL-BOIS</text>
+          <text class="dg-t dg-ok" x="0" y="198">Sélectionnable, retexturable, mis à jour par nom.</text>
+          <text class="dg-t" x="0" y="214">Nanite possible. Lumen génère de bonnes cartes.</text>
+        </g>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-warn" x="0" y="14">Collapse all</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="150"/>
+          <rect class="dg-node-bad" x="20" y="86" width="188" height="24" rx="2"/>
+          <text class="dg-tn" x="30" y="102">maison_v03</text>
+          <text class="dg-ts" x="216" y="102">un maillage, un pivot</text>
+          <text class="dg-t dg-warn" x="0" y="198">Rien de sélectionnable. Nanite indisponible.</text>
+          <text class="dg-t" x="0" y="214">Surface Cache grossier &#8594; fuites de lumière.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 5.2 — Ce que coûte réellement <em>Collapse all</em>. La documentation Lumen d'Epic demande Keep hierarchy précisément pour cette raison.</figcaption>
+    </figure>
+
+    <figure class="shot" id="fig-5-1-fr">
+      <div class="shot-frame">
+        <img src="images/05-01-import-dialog.png" alt="Fenêtre d'import Twinmotion" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 05-01</span>
+          <div class="what">La fenêtre d'import Twinmotion complète, toutes options dépliées et visibles. La capture la plus importante du livre.</div>
+          <span class="file">images/05-01-import-dialog.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 5.1 — La fenêtre d'import. Tous les réglages ci-dessous s'y trouvent.</figcaption>
+    </figure>
+
     <div class="exercise">
       <div class="hd">Étape 5 · La scène de travail</div>
       <h4>Ce que vous faites</h4>
@@ -1893,16 +2301,37 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li>Is the tiling visible? Any repeating texture on a large surface will show a pattern. Break it up with variation, dirt, or a larger-scale texture.</li>
     </ul>
 
-    <figure class="shot" id="fig-6-1">
-      <div class="shot-frame">
-        <img src="images/06-01-texture-scale.png" alt="Texture scale comparison" onload="this.closest('.shot').classList.add('has-image')">
-        <div class="shot-todo">
-          <span class="id">Shot 06-01</span>
-          <div class="what">The same brick wall at three texture scales — one obviously too large, one correct with a person for reference, one too small. This single image teaches scale better than a paragraph.</div>
-          <span class="file">images/06-01-texture-scale.png</span>
-        </div>
-      </div>
-      <figcaption>Fig 6.1 — Texture scale is a scale drawing decision, not a decoration decision.</figcaption>
+    <figure class="diagram" id="fig-6-1">
+      <svg viewBox="0 0 720 230" role="img" aria-labelledby="t61">
+        <title id="t61">The same brick wall at three texture scales, with a figure for reference</title>
+        
+        <g>
+          <text class="dg-tb dg-warn" x="0" y="14">Too large</text>
+          <rect x="0" y="26" width="210" height="130" fill="url(#bkL)"/>
+          <rect class="dg-frame" x="0" y="26" width="210" height="130"/>
+          <g class="dg-figure" transform="translate(172,156) scale(0.72)"><use href="#figr"/></g>
+          <text class="dg-ts" x="0" y="176">brick reads at ~430 mm</text>
+          <text class="dg-ts" x="0" y="192">the building looks half its size</text>
+        </g>
+        <g transform="translate(255,0)">
+          <text class="dg-tb dg-ok" x="0" y="14">Correct</text>
+          <rect x="0" y="26" width="210" height="130" fill="url(#bkM)"/>
+          <rect class="dg-frame" x="0" y="26" width="210" height="130"/>
+          <g class="dg-figure" transform="translate(172,156) scale(0.72)"><use href="#figr"/></g>
+          <text class="dg-ts" x="0" y="176">brick reads at 215 mm</text>
+          <text class="dg-ts" x="0" y="192">eight courses to a metre</text>
+        </g>
+        <g transform="translate(510,0)">
+          <text class="dg-tb dg-warn" x="0" y="14">Too small</text>
+          <rect x="0" y="26" width="210" height="130" fill="url(#bkS)"/>
+          <rect class="dg-frame" x="0" y="26" width="210" height="130"/>
+          <g class="dg-figure" transform="translate(172,156) scale(0.72)"><use href="#figr"/></g>
+          <text class="dg-ts" x="0" y="176">brick reads at ~95 mm</text>
+          <text class="dg-ts" x="0" y="192">the building looks twice its size</text>
+        </g>
+        <text class="dg-ts" x="0" y="220">Figure shown at 1.75 m. Check every texture against a person before you commit to it.</text>
+      </svg>
+      <figcaption>Fig 6.1 — Texture scale is a scale-drawing decision, not a decoration decision. Only the middle wall tells the truth about the building.</figcaption>
     </figure>
 
     <h3>6.6 Working efficiently <span class="lv-tag lv-y3">Y3</span></h3>
@@ -2005,6 +2434,38 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li><strong>Utilisez le <code>.csv</code> de substitution</strong> du chapitre 5 une fois vos noms de matériaux stabilisés. Sur un projet réimporté sans cesse, cela transforme vingt minutes de retexturation en zéro.</li>
     </ul>
 
+    <figure class="diagram" id="fig-6-1-fr">
+      <svg viewBox="0 0 720 230" role="img" aria-labelledby="t61f">
+        <title id="t61f">Le même mur de brique à trois échelles de texture</title>
+        <g>
+          <text class="dg-tb dg-warn" x="0" y="14">Trop grande</text>
+          <rect x="0" y="26" width="210" height="130" fill="url(#bkL)"/>
+          <rect class="dg-frame" x="0" y="26" width="210" height="130"/>
+          <g class="dg-figure" transform="translate(172,156) scale(0.72)"><use href="#figr"/></g>
+          <text class="dg-ts" x="0" y="176">la brique se lit à ~430 mm</text>
+          <text class="dg-ts" x="0" y="192">le bâtiment paraît deux fois plus petit</text>
+        </g>
+        <g transform="translate(255,0)">
+          <text class="dg-tb dg-ok" x="0" y="14">Correcte</text>
+          <rect x="0" y="26" width="210" height="130" fill="url(#bkM)"/>
+          <rect class="dg-frame" x="0" y="26" width="210" height="130"/>
+          <g class="dg-figure" transform="translate(172,156) scale(0.72)"><use href="#figr"/></g>
+          <text class="dg-ts" x="0" y="176">la brique se lit à 215 mm</text>
+          <text class="dg-ts" x="0" y="192">huit assises au mètre</text>
+        </g>
+        <g transform="translate(510,0)">
+          <text class="dg-tb dg-warn" x="0" y="14">Trop petite</text>
+          <rect x="0" y="26" width="210" height="130" fill="url(#bkS)"/>
+          <rect class="dg-frame" x="0" y="26" width="210" height="130"/>
+          <g class="dg-figure" transform="translate(172,156) scale(0.72)"><use href="#figr"/></g>
+          <text class="dg-ts" x="0" y="176">la brique se lit à ~95 mm</text>
+          <text class="dg-ts" x="0" y="192">le bâtiment paraît deux fois plus grand</text>
+        </g>
+        <text class="dg-ts" x="0" y="220">Personnage à 1,75 m. Vérifiez chaque texture contre une figure humaine avant de la valider.</text>
+      </svg>
+      <figcaption>Fig 6.1 — L'échelle des textures est une décision de dessin, pas de décoration. Seul le mur du milieu dit la vérité sur le bâtiment.</figcaption>
+    </figure>
+
     <div class="exercise">
       <div class="hd">Étape 6 · La palette de matériaux</div>
       <h4>Ce que vous faites</h4>
@@ -2047,6 +2508,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         </tbody>
       </table>
     </div>
+
+    <figure class="shot" id="fig-07-01">
+      <div class="shot-frame">
+        <img src="images/07-01-engine-comparison.png" alt="Standard, Lumen and Path Tracer compared" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Shot 07-01</span>
+          <div class="what">The identical view rendered in Standard, Lumen and Path Tracer, camera and lights untouched, render time under each.</div>
+          <span class="file">images/07-01-engine-comparison.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 7.1 &#8212; Same scene, same light, three engines. Note the times as well as the images.</figcaption>
+    </figure>
 
     <h3>7.2 Turning Lumen on — three steps, in order</h3>
     <p>Lumen will not appear if the prerequisites are not met, which is why students conclude it is missing.</p>
@@ -2148,6 +2621,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         </tbody>
       </table>
     </div>
+
+    <figure class="shot" id="fig-07-01-fr">
+      <div class="shot-frame">
+        <img src="images/07-01-engine-comparison.png" alt="Standard, Lumen et Path Tracer compar&#233;s" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 07-01</span>
+          <div class="what">La vue identique rendue en Standard, Lumen et Path Tracer, cam&#233;ra et lumi&#232;res inchang&#233;es, dur&#233;e sous chacune.</div>
+          <span class="file">images/07-01-engine-comparison.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 7.1 &#8212; M&#234;me sc&#232;ne, m&#234;me lumi&#232;re, trois moteurs. Notez les dur&#233;es autant que les images.</figcaption>
+    </figure>
 
     <h3>7.2 Activer Lumen — trois étapes, dans l'ordre</h3>
     <p>Lumen n'apparaît pas si les prérequis ne sont pas remplis, d'où la conclusion des étudiants qu'il est absent.</p>
@@ -2268,6 +2753,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>Set <strong>North offset</strong> and <strong>Map</strong> in the first five minutes of the project, before you place a single camera. If you fix north later, every view you composed is invalidated because every shadow moves.</p>
     </div>
 
+    <figure class="shot" id="fig-08-02">
+      <div class="shot-frame">
+        <img src="images/08-02-four-hours.png" alt="One facade at four times of day" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Shot 08-02</span>
+          <div class="what">One facade at four moments across two seasons with the correct north offset, so the low winter sun models the depth midsummer flattens.</div>
+          <span class="file">images/08-02-four-hours.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 8.2 &#8212; The same building, four hours. Only one of them is an argument about the project.</figcaption>
+    </figure>
+
     <h3>8.2 Sky, clouds, weather</h3>
     <p>The <strong>Dynamic sky &gt; Clouds</strong> section is far deeper than most students use: cloud presets, <em>Height</em> (250–4000 m), <em>Density</em>, <em>Puffiness</em>, <em>Cirrus clouds</em>, <em>Random seed</em> for variants, and <em>Affected by wind</em>.</p>
     <p>Two things worth knowing:</p>
@@ -2302,16 +2799,40 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <p>The remaining <strong>Directional light</strong> controls mirror the sun: <em>Intensity</em> (0–10), <em>Color</em>, <em>Temperature</em>, <em>Size</em> for shadow softness, and <em>Reflection</em> for specular strength.</p>
 
-    <figure class="shot" id="fig-8-1">
-      <div class="shot-frame">
-        <img src="images/08-01-hdri-sun-match.png" alt="HDRI sun matching" onload="this.closest('.shot').classList.add('has-image')">
-        <div class="shot-todo">
-          <span class="id">Shot 08-01</span>
-          <div class="what">Same exterior view twice: once with the directional light misaligned to the HDRI sun (contradictory shadows), once matched. Crop to include both the sky and the ground shadow so the disagreement is visible.</div>
-          <span class="file">images/08-01-hdri-sun-match.png</span>
-        </div>
-      </div>
-      <figcaption>Fig 8.1 — When the shadows disagree with the sky, the image reads as fake before anyone works out why.</figcaption>
+    <figure class="diagram" id="fig-8-1">
+      <svg viewBox="0 0 720 230" role="img" aria-labelledby="t81">
+        <title id="t81">Directional light aligned and misaligned with the HDRI sun</title>
+        <g>
+          <text class="dg-tb dg-warn" x="0" y="14">Misaligned</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="150"/>
+          <path class="dg-dome" d="M28 152 A 137 137 0 0 1 302 152"/>
+          <circle class="dg-sun" cx="78" cy="76" r="10"/>
+          <text class="dg-ts" x="96" y="72">sun in the HDRI</text>
+          <line class="dg-ink" x1="28" y1="152" x2="302" y2="152"/>
+          <rect class="dg-solid" x="150" y="100" width="42" height="52"/>
+          <path class="dg-shadow-bad" d="M150 152 L 96 152 L 118 152 Z"/>
+          <path class="dg-arrow-bad" d="M148 144 L 100 144"/>
+          <text class="dg-ts dg-warn" x="66" y="170">shadow falls the same way</text>
+          <text class="dg-t" x="0" y="198">The sky says the sun is on the left, and so</text>
+          <text class="dg-t" x="0" y="214">does the shadow. Physically impossible.</text>
+        </g>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-ok" x="0" y="14">Match HDRI</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="150"/>
+          <path class="dg-dome" d="M28 152 A 137 137 0 0 1 302 152"/>
+          <circle class="dg-sun" cx="78" cy="76" r="10"/>
+          <text class="dg-ts" x="96" y="72">sun in the HDRI</text>
+          <line class="dg-ink" x1="28" y1="152" x2="302" y2="152"/>
+          <path class="dg-ray" d="M88 84 L 150 128"/>
+          <rect class="dg-solid" x="150" y="100" width="42" height="52"/>
+          <path class="dg-shadow" d="M192 152 L 262 152 L 234 152 Z"/>
+          <path class="dg-arrow-good" d="M194 144 L 250 144"/>
+          <text class="dg-ts" x="196" y="170">shadow falls away</text>
+          <text class="dg-t" x="0" y="198">Sun and shadow agree. The eye stops</text>
+          <text class="dg-t" x="0" y="214">objecting before it works out why.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 8.1 — Use <strong>Match HDRI</strong> under Directional light to align them automatically, rather than eyeing the sun disc by hand.</figcaption>
     </figure>
 
     <h3>8.5 Putting a building into a real photograph <span class="lv-tag lv-y3">Y3</span></h3>
@@ -2376,6 +2897,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>Réglez <strong>North offset</strong> et <strong>Map</strong> dans les cinq premières minutes du projet, avant de poser la moindre caméra. Corriger le nord plus tard invalide toutes les vues composées, puisque toutes les ombres bougent.</p>
     </div>
 
+    <figure class="shot" id="fig-08-02-fr">
+      <div class="shot-frame">
+        <img src="images/08-02-four-hours.png" alt="Une fa&#231;ade &#224; quatre heures" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 08-02</span>
+          <div class="what">Une fa&#231;ade &#224; quatre moments sur deux saisons, orientation du nord correcte, o&#249; le soleil bas d&#8217;hiver mod&#232;le ce que l&#8217;&#233;t&#233; aplatit.</div>
+          <span class="file">images/08-02-four-hours.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 8.2 &#8212; Le m&#234;me b&#226;timent, quatre heures. Une seule est un argument sur le projet.</figcaption>
+    </figure>
+
     <h3>8.2 Ciel, nuages, météo</h3>
     <p>La section <strong>Dynamic sky &gt; Clouds</strong> est bien plus riche que ce qu'en font la plupart des étudiants : préréglages de nuages, <em>Height</em> (250–4000 m), <em>Density</em>, <em>Puffiness</em>, <em>Cirrus clouds</em>, <em>Random seed</em> pour générer des variantes, et <em>Affected by wind</em>.</p>
     <p>Deux choses à savoir :</p>
@@ -2427,6 +2960,40 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li><strong>Le bâti de contexte peut être sommaire.</strong> Des boîtes à face unique avec un matériau neutre suffisent à distance et ne coûtent rien. Dépensez vos polygones là où se trouve la caméra.</li>
       <li><strong>Horizon et Ocean</strong> sous Env fournissent un arrière-plan économique — préréglages <em>Picture</em> City, Town, Countryside, Mountains — quand vous n'avez pas de maquette de contexte réelle.</li>
     </ul>
+
+    <figure class="diagram" id="fig-8-1-fr">
+      <svg viewBox="0 0 720 230" role="img" aria-labelledby="t81f">
+        <title id="t81f">Lumière directionnelle alignée et désalignée du soleil HDRI</title>
+        <g>
+          <text class="dg-tb dg-warn" x="0" y="14">Désalignés</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="150"/>
+          <path class="dg-dome" d="M28 152 A 137 137 0 0 1 302 152"/>
+          <circle class="dg-sun" cx="78" cy="76" r="10"/>
+          <text class="dg-ts" x="96" y="72">soleil du HDRI</text>
+          <line class="dg-ink" x1="28" y1="152" x2="302" y2="152"/>
+          <rect class="dg-solid" x="150" y="100" width="42" height="52"/>
+          <path class="dg-arrow-bad" d="M148 144 L 100 144"/>
+          <text class="dg-ts dg-warn" x="52" y="170">l'ombre part du même côté</text>
+          <text class="dg-t" x="0" y="198">Le ciel place le soleil à gauche, et l'ombre</text>
+          <text class="dg-t" x="0" y="214">aussi. Physiquement impossible.</text>
+        </g>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-ok" x="0" y="14">Match HDRI</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="150"/>
+          <path class="dg-dome" d="M28 152 A 137 137 0 0 1 302 152"/>
+          <circle class="dg-sun" cx="78" cy="76" r="10"/>
+          <text class="dg-ts" x="96" y="72">soleil du HDRI</text>
+          <line class="dg-ink" x1="28" y1="152" x2="302" y2="152"/>
+          <path class="dg-ray" d="M88 84 L 150 128"/>
+          <rect class="dg-solid" x="150" y="100" width="42" height="52"/>
+          <path class="dg-arrow-good" d="M194 144 L 250 144"/>
+          <text class="dg-ts" x="196" y="170">l'ombre s'éloigne</text>
+          <text class="dg-t" x="0" y="198">Soleil et ombre concordent. L'œil cesse</text>
+          <text class="dg-t" x="0" y="214">de protester avant d'avoir compris pourquoi.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 8.1 — Utilisez <strong>Match HDRI</strong> sous Directional light pour les aligner automatiquement, plutôt que de viser le disque solaire à l'œil.</figcaption>
+    </figure>
 
     <div class="exercise">
       <div class="hd">Étape 8 · Le choix de l'heure <span class="lv-tag">Livrables B &amp; C</span></div>
@@ -2505,6 +3072,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>Not one of them is fixed in the lighting panel. Every cause of light leaking is a <em>modelling</em> or <em>import</em> problem. If you are trying to solve a leak by adjusting light intensity, you are treating a symptom — and you will spend hours doing it.</p>
     </div>
 
+    <figure class="shot" id="fig-09-03">
+      <div class="shot-frame">
+        <img src="images/09-03-light-leak-real.png" alt="Interior light leak before and after" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Shot 09-03</span>
+          <div class="what">A real interior with a visible floor-wall glow, and the identical camera after re-importing with Keep hierarchy and adding wall thickness.</div>
+          <span class="file">images/09-03-light-leak-real.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 9.3 &#8212; The diagram opposite explains the mechanism; this is it happening in a real project.</figcaption>
+    </figure>
+
     <h3>9.4 Daylight interiors: the exposure problem</h3>
     <p>An interior lit through windows has an enormous brightness range — the sky outside can be a hundred times brighter than the wall opposite. A camera cannot hold both. Neither can Twinmotion, unless you help it.</p>
     <ul>
@@ -2544,16 +3123,46 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li>Add interior lights last, and less than you think. In a dusk shot, one or two visible sources read as far more atmospheric than an evenly-lit room.</li>
     </ol>
 
-    <figure class="shot" id="fig-9-2">
-      <div class="shot-frame">
-        <img src="images/09-02-light-leak-before-after.png" alt="Light leak before and after" onload="this.closest('.shot').classList.add('has-image')">
-        <div class="shot-todo">
-          <span class="id">Shot 09-02</span>
-          <div class="what">An interior with a visible glow along the floor-wall junction, and the identical view after re-importing with Keep hierarchy and adding wall thickness. Same camera, same lights.</div>
-          <span class="file">images/09-02-light-leak-before-after.png</span>
-        </div>
-      </div>
-      <figcaption>Fig 9.2 — The same scene before and after fixing the cause rather than the symptom.</figcaption>
+    <figure class="diagram" id="fig-9-2">
+      <svg viewBox="0 0 720 240" role="img" aria-labelledby="t92">
+        <title id="t92">Section through a floor-to-wall junction, with and without wall thickness</title>
+        <g>
+          <text class="dg-tb dg-warn" x="0" y="14">Zero-thickness wall</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="160"/>
+          <text class="dg-ts" x="12" y="46">outside</text>
+          <text class="dg-ts" x="236" y="46">inside</text>
+          <line class="dg-ink" x1="196" y1="52" x2="196" y2="148"/>
+          <rect class="dg-hatch" x="60" y="148" width="250" height="16"/>
+          <line class="dg-ink" x1="60" y1="148" x2="310" y2="148"/>
+          <circle class="dg-sun" cx="52" cy="70" r="8"/>
+          <path class="dg-ray" d="M60 78 L 150 132"/>
+          <path class="dg-leak" d="M150 132 C 186 150, 196 152, 224 140"/>
+          <ellipse class="dg-glow" cx="212" cy="146" rx="34" ry="9"/>
+          <text class="dg-ts dg-warn" x="176" y="178">light rounds the edge</text>
+          <text class="dg-t" x="0" y="208">A plane of zero depth does not block anything.</text>
+          <text class="dg-t" x="0" y="224">Result: a glowing line along the junction.</text>
+        </g>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-ok" x="0" y="14">Real thickness</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="160"/>
+          <text class="dg-ts" x="12" y="46">outside</text>
+          <text class="dg-ts" x="252" y="46">inside</text>
+          <rect class="dg-hatch" x="186" y="52" width="26" height="96"/>
+          <line class="dg-ink" x1="186" y1="52" x2="186" y2="148"/>
+          <line class="dg-ink" x1="212" y1="52" x2="212" y2="148"/>
+          <rect class="dg-hatch" x="60" y="148" width="250" height="16"/>
+          <line class="dg-ink" x1="60" y1="148" x2="310" y2="148"/>
+          <circle class="dg-sun" cx="52" cy="70" r="8"/>
+          <path class="dg-ray" d="M60 78 L 150 132"/>
+          <path class="dg-ray" d="M150 132 L 184 108"/>
+          <text class="dg-x" x="178" y="140">&#215;</text>
+          <line class="dg-tick" x1="186" y1="162" x2="212" y2="162"/>
+          <text class="dg-ts" x="176" y="178">250&#8211;400 mm</text>
+          <text class="dg-t" x="0" y="208">A closed volume with depth blocks the path.</text>
+          <text class="dg-t" x="0" y="224">Fixed in the model, never in the light panel.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 9.2 — Every cause of light leaking is a modelling or import problem. Adjusting light intensity treats the symptom.</figcaption>
     </figure>
 
     <div class="exercise">
@@ -2616,6 +3225,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>Aucune ne se corrige dans le panneau d'éclairage. Toute cause de fuite de lumière est un problème de <em>modélisation</em> ou d'<em>import</em>. Si vous tentez de résoudre une fuite en ajustant l'intensité lumineuse, vous traitez un symptôme — et vous y passerez des heures.</p>
     </div>
 
+    <figure class="shot" id="fig-09-03-fr">
+      <div class="shot-frame">
+        <img src="images/09-03-light-leak-real.png" alt="Fuite de lumi&#232;re avant et apr&#232;s" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 09-03</span>
+          <div class="what">Un vrai int&#233;rieur avec un halo visible au sol, et la cam&#233;ra identique apr&#232;s r&#233;import en Keep hierarchy et ajout d&#8217;&#233;paisseur.</div>
+          <span class="file">images/09-03-light-leak-real.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 9.3 &#8212; Le sch&#233;ma ci-contre explique le m&#233;canisme ; voici sa manifestation r&#233;elle.</figcaption>
+    </figure>
+
     <h3>9.4 Intérieurs en lumière du jour : le problème d'exposition</h3>
     <p>Un intérieur éclairé par des fenêtres présente un écart de luminosité énorme — le ciel extérieur peut être cent fois plus lumineux que le mur d'en face. Un appareil photo ne peut pas tenir les deux. Twinmotion non plus, sans votre aide.</p>
     <ul>
@@ -2654,6 +3275,60 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li>Récupérez l'extérieur avec <strong>Local exposure &gt; Highlights</strong>, et non en assombrissant le ciel — assombrir le ciel assombrit aussi la lumière du jour qui entre dans la pièce.</li>
       <li>Ajoutez les lumières intérieures en dernier, et moins que vous ne le pensez. Dans une vue crépusculaire, une ou deux sources visibles sont bien plus atmosphériques qu'une pièce uniformément éclairée.</li>
     </ol>
+
+    <figure class="diagram" id="fig-9-2-fr">
+      <svg viewBox="0 0 720 240" role="img" aria-labelledby="t92f">
+        <title id="t92f">Coupe sur une jonction sol-mur, avec et sans épaisseur</title>
+        <g>
+          <text class="dg-tb dg-warn" x="0" y="14">Mur sans épaisseur</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="160"/>
+          <text class="dg-ts" x="12" y="46">extérieur</text>
+          <text class="dg-ts" x="240" y="46">intérieur</text>
+          <line class="dg-ink" x1="196" y1="52" x2="196" y2="148"/>
+          <rect class="dg-hatch" x="60" y="148" width="250" height="16"/>
+          <line class="dg-ink" x1="60" y1="148" x2="310" y2="148"/>
+          <circle class="dg-sun" cx="52" cy="70" r="8"/>
+          <path class="dg-ray" d="M60 78 L 150 132"/>
+          <path class="dg-leak" d="M150 132 C 186 150, 196 152, 224 140"/>
+          <ellipse class="dg-glow" cx="212" cy="146" rx="34" ry="9"/>
+          <text class="dg-ts dg-warn" x="168" y="178">la lumière contourne l'arête</text>
+          <text class="dg-t" x="0" y="208">Un plan de profondeur nulle ne bloque rien.</text>
+          <text class="dg-t" x="0" y="224">Résultat : une ligne lumineuse à la jonction.</text>
+        </g>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-ok" x="0" y="14">Épaisseur réelle</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="160"/>
+          <text class="dg-ts" x="12" y="46">extérieur</text>
+          <text class="dg-ts" x="252" y="46">intérieur</text>
+          <rect class="dg-hatch" x="186" y="52" width="26" height="96"/>
+          <line class="dg-ink" x1="186" y1="52" x2="186" y2="148"/>
+          <line class="dg-ink" x1="212" y1="52" x2="212" y2="148"/>
+          <rect class="dg-hatch" x="60" y="148" width="250" height="16"/>
+          <line class="dg-ink" x1="60" y1="148" x2="310" y2="148"/>
+          <circle class="dg-sun" cx="52" cy="70" r="8"/>
+          <path class="dg-ray" d="M60 78 L 150 132"/>
+          <path class="dg-ray" d="M150 132 L 184 108"/>
+          <text class="dg-x" x="178" y="140">&#215;</text>
+          <line class="dg-tick" x1="186" y1="162" x2="212" y2="162"/>
+          <text class="dg-ts" x="174" y="178">250&#8211;400 mm</text>
+          <text class="dg-t" x="0" y="208">Un volume fermé et épais bloque le trajet.</text>
+          <text class="dg-t" x="0" y="224">Corrigé dans le modèle, jamais dans l'éclairage.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 9.2 — Toute cause de fuite de lumière est un problème de modélisation ou d'import. Ajuster l'intensité traite le symptôme.</figcaption>
+    </figure>
+
+    <figure class="shot" id="fig-9-1-fr">
+      <div class="shot-frame">
+        <img src="images/09-01-lumen-surface-view.png" alt="Mode d'affichage Lumen surface" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 09-01</span>
+          <div class="what">Le menu de mode d'affichage ouvert en haut à droite de la fenêtre 3D, avec « Lumen surface » en surbrillance.</div>
+          <span class="file">images/09-01-lumen-surface-view.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 9.1 — Là où s'arrêtent les cartes, la lumière fuit.</figcaption>
+    </figure>
 
     <div class="exercise">
       <div class="hd">Étape 9 · Éclairer l'intérieur <span class="lv-tag">Livrables B &amp; C</span></div>
@@ -2709,6 +3384,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>A 16 mm interior makes a small room look generous. That is not a rendering technique, it is a claim about your project — and if the room is genuinely too small, the image is arguing something the plan does not support. Choose the focal length that shows the space as someone would experience it, then fix the plan if you do not like what you see.</p>
     </div>
 
+    <figure class="shot" id="fig-10-02">
+      <div class="shot-frame">
+        <img src="images/10-02-focal-lengths.png" alt="The same interior at three focal lengths" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Shot 10-02</span>
+          <div class="what">The same interior at 16, 28 and 50 mm from an identical point, so the space appears to change size while the room does not.</div>
+          <span class="file">images/10-02-focal-lengths.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 10.2 &#8212; The room is the same size in all three. Only one of them is honest about it.</figcaption>
+    </figure>
+
     <h3>10.3 Vertical correction — the setting that instantly professionalises a render</h3>
     <p>When you tilt a camera up at a building, vertical lines converge. Architectural photographers correct this with a tilt-shift lens; the convention is that <strong>verticals stay vertical</strong>.</p>
     <p>Twinmotion gives you two tools under <strong>Lens</strong>:</p>
@@ -2718,16 +3405,36 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ul>
     <p>Also here: <em>Vignetting</em>, <em>Barrel distortion</em>, <em>Chromatic aberration</em> (with <em>Intensity</em> and <em>Start offset</em>), and <em>Near clipping</em> (0.001–1.00 m) for when a wall in front of the camera is blocking the shot.</p>
 
-    <figure class="shot" id="fig-10-1">
-      <div class="shot-frame">
-        <img src="images/10-01-parallelism.png" alt="Vertical correction comparison" onload="this.closest('.shot').classList.add('has-image')">
-        <div class="shot-todo">
-          <span class="id">Shot 10-01</span>
-          <div class="what">The same building shot from below, with Parallelism off (converging verticals) and on (corrected). Choose a tall façade so the difference is unmistakable.</div>
-          <span class="file">images/10-01-parallelism.png</span>
-        </div>
-      </div>
-      <figcaption>Fig 10.1 — Converging verticals read as a snapshot; parallel verticals read as architecture.</figcaption>
+    <figure class="diagram" id="fig-10-1">
+      <svg viewBox="0 0 720 250" role="img" aria-labelledby="t101">
+        <title id="t101">Converging verticals compared with corrected parallel verticals</title>
+        <g>
+          <text class="dg-tb dg-warn" x="0" y="14">Parallelism off</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="170"/>
+          <path class="dg-solid" d="M108 60 L 222 60 L 258 176 L 72 176 Z"/>
+          <path class="dg-dash" d="M108 60 L 165 -6 M222 60 L 165 -6"/>
+          <line class="dg-grid" x1="128" y1="88" x2="202" y2="88"/>
+          <line class="dg-grid" x1="118" y1="120" x2="212" y2="120"/>
+          <line class="dg-grid" x1="108" y1="152" x2="222" y2="152"/>
+          <path class="dg-cam" d="M22 186 L 46 168 L 46 196 Z"/>
+          <text class="dg-ts" x="14" y="212">camera tilted up</text>
+          <text class="dg-t" x="0" y="234">Verticals lean inwards. Reads as a snapshot.</text>
+        </g>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-ok" x="0" y="14">Parallelism on</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="170"/>
+          <path class="dg-solid" d="M96 60 L 234 60 L 234 176 L 96 176 Z"/>
+          <line class="dg-grid" x1="96" y1="88" x2="234" y2="88"/>
+          <line class="dg-grid" x1="96" y1="120" x2="234" y2="120"/>
+          <line class="dg-grid" x1="96" y1="152" x2="234" y2="152"/>
+          <line class="dg-good" x1="96" y1="52" x2="96" y2="184"/>
+          <line class="dg-good" x1="234" y1="52" x2="234" y2="184"/>
+          <path class="dg-cam" d="M22 186 L 46 168 L 46 196 Z"/>
+          <text class="dg-ts" x="14" y="212">camera level, frame shifted</text>
+          <text class="dg-t" x="0" y="234">Verticals stay vertical. Reads as architecture.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 10.1 — The digital equivalent of a tilt-shift lens, and the fastest single change you can make to a render.</figcaption>
     </figure>
 
     <h3>10.4 Depth of field without the toy-model effect <span class="lv-tag lv-y3">Y3</span></h3>
@@ -2806,6 +3513,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>Un intérieur au 16 mm fait paraître généreuse une petite pièce. Ce n'est pas une technique de rendu, c'est une affirmation sur votre projet — et si la pièce est réellement trop petite, l'image défend quelque chose que le plan ne soutient pas. Choisissez la focale qui montre l'espace tel qu'on l'éprouverait, puis corrigez le plan si le résultat ne vous plaît pas.</p>
     </div>
 
+    <figure class="shot" id="fig-10-02-fr">
+      <div class="shot-frame">
+        <img src="images/10-02-focal-lengths.png" alt="Le m&#234;me int&#233;rieur &#224; trois focales" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 10-02</span>
+          <div class="what">Le m&#234;me int&#233;rieur &#224; 16, 28 et 50 mm depuis un point identique : l&#8217;espace semble changer de taille alors que la pi&#232;ce ne bouge pas.</div>
+          <span class="file">images/10-02-focal-lengths.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 10.2 &#8212; La pi&#232;ce a la m&#234;me taille dans les trois. Une seule le dit honn&#234;tement.</figcaption>
+    </figure>
+
     <h3>10.3 Le redressement des verticales — le réglage qui professionnalise instantanément un rendu</h3>
     <p>Quand on incline la caméra vers le haut, les verticales fuient. Les photographes d'architecture corrigent cela avec un objectif à décentrement ; la convention veut que <strong>les verticales restent verticales</strong>.</p>
     <p>Twinmotion propose deux outils sous <strong>Lens</strong> :</p>
@@ -2848,6 +3567,38 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>Nommez-les <code>01-approche</code>, <code>02-seuil</code>, et non <code>Camera 7</code>. Vous en aurez vingt. Les nommer par intention oblige aussi à dire à quoi chacune sert, ce qui révèle vite les trois qui ne servent à rien.</p>
     </div>
 
+    <figure class="diagram" id="fig-10-1-fr">
+      <svg viewBox="0 0 720 250" role="img" aria-labelledby="t101f">
+        <title id="t101f">Verticales fuyantes et verticales redressées</title>
+        <g>
+          <text class="dg-tb dg-warn" x="0" y="14">Parallelism désactivé</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="170"/>
+          <path class="dg-solid" d="M108 60 L 222 60 L 258 176 L 72 176 Z"/>
+          <path class="dg-dash" d="M108 60 L 165 -6 M222 60 L 165 -6"/>
+          <line class="dg-grid" x1="128" y1="88" x2="202" y2="88"/>
+          <line class="dg-grid" x1="118" y1="120" x2="212" y2="120"/>
+          <line class="dg-grid" x1="108" y1="152" x2="222" y2="152"/>
+          <path class="dg-cam" d="M22 186 L 46 168 L 46 196 Z"/>
+          <text class="dg-ts" x="12" y="212">caméra inclinée vers le haut</text>
+          <text class="dg-t" x="0" y="234">Les verticales penchent. Se lit comme un cliché.</text>
+        </g>
+        <g transform="translate(390,0)">
+          <text class="dg-tb dg-ok" x="0" y="14">Parallelism activé</text>
+          <rect class="dg-frame" x="0" y="26" width="330" height="170"/>
+          <path class="dg-solid" d="M96 60 L 234 60 L 234 176 L 96 176 Z"/>
+          <line class="dg-grid" x1="96" y1="88" x2="234" y2="88"/>
+          <line class="dg-grid" x1="96" y1="120" x2="234" y2="120"/>
+          <line class="dg-grid" x1="96" y1="152" x2="234" y2="152"/>
+          <line class="dg-good" x1="96" y1="52" x2="96" y2="184"/>
+          <line class="dg-good" x1="234" y1="52" x2="234" y2="184"/>
+          <path class="dg-cam" d="M22 186 L 46 168 L 46 196 Z"/>
+          <text class="dg-ts" x="12" y="212">caméra d'aplomb, cadre décalé</text>
+          <text class="dg-t" x="0" y="234">Verticales verticales. Se lit comme de l'architecture.</text>
+        </g>
+      </svg>
+      <figcaption>Fig 10.1 — L'équivalent numérique d'un objectif à décentrement, et le changement unique le plus rapide sur un rendu.</figcaption>
+    </figure>
+
     <div class="exercise">
       <div class="hd">Étape 10 · Verrouiller le jeu de caméras <span class="lv-tag">Livrable B</span></div>
       <h4>Ce que vous faites</h4>
@@ -2887,6 +3638,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         </tbody>
       </table>
     </div>
+
+    <figure class="shot" id="fig-11-01">
+      <div class="shot-frame">
+        <img src="images/11-01-pathtracer-settings.png" alt="Path tracer settings panel" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Shot 11-01</span>
+          <div class="what">The Path tracer panel with Quality, Samples per pixel, Max bounces, Emissive materials, Denoiser and Fireflies all visible with their values.</div>
+          <span class="file">images/11-01-pathtracer-settings.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 11.1 &#8212; Every setting in 11.1 lives here.</figcaption>
+    </figure>
 
     <h3>11.2 Two presets, and the discipline of using them</h3>
     <pre><span class="cm"># WORKING — while you compose and light</span>
@@ -2986,6 +3749,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       </table>
     </div>
 
+    <figure class="shot" id="fig-11-01-fr">
+      <div class="shot-frame">
+        <img src="images/11-01-pathtracer-settings.png" alt="Panneau de r&#233;glages Path tracer" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 11-01</span>
+          <div class="what">Le panneau Path tracer avec Quality, Samples per pixel, Max bounces, Emissive materials, Denoiser et Fireflies visibles avec leurs valeurs.</div>
+          <span class="file">images/11-01-pathtracer-settings.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 11.1 &#8212; Tous les r&#233;glages du 11.1 se trouvent ici.</figcaption>
+    </figure>
+
     <h3>11.2 Deux préréglages, et la discipline de s'y tenir</h3>
     <pre><span class="cm"># TRAVAIL — pendant la composition et l'éclairage</span>
   Samples per pixel   64 – 128
@@ -3037,6 +3812,18 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <span class="lbl">Pratique d'atelier — étalonnez la série, pas l'image</span>
       <p>Décidez votre étalonnage une fois, puis appliquez-le à toutes les caméras. Une double page où une image est chaude et contrastée et la suivante froide et plate se lit comme de la négligence, même par quelqu'un incapable d'en expliquer la raison.</p>
     </div>
+
+    <figure class="shot" id="fig-11-1-fr">
+      <div class="shot-frame">
+        <img src="images/11-02-sample-comparison.png" alt="Comparaison du nombre d'échantillons" onload="this.closest('.shot').classList.add('has-image')">
+        <div class="shot-todo">
+          <span class="id">Capture 11-02</span>
+          <div class="what">Le même intérieur à 64 / 256 / 2048 échantillons, recadré sur la même zone d'ombre à 100 %, durées indiquées. Le recadrage est l'essentiel.</div>
+          <span class="file">images/11-02-sample-comparison.png</span>
+        </div>
+      </div>
+      <figcaption>Fig 11.2 — Jugez le bruit dans les ombres, à 100 %, ou vous devinez.</figcaption>
+    </figure>
 
     <div class="exercise">
       <div class="hd">Étape 11 · Rendre les images finales <span class="lv-tag">Livrable B</span></div>
@@ -4315,57 +5102,203 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 <section class="chap" id="shotlist">
   <span class="chapter-eyebrow en-only">Reference</span>
   <span class="chapter-eyebrow fr-only">Référence</span>
-  <h2 class="chapter en-only">Screenshot shot-list</h2>
-  <h2 class="chapter fr-only">Liste des captures à réaliser</h2>
+  <h2 class="chapter en-only">Screenshot capture guide</h2>
 
-  <div class="callout c-doc">
-    <span class="lbl en-only">How the image system works</span>
-    <span class="lbl fr-only">Fonctionnement du système d'images</span>
-    <p class="en-only">Create a folder named <code>images</code> next to this HTML file. Save each screenshot with <strong>exactly</strong> the filename listed below. The page detects the file automatically and replaces the dashed placeholder with your image — no code editing needed. Any shot you have not captured yet simply stays as a labelled placeholder, so the manual is usable at every stage of completion.</p>
-    <p class="fr-only">Créez un dossier nommé <code>images</code> à côté de ce fichier HTML. Enregistrez chaque capture sous <strong>exactement</strong> le nom de fichier indiqué ci-dessous. La page détecte le fichier automatiquement et remplace l'encadré pointillé par votre image — aucune modification de code n'est nécessaire. Toute capture non encore réalisée reste un simple encadré étiqueté : le manuel reste utilisable à tout stade d'avancement.</p>
+  <div class="en-only">
+    <p>Eight of this manual's figures are drawn diagrams and need nothing from you. The eleven below cannot be drawn — they are either an interface you have to photograph, or a comparison that only means something when it comes from a real project. This page tells you exactly how to get each one.</p>
+
+    <div class="callout c-doc">
+      <span class="lbl">How the image system works</span>
+      <p>Create a folder named <code>images</code> next to this HTML file. Save each capture with <strong>exactly</strong> the filename given below. The page detects it and replaces the dashed placeholder automatically — no code editing. Anything you have not captured yet stays as a labelled box, so the manual is usable at every stage of completion.</p>
+    </div>
+
+    <div class="callout c-warn">
+      <span class="lbl">Take these yourself</span>
+      <p>Screenshots you take of software you are licensed to run are fine for teaching. Frames pulled from someone else's tutorial video, or images lifted from a blog, are their copyright — and this manual is published publicly. Every capture below must be yours.</p>
+    </div>
+
+    <p><strong>Settings for all captures:</strong> PNG, at least 1600 px wide, application window only rather than the whole desktop, interface language matching the edition you are illustrating. If you can produce both an English and a French interface version, add <code>-fr</code> to the French filename.</p>
+
+    <h3>Group 1 — Interface captures</h3>
+    <p>Six dialogs and panels. Roughly forty minutes in total, and they can all be done in one sitting with any model open.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Filename</th><th>How to get there</th><th>Frame it so that</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>05-01-import-dialog.png</code><br><span class="lv-tag">do this one first</span></td>
+            <td>Twinmotion → <span class="path">Import &gt; Geometry</span>, choose any <code>.skp</code>, and let the options panel open. Expand every collapsed section.</td>
+            <td>Collapse mode, Enable Nanite, Unit conversion and Up axis are all readable in one frame. This is the most-referenced image in the book.</td>
+          </tr>
+          <tr>
+            <td><code>09-01-lumen-surface-view.png</code><br><span class="lv-tag">do this one second</span></td>
+            <td>With Lumen active, click the <strong>viewport mode icon in the upper-right corner of the viewport</strong> and leave the dropdown open with <strong>Lumen surface</strong> highlighted.</td>
+            <td>The dropdown position is unmistakable. Students look for a "Dev Tools" menu that does not exist — this image is what stops that.</td>
+          </tr>
+          <tr>
+            <td><code>11-01-pathtracer-settings.png</code></td>
+            <td><span class="path">Properties &gt; Ambience &gt; Render</span>, switch to Path tracer, expand its settings.</td>
+            <td>Quality, Samples per pixel, Max bounces, Emissive materials, Denoiser and Fireflies are all visible with their values.</td>
+          </tr>
+          <tr>
+            <td><code>02-02-purge-dialog.png</code></td>
+            <td>SketchUp → <span class="path">Window &gt; Model Info &gt; Statistics</span>.</td>
+            <td>The face and edge counts and the <em>Purge Unused</em> button are in the same frame. Ideally capture a heavy model so the numbers are alarming.</td>
+          </tr>
+          <tr>
+            <td><code>02-03-outliner-naming.png</code></td>
+            <td>SketchUp Outliner panel, on a properly organised model.</td>
+            <td>Your naming scheme is legible and clearly systematic. This is the picture of what Stage 2 is asking for.</td>
+          </tr>
+          <tr>
+            <td><code>04-01-rhino-glb-export.png</code></td>
+            <td>Rhino → <span class="path">File &gt; Export Selected</span>, choose glTF Binary, and let the options dialog open.</td>
+            <td>Material, texture and mesh options are readable. Because McNeel changes these labels between versions, capture the version <em>your students actually use</em>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Group 2 — Comparisons from your own project</h3>
+    <p>These five come out of the teaching model. Every one is something the stages already ask students to produce, so if you run through the course once yourself you generate them as a by-product.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Filename</th><th>What to render</th><th>Comes from</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>11-02-sample-comparison.png</code></td>
+            <td>One interior at 64, 256 and 2048 samples. Crop all three to the <em>same dark shadow region</em> at 100% zoom and label the render times. The crop is the point — full-frame images at these settings look nearly identical.</td>
+            <td>Stage 11</td>
+          </tr>
+          <tr>
+            <td><code>07-01-engine-comparison.png</code></td>
+            <td>The identical view in Standard, Lumen and Path Tracer, camera and lights untouched, with render time under each.</td>
+            <td>Stage 7</td>
+          </tr>
+          <tr>
+            <td><code>08-02-four-hours.png</code></td>
+            <td>One façade at four times across two seasons, with the correct north offset set. Best if the low winter sun visibly models the façade depth that midsummer flattens.</td>
+            <td>Stage 8</td>
+          </tr>
+          <tr>
+            <td><code>09-03-light-leak-real.png</code></td>
+            <td>A real interior with a visible floor–wall glow, and the same camera after re-importing with Keep hierarchy and adding thickness. The diagram explains the mechanism; this proves it happens.</td>
+            <td>Stage 9</td>
+          </tr>
+          <tr>
+            <td><code>10-02-focal-lengths.png</code></td>
+            <td>The same interior at 16, 28 and 50 mm from an identical point, so the space appears to change size while the room does not.</td>
+            <td>Stage 10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout c-tip">
+      <span class="lbl">Studio practice</span>
+      <p>If you have a demonstration model you teach from, build all five of these from it once and they will serve for years. If you do not, ask a strong student for permission to use theirs — with credit — which also shows the next cohort what the standard looks like.</p>
+    </div>
   </div>
 
-  <p class="en-only"><strong>Recommended capture settings:</strong> PNG, 1600 px wide minimum, application window only (not the whole desktop), interface language set to match whichever language edition you are illustrating. If you can, capture both an EN and an FR interface version; name the French one with an <code>-fr</code> suffix.</p>
-  <p class="fr-only"><strong>Réglages de capture recommandés :</strong> PNG, 1600 px de large minimum, fenêtre de l'application uniquement (pas tout le bureau), langue d'interface correspondant à l'édition illustrée. Si possible, capturez une version EN et une version FR ; suffixez la française par <code>-fr</code>.</p>
+  <div class="fr-only">
+    <p>Huit figures de ce manuel sont des schémas dessinés et ne demandent rien de vous. Les onze ci-dessous ne peuvent pas être dessinées : ce sont soit une interface à photographier, soit une comparaison qui n'a de sens que venue d'un vrai projet. Cette page explique exactement comment obtenir chacune.</p>
 
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th class="en-only">Filename</th><th class="fr-only">Nom de fichier</th>
-          <th class="en-only">What to capture</th><th class="fr-only">Quoi capturer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><code>01-01</code></td><td><code>images/01-01-pipeline-overview.png</code></td><td><span class="en-only">Same corner of a project in SketchUp / Rhino / Twinmotion, matched angle.</span><span class="fr-only">Même angle d'un projet dans SketchUp / Rhino / Twinmotion.</span></td></tr>
-        <tr><td><code>02-01</code></td><td><code>images/02-01-monochrome-audit.png</code></td><td><span class="en-only">Model in Monochrome with visible reversed (blue) faces; ideally paired with the Shaded view where the fault is invisible.</span><span class="fr-only">Modèle en Monochrome avec faces inversées (bleues) visibles ; idéalement à côté de la vue Ombrée où le défaut est invisible.</span></td></tr>
-        <tr><td><code>02-02</code></td><td><code>images/02-02-purge-dialog.png</code></td><td><span class="en-only">Model Info &gt; Statistics panel, showing the face count and the Purge Unused button.</span><span class="fr-only">Panneau Infos sur le modèle &gt; Statistiques, montrant le nombre de faces et le bouton Purger.</span></td></tr>
-        <tr><td><code>02-03</code></td><td><code>images/02-03-outliner-naming.png</code></td><td><span class="en-only">A well-organised Outliner with a clear naming scheme.</span><span class="fr-only">Un panneau Structure bien organisé avec un nommage clair.</span></td></tr>
-        <tr><td><code>03-01</code></td><td><code>images/03-01-mesh-density-comparison.png</code></td><td><span class="en-only">Same curved element exported at 30° / 15° / 5° maximum angle, wireframe, polygon count labelled under each.</span><span class="fr-only">Même élément courbe exporté à 30° / 15° / 5° d'angle maximum, en filaire, nombre de polygones sous chacun.</span></td></tr>
-        <tr><td><code>03-02</code></td><td><code>images/03-02-quadremesh-before-after.png</code></td><td><span class="en-only">A stitched or organic object before and after QuadRemesh, both in wireframe.</span><span class="fr-only">Un objet raccordé ou organique avant et après QuadRemesh, les deux en filaire.</span></td></tr>
-        <tr><td><code>04-01</code></td><td><code>images/04-01-rhino-glb-export.png</code></td><td><span class="en-only">The Rhino glTF/GLB export options dialog, fully expanded.</span><span class="fr-only">La boîte d'options d'export glTF/GLB de Rhino, entièrement dépliée.</span></td></tr>
-        <tr><td><code>04-02</code></td><td><code>images/04-02-scale-check-figure.png</code></td><td><span class="en-only">A Twinmotion character standing beside a door at correct scale — the four-second sanity check.</span><span class="fr-only">Un personnage Twinmotion à côté d'une porte à l'échelle correcte — la vérification en quatre secondes.</span></td></tr>
-        <tr><td><code>05-01</code></td><td><code>images/05-01-import-dialog.png</code></td><td><span class="en-only">The full Twinmotion Import dialog with all options visible — the single most important screenshot in the book.</span><span class="fr-only">La fenêtre d'import Twinmotion complète, toutes options visibles — la capture la plus importante du livre.</span></td></tr>
-        <tr><td><code>05-02</code></td><td><code>images/05-02-collapse-comparison.png</code></td><td><span class="en-only">Twinmotion scene graph after Keep hierarchy vs after Collapse all, side by side.</span><span class="fr-only">Graphe de scène après Keep hierarchy vs après Collapse all, côte à côte.</span></td></tr>
-        <tr><td><code>06-01</code></td><td><code>images/06-01-texture-scale.png</code></td><td><span class="en-only">Same brick wall at three texture scales: too large, correct (with a figure for reference), too small.</span><span class="fr-only">Même mur de brique à trois échelles de texture : trop grande, correcte (avec personnage), trop petite.</span></td></tr>
-        <tr><td><code>07-01</code></td><td><code>images/07-01-engine-comparison.png</code></td><td><span class="en-only">Identical interior rendered in Standard / Lumen / Path Tracer, render time labelled under each.</span><span class="fr-only">Intérieur identique rendu en Standard / Lumen / Path Tracer, durée indiquée sous chacun.</span></td></tr>
-        <tr><td><code>08-01</code></td><td><code>images/08-01-hdri-sun-match.png</code></td><td><span class="en-only">Exterior with directional light misaligned to the HDRI sun, then matched. Include sky and ground shadow in frame.</span><span class="fr-only">Extérieur avec lumière directionnelle désalignée du soleil HDRI, puis alignée. Cadrer ciel et ombre au sol.</span></td></tr>
-        <tr><td><code>08-02</code></td><td><code>images/08-02-four-hours.png</code></td><td><span class="en-only">Same facade at four times of day across two seasons, correct north offset set.</span><span class="fr-only">Même facade a quatre heures sur deux saisons, orientation du nord correcte.</span></td></tr>
-        <tr><td><code>09-01</code></td><td><code>images/09-01-lumen-surface-view.png</code></td><td><span class="en-only">The viewport mode dropdown open (upper-right of viewport) with "Lumen surface" highlighted.</span><span class="fr-only">Le menu de mode d'affichage ouvert (haut-droite) avec « Lumen surface » en surbrillance.</span></td></tr>
-        <tr><td><code>09-02</code></td><td><code>images/09-02-light-leak-before-after.png</code></td><td><span class="en-only">An interior with a visible floor-wall light leak, and the same view after the fix.</span><span class="fr-only">Un intérieur avec fuite de lumière visible au sol, et la même vue après correction.</span></td></tr>
-        <tr><td><code>11-01</code></td><td><code>images/11-01-pathtracer-settings.png</code></td><td><span class="en-only">The Path tracer settings panel showing Samples per pixel, Max bounces, Emissive, Denoiser, Fireflies.</span><span class="fr-only">Le panneau de réglages Path tracer montrant Samples per pixel, Max bounces, Emissive, Denoiser, Fireflies.</span></td></tr>
-        <tr><td><code>11-02</code></td><td><code>images/11-02-sample-comparison.png</code></td><td><span class="en-only">Same interior at 64 / 256 / 2048 samples, cropped to the same shadow area to show noise.</span><span class="fr-only">Même intérieur à 64 / 256 / 2048 échantillons, recadré sur la même zone d'ombre pour montrer le bruit.</span></td></tr>
-        <tr><td><code>10-01</code></td><td><code>images/10-01-parallelism.png</code></td><td><span class="en-only">Tall facade shot from below with Parallelism off (converging verticals), then on.</span><span class="fr-only">Facade haute en contre-plongee, Parallelism desactive (verticales fuyantes), puis active.</span></td></tr>
-        <tr><td><code>10-02</code></td><td><code>images/10-02-focal-lengths.png</code></td><td><span class="en-only">Same interior at 16 / 28 / 50 mm from an identical point, showing how much the space appears to change.</span><span class="fr-only">Meme interieur a 16 / 28 / 50 mm depuis un point identique, montrant combien l'espace semble changer.</span></td></tr>
-        <tr><td><code>12-01</code></td><td><code>images/12-01-storyboard.png</code></td><td><span class="en-only">A hand-drawn storyboard for a project film, six to ten frames. Deliberately rough.</span><span class="fr-only">Un storyboard dessine a la main pour un film de projet, six a dix cases. Volontairement sommaire.</span></td></tr>
-        <tr><td><code>13-01</code></td><td><code>images/13-01-panorama-hotspots.png</code></td><td><span class="en-only">A panorama set diagram showing where the viewpoints sit, overlaid on the floor plan.</span><span class="fr-only">Schema d'un jeu de panoramas montrant l'emplacement des points de vue, superpose au plan.</span></td></tr>
-      </tbody>
-    </table>
+    <div class="callout c-doc">
+      <span class="lbl">Fonctionnement du système d'images</span>
+      <p>Créez un dossier nommé <code>images</code> à côté de ce fichier HTML. Enregistrez chaque capture sous <strong>exactement</strong> le nom indiqué ci-dessous. La page la détecte et remplace l'encadré pointillé automatiquement — aucune modification de code. Ce qui n'est pas encore capturé reste un encadré étiqueté : le manuel demeure utilisable à tout stade.</p>
+    </div>
+
+    <div class="callout c-warn">
+      <span class="lbl">Réalisez-les vous-même</span>
+      <p>Les captures d'un logiciel dont vous détenez la licence sont légitimes en enseignement. Les images extraites du tutoriel vidéo d'un tiers, ou reprises d'un blog, relèvent de son droit d'auteur — et ce manuel est publié publiquement. Chaque capture ci-dessous doit être la vôtre.</p>
+    </div>
+
+    <p><strong>Réglages pour toutes les captures :</strong> PNG, au moins 1600 px de large, fenêtre de l'application seule et non tout le bureau, langue d'interface correspondant à l'édition illustrée. Si vous produisez une version anglaise et une française, suffixez la française par <code>-fr</code>.</p>
+
+    <h3>Groupe 1 — Captures d'interface</h3>
+    <p>Six boîtes de dialogue et panneaux. Environ quarante minutes au total, réalisables en une seule séance avec n'importe quel modèle ouvert.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Nom de fichier</th><th>Comment y arriver</th><th>Cadrez pour que</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>05-01-import-dialog.png</code><br><span class="lv-tag">à faire en premier</span></td>
+            <td>Twinmotion → <span class="path">Import &gt; Geometry</span>, choisissez un <code>.skp</code> et laissez le panneau d'options s'ouvrir. Dépliez toutes les sections repliées.</td>
+            <td>Mode de fusion, Enable Nanite, Unit conversion et Up axis soient tous lisibles d'un coup. C'est l'image la plus citée du livre.</td>
+          </tr>
+          <tr>
+            <td><code>09-01-lumen-surface-view.png</code><br><span class="lv-tag">à faire en second</span></td>
+            <td>Lumen actif, cliquez l'<strong>icône de mode d'affichage en haut à droite de la fenêtre 3D</strong> et laissez le menu ouvert avec <strong>Lumen surface</strong> en surbrillance.</td>
+            <td>La position du menu soit sans ambiguïté. Les étudiants cherchent un menu « Dev Tools » qui n'existe pas — cette image y met fin.</td>
+          </tr>
+          <tr>
+            <td><code>11-01-pathtracer-settings.png</code></td>
+            <td><span class="path">Propriétés &gt; Ambiance &gt; Render</span>, basculez sur Path tracer, dépliez ses réglages.</td>
+            <td>Quality, Samples per pixel, Max bounces, Emissive materials, Denoiser et Fireflies soient visibles avec leurs valeurs.</td>
+          </tr>
+          <tr>
+            <td><code>02-02-purge-dialog.png</code></td>
+            <td>SketchUp → <span class="path">Fenêtre &gt; Infos sur le modèle &gt; Statistiques</span>.</td>
+            <td>Le nombre de faces et d'arêtes et le bouton <em>Purger</em> soient dans le même cadre. Idéalement sur un modèle lourd, pour que les chiffres soient inquiétants.</td>
+          </tr>
+          <tr>
+            <td><code>02-03-outliner-naming.png</code></td>
+            <td>Panneau Structure de SketchUp, sur un modèle correctement organisé.</td>
+            <td>Votre système de nommage soit lisible et manifestement systématique. C'est l'illustration de ce que demande l'étape 2.</td>
+          </tr>
+          <tr>
+            <td><code>04-01-rhino-glb-export.png</code></td>
+            <td>Rhino → <span class="path">Fichier &gt; Exporter la sélection</span>, choisissez glTF binaire et laissez la boîte d'options s'ouvrir.</td>
+            <td>Les options de matériaux, textures et maillage soient lisibles. McNeel changeant ces libellés selon les versions, capturez la version <em>réellement utilisée par vos étudiants</em>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Groupe 2 — Comparaisons issues de votre propre projet</h3>
+    <p>Ces cinq images sortent du modèle d'enseignement. Chacune correspond à ce que les étapes demandent déjà aux étudiants : si vous parcourez le cours une fois vous-même, vous les produisez au passage.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Nom de fichier</th><th>Quoi rendre</th><th>Vient de</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>11-02-sample-comparison.png</code></td>
+            <td>Un intérieur à 64, 256 et 2048 échantillons. Recadrez les trois sur la <em>même zone d'ombre sombre</em> à 100 % et indiquez les durées. Le recadrage est l'essentiel — en plein cadre, ces réglages semblent presque identiques.</td>
+            <td>Étape 11</td>
+          </tr>
+          <tr>
+            <td><code>07-01-engine-comparison.png</code></td>
+            <td>La vue identique en Standard, Lumen et Path Tracer, caméra et lumières inchangées, durée sous chacune.</td>
+            <td>Étape 7</td>
+          </tr>
+          <tr>
+            <td><code>08-02-four-hours.png</code></td>
+            <td>Une façade à quatre moments sur deux saisons, orientation du nord correcte. Idéalement, le soleil bas d'hiver y modèle visiblement l'épaisseur que le plein été aplatit.</td>
+            <td>Étape 8</td>
+          </tr>
+          <tr>
+            <td><code>09-03-light-leak-real.png</code></td>
+            <td>Un vrai intérieur avec un halo visible au sol, et la même caméra après réimport en Keep hierarchy et ajout d'épaisseur. Le schéma explique le mécanisme ; ceci prouve qu'il se produit.</td>
+            <td>Étape 9</td>
+          </tr>
+          <tr>
+            <td><code>10-02-focal-lengths.png</code></td>
+            <td>Le même intérieur à 16, 28 et 50 mm depuis un point identique, pour que l'espace paraisse changer de taille alors que la pièce ne bouge pas.</td>
+            <td>Étape 10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout c-tip">
+      <span class="lbl">Pratique d'atelier</span>
+      <p>Si vous disposez d'un modèle de démonstration, produisez ces cinq images une fois à partir de lui et elles serviront des années. Sinon, demandez à un bon étudiant l'autorisation d'utiliser le sien — avec mention — ce qui montre en outre à la promotion suivante le niveau attendu.</p>
+    </div>
   </div>
-
-  <p class="en-only" style="color:var(--ink-3); font-size:.85rem"><em>This list grows as chapters are written. Roughly 60–80 shots are expected for the finished book; the list above now covers all thirteen chapters.</em></p>
-  <p class="fr-only" style="color:var(--ink-3); font-size:.85rem"><em>Cette liste s'allonge à mesure que les chapitres sont rédigés. Environ 60 à 80 captures sont prévues pour le livre achevé ; la liste ci-dessus couvre desormais les treize chapitres.</em></p>
 </section>
 
 <footer class="book">
