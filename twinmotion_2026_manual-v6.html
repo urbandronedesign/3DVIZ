@@ -1097,18 +1097,19 @@ body.show-figures .shot-todo{display:block}
 
     <pre>studio25_maison/
 │
-├─ <span class="cm">1_source/</span>          the models you author
+├─ <span class="cm">1_source/</span>          what you author &#8212; Twinmotion never touches this
 │    studio25_maison_v03_MODEL.skp
-│    studio25_maison_v03_RENDER.skp
 │    studio25_maison_v03_furniture.3dm
 │
-├─ <span class="cm">2_exchange/</span>        what crosses into Twinmotion
+├─ <span class="cm">2_exchange/</span>        what Twinmotion imports &#8212; <strong>and writes into</strong>
+│    studio25_maison_v03_RENDER.skp
 │    studio25_maison_v03_furniture.glb
+│    <span class="cm">extracted_Textures/   &#8592; generated on import. Do not delete.</span>
 │
 ├─ <span class="cm">3_twinmotion/</span>      the scene file
 │    studio25_maison_v03.tm
 │
-├─ <span class="cm">4_assets/</span>          everything the scene depends on
+├─ <span class="cm">4_assets/</span>          everything you supply that the scene depends on
 │    hdri/  ies/  textures/  lut/
 │
 ├─ <span class="cm">5_output/</span>          renders, in progress and final
@@ -1125,7 +1126,38 @@ body.show-figures .shot-todo{display:block}
       <li><strong><code>5_output/video/frames/</code></strong> exists because long animations should be rendered as image sequences, not single video files. When a render dies at frame 700 of 900, you resume rather than restart.</li>
     </ul>
 
-    <h3>2.3 The rule that makes it portable</h3>
+    <h3>2.3 What Twinmotion writes back into your folder</h3>
+    <p>A <code>.skp</code> stores its textures inside the file. A real-time engine cannot use them there — it needs them as separate image files on disk. So when you import, Twinmotion <strong>extracts every embedded texture and writes a folder of them next to the file it imported</strong>. The same happens with any format carrying embedded textures, <code>.glb</code> included.</p>
+    <p>You did not create that folder and you cannot see it from inside Twinmotion, which is exactly why it causes trouble.</p>
+
+    <div class="callout c-warn">
+      <span class="lbl">It is a dependency, not clutter</span>
+      <p>The folder has a machine-generated name, sits beside files you <em>did</em> author, and contains images you have never seen. It looks precisely like something a tidy person would delete before handing work in. Delete it and your materials lose their maps.</p>
+    </div>
+
+    <p>Three things follow from this, and the third is the one that catches people:</p>
+    <ol>
+      <li><strong>Never tidy a folder you have imported from.</strong> If you want to clean up, clean up <code>1_source/</code>, which Twinmotion never writes to.</li>
+      <li><strong>Never hand-edit its contents.</strong> It is regenerated on re-import, so any change you make there is one update away from being overwritten.</li>
+      <li><strong>The link can outlive the file that made it.</strong> Save the scene as a new version in a different folder and Twinmotion may still be looking for the texture folder belonging to the <em>original</em> import. Textures then go missing in the new version while the old one keeps working — which is a confusing way to lose an afternoon, and it lands specifically on people who version their work properly.</li>
+    </ol>
+
+    <div class="callout c-doc">
+      <span class="lbl">Documented</span>
+      <p>Epic's import guidance is to keep textures, or folders containing textures, <strong>in the same folder as the geometry file</strong>. When Twinmotion cannot find a resource — texture maps, decals or IES files — it reports missing files and you resolve them by clicking <strong>Open</strong> and selecting the folder that contains them.</p>
+    </div>
+
+    <div class="callout c-teach">
+      <span class="lbl">Why the structure is split the way it is</span>
+      <p>This behaviour is the reason <code>2_exchange/</code> exists, and the reason the <em>render copy</em> of your SketchUp model lives there rather than in <code>1_source/</code>. Twinmotion writes into whatever folder it imports from. Put everything it imports in one place and the consequence is clean: <code>1_source/</code> is purely yours, <code>2_exchange/</code> is the only folder containing generated content, and you always know which folders are safe to touch.</p>
+    </div>
+
+    <div class="callout c-tip">
+      <span class="lbl">Studio practice</span>
+      <p>If textures vanish after you version or move a scene, do not re-import and rebuild your materials. Use the missing-files dialog and point it at <code>2_exchange/</code>. Rebuilding is hours; relinking is seconds.</p>
+    </div>
+
+    <h3>2.4 The rule that makes it portable</h3>
     <div class="callout c-doc">
       <span class="lbl">The rule</span>
       <p>Nothing the project depends on lives outside the project folder. Ever. Not on the Desktop, not in Downloads, not on a network drive, not in someone else's shared folder.</p>
@@ -1137,7 +1169,7 @@ body.show-figures .shot-todo{display:block}
       <p>You download an HDRI, load it straight from <code>Downloads/</code>, and it works perfectly for six weeks. Then you tidy your Downloads folder, or you open the project on another machine, and your sky is gone. <strong>Copy assets into <code>4_assets/</code> before you use them</strong>, every time, without exception.</p>
     </div>
 
-    <h3>2.4 Naming files so the names still work in week twelve</h3>
+    <h3>2.5 Naming files so the names still work in week twelve</h3>
     <p>You will produce dozens of files. A scheme you invent in week one and follow without thinking is worth far more than a clever one you abandon in week three.</p>
 
     <pre><span class="cm"># the pattern</span>
@@ -1160,7 +1192,7 @@ body.show-figures .shot-todo{display:block}
       <p>Nothing is final. The moment you name a file <code>final</code> you need somewhere to put the next revision, and the only options left are worse. Version numbers never run out.</p>
     </div>
 
-    <h3>2.5 What actually travels <span class="lv-tag lv-y3">Y3</span></h3>
+    <h3>2.6 What actually travels <span class="lv-tag lv-y3">Y3</span></h3>
     <p>Different file types behave very differently when moved. Knowing which is which tells you where to be careful.</p>
 
     <div class="tbl-wrap">
@@ -1172,6 +1204,7 @@ body.show-figures .shot-todo{display:block}
           <tr><td><code>.glb</code></td><td>Yes — binary, textures embedded</td><td>The reason to prefer it over <code>.gltf</code>.</td></tr>
           <tr><td><code>.gltf</code></td><td><strong>No</strong> — textures sit beside it as loose files</td><td>Avoid for this workflow. Easy to move the file and leave the images behind.</td></tr>
           <tr><td>Twinmotion scene</td><td><strong>No</strong> — it points at your imported files</td><td>The scene and its sources must move together, which is what the folder is for.</td></tr>
+          <tr><td>The generated textures folder</td><td><strong>No</strong> &#8212; it is written beside the file you imported</td><td>Twinmotion made it, not you. It must travel with the import, and it must not be tidied away. See 2.3.</td></tr>
           <tr><td>HDRI, IES, LUT, custom textures</td><td><strong>No</strong> — referenced from wherever you loaded them</td><td>The single biggest cause of a broken project. Copy into <code>4_assets/</code>.</td></tr>
         </tbody>
       </table>
@@ -1182,7 +1215,7 @@ body.show-figures .shot-todo{display:block}
       <p>Do not reason about it — test it. Copy the whole folder to a USB key, open it on a <em>different machine</em>, and load the Twinmotion scene. Anything that comes up missing was living outside the folder. Do this in week three, not the night before submission.</p>
     </div>
 
-    <h3>2.6 Backing up</h3>
+    <h3>2.7 Backing up</h3>
     <ul>
       <li><strong>Version the whole folder</strong>, not just the scene file. The scene is useless without its sources.</li>
       <li><strong>Copy it somewhere else weekly</strong>, and always before a risky operation — a re-import, a Nanite conversion, a big geometry change.</li>
@@ -1190,7 +1223,7 @@ body.show-figures .shot-todo{display:block}
       <li><strong>Keep one copy off the machine entirely</strong> — an external drive or a separate cloud folder you do not work in directly.</li>
     </ul>
 
-    <h3>2.7 Working in a group</h3>
+    <h3>2.8 Working in a group</h3>
     <p>Three-dimensional files cannot be merged the way text can. If two people edit the same model, one of those edits is going to be lost — there is no tool that reconciles them. Prevention is the only strategy.</p>
     <ul>
       <li><strong>Split the model by area or by system</strong>, and give each person named groups that nobody else touches.</li>
@@ -1199,7 +1232,7 @@ body.show-figures .shot-todo{display:block}
       <li><strong>Decide who owns the Twinmotion scene.</strong> One person. Everyone else supplies geometry.</li>
     </ul>
 
-    <h3>2.8 The submission package</h3>
+    <h3>2.9 The submission package</h3>
     <p>At Stage 14 you will hand in the three deliverables. Assemble them in <code>7_submission/</code> and check the package against this list:</p>
     <div class="tbl-wrap">
       <table>
@@ -1250,26 +1283,27 @@ body.show-figures .shot-todo{display:block}
 
     <pre>studio25_maison/
 │
-├─ <span class="cm">1_source/</span>          les modèles que vous créez
+├─ <span class="cm">1_source/</span>          ce que vous cr&#233;ez &#8212; Twinmotion n&#8217;y touche jamais
 │    studio25_maison_v03_MODELE.skp
-│    studio25_maison_v03_RENDU.skp
 │    studio25_maison_v03_mobilier.3dm
 │
-├─ <span class="cm">2_echange/</span>         ce qui passe dans Twinmotion
+├─ <span class="cm">2_echange/</span>         ce que Twinmotion importe &#8212; <strong>et o&#249; il &#233;crit</strong>
+│    studio25_maison_v03_RENDU.skp
 │    studio25_maison_v03_mobilier.glb
+│    <span class="cm">extracted_Textures/   &#8592; g&#233;n&#233;r&#233; &#224; l&#8217;import. Ne pas supprimer.</span>
 │
-├─ <span class="cm">3_twinmotion/</span>      le fichier de scène
+├─ <span class="cm">3_twinmotion/</span>      le fichier de sc&#232;ne
 │    studio25_maison_v03.tm
 │
-├─ <span class="cm">4_assets/</span>          tout ce dont la scène dépend
+├─ <span class="cm">4_assets/</span>          tout ce que vous fournissez et dont la sc&#232;ne d&#233;pend
 │    hdri/  ies/  textures/  lut/
 │
-├─ <span class="cm">5_sorties/</span>         rendus, en cours et définitifs
+├─ <span class="cm">5_sorties/</span>         rendus, en cours et d&#233;finitifs
 │    images/  video/  video/frames/  panorama/
 │
-├─ <span class="cm">6_reference/</span>       photos de site, relevé, références
+├─ <span class="cm">6_reference/</span>       photos de site, relev&#233;, r&#233;f&#233;rences
 │
-└─ <span class="cm">7_rendu/</span>           le livrable assemblé + journal de projet
+└─ <span class="cm">7_rendu/</span>           le livrable assembl&#233; + journal de projet
 </pre>
 
     <p>Deux dossiers méritent leur place pour des raisons peu évidentes :</p>
@@ -1278,7 +1312,38 @@ body.show-figures .shot-todo{display:block}
       <li><strong><code>5_sorties/video/frames/</code></strong> existe parce que les animations longues doivent être rendues en séquences d'images, pas en fichiers vidéo uniques. Quand un rendu meurt à l'image 700 sur 900, on reprend au lieu de tout refaire.</li>
     </ul>
 
-    <h3>2.3 La règle qui rend le projet portable</h3>
+    <h3>2.3 Ce que Twinmotion &#233;crit dans votre dossier</h3>
+    <p>Un <code>.skp</code> stocke ses textures &#224; l&#8217;int&#233;rieur du fichier. Un moteur temps r&#233;el ne peut pas les utiliser l&#224; : il lui les faut comme fichiers image distincts sur le disque. &#192; l&#8217;import, Twinmotion <strong>extrait donc chaque texture int&#233;gr&#233;e et &#233;crit un dossier de textures &#224; c&#244;t&#233; du fichier import&#233;</strong>. Il en va de m&#234;me de tout format portant des textures int&#233;gr&#233;es, <code>.glb</code> compris.</p>
+    <p>Vous n&#8217;avez pas cr&#233;&#233; ce dossier et vous ne le voyez pas depuis Twinmotion : c&#8217;est exactement pour cela qu&#8217;il pose probl&#232;me.</p>
+
+    <div class="callout c-warn">
+      <span class="lbl">C&#8217;est une d&#233;pendance, pas du d&#233;sordre</span>
+      <p>Le dossier porte un nom g&#233;n&#233;r&#233; par la machine, se trouve &#224; c&#244;t&#233; de fichiers que vous avez, eux, bien cr&#233;&#233;s, et contient des images que vous n&#8217;avez jamais vues. Il ressemble exactement &#224; ce qu&#8217;une personne soigneuse supprimerait avant de rendre. Supprimez-le et vos mat&#233;riaux perdent leurs cartes.</p>
+    </div>
+
+    <p>Trois cons&#233;quences en d&#233;coulent, et la troisi&#232;me est celle qui pi&#232;ge :</p>
+    <ol>
+      <li><strong>Ne rangez jamais un dossier depuis lequel vous avez import&#233;.</strong> Si vous voulez faire du m&#233;nage, faites-le dans <code>1_source/</code>, o&#249; Twinmotion n&#8217;&#233;crit jamais.</li>
+      <li><strong>N&#8217;en modifiez jamais le contenu &#224; la main.</strong> Il est r&#233;g&#233;n&#233;r&#233; &#224; chaque r&#233;import : toute modification y sera &#233;cras&#233;e &#224; la mise &#224; jour suivante.</li>
+      <li><strong>Le lien peut survivre au fichier qui l&#8217;a cr&#233;&#233;.</strong> Enregistrez la sc&#232;ne comme nouvelle version dans un autre dossier et Twinmotion peut continuer de chercher le dossier de textures de l&#8217;import <em>d&#8217;origine</em>. Les textures disparaissent alors dans la nouvelle version tandis que l&#8217;ancienne fonctionne toujours — une fa&#231;on d&#233;routante de perdre un apr&#232;s-midi, qui frappe pr&#233;cis&#233;ment ceux qui versionnent correctement.</li>
+    </ol>
+
+    <div class="callout c-doc">
+      <span class="lbl">Document&#233;</span>
+      <p>La consigne d&#8217;import d&#8217;Epic est de conserver les textures, ou les dossiers qui les contiennent, <strong>dans le m&#234;me dossier que le fichier de g&#233;om&#233;trie</strong>. Lorsque Twinmotion ne trouve pas une ressource — cartes de texture, d&#233;cals ou fichiers IES — il signale des fichiers manquants, que l&#8217;on r&#233;sout en cliquant sur <strong>Open</strong> et en s&#233;lectionnant le dossier qui les contient.</p>
+    </div>
+
+    <div class="callout c-teach">
+      <span class="lbl">Pourquoi la structure est d&#233;coup&#233;e ainsi</span>
+      <p>Ce comportement explique l&#8217;existence de <code>2_echange/</code>, et pourquoi la <em>copie de rendu</em> de votre mod&#232;le SketchUp y r&#233;side plut&#244;t que dans <code>1_source/</code>. Twinmotion &#233;crit dans le dossier depuis lequel il importe. Regroupez tout ce qu&#8217;il importe au m&#234;me endroit et la cons&#233;quence est nette : <code>1_source/</code> n&#8217;appartient qu&#8217;&#224; vous, <code>2_echange/</code> est le seul dossier contenant du g&#233;n&#233;r&#233;, et vous savez toujours o&#249; il est s&#251;r de toucher.</p>
+    </div>
+
+    <div class="callout c-tip">
+      <span class="lbl">Pratique d&#8217;atelier</span>
+      <p>Si des textures disparaissent apr&#232;s un changement de version ou un d&#233;placement, ne r&#233;importez pas pour tout refaire. Utilisez la fen&#234;tre des fichiers manquants et pointez-la sur <code>2_echange/</code>. Refaire, c&#8217;est des heures ; relier, c&#8217;est quelques secondes.</p>
+    </div>
+
+    <h3>2.4 La règle qui rend le projet portable</h3>
     <div class="callout c-doc">
       <span class="lbl">La règle</span>
       <p>Rien de ce dont le projet dépend ne vit hors du dossier de projet. Jamais. Ni sur le Bureau, ni dans Téléchargements, ni sur un lecteur réseau, ni dans le dossier partagé de quelqu'un d'autre.</p>
@@ -1290,7 +1355,7 @@ body.show-figures .shot-todo{display:block}
       <p>Vous téléchargez un HDRI, vous le chargez directement depuis <code>Téléchargements/</code>, et tout marche parfaitement pendant six semaines. Puis vous rangez ce dossier, ou vous ouvrez le projet ailleurs, et votre ciel a disparu. <strong>Copiez les ressources dans <code>4_assets/</code> avant de les utiliser</strong>, à chaque fois, sans exception.</p>
     </div>
 
-    <h3>2.4 Nommer les fichiers pour que les noms tiennent jusqu'en semaine douze</h3>
+    <h3>2.5 Nommer les fichiers pour que les noms tiennent jusqu'en semaine douze</h3>
     <p>Vous produirez des dizaines de fichiers. Un système inventé en semaine une et suivi sans réfléchir vaut bien mieux qu'un système ingénieux abandonné en semaine trois.</p>
 
     <pre><span class="cm"># le motif</span>
@@ -1313,7 +1378,7 @@ body.show-figures .shot-todo{display:block}
       <p>Rien n'est final. À l'instant où vous nommez un fichier <code>final</code>, il vous faut un endroit pour la révision suivante, et il ne reste que de mauvaises options. Les numéros de version, eux, ne s'épuisent jamais.</p>
     </div>
 
-    <h3>2.5 Ce qui voyage réellement <span class="lv-tag lv-y3">Y3</span></h3>
+    <h3>2.6 Ce qui voyage réellement <span class="lv-tag lv-y3">Y3</span></h3>
     <p>Les types de fichiers se comportent très différemment au déplacement. Savoir lequel fait quoi indique où être vigilant.</p>
 
     <div class="tbl-wrap">
@@ -1325,6 +1390,7 @@ body.show-figures .shot-todo{display:block}
           <tr><td><code>.glb</code></td><td>Oui — binaire, textures intégrées</td><td>La raison de le préférer au <code>.gltf</code>.</td></tr>
           <tr><td><code>.gltf</code></td><td><strong>Non</strong> — les textures sont à côté, en vrac</td><td>À éviter ici. Facile de déplacer le fichier en laissant les images derrière.</td></tr>
           <tr><td>Scène Twinmotion</td><td><strong>Non</strong> — elle pointe vers vos fichiers importés</td><td>La scène et ses sources doivent voyager ensemble : c'est à cela que sert le dossier.</td></tr>
+          <tr><td>Le dossier de textures g&#233;n&#233;r&#233;</td><td><strong>Non</strong> &#8212; il est &#233;crit &#224; c&#244;t&#233; du fichier import&#233;</td><td>C&#8217;est Twinmotion qui l&#8217;a cr&#233;&#233;, pas vous. Il doit voyager avec l&#8217;import et ne pas &#234;tre rang&#233;. Voir 2.3.</td></tr>
           <tr><td>HDRI, IES, LUT, textures perso</td><td><strong>Non</strong> — référencés là où vous les avez chargés</td><td>La première cause de projet cassé. À copier dans <code>4_assets/</code>.</td></tr>
         </tbody>
       </table>
@@ -1335,7 +1401,7 @@ body.show-figures .shot-todo{display:block}
       <p>Ne raisonnez pas — testez. Copiez tout le dossier sur une clé USB, ouvrez-le sur une <em>autre machine</em>, et chargez la scène Twinmotion. Tout ce qui manque vivait hors du dossier. Faites-le en semaine trois, pas la veille du rendu.</p>
     </div>
 
-    <h3>2.6 Sauvegarder</h3>
+    <h3>2.7 Sauvegarder</h3>
     <ul>
       <li><strong>Versionnez tout le dossier</strong>, pas seulement le fichier de scène. La scène ne vaut rien sans ses sources.</li>
       <li><strong>Copiez-le ailleurs chaque semaine</strong>, et toujours avant une opération risquée — réimport, conversion Nanite, gros changement de géométrie.</li>
@@ -1343,7 +1409,7 @@ body.show-figures .shot-todo{display:block}
       <li><strong>Gardez une copie hors de la machine</strong> — disque externe ou dossier cloud dans lequel vous ne travaillez pas directement.</li>
     </ul>
 
-    <h3>2.7 Travailler en groupe</h3>
+    <h3>2.8 Travailler en groupe</h3>
     <p>Les fichiers 3D ne se fusionnent pas comme du texte. Si deux personnes modifient le même modèle, l'une des deux modifications sera perdue — aucun outil ne les réconcilie. La prévention est la seule stratégie.</p>
     <ul>
       <li><strong>Découpez le modèle par zone ou par système</strong>, et attribuez à chacun des groupes nommés que personne d'autre ne touche.</li>
@@ -1352,7 +1418,7 @@ body.show-figures .shot-todo{display:block}
       <li><strong>Désignez le propriétaire de la scène Twinmotion.</strong> Une seule personne. Les autres fournissent la géométrie.</li>
     </ul>
 
-    <h3>2.8 Le paquet de rendu</h3>
+    <h3>2.9 Le paquet de rendu</h3>
     <p>À l'étape 14, vous remettrez les trois livrables. Assemblez-les dans <code>7_rendu/</code> et vérifiez le paquet contre cette liste :</p>
     <div class="tbl-wrap">
       <table>
@@ -2142,7 +2208,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>5.5 Naming what you export</h3>
-    <p>Export filenames follow the scheme you settled in <a href="#ch2">Chapter 2.4</a> — same project prefix, same version number moving in step across every file. The one rule worth repeating here: <strong>the version number changes together</strong>. A <code>.glb</code> still at v03 imported alongside a <code>.skp</code> at v05 is exactly how a façade ends up half-revised without anyone noticing.</p>
+    <p>Export filenames follow the scheme you settled in <a href="#ch2">Chapter 2.5</a> — same project prefix, same version number moving in step across every file. The one rule worth repeating here: <strong>the version number changes together</strong>. A <code>.glb</code> still at v03 imported alongside a <code>.skp</code> at v05 is exactly how a façade ends up half-revised without anyone noticing.</p>
 
     <div class="exercise">
       <div class="hd">Stage 5 · The round trip</div>
@@ -2236,7 +2302,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>5.5 Nommer ce que vous exportez</h3>
-    <p>Les noms de vos exports suivent le système arrêté au <a href="#ch2">chapitre 2.4</a> — même préfixe de projet, même numéro de version avançant de concert sur tous les fichiers. La seule règle à répéter ici : <strong>le numéro de version change ensemble</strong>. Un <code>.glb</code> resté en v03 importé à côté d'un <code>.skp</code> en v05, c'est exactement ainsi qu'une façade se retrouve à moitié révisée sans que personne le remarque.</p>
+    <p>Les noms de vos exports suivent le système arrêté au <a href="#ch2">chapitre 2.5</a> — même préfixe de projet, même numéro de version avançant de concert sur tous les fichiers. La seule règle à répéter ici : <strong>le numéro de version change ensemble</strong>. Un <code>.glb</code> resté en v03 importé à côté d'un <code>.skp</code> en v05, c'est exactement ainsi qu'une façade se retrouve à moitié révisée sans que personne le remarque.</p>
 
     <div class="exercise">
       <div class="hd">Étape 5 · L'aller-retour</div>
@@ -4576,6 +4642,8 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         <tr><td><span class="en-only">Glass looks like an empty hole</span><span class="fr-only">Le verre ressemble à un trou vide</span></td><td><span class="en-only">Too transparent, and nothing worth reflecting</span><span class="fr-only">Trop transparent, et rien à refléter</span></td><td><span class="en-only">Reduce transparency; build the environment first → <a href="#ch7">Ch 7.4</a></span><span class="fr-only">Réduire la transparence ; construire l'environnement d'abord → <a href="#ch7">Ch. 7.4</a></span></td></tr>
         <tr><td><span class="en-only">Path tracer greyed out or missing</span><span class="fr-only">Le Path Tracer est grisé ou absent</span></td><td><span class="en-only">macOS, non-DXR GPU, under 8 GB VRAM, or DirectX 11 mode</span><span class="fr-only">macOS, GPU non DXR, moins de 8 Go VRAM, ou mode DirectX 11</span></td><td><span class="en-only">Enable DirectX 12 in Preferences; otherwise use Lumen → <a href="#ch8">Ch 8.5</a></span><span class="fr-only">Activer DirectX 12 dans les Préférences ; sinon Lumen → <a href="#ch8">Ch. 8.5</a></span></td></tr>
         <tr><td><span class="en-only">Lumen button does nothing</span><span class="fr-only">Le bouton Lumen ne fait rien</span></td><td><span class="en-only">Quality below High, or DirectX 12 not enabled</span><span class="fr-only">Qualité sous High, ou DirectX 12 non activé</span></td><td><span class="en-only">DirectX 12 → Quality High/Ultra → Lumen, in that order → <a href="#ch8">Ch 8.2</a></span><span class="fr-only">DirectX 12 → Qualité High/Ultra → Lumen, dans cet ordre → <a href="#ch8">Ch. 8.2</a></span></td></tr>
+        <tr><td><span class="en-only">Textures vanish after saving the scene as a new version</span><span class="fr-only">Les textures disparaissent apr&#232;s enregistrement d&#8217;une nouvelle version</span></td><td><span class="en-only">The scene still points at the texture folder generated for the original import</span><span class="fr-only">La sc&#232;ne pointe encore vers le dossier de textures g&#233;n&#233;r&#233; pour l&#8217;import d&#8217;origine</span></td><td><span class="en-only">Relink with the missing-files dialog, pointing at <code>2_exchange/</code> &#8594; <a href="#ch2">Ch 2.3</a></span><span class="fr-only">Reliez via la fen&#234;tre des fichiers manquants en pointant <code>2_echange/</code> &#8594; <a href="#ch2">Ch. 2.3</a></span></td></tr>
+        <tr><td><span class="en-only">Materials lose their maps after tidying the project folder</span><span class="fr-only">Les mat&#233;riaux perdent leurs cartes apr&#232;s rangement du dossier</span></td><td><span class="en-only">The generated textures folder beside the imported file was deleted</span><span class="fr-only">Le dossier de textures g&#233;n&#233;r&#233; &#224; c&#244;t&#233; du fichier import&#233; a &#233;t&#233; supprim&#233;</span></td><td><span class="en-only">Re-import to regenerate it, then never tidy a folder you import from &#8594; <a href="#ch2">Ch 2.3</a></span><span class="fr-only">R&#233;importez pour le r&#233;g&#233;n&#233;rer, puis ne rangez plus un dossier d&#8217;import &#8594; <a href="#ch2">Ch. 2.3</a></span></td></tr>
         <tr><td><span class="en-only">Materials reset after re-importing an updated model</span><span class="fr-only">Matériaux réinitialisés après réimport</span></td><td><span class="en-only">Group or object names changed in the source</span><span class="fr-only">Noms de groupes/objets modifiés à la source</span></td><td><span class="en-only">Freeze your naming scheme early → <a href="#ch6">Ch 6.6</a></span><span class="fr-only">Figer le nommage dès le départ → <a href="#ch6">Ch. 6.6</a></span></td></tr>
         <tr><td><span class="en-only">Cannot select individual objects in Twinmotion</span><span class="fr-only">Impossible de sélectionner des objets isolés</span></td><td><span class="en-only">Imported with <em>Collapse all</em>, or geometry was never grouped</span><span class="fr-only">Import en <em>Collapse all</em>, ou géométrie jamais groupée</span></td><td><span class="en-only">Group in the source model; re-import with <em>Keep hierarchy</em> → <a href="#ch3">Ch 3.3</a></span><span class="fr-only">Grouper à la source ; réimporter en <em>Keep hierarchy</em> → <a href="#ch3">Ch. 3.3</a></span></td></tr>
         <tr><td><span class="en-only">Bright single-pixel specks in a path-traced render</span><span class="fr-only">Points lumineux isolés en rendu path tracé</span></td><td><span class="en-only">Fireflies — rarely-sampled bright light paths</span><span class="fr-only">Fireflies — chemins lumineux rarement échantillonnés</span></td><td><span class="en-only">Lower <code>Fireflies</code>, raise <code>Samples per pixel</code> → <a href="#ch12">Ch 12.1</a></span><span class="fr-only">Baisser <code>Fireflies</code>, monter <code>Samples per pixel</code> → <a href="#ch12">Ch. 12.1</a></span></td></tr>
@@ -4911,6 +4979,22 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <div class="faq-body">
       <p class="en-only">It maps source-file material names to Twinmotion materials automatically on every import, so re-importing a revised model does not mean re-materialling it. Genuinely worth the setup on a project you will re-import fifteen times — and completely pointless if your materials are called <code>Material12</code>.</p>
       <p class="fr-only">Il associe automatiquement les noms de matériaux du fichier source à des matériaux Twinmotion à chaque import, pour que réimporter un modèle révisé n'implique pas de le retexturer. Réellement rentable sur un projet réimporté quinze fois — et totalement inutile si vos matériaux s'appellent <code>Material12</code>.</p>
+    </div>
+  </details>
+
+  <details class="faq" data-level="y2">
+    <summary><span class="en-only">Twinmotion created a folder next to my model that I did not make. Can I delete it?</span><span class="fr-only">Twinmotion a cr&#233;&#233; un dossier &#224; c&#244;t&#233; de mon mod&#232;le. Puis-je le supprimer ?</span></summary>
+    <div class="faq-body">
+      <p class="en-only"><strong>No.</strong> A <code>.skp</code> keeps its textures inside the file; the engine needs them as separate images on disk, so on import Twinmotion extracts them into a folder beside the file it imported. It is a dependency, not a leftover. Delete it and your materials lose their maps. It is regenerated if you re-import, so never hand-edit it either. See <a href="#ch2">Chapter 2.3</a>.</p>
+      <p class="fr-only"><strong>Non.</strong> Un <code>.skp</code> conserve ses textures &#224; l&#8217;int&#233;rieur du fichier ; le moteur les veut en images distinctes sur le disque, donc &#224; l&#8217;import Twinmotion les extrait dans un dossier voisin du fichier import&#233;. C&#8217;est une d&#233;pendance, pas un r&#233;sidu. Le supprimer fait perdre leurs cartes &#224; vos mat&#233;riaux. Il est r&#233;g&#233;n&#233;r&#233; au r&#233;import : ne le modifiez pas &#224; la main non plus. Voir le <a href="#ch2">chapitre 2.3</a>.</p>
+    </div>
+  </details>
+
+  <details class="faq" data-level="y2">
+    <summary><span class="en-only">I saved my scene as v04 and now the textures are missing, but v03 still works.</span><span class="fr-only">J&#8217;ai enregistr&#233; ma sc&#232;ne en v04 et les textures manquent, alors que la v03 fonctionne.</span></summary>
+    <div class="faq-body">
+      <p class="en-only">The new version is still looking for the texture folder that was generated for the original import, and it is not where the new scene expects. Do <em>not</em> re-import and rebuild your materials — use the missing-files dialog, click <strong>Open</strong>, and point it at the folder holding your imported files. Relinking takes seconds; rebuilding takes an evening. This is the failure that specifically catches people who version their work properly.</p>
+      <p class="fr-only">La nouvelle version cherche encore le dossier de textures g&#233;n&#233;r&#233; pour l&#8217;import d&#8217;origine, absent de l&#8217;endroit attendu. Ne r&#233;importez <em>pas</em> pour refaire vos mat&#233;riaux — utilisez la fen&#234;tre des fichiers manquants, cliquez sur <strong>Open</strong>, et pointez le dossier de vos fichiers import&#233;s. Relier prend quelques secondes ; refaire prend une soir&#233;e. C&#8217;est la panne qui frappe pr&#233;cis&#233;ment ceux qui versionnent correctement.</p>
     </div>
   </details>
 
