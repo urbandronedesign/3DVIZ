@@ -2749,7 +2749,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   <h2 class="chapter en-only">Materials &amp; PBR</h2>
   <h2 class="chapter fr-only">Matériaux &amp; PBR</h2>
   <div class="en-only">
-    <p>Materials are where a render most obviously separates from professional work, and it is almost never about texture resolution. It is about understanding what the four PBR channels actually describe.</p>
+    <p>Materials are where a render most obviously separates from professional work, and it is almost never about texture resolution. It is about understanding what the four PBR channels actually describe. Sections 7.7 to 7.10 explain what is happening underneath, and how a material is built from a downloaded texture set — read them the moment a material defeats you and you cannot say why.</p>
 
     <h3>7.1 PBR in four channels</h3>
     <p>Physically Based Rendering describes a surface by measurable physical properties rather than by artistic sliders. Four channels do nearly all the work.</p>
@@ -2859,6 +2859,126 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li><strong>Use the substitution <code>.csv</code></strong> from Chapter 6 once your material names are stable. On a project you re-import repeatedly, this turns twenty minutes of re-materialling into zero.</li>
     </ul>
 
+        <h3>7.7 Under the surface: what a material actually is</h3>
+    <p>The four sections above are enough to work with. This one explains what is happening underneath, and it is the difference between fixing a material and swapping it at random until something looks acceptable.</p>
+
+    <div class="callout c-teach">
+      <span class="lbl">The idea in one sentence</span>
+      <p>A material is not a picture stuck onto a surface. It is a set of instructions describing <em>how light behaves when it arrives there</em>.</p>
+    </div>
+
+    <p>For every pixel it draws, Twinmotion asks the same questions: how much light is arriving here, how much bounces straight back off the surface, how much sinks in and scatters back out, and in which directions. Your material supplies the answers. The texture image is only one of them.</p>
+
+    <h4>Energy conservation, and why it is the whole point</h4>
+    <p>A physically based material cannot return more light than it receives. That single constraint is what makes PBR predictable, and it is the reason this chapter is worth your time:</p>
+
+    <div class="callout c-doc">
+      <span class="lbl">Why it matters</span>
+      <p><strong>Set roughness and metallic honestly, and the material behaves correctly under any lighting you later put it in</strong> — a low winter sun, an overcast sky, a dim interior at dusk. You light the scene once and every surface responds properly. Fake a material until it looks right at three in the afternoon and you will be faking it again at every other hour, in every other scene, for the rest of the project.</p>
+    </div>
+
+    <h4>Metals and everything else</h4>
+    <p>This is the physical distinction the <code>Metallic</code> channel encodes, and knowing it makes the channel obvious rather than arbitrary.</p>
+    <ul>
+      <li><strong>A non-metal</strong> — paint, stone, timber, plastic, fabric. Light hits it: some reflects straight off the surface as an uncoloured highlight, the rest sinks in, bounces around among the pigment particles, and comes back out <em>carrying the colour of those pigments</em>. That re-emerging light is what you see as the material's colour.</li>
+      <li><strong>A raw metal</strong> — aluminium, brass, copper. Its free electrons absorb light that enters almost immediately, so nothing scatters back out. There is <em>no</em> colour beneath the reflection; all you ever see is the reflection itself — and in a metal the reflection is tinted. That is why gold looks gold rather than being a grey mirror with yellow paint under it.</li>
+    </ul>
+    <p>Two consequences follow directly. <strong>Metallic is effectively a switch</strong>, because a surface either has free electrons or it does not — there is no halfway. And on a metallic material, the base colour is describing the <em>tint of the reflection</em>, not a colour underneath it.</p>
+
+    <h4>Roughness is a description of microscopic geometry</h4>
+    <p>Any surface is faceted if you look closely enough. Roughness describes how varied the angles of those microscopic facets are.</p>
+    <ul>
+      <li><strong>Low roughness</strong> — the facets point almost the same way, so reflected rays stay together and you see a coherent, mirror-like image.</li>
+      <li><strong>High roughness</strong> — the facets point every which way, so reflected rays scatter and the reflection spreads into a broad, soft sheen.</li>
+    </ul>
+    <p>So roughness is not "how shiny", and treating it as a shininess dial is exactly why so many student renders look like moulded plastic. It is a statement about how organised the surface is at a scale you cannot see — and every real material has an answer to that question.</p>
+
+    <h3>7.8 The maps, one by one</h3>
+    <p>A downloaded material arrives as a set of images. Each one answers a different question, and each has a home in Twinmotion.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Map</th><th>What it encodes</th><th>Where it goes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Base colour</strong><br><span class="lv-tag">albedo · diffuse</span></td>
+              <td>The colour of the surface under neutral white light, with <strong>no lighting, shadow or highlight baked into it</strong>. A photograph with shadows in it will be lit a second time by the engine and read as dirt.</td>
+              <td><strong>Color</strong>. Its alpha channel can also carry an opacity mask.</td></tr>
+          <tr><td><strong>Roughness</strong></td>
+              <td>Greyscale. Twinmotion documents <strong>white as rough, black as smooth and reflective</strong>. Variation here is what stops a surface reading as manufactured.</td>
+              <td><strong>Roughness</strong> (labelled <em>Reflection</em> in some versions).</td></tr>
+          <tr><td><strong>Metallic</strong></td>
+              <td>Greyscale, but effectively binary: white is full metal, black is not metal. Only needed for materials that actually contain bare metal.</td>
+              <td><strong>Metallic</strong>.</td></tr>
+          <tr><td><strong>Normal</strong></td>
+              <td>The oddest-looking file in the set — a lilac-blue image whose red, green and blue values encode <em>which way the surface faces</em> at every texel. It tilts how light reflects, faking relief without adding a single polygon.</td>
+              <td><strong>Normal</strong>, under the Bump settings.</td></tr>
+          <tr><td><strong>Height</strong><br><span class="lv-tag">displacement</span></td>
+              <td>Greyscale depth: white is high, black is low. Where a normal map only tilts the light, height can shift what you see, so deep mortar joints look genuinely recessed at grazing angles.</td>
+              <td><strong>Height</strong>, once you enable <strong>Parallax</strong>.</td></tr>
+          <tr><td><strong>Ambient occlusion</strong></td>
+              <td>Where the surface shades itself — the darkening deep in a mortar joint or a plank groove that ambient light never reaches.</td>
+              <td>Optional. Lumen and the Path Tracer compute much of this themselves.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout c-warn">
+      <span class="lbl">The normal map is not a texture</span>
+      <p>It is not meant to be looked at, and it must never be plugged into Color. If a wall comes out lilac, that is what has happened. Equally, a normal map pushed too hard reads as embossed plastic — the relief is a lie the light is telling, and past a certain strength the eye stops believing it.</p>
+    </div>
+
+    <h3>7.9 Building a material from a downloaded set</h3>
+    <p><a href="https://polyhaven.com/textures" target="_blank" rel="noopener">Poly Haven</a> is the most useful source for this course, and the one worth learning properly. Its textures are scanned, seamless, and come with the full map set described above.</p>
+
+    <div class="callout c-doc">
+      <span class="lbl">Documented — the licence</span>
+      <p>Poly Haven assets are released under <a href="https://polyhaven.com/license" target="_blank" rel="noopener">CC0</a>, effectively public domain: <em>"You can use our assets for any purpose, including commercial work"</em>, <em>"You do not need to give credit or attribution when using them (although it is appreciated)"</em>, and you may redistribute them. There is no licensing question to worry about in a student project, a portfolio, or later in practice.</p>
+    </div>
+
+    <h4>The step that catches everyone</h4>
+    <div class="callout c-warn">
+      <span class="lbl">Download 2K, not 8K</span>
+      <p>Poly Haven offers resolutions up to 8K and beyond. Twinmotion's own documentation recommends power-of-two textures and <strong>advises against exceeding 2048&nbsp;×&nbsp;2048</strong>. An 8K set is sixteen times the pixels of a 2K set, per map, for a wall nobody will stand closer than two metres to. Download <strong>2K</strong> unless you have a specific reason not to, and take <strong>PNG</strong>, which Twinmotion's documentation also recommends. A scene that stutters is very often a scene full of 8K downloads.</p>
+    </div>
+
+    <h4>The sequence</h4>
+    <ol>
+      <li><strong>Choose the material for the construction, not the thumbnail.</strong> If you are specifying fair-faced concrete, find fair-faced concrete.</li>
+      <li><strong>Download the 2K PNG set</strong> and put it in <code>4_assets/textures/</code> — inside the project folder, as Chapter 2 requires, never left in Downloads.</li>
+      <li><strong>Pick the surface</strong> in Twinmotion with the material picker (<kbd>T</kbd>).</li>
+      <li><strong>Load the maps</strong> into Color, Roughness, Metallic if the material is bare metal, and Normal.</li>
+      <li><strong>Enable Parallax and load the height map</strong> if the surface has real relief — brick, board-marked concrete, deep timber grain. Skip it for anything flat.</li>
+      <li><strong>Set the real-world size.</strong> Poly Haven states the physical dimensions each texture covers on its own page. Enter that, and your brick is 215&nbsp;mm because it is 215&nbsp;mm, not because you nudged a slider until it looked plausible.</li>
+    </ol>
+
+    <div class="callout c-tip">
+      <span class="lbl">Studio practice — a starting set</span>
+      <p>Four or five materials cover most student projects. Worth downloading once and keeping: a fair-faced concrete, a brick, a timber, a plaster, and a ground surface. For example <a href="https://polyhaven.com/a/concrete_wall_008" target="_blank" rel="noopener">concrete_wall_008</a>, <a href="https://polyhaven.com/a/red_brick_03" target="_blank" rel="noopener">red_brick_03</a>, <a href="https://polyhaven.com/a/wood_planks" target="_blank" rel="noopener">wood_planks</a>, <a href="https://polyhaven.com/a/rough_plaster_broken" target="_blank" rel="noopener">rough_plaster_broken</a> and <a href="https://polyhaven.com/a/large_sandstone_blocks" target="_blank" rel="noopener">large_sandstone_blocks</a>. Build them once, name them to your Chapter 2 scheme, and they will serve every project this year.</p>
+    </div>
+
+    <h3>7.10 When a material looks wrong</h3>
+    <p>Almost every material fault traces to one map. Read the symptom, not the material.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>What you see</th><th>Which map</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td>Everything looks like moulded plastic</td><td>Roughness</td><td>It is flat at a mid value. Load the roughness map, or vary it.</td></tr>
+          <tr><td>The surface is flat and lifeless</td><td>Normal</td><td>Not loaded. This is the map that does most of the visible work.</td></tr>
+          <tr><td>The relief reads as embossed plastic</td><td>Normal</td><td>Pushed too hard. Reduce the intensity.</td></tr>
+          <tr><td>The wall is lilac-blue</td><td>Normal</td><td>Loaded into Color by mistake.</td></tr>
+          <tr><td>Metal looks like grey plastic</td><td>Metallic</td><td>Off. Turn it on for bare metal only.</td></tr>
+          <tr><td>Painted steel looks like raw steel</td><td>Metallic</td><td>On when it should be off — paint is not a metal.</td></tr>
+          <tr><td>The material looks dirty or muddy</td><td>Base colour</td><td>Lighting is baked into it. Find a proper albedo.</td></tr>
+          <tr><td>A visible pattern repeats across the façade</td><td>Scale</td><td>Tiling. Larger texture, added variation, or split into two materials.</td></tr>
+          <tr><td>The brick is the wrong size</td><td>Scale</td><td>Real-world dimensions never set. Check against a figure.</td></tr>
+          <tr><td>It looked right at midday and wrong at dusk</td><td>All of them</td><td>The values were tuned by eye rather than set honestly. This is what 7.7 is about.</td></tr>
+          <tr><td>The scene stutters after adding materials</td><td>Resolution</td><td>8K downloads. Replace with 2K.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+
     <div class="exercise">
       <div class="hd">Stage 7 · The material palette</div>
       <h4>What you do</h4>
@@ -2875,7 +2995,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>C’est sur les matériaux qu’un rendu se sépare le plus visiblement d’un travail professionnel, et presque jamais pour une question de résolution de texture. Tout tient à ce que décrivent réellement les quatre canaux PBR.</p>
+    <p>C’est sur les matériaux qu’un rendu se sépare le plus visiblement d’un travail professionnel, et presque jamais pour une question de résolution de texture. Tout tient à ce que décrivent réellement les quatre canaux PBR. Les sections 7.7 à 7.10 expliquent ce qui se passe en dessous, et comment se fabrique un matériau à partir d’un jeu de textures téléchargé : lisez-les dès qu’un matériau vous résiste sans que vous sachiez dire pourquoi.</p>
 
     <h3>7.1 Le PBR en quatre canaux</h3>
     <p>Le rendu physiquement réaliste décrit une surface par des grandeurs mesurables, non par des curseurs d’artiste. Quatre canaux suffisent à presque tout.</p>
@@ -2983,6 +3103,126 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       </svg>
       <figcaption>Fig 6.1  : L’échelle des textures est une décision de dessin, pas de décoration. Seul le mur du milieu dit la vérité sur le bâtiment.</figcaption>
     </figure>
+
+        <h3>7.7 Sous la surface : ce qu’est réellement un matériau</h3>
+    <p>Les quatre sections précédentes suffisent pour travailler. Celle-ci explique ce qui se passe en dessous, et c’est toute la différence entre réparer un matériau et en essayer d’autres au hasard jusqu’à ce que l’un paraisse acceptable.</p>
+
+    <div class="callout c-teach">
+      <span class="lbl">L’idée en une phrase</span>
+      <p>Un matériau n’est pas une image collée sur une surface, mais un jeu d’instructions décrivant <em>le comportement de la lumière lorsqu’elle y arrive</em>.</p>
+    </div>
+
+    <p>Pour chaque pixel dessiné, Twinmotion pose les mêmes questions : combien de lumière arrive ici, combien repart directement de la surface, combien y pénètre avant d’en ressortir dispersée, et dans quelles directions. Votre matériau fournit les réponses. L’image de texture n’en est qu’une parmi d’autres.</p>
+
+    <h4>La conservation de l’énergie, et pourquoi tout tient là</h4>
+    <p>Un matériau physiquement réaliste ne peut pas renvoyer plus de lumière qu’il n’en reçoit. Cette seule contrainte rend le PBR prévisible, et justifie à elle seule le temps passé sur ce chapitre :</p>
+
+    <div class="callout c-doc">
+      <span class="lbl">Pourquoi cela compte</span>
+      <p><strong>Réglez honnêtement la rugosité et la métallicité, et le matériau se comportera correctement sous n’importe quel éclairage</strong> : soleil rasant d’hiver, ciel couvert, intérieur crépusculaire. Vous éclairez la scène une fois et chaque surface réagit juste. Truquez au contraire un matériau jusqu’à ce qu’il rende bien à quinze heures, et vous le truquerez de nouveau à chaque heure, dans chaque scène, jusqu’à la fin du projet.</p>
+    </div>
+
+    <h4>Les métaux et tout le reste</h4>
+    <p>Voilà la distinction physique qu’encode le canal <code>Metallic</code>. La connaître rend ce canal évident au lieu d’arbitraire.</p>
+    <ul>
+      <li><strong>Un non-métal</strong> : peinture, pierre, bois, plastique, textile. La lumière le frappe ; une partie repart aussitôt de la surface en reflet non coloré, le reste y pénètre, rebondit parmi les pigments et ressort <em>chargé de la couleur de ces pigments</em>. Cette lumière ressortie, c’est ce que vous percevez comme la couleur du matériau.</li>
+      <li><strong>Un métal nu</strong> : aluminium, laiton, cuivre. Ses électrons libres absorbent presque instantanément la lumière qui entre, si bien que rien ne ressort. Il n’y a <em>aucune</em> couleur sous le reflet ; vous ne voyez jamais que le reflet lui-même, et dans un métal ce reflet est teinté. C’est pourquoi l’or paraît doré, au lieu d’être un miroir gris recouvert de peinture jaune.</li>
+    </ul>
+    <p>Deux conséquences en découlent directement. <strong>La métallicité est un interrupteur</strong>, car une surface possède ou non des électrons libres, sans demi-mesure. Et sur un matériau métallique, la couleur de base décrit <em>la teinte du reflet</em>, non une couleur située dessous.</p>
+
+    <h4>La rugosité décrit une géométrie microscopique</h4>
+    <p>Toute surface est facettée pour peu qu’on la regarde d’assez près. La rugosité décrit à quel point les angles de ces micro-facettes varient.</p>
+    <ul>
+      <li><strong>Rugosité faible</strong> : les facettes pointent presque toutes dans la même direction, les rayons réfléchis restent groupés, et l’on voit une image cohérente, proche du miroir.</li>
+      <li><strong>Rugosité forte</strong> : les facettes pointent dans tous les sens, les rayons se dispersent, et le reflet s’étale en un voile large et doux.</li>
+    </ul>
+    <p>La rugosité n’est donc pas « le degré de brillance », et la traiter comme un curseur de brillance explique très exactement l’aspect plastique moulé de tant de rendus. C’est une affirmation sur le degré d’organisation de la surface à une échelle invisible, et tout matériau réel a une réponse à cette question.</p>
+
+    <h3>7.8 Les cartes, une par une</h3>
+    <p>Un matériau téléchargé arrive sous forme d’un jeu d’images. Chacune répond à une question différente et chacune a sa place dans Twinmotion.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Carte</th><th>Ce qu’elle encode</th><th>Où elle va</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Couleur de base</strong><br><span class="lv-tag">albédo · diffus</span></td>
+              <td>La couleur de la surface sous une lumière blanche neutre, <strong>sans le moindre éclairage, ombre ou reflet incorporé</strong>. Une photographie contenant des ombres sera éclairée une seconde fois par le moteur et se lira comme de la saleté.</td>
+              <td><strong>Color</strong>. Son canal alpha peut en outre porter un masque d’opacité.</td></tr>
+          <tr><td><strong>Rugosité</strong></td>
+              <td>Niveaux de gris. Twinmotion documente le <strong>blanc comme rugueux, le noir comme lisse et réfléchissant</strong>. C’est la variation ici qui empêche une surface de se lire comme industrielle.</td>
+              <td><strong>Roughness</strong> (intitulé <em>Reflection</em> selon les versions).</td></tr>
+          <tr><td><strong>Métallicité</strong></td>
+              <td>En niveaux de gris, mais binaire en pratique : blanc = métal plein, noir = non-métal. Utile aux seuls matériaux contenant réellement du métal nu.</td>
+              <td><strong>Metallic</strong>.</td></tr>
+          <tr><td><strong>Normale</strong></td>
+              <td>Le fichier le plus étrange du lot : une image bleu-lilas dont les valeurs de rouge, vert et bleu encodent <em>l’orientation de la surface</em> en chaque texel. Elle incline la réflexion de la lumière et simule un relief sans ajouter un seul polygone.</td>
+              <td><strong>Normal</strong>, dans les réglages Bump.</td></tr>
+          <tr><td><strong>Hauteur</strong><br><span class="lv-tag">displacement</span></td>
+              <td>Profondeur en niveaux de gris : blanc en haut, noir en bas. Là où la normale se contente d’incliner la lumière, la hauteur décale ce que l’on voit, si bien qu’un joint creux paraît réellement creux en lumière rasante.</td>
+              <td><strong>Height</strong>, une fois <strong>Parallax</strong> activé.</td></tr>
+          <tr><td><strong>Occlusion ambiante</strong></td>
+              <td>Là où la surface s’ombre elle-même : l’assombrissement au fond d’un joint de mortier ou d’une rainure, où la lumière ambiante n’accède jamais.</td>
+              <td>Facultative. Lumen et le Path Tracer en calculent déjà l’essentiel.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout c-warn">
+      <span class="lbl">La carte de normales n’est pas une texture</span>
+      <p>Elle n’est pas faite pour être regardée et ne doit jamais atterrir dans Color. Si un mur ressort bleu-lilas, c’est ce qui s’est produit. De même, une normale poussée trop fort se lit comme du plastique gaufré : le relief est un mensonge que raconte la lumière, et passé une certaine intensité l’œil cesse d’y croire.</p>
+    </div>
+
+    <h3>7.9 Construire un matériau à partir d’un jeu téléchargé</h3>
+    <p><a href="https://polyhaven.com/textures" target="_blank" rel="noopener">Poly Haven</a> est la source la plus utile pour ce cours, et celle qui mérite d’être apprise sérieusement. Ses textures sont scannées, sans raccord, et livrées avec le jeu de cartes complet décrit ci-dessus.</p>
+
+    <div class="callout c-doc">
+      <span class="lbl">Documenté — la licence</span>
+      <p>Les ressources de Poly Haven sont publiées sous <a href="https://polyhaven.com/license" target="_blank" rel="noopener">CC0</a>, c’est-à-dire dans le domaine public : « <em>vous pouvez utiliser nos ressources à toutes fins, y compris commerciales</em> », « <em>vous n’avez pas à créditer ni à mentionner leur origine, même si cela reste apprécié</em> », et vous pouvez les redistribuer. Aucune question de licence à se poser, ni dans un projet d’étudiant, ni dans un portfolio, ni plus tard en agence.</p>
+    </div>
+
+    <h4>L’étape qui piège tout le monde</h4>
+    <div class="callout c-warn">
+      <span class="lbl">Téléchargez en 2K, pas en 8K</span>
+      <p>Poly Haven propose des résolutions jusqu’à 8K et au-delà. La documentation de Twinmotion recommande des textures en puissance de deux et <strong>déconseille de dépasser 2048&nbsp;×&nbsp;2048</strong>. Un jeu 8K représente seize fois plus de pixels qu’un jeu 2K, par carte, pour un mur dont personne n’approchera à moins de deux mètres. Téléchargez en <strong>2K</strong> sauf raison précise, et prenez du <strong>PNG</strong>, que la documentation recommande également. Une scène qui saccade est très souvent une scène pleine de téléchargements 8K.</p>
+    </div>
+
+    <h4>La marche à suivre</h4>
+    <ol>
+      <li><strong>Choisissez le matériau pour la construction, pas pour la vignette.</strong> Si vous prescrivez du béton brut de décoffrage, cherchez du béton brut de décoffrage.</li>
+      <li><strong>Téléchargez le jeu 2K en PNG</strong> et rangez-le dans <code>4_assets/textures/</code>, à l’intérieur du dossier de projet comme l’exige le chapitre 2, jamais laissé dans Téléchargements.</li>
+      <li><strong>Désignez la surface</strong> dans Twinmotion avec la pipette à matériaux (<kbd>T</kbd>).</li>
+      <li><strong>Chargez les cartes</strong> dans Color, Roughness, Metallic si le matériau est un métal nu, et Normal.</li>
+      <li><strong>Activez Parallax et chargez la carte de hauteur</strong> si la surface a un relief réel : brique, béton banché, bois profondément veiné. Passez si la surface est plane.</li>
+      <li><strong>Réglez la taille réelle.</strong> Poly Haven indique sur chaque page les dimensions physiques couvertes par la texture. Saisissez-les, et votre brique fera 215&nbsp;mm parce qu’elle fait 215&nbsp;mm, non parce que vous avez poussé un curseur jusqu’à ce que cela paraisse plausible.</li>
+    </ol>
+
+    <div class="callout c-tip">
+      <span class="lbl">Pratique d’atelier — un jeu de départ</span>
+      <p>Quatre ou cinq matériaux couvrent la plupart des projets étudiants. À télécharger une fois et à conserver : un béton brut, une brique, un bois, un enduit et un sol. Par exemple <a href="https://polyhaven.com/a/concrete_wall_008" target="_blank" rel="noopener">concrete_wall_008</a>, <a href="https://polyhaven.com/a/red_brick_03" target="_blank" rel="noopener">red_brick_03</a>, <a href="https://polyhaven.com/a/wood_planks" target="_blank" rel="noopener">wood_planks</a>, <a href="https://polyhaven.com/a/rough_plaster_broken" target="_blank" rel="noopener">rough_plaster_broken</a> et <a href="https://polyhaven.com/a/large_sandstone_blocks" target="_blank" rel="noopener">large_sandstone_blocks</a>. Constituez-les une fois, nommez-les selon votre système du chapitre 2, et ils serviront toute l’année.</p>
+    </div>
+
+    <h3>7.10 Quand un matériau paraît faux</h3>
+    <p>Presque tout défaut de matériau remonte à une seule carte. Lisez le symptôme, pas le matériau.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Ce que vous voyez</th><th>Quelle carte</th><th>Que faire</th></tr></thead>
+        <tbody>
+          <tr><td>Tout ressemble à du plastique moulé</td><td>Rugosité</td><td>Elle est plate, à une valeur moyenne. Chargez la carte de rugosité, ou faites-la varier.</td></tr>
+          <tr><td>La surface est plate et sans vie</td><td>Normale</td><td>Non chargée. C’est la carte qui fait l’essentiel du travail visible.</td></tr>
+          <tr><td>Le relief se lit comme du plastique gaufré</td><td>Normale</td><td>Poussée trop fort. Réduisez l’intensité.</td></tr>
+          <tr><td>Le mur est bleu-lilas</td><td>Normale</td><td>Chargée dans Color par erreur.</td></tr>
+          <tr><td>Le métal ressemble à du plastique gris</td><td>Métallicité</td><td>Désactivée. Ne l’activez que pour du métal nu.</td></tr>
+          <tr><td>L’acier peint ressemble à de l’acier brut</td><td>Métallicité</td><td>Activée alors qu’elle ne devrait pas : la peinture n’est pas un métal.</td></tr>
+          <tr><td>Le matériau paraît sale ou boueux</td><td>Couleur de base</td><td>De l’éclairage y est incorporé. Trouvez un vrai albédo.</td></tr>
+          <tr><td>Un motif se répète visiblement sur la façade</td><td>Échelle</td><td>Répétition. Texture plus grande, variation ajoutée, ou deux matériaux distincts.</td></tr>
+          <tr><td>La brique n’a pas la bonne taille</td><td>Échelle</td><td>Dimensions réelles jamais renseignées. Vérifiez contre un personnage.</td></tr>
+          <tr><td>Correct à midi, faux au crépuscule</td><td>Toutes</td><td>Les valeurs ont été réglées à l’œil au lieu d’être posées honnêtement. C’est tout le propos du 7.7.</td></tr>
+          <tr><td>La scène saccade depuis l’ajout des matériaux</td><td>Résolution</td><td>Téléchargements en 8K. Remplacez par du 2K.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
 
     <div class="exercise">
       <div class="hd">Étape 7 · La palette de matériaux</div>
