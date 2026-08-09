@@ -5,3 +5,6 @@ desktop.ini
 
 # Working files not part of the published manual
 architectural_twinmotion_2026_workflow-v5.html
+
+# raw texture downloads: large, and only used to generate the small embedded previews
+textures-src/

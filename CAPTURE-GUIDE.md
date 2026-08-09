@@ -36,7 +36,7 @@ Six dialogs and panels. Roughly forty minutes in total, and they can all be done
 | `09-01-lumen-surface-view.png`<br>**and this one second** | With Lumen active, click the **viewport mode icon in the upper-right corner of the viewport**. Leave the dropdown open with **Lumen surface** highlighted. | The dropdown position is unmistakable. Students hunt for a "Dev Tools" menu that does not exist — this image is what stops that. |
 | `11-01-pathtracer-settings.png` | **Properties > Ambience > Render**, switch to Path tracer, expand its settings. | Quality, Samples per pixel, Max bounces, Emissive materials, Denoiser and Fireflies all visible with their values. |
 | `02-02-purge-dialog.png` | SketchUp → **Window > Model Info > Statistics**. | Face and edge counts and the *Purge Unused* button in the same frame. Use a heavy model so the numbers are alarming. |
-| `02-03-outliner-naming.png` | SketchUp Outliner panel, on a properly organised model. | The naming scheme is legible and clearly systematic. This is the picture of what Stage 2 asks for. |
+| `02-03-outliner-naming.png` | SketchUp Outliner panel, on a properly organised model. | The naming scheme is legible and clearly systematic. This is the picture of what Stage 3 asks for. |
 | `04-01-rhino-glb-export.png` | Rhino → **File > Export Selected**, choose glTF Binary, let the options dialog open. | Material, texture and mesh options readable. McNeel changes these labels between versions — capture the version your cohort actually runs. |
 
 ## Group 2 — Comparisons from a real project
@@ -45,11 +45,11 @@ These five come out of a teaching model. Every one is something the stages alrea
 
 | Filename | What to render | Comes from |
 |---|---|---|
-| `11-02-sample-comparison.png` | One interior at 64, 256 and 2048 samples. Crop all three to the **same dark shadow region** at 100% zoom and label the render times. The crop is the point — full-frame images at these settings look nearly identical. | Stage 11 |
-| `07-01-engine-comparison.png` | The identical view in Standard, Lumen and Path Tracer, camera and lights untouched, render time under each. | Stage 7 |
-| `08-02-four-hours.png` | One façade at four times across two seasons, correct north offset set. Best if the low winter sun visibly models the depth that midsummer flattens. | Stage 8 |
-| `09-03-light-leak-real.png` | A real interior with a visible floor–wall glow, and the same camera after re-importing with Keep hierarchy and adding thickness. The diagram explains the mechanism; this proves it happens. | Stage 9 |
-| `10-02-focal-lengths.png` | The same interior at 16, 28 and 50 mm from an identical point, so the space appears to change size while the room does not. | Stage 10 |
+| `11-02-sample-comparison.png` | One interior at 64, 256 and 2048 samples. Crop all three to the **same dark shadow region** at 100% zoom and label the render times. The crop is the point — full-frame images at these settings look nearly identical. | Stage 12 |
+| `07-01-engine-comparison.png` | The identical view in Standard, Lumen and Path Tracer, camera and lights untouched, render time under each. | Stage 8 |
+| `08-02-four-hours.png` | One façade at four times across two seasons, correct north offset set. Best if the low winter sun visibly models the depth that midsummer flattens. | Stage 9 |
+| `09-03-light-leak-real.png` | A real interior with a visible floor–wall glow, and the same camera after re-importing with Keep hierarchy and adding thickness. The diagram explains the mechanism; this proves it happens. | Stage 10 |
+| `10-02-focal-lengths.png` | The same interior at 16, 28 and 50 mm from an identical point, so the space appears to change size while the room does not. | Stage 11 |
 
 ---
 
@@ -63,13 +63,13 @@ If you do not, a strong student project works — with their written permission 
 
 | Shot | Chapter | Section |
 |---|---|---|
-| `02-02`, `02-03` | 2 | Model hygiene |
-| `04-01` | 4 | Exporting |
-| `05-01` | 5 | Import options |
-| `07-01` | 7 | Choosing an engine |
-| `08-02` | 8 | Exterior lighting |
-| `09-01`, `09-03` | 9 | Interior lighting |
-| `10-02` | 10 | Cameras |
-| `11-01`, `11-02` | 11 | Stills and the Path Tracer |
+| `02-02`, `02-03` | 3 | Model hygiene |
+| `04-01` | 5 | Exporting |
+| `05-01` | 6 | Import options |
+| `07-01` | 8 | Choosing an engine |
+| `08-02` | 9 | Exterior lighting |
+| `09-01`, `09-03` | 10 | Interior lighting |
+| `10-02` | 11 | Cameras |
+| `11-01`, `11-02` | 12 | Stills and the Path Tracer |
 
-Each has a slot in both the English and the French edition; one file fills both.
+Each has a slot in both the English and the French edition; one file fills both. The numeric prefix in a filename is a stable identifier only — it no longer matches the chapter number, so use the table above rather than the prefix.
