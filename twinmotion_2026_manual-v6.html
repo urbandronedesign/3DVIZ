@@ -252,6 +252,12 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
   h3,h4{page-break-after:avoid}
 }
 
+
+/* unfilled figure slots are hidden from readers; append ?figures to the URL to reveal them */
+.shot:not(.has-image){display:none}
+body.show-figures .shot:not(.has-image){display:block}
+body.show-figures .shot-todo{display:block}
+
 /* ===== diagrams ===== */
 .diagram{margin:2.2rem 0}
 .diagram svg{width:100%; height:auto; display:block; overflow:visible}
@@ -362,7 +368,6 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
   <a href="#troubleshoot"><span class="en-only">Symptom → Fix index</span><span class="fr-only">Index Symptôme → Solution</span></a>
   <a href="#faq"><span class="en-only">Student FAQ</span><span class="fr-only">FAQ Étudiants</span></a>
   <a href="#glossary"><span class="en-only">Glossary EN/FR</span><span class="fr-only">Glossaire EN/FR</span></a>
-  <a href="#shotlist"><span class="en-only">Screenshot capture guide</span><span class="fr-only">Guide de capture</span></a>
 </nav>
 
 <!-- ======================= MAIN ======================= -->
@@ -660,10 +665,10 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
   <div class="callout c-fix">
     <span class="lbl">4 — Path Tracer <span class="en-only">is Windows-only</span><span class="fr-only">est réservé à Windows</span></span>
     <div class="en-only">
-      <p><strong>v5 omitted this entirely.</strong> The Path Tracer is supported on <strong>Windows only</strong>, requires DirectX 12 (DXR), an NVIDIA RTX card (except the T1000) or AMD RX 6000 series or newer, and at least <strong>8 GB of VRAM</strong>. Any student on a Mac, or on a laptop with integrated graphics, cannot use it at all and must plan their deliverable around Lumen. This has to be said on day one, not discovered in week ten.</p>
+      <p><strong>v5 omitted this entirely.</strong> The Path Tracer is supported on <strong>Windows only</strong>, requires DirectX 12 (DXR), an NVIDIA RTX card (except the T1000) or AMD RX 6000 series or newer, and at least <strong>8 GB of VRAM</strong>. If you are on a Mac, or on a laptop with integrated graphics, you cannot use it at all and should plan your deliverables around Lumen. Far better to know that on day one than to discover it in week ten.</p>
     </div>
     <div class="fr-only">
-      <p><strong>La v5 l'omettait totalement.</strong> Le Path Tracer fonctionne <strong>uniquement sous Windows</strong>, exige DirectX 12 (DXR), une carte NVIDIA RTX (sauf la T1000) ou AMD RX 6000 ou supérieure, et au moins <strong>8 Go de VRAM</strong>. Tout étudiant sur Mac, ou sur un portable à carte graphique intégrée, ne peut pas l'utiliser du tout et doit concevoir son livrable autour de Lumen. Cela doit être dit dès le premier jour, pas découvert en semaine dix.</p>
+      <p><strong>La v5 l'omettait totalement.</strong> Le Path Tracer fonctionne <strong>uniquement sous Windows</strong>, exige DirectX 12 (DXR), une carte NVIDIA RTX (sauf la T1000) ou AMD RX 6000 ou supérieure, et au moins <strong>8 Go de VRAM</strong>. Si vous êtes sur Mac, ou sur un portable à carte graphique intégrée, vous ne pouvez pas l'utiliser du tout et devez concevoir vos livrables autour de Lumen. Mieux vaut le savoir dès le premier jour que le découvrir en semaine dix.</p>
     </div>
   </div>
 
@@ -690,7 +695,7 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
   <h2 class="chapter fr-only">Le pipeline, de bout en bout</h2>
 
   <div class="en-only">
-    <p>Before any button gets pressed, you need a mental model of what is actually happening when a building you drew in SketchUp appears inside Twinmotion. Almost every problem students hit in this course is a consequence of not having that model.</p>
+    <p>Before any button gets pressed, you need a mental model of what is actually happening when a building you drew in SketchUp appears inside Twinmotion. Almost every problem you will hit in this course comes from not having that model.</p>
 
     <h3>1.1 Three programs, three completely different ideas of what a wall is</h3>
     <p>This is the single most useful thing in the chapter.</p>
@@ -739,8 +744,8 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
 </pre>
 
     <div class="callout c-tip">
-      <span class="lbl">Where the marks are lost</span>
-      <p>In our experience marking this module, stage 4 accounts for more failed submissions than stages 5, 6 and 7 combined — and stage 4 failures are almost always caused by skipping stage 2. Ten minutes of model hygiene saves an evening of Twinmotion firefighting.</p>
+      <span class="lbl">Where projects go wrong</span>
+      <p>Stage 4 is where most projects break, and a stage 4 problem is almost always a stage 2 problem that was skipped. If your import behaves strangely, the cause is in your model, not in Twinmotion. Ten minutes of model hygiene saves an evening of firefighting — which is why the next chapter is the highest-value hour in the course.</p>
     </div>
 
     <h3>1.4 Iteration is normal — plan for the round trip</h3>
@@ -817,7 +822,7 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
   </div>
 
   <div class="fr-only">
-    <p>Avant d'appuyer sur le moindre bouton, il vous faut un modèle mental de ce qui se passe réellement lorsqu'un bâtiment dessiné dans SketchUp apparaît dans Twinmotion. Presque tous les problèmes rencontrés par les étudiants dans ce cours découlent de l'absence de ce modèle mental.</p>
+    <p>Avant d'appuyer sur le moindre bouton, il vous faut un modèle mental de ce qui se passe réellement lorsqu'un bâtiment dessiné dans SketchUp apparaît dans Twinmotion. Presque tous les problèmes que vous rencontrerez dans ce cours découlent de l'absence de ce modèle mental.</p>
 
     <h3>1.1 Trois logiciels, trois idées totalement différentes de ce qu'est un mur</h3>
     <p>C'est l'élément le plus utile de ce chapitre.</p>
@@ -866,8 +871,8 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
 </pre>
 
     <div class="callout c-tip">
-      <span class="lbl">Où les points se perdent</span>
-      <p>D'après notre expérience de correction de ce module, l'étape 4 provoque plus d'échecs que les étapes 5, 6 et 7 réunies — et ces échecs viennent presque toujours du fait d'avoir sauté l'étape 2. Dix minutes d'hygiène de modèle épargnent une soirée de dépannage dans Twinmotion.</p>
+      <span class="lbl">Là où les projets déraillent</span>
+      <p>C'est à l'étape 4 que la plupart des projets cassent, et un problème d'étape 4 est presque toujours un problème d'étape 2 qu'on a sauté. Si votre import se comporte bizarrement, la cause est dans votre modèle, pas dans Twinmotion. Dix minutes d'hygiène épargnent une soirée de dépannage — d'où le fait que le chapitre suivant soit l'heure la plus rentable du cours.</p>
     </div>
 
     <h3>1.4 L'itération est normale — anticipez l'aller-retour</h3>
@@ -950,7 +955,7 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
 
     <h3>2.1 Face orientation: the front/back problem</h3>
     <p>Every face in SketchUp has two sides. The <strong>front face</strong> is white by default; the <strong>back face</strong> is a blue-grey. This is not cosmetic. Render engines use the direction the face points — its <em>normal</em> — to decide how light hits it.</p>
-    <p>When a face is reversed, Twinmotion may render it black, may render it invisible from outside, and will definitely compute its lighting as though the surface faced inwards. A wall built from mixed-orientation faces produces the patchy, blotchy look students often mistake for a lighting problem.</p>
+    <p>When a face is reversed, Twinmotion may render it black, may render it invisible from outside, and will definitely compute its lighting as though the surface faced inwards. A wall built from mixed-orientation faces produces a patchy, blotchy look that is easy to mistake for a lighting problem.</p>
 
     <div class="callout c-doc">
       <span class="lbl">Documented — how to see it</span>
@@ -966,7 +971,7 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
 
     <div class="callout c-warn">
       <span class="lbl">The classic trap</span>
-      <p>Extruding a closed shape downwards with Push/Pull produces a solid whose faces are all reversed. Students draw a floor slab, push it <em>down</em> to give it thickness, and generate an entire building of inside-out geometry without noticing — because in Shaded view with textures on, it looks fine. Always push <em>up</em>, or check in Monochrome afterwards.</p>
+      <p>Extruding a closed shape downwards with Push/Pull produces a solid whose faces are all reversed. You draw a floor slab, push it <em>down</em> to give it thickness, and generate an entire building of inside-out geometry without noticing — because in Shaded view with textures on, it looks fine. Always push <em>up</em>, or check in Monochrome afterwards.</p>
     </div>
 
     <figure class="diagram" id="fig-2-1">
@@ -1123,7 +1128,7 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
 
     <h3>2.1 L'orientation des faces : le problème endroit/envers</h3>
     <p>Chaque face dans SketchUp a deux côtés. La <strong>face avant</strong> est blanche par défaut ; la <strong>face arrière</strong> est d'un bleu-gris. Ce n'est pas cosmétique. Les moteurs de rendu utilisent la direction vers laquelle pointe la face — sa <em>normale</em> — pour déterminer comment la lumière la frappe.</p>
-    <p>Quand une face est inversée, Twinmotion peut la rendre noire, la rendre invisible depuis l'extérieur, et calculera dans tous les cas son éclairage comme si la surface était tournée vers l'intérieur. Un mur composé de faces d'orientations mélangées produit cet aspect tacheté que les étudiants prennent souvent pour un problème d'éclairage.</p>
+    <p>Quand une face est inversée, Twinmotion peut la rendre noire, la rendre invisible depuis l'extérieur, et calculera dans tous les cas son éclairage comme si la surface était tournée vers l'intérieur. Un mur composé de faces d'orientations mélangées produit un aspect tacheté qu'on prend facilement pour un problème d'éclairage.</p>
 
     <div class="callout c-doc">
       <span class="lbl">Documenté — comment le voir</span>
@@ -1139,7 +1144,7 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
 
     <div class="callout c-warn">
       <span class="lbl">Le piège classique</span>
-      <p>Extruder une forme fermée vers le bas avec Pousser/Tirer produit un solide dont toutes les faces sont inversées. L'étudiant dessine une dalle, la pousse vers le <em>bas</em> pour lui donner de l'épaisseur, et génère un bâtiment entier à l'envers sans s'en apercevoir — parce qu'en vue Ombrée avec les textures, tout semble normal. Poussez toujours vers le <em>haut</em>, ou vérifiez ensuite en Monochrome.</p>
+      <p>Extruder une forme fermée vers le bas avec Pousser/Tirer produit un solide dont toutes les faces sont inversées. Vous dessinez une dalle, vous la poussez vers le <em>bas</em> pour lui donner de l'épaisseur, et vous générez un bâtiment entier à l'envers sans vous en apercevoir — parce qu'en vue Ombrée avec les textures, tout semble normal. Poussez toujours vers le <em>haut</em>, ou vérifiez ensuite en Monochrome.</p>
     </div>
 
     <h3>2.2 L'épaisseur : pourquoi les murs en papier laissent fuir la lumière</h3>
@@ -1306,7 +1311,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>Tessellation is like exporting a vector drawing to a raster image. You must pick a resolution, that resolution is permanent, and the right answer depends entirely on how close the viewer will get.</p>
     </div>
 
-    <h3>3.2 Two meshes exist, and students confuse them constantly</h3>
+    <h3>3.2 Two meshes exist, and they are easy to confuse</h3>
     <p>Rhino keeps a <strong>display mesh</strong> — the rough approximation you see shaded in the viewport, controlled by <span class="path">Document Properties &gt; Mesh</span>. It is a preview only, tuned for viewport speed.</p>
     <p>At export, Rhino generates a separate <strong>export mesh</strong> using the settings in the export dialog. These are independent. A model that looks perfectly smooth on screen can export faceted, and vice versa, because you adjusted the wrong one.</p>
 
@@ -1463,7 +1468,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>La tessellation, c'est comme exporter un dessin vectoriel en image matricielle. Il faut choisir une résolution, cette résolution est définitive, et la bonne réponse dépend entièrement de la distance à laquelle on regardera.</p>
     </div>
 
-    <h3>3.2 Il existe deux maillages, et les étudiants les confondent en permanence</h3>
+    <h3>3.2 Il existe deux maillages, et on les confond facilement</h3>
     <p>Rhino conserve un <strong>maillage d'affichage</strong> — l'approximation grossière que vous voyez ombrée dans la fenêtre, réglée par <span class="path">Propriétés du document &gt; Maillage</span>. C'est un aperçu, optimisé pour la fluidité.</p>
     <p>À l'export, Rhino génère un <strong>maillage d'export</strong> distinct à partir des réglages de la boîte de dialogue d'exportation. Les deux sont indépendants. Un modèle parfaitement lisse à l'écran peut s'exporter facetté, et inversement, parce que vous avez réglé le mauvais.</p>
 
@@ -1676,7 +1681,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         <img src="images/04-01-rhino-glb-export.png" alt="Rhino glTF export options" onload="this.closest('.shot').classList.add('has-image')">
         <div class="shot-todo">
           <span class="id">Shot 04-01</span>
-          <div class="what">The Rhino glTF/GLB export options dialog, fully expanded. Capture the Rhino version your students actually use.</div>
+          <div class="what">The Rhino glTF/GLB export options dialog, fully expanded. </div>
           <span class="file">images/04-01-rhino-glb-export.png</span>
         </div>
       </div>
@@ -1779,7 +1784,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-fix">
       <span class="lbl">Pourquoi cette section nomme des intentions et non des cases</span>
-      <p>La fiche v5 listait une « configuration » d'export en cinq lignes comme s'il s'agissait d'une boîte de dialogue figée. Ce n'est pas le cas — McNeel a fait évoluer ces options selon les versions, et un étudiant suivant une liste de libellés périmés en conclut que le manuel a tort. Faites correspondre les intentions ci-dessus à ce que propose réellement votre boîte de dialogue, et consultez la page glTF de McNeel en cas de doute.</p>
+      <p>La fiche v5 listait une « configuration » d'export en cinq lignes comme s'il s'agissait d'une boîte de dialogue figée. Ce n'est pas le cas — McNeel a fait évoluer ces options selon les versions, et en suivant une liste de libellés périmés, on en conclut que le manuel a tort. Faites correspondre les intentions ci-dessus à ce que propose réellement votre boîte de dialogue, et consultez la page glTF de McNeel en cas de doute.</p>
     </div>
 
     <figure class="shot" id="fig-04-01-fr">
@@ -1787,7 +1792,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         <img src="images/04-01-rhino-glb-export.png" alt="Options d&#8217;export glTF de Rhino" onload="this.closest('.shot').classList.add('has-image')">
         <div class="shot-todo">
           <span class="id">Capture 04-01</span>
-          <div class="what">La bo&#238;te d&#8217;options d&#8217;export glTF/GLB de Rhino, enti&#232;rement d&#233;pli&#233;e. Capturez la version r&#233;ellement utilis&#233;e.</div>
+          <div class="what">La bo&#238;te d&#8217;options d&#8217;export glTF/GLB de Rhino, enti&#232;rement d&#233;pli&#233;e. </div>
           <span class="file">images/04-01-rhino-glb-export.png</span>
         </div>
       </div>
@@ -1898,7 +1903,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <figcaption>Fig 5.1 — The import dialog. Every setting below appears here.</figcaption>
     </figure>
 
-    <h3>5.2 Nanite — powerful, and narrower than students assume <span class="lv-tag lv-y3">Y3</span></h3>
+    <h3>5.2 Nanite — powerful, and narrower than it first appears <span class="lv-tag lv-y3">Y3</span></h3>
     <p>Nanite is Unreal Engine's virtualised geometry system. It lets the engine display extremely dense meshes efficiently by streaming only the detail actually visible on screen. On a detailed façade or a high-poly imported model it is transformative.</p>
     <p>It is also fussy about what it will accept.</p>
 
@@ -1979,7 +1984,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-teach">
       <span class="lbl">Why Chapter 2 was so insistent</span>
-      <p>Everything about naming and grouping in Chapter 2 exists to serve this one moment. A model with a stable, deliberate naming scheme can be revised twenty times at no cost. A model full of <code>Group#82</code> has to be re-materialled from scratch every single revision — which is why some students end up refusing to change their design after week six. Bad file hygiene quietly becomes a design constraint.</p>
+      <p>Everything about naming and grouping in Chapter 2 exists to serve this one moment. A model with a stable, deliberate naming scheme can be revised twenty times at no cost. A model full of <code>Group#82</code> has to be re-materialled from scratch every single revision — which is why some projects quietly stop evolving after week six. Bad file hygiene quietly becomes a design constraint.</p>
     </div>
 
     <h3>5.7 The other route: Datasmith Direct Link</h3>
@@ -2075,7 +2080,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <p>La v5 recommandait <em>Fusionner par Matériau</em> pour les « enveloppes architecturales statiques ». Suivez ce conseil et vous vous offrez les fuites de lumière intérieures que le chapitre intérieur de la v5 tente ensuite de soigner par l'épaisseur des murs. Traitez la cause, pas le symptôme : importez en <strong>Keep hierarchy</strong>.</p>
     </div>
 
-    <h3>5.2 Nanite — puissant, et plus étroit que les étudiants ne le croient <span class="lv-tag lv-y3">Y3</span></h3>
+    <h3>5.2 Nanite — puissant, et plus étroit qu'il n'y paraît <span class="lv-tag lv-y3">Y3</span></h3>
     <p>Nanite est le système de géométrie virtualisée d'Unreal Engine. Il permet au moteur d'afficher des maillages extrêmement denses efficacement, en ne diffusant que le détail réellement visible à l'écran. Sur une façade détaillée ou un modèle importé très lourd, c'est transformateur.</p>
     <p>Il est aussi difficile sur ce qu'il accepte.</p>
 
@@ -2156,7 +2161,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-teach">
       <span class="lbl">Pourquoi le chapitre 2 insistait tant</span>
-      <p>Tout ce qui concerne le nommage et le groupement au chapitre 2 n'existe que pour ce moment précis. Un modèle au nommage stable et réfléchi peut être révisé vingt fois sans coût. Un modèle rempli de <code>Groupe#82</code> doit être retexturé intégralement à chaque révision — ce qui explique que certains étudiants finissent par refuser de faire évoluer leur projet après la semaine six. Une mauvaise hygiène de fichiers devient silencieusement une contrainte de conception.</p>
+      <p>Tout ce qui concerne le nommage et le groupement au chapitre 2 n'existe que pour ce moment précis. Un modèle au nommage stable et réfléchi peut être révisé vingt fois sans coût. Un modèle rempli de <code>Groupe#82</code> doit être retexturé intégralement à chaque révision — ce qui explique que certains projets cessent discrètement d'évoluer après la semaine six. Une mauvaise hygiène de fichiers devient silencieusement une contrainte de conception.</p>
     </div>
 
     <h3>5.7 L'autre voie : le Datasmith Direct Link</h3>
@@ -2231,17 +2236,17 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   <h2 class="chapter en-only">Materials &amp; PBR</h2>
   <h2 class="chapter fr-only">Matériaux &amp; PBR</h2>
   <div class="en-only">
-    <p>Materials are where student renders most obviously separate from professional ones, and it is almost never about texture resolution. It is about understanding what the four PBR channels actually describe.</p>
+    <p>Materials are where a render most obviously separates from professional work, and it is almost never about texture resolution. It is about understanding what the four PBR channels actually describe.</p>
 
     <h3>6.1 PBR in four channels</h3>
     <p>Physically Based Rendering describes a surface by measurable physical properties rather than by artistic sliders. Four channels do nearly all the work.</p>
 
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Channel</th><th>What it describes</th><th>How students get it wrong</th></tr></thead>
+        <thead><tr><th>Channel</th><th>What it describes</th><th>How it goes wrong</th></tr></thead>
         <tbody>
           <tr><td><strong>Base colour</strong></td><td>The colour of the surface under neutral white light, with no shading or shadow baked in.</td><td>Using a photograph with shadows in it. Those shadows then get lit again, and the material looks dirty.</td></tr>
-          <tr><td><strong>Roughness</strong></td><td>How scattered the reflection is. 0 = mirror, 1 = completely diffuse. This is the single most important channel for realism.</td><td>Treating it as "shininess" and setting everything to a mid value, which is why everything looks like plastic.</td></tr>
+          <tr><td><strong>Roughness</strong></td><td>How scattered the reflection is. 0 = mirror, 1 = completely diffuse. This is the single most important channel for realism.</td><td>Treating it as "shininess" and setting everything to a mid value, which is why so much of it looks like plastic.</td></tr>
           <tr><td><strong>Metallic</strong></td><td>A near-binary switch. A surface is either a raw metal or it is not. There is no such thing as 40% metal.</td><td>Using it to make things look shiny. Painted steel is <em>not</em> metallic — the paint is a dielectric coating.</td></tr>
           <tr><td><strong>Normal</strong></td><td>Fake surface relief. Tilts the way light reflects without adding geometry — brick mortar joints, timber grain, fabric weave.</td><td>Cranking the intensity until it reads as embossed plastic.</td></tr>
         </tbody>
@@ -2284,7 +2289,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ol>
 
     <h3>6.4 Glass that reads as glass</h3>
-    <p>Glass is the material students most often get wrong, and the fix is usually subtraction rather than addition.</p>
+    <p>Glass is the material that most often goes wrong, and the fix is usually subtraction rather than addition.</p>
     <ul>
       <li><strong>Do not make it fully transparent.</strong> Real glass in a building is visible — it carries reflections of the sky, of the surroundings, of itself. A fully clear pane reads as a hole.</li>
       <li><strong>Reflections are the whole story.</strong> What sells glass is what it reflects. Which means glass only looks right once you have an environment worth reflecting — see Chapter 8.</li>
@@ -2296,7 +2301,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <p>Twinmotion ships a large material library, plus access to Quixel Megascans surfaces scanned from real materials. These are better than anything you will build by hand this semester, and using them is normal professional practice.</p>
     <p>What you are assessed on is <strong>selection and scale</strong>, not authorship:</p>
     <ul>
-      <li>Is the brick coursing the right size for the building? A brick should be roughly 215 mm long in the render. Students routinely leave brick textures at twice or half real size, and the building silently loses its scale.</li>
+      <li>Is the brick coursing the right size for the building? A brick should be roughly 215 mm long in the render. It is very easy to leave brick textures at twice or half real size, and the building silently loses its scale.</li>
       <li>Does the material suit the construction you are proposing, or did you pick it because it looked nice in the thumbnail?</li>
       <li>Is the tiling visible? Any repeating texture on a large surface will show a pattern. Break it up with variation, dirt, or a larger-scale texture.</li>
     </ul>
@@ -2357,7 +2362,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>Les matériaux sont l'endroit où les rendus étudiants se distinguent le plus visiblement des rendus professionnels, et ce n'est presque jamais une question de résolution de texture. C'est une question de compréhension de ce que décrivent réellement les quatre canaux PBR.</p>
+    <p>Les matériaux sont l'endroit où un rendu se distingue le plus visiblement d'un rendu professionnel, et ce n'est presque jamais une question de résolution de texture. C'est une question de compréhension de ce que décrivent réellement les quatre canaux PBR.</p>
 
     <h3>6.1 Le PBR en quatre canaux</h3>
     <p>Le rendu physiquement réaliste décrit une surface par des propriétés physiques mesurables plutôt que par des curseurs artistiques. Quatre canaux font presque tout le travail.</p>
@@ -2367,7 +2372,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         <thead><tr><th>Canal</th><th>Ce qu'il décrit</th><th>L'erreur courante</th></tr></thead>
         <tbody>
           <tr><td><strong>Couleur de base</strong></td><td>La couleur de la surface sous une lumière blanche neutre, sans ombrage ni ombre incorporés.</td><td>Utiliser une photographie contenant des ombres. Ces ombres sont ensuite rééclairées, et le matériau paraît sale.</td></tr>
-          <tr><td><strong>Rugosité</strong></td><td>À quel point la réflexion est dispersée. 0 = miroir, 1 = totalement diffus. C'est le canal le plus important pour le réalisme.</td><td>La confondre avec la « brillance » et tout régler sur une valeur moyenne — d'où l'aspect plastique généralisé.</td></tr>
+          <tr><td><strong>Rugosité</strong></td><td>À quel point la réflexion est dispersée. 0 = miroir, 1 = totalement diffus. C'est le canal le plus important pour le réalisme.</td><td>La confondre avec la « brillance » et tout régler sur une valeur moyenne — d'où cet aspect plastique si répandu.</td></tr>
           <tr><td><strong>Métallicité</strong></td><td>Un interrupteur quasi binaire. Une surface est un métal brut ou ne l'est pas. Il n'existe pas de « 40 % métal ».</td><td>S'en servir pour rendre les choses brillantes. L'acier peint n'est <em>pas</em> métallique — la peinture est un revêtement diélectrique.</td></tr>
           <tr><td><strong>Normale</strong></td><td>Un relief simulé. Incline la réflexion de la lumière sans ajouter de géométrie — joints de brique, veinage du bois, trame d'un tissu.</td><td>Pousser l'intensité jusqu'à obtenir un effet de plastique gaufré.</td></tr>
         </tbody>
@@ -2422,7 +2427,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <p>Twinmotion est livré avec une vaste bibliothèque de matériaux, plus l'accès aux surfaces Quixel Megascans scannées d'après des matériaux réels. Elles sont meilleures que tout ce que vous fabriquerez à la main ce semestre, et les utiliser est une pratique professionnelle normale.</p>
     <p>Ce qui est évalué, c'est la <strong>sélection et l'échelle</strong>, pas la paternité :</p>
     <ul>
-      <li>L'appareillage de brique est-il à la bonne taille pour le bâtiment ? Une brique doit mesurer environ 215 mm de long dans le rendu. Les étudiants laissent régulièrement les textures de brique au double ou à la moitié de la taille réelle, et le bâtiment perd silencieusement son échelle.</li>
+      <li>L'appareillage de brique est-il à la bonne taille pour le bâtiment ? Une brique doit mesurer environ 215 mm de long dans le rendu. On laisse très facilement les textures de brique au double ou à la moitié de la taille réelle, et le bâtiment perd silencieusement son échelle.</li>
       <li>Le matériau correspond-il à la construction proposée, ou l'avez-vous choisi parce que la vignette était jolie ?</li>
       <li>La répétition est-elle visible ? Toute texture répétée sur une grande surface fait apparaître un motif. Cassez-le par de la variation, de la salissure, ou une texture à plus grande échelle.</li>
     </ul>
@@ -2522,7 +2527,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </figure>
 
     <h3>7.2 Turning Lumen on — three steps, in order</h3>
-    <p>Lumen will not appear if the prerequisites are not met, which is why students conclude it is missing.</p>
+    <p>Lumen will not appear if the prerequisites are not met, which is why it is often assumed to be missing.</p>
     <ol>
       <li>Enable DirectX 12 under <span class="path">Edit &gt; Preferences &gt; Settings &gt; Graphic hardware support</span>. Restart if prompted.</li>
       <li>Set <strong>Quality</strong> to <strong>High</strong> or <strong>Ultra</strong>. Lumen is unavailable at lower quality settings.</li>
@@ -2567,8 +2572,8 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <div class="callout c-warn">
-      <span class="lbl">Say this to your students in week one</span>
-      <p>If a student is working on a MacBook or a laptop with integrated graphics, the Path Tracer is not available to them at all. That is not a failing on their part and it must not be a hidden requirement of the brief. Lumen produces entirely creditable submissions. Plan the assessment so that a Lumen render can achieve full marks.</p>
+      <span class="lbl">Check this in week one, not week ten</span>
+      <p>If you are on a MacBook, or a laptop with integrated graphics, the Path Tracer is not available to you at all. That is not a failing on your part and it does not disadvantage your submission — <strong>Lumen renders can achieve full marks</strong>. What does cost you is finding out late. Open Twinmotion now, check whether the Path Tracer is available, and write the answer in your project log at Stage 7. Then plan your deliverables around what your machine can actually do.</p>
     </div>
 
     <h3>7.6 The decision, honestly</h3>
@@ -2596,7 +2601,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <h4>What you do</h4>
       <p>Take one real view from your project. Render it in every engine your machine can actually run — Standard, Lumen, and Path Tracer if your hardware qualifies — without moving the camera or changing a light. Time each one.</p>
       <h4>What it produces</h4>
-      <p>A written decision in your log: which engine you will use for your <strong>still images</strong>, and which for your <strong>video</strong>. These are allowed to be different, and for most students they should be — Lumen for the video because it is temporally stable, Path Tracer for one or two stills if the hardware allows.</p>
+      <p>A written decision in your log: which engine you will use for your <strong>still images</strong>, and which for your <strong>video</strong>. These are allowed to be different, and for most setups they should be — Lumen for the video because it is temporally stable, Path Tracer for one or two stills if the hardware allows.</p>
       <h4>Ready to move on when</h4>
       <ul>
         <li>You can name specific surfaces, shadows or corners where the engines differ, not just say one looks better.</li>
@@ -2635,7 +2640,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </figure>
 
     <h3>7.2 Activer Lumen — trois étapes, dans l'ordre</h3>
-    <p>Lumen n'apparaît pas si les prérequis ne sont pas remplis, d'où la conclusion des étudiants qu'il est absent.</p>
+    <p>Lumen n'apparaît pas si les prérequis ne sont pas remplis, d'où l'impression qu'il est absent.</p>
     <ol>
       <li>Activez DirectX 12 dans <span class="path">Édition &gt; Préférences &gt; Paramètres &gt; Prise en charge matérielle graphique</span>. Redémarrez si demandé.</li>
       <li>Réglez la <strong>Qualité</strong> sur <strong>High</strong> ou <strong>Ultra</strong>. Lumen est indisponible en dessous.</li>
@@ -2680,8 +2685,8 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <div class="callout c-warn">
-      <span class="lbl">À dire aux étudiants dès la première semaine</span>
-      <p>Un étudiant travaillant sur MacBook ou sur un portable à carte graphique intégrée n'a tout simplement pas accès au Path Tracer. Ce n'est pas une défaillance de sa part et cela ne doit pas devenir une exigence cachée du sujet. Lumen produit des rendus parfaitement recevables. Concevez l'évaluation de sorte qu'un rendu Lumen puisse obtenir la note maximale.</p>
+      <span class="lbl">À vérifier en semaine une, pas en semaine dix</span>
+      <p>Si vous êtes sur MacBook, ou sur un portable à carte graphique intégrée, le Path Tracer ne vous est tout simplement pas accessible. Ce n'est pas une défaillance de votre part et cela ne pénalise pas votre rendu — <strong>un rendu Lumen peut obtenir la note maximale</strong>. Ce qui coûte cher, c'est de s'en apercevoir tard. Ouvrez Twinmotion maintenant, vérifiez si le Path Tracer est disponible, et consignez la réponse dans votre journal de projet à l'étape 7. Concevez ensuite vos livrables en fonction de ce que votre machine sait réellement faire.</p>
     </div>
 
     <h3>7.6 Le choix, honnêtement</h3>
@@ -2709,7 +2714,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <h4>Ce que vous faites</h4>
       <p>Prenez une vue réelle de votre projet. Rendez-la dans chaque moteur que votre machine peut réellement exécuter — Standard, Lumen, et Path Tracer si votre matériel le permet — sans bouger la caméra ni changer une lumière. Chronométrez chacun.</p>
       <h4>Ce que cela produit</h4>
-      <p>Une décision écrite dans votre journal : quel moteur pour vos <strong>images fixes</strong>, et quel moteur pour votre <strong>vidéo</strong>. Ils peuvent différer, et pour la plupart des étudiants ils le devraient — Lumen pour la vidéo car il est stable temporellement, Path Tracer pour une ou deux images si le matériel suit.</p>
+      <p>Une décision écrite dans votre journal : quel moteur pour vos <strong>images fixes</strong>, et quel moteur pour votre <strong>vidéo</strong>. Ils peuvent différer, et dans la plupart des cas ils le devraient — Lumen pour la vidéo car il est stable temporellement, Path Tracer pour une ou deux images si le matériel suit.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>Vous pouvez nommer des surfaces, ombres ou angles précis où les moteurs diffèrent, et pas seulement dire que l'un est plus beau.</li>
@@ -2766,7 +2771,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </figure>
 
     <h3>8.2 Sky, clouds, weather</h3>
-    <p>The <strong>Dynamic sky &gt; Clouds</strong> section is far deeper than most students use: cloud presets, <em>Height</em> (250–4000 m), <em>Density</em>, <em>Puffiness</em>, <em>Cirrus clouds</em>, <em>Random seed</em> for variants, and <em>Affected by wind</em>.</p>
+    <p>The <strong>Dynamic sky &gt; Clouds</strong> section is far deeper than most people ever use: cloud presets, <em>Height</em> (250–4000 m), <em>Density</em>, <em>Puffiness</em>, <em>Cirrus clouds</em>, <em>Random seed</em> for variants, and <em>Affected by wind</em>.</p>
     <p>Two things worth knowing:</p>
     <ul>
       <li><strong>Clouds change your light, not just your sky.</strong> Heavy cloud softens shadows across the whole scene. If your shadows suddenly go mushy, look up.</li>
@@ -2794,7 +2799,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-fix">
       <span class="lbl">But there is an automatic option</span>
-      <p>Under <strong>Directional light</strong> there is a <strong>Match HDRI</strong> setting that adjusts the light automatically from the HDRI. Use it first; fall back to manual <em>Rotation Z</em> and <em>Rotation X</em> if you want a deliberately different result. v5 taught the manual method as though it were the only one — knowing the automatic option exists saves students a frustrating half hour.</p>
+      <p>Under <strong>Directional light</strong> there is a <strong>Match HDRI</strong> setting that adjusts the light automatically from the HDRI. Use it first; fall back to manual <em>Rotation Z</em> and <em>Rotation X</em> if you want a deliberately different result. v5 taught the manual method as though it were the only one — knowing the automatic option exists saves you a frustrating half hour.</p>
     </div>
 
     <p>The remaining <strong>Directional light</strong> controls mirror the sun: <em>Intensity</em> (0–10), <em>Color</em>, <em>Temperature</em>, <em>Size</em> for shadow softness, and <em>Reflection</em> for specular strength.</p>
@@ -2910,7 +2915,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </figure>
 
     <h3>8.2 Ciel, nuages, météo</h3>
-    <p>La section <strong>Dynamic sky &gt; Clouds</strong> est bien plus riche que ce qu'en font la plupart des étudiants : préréglages de nuages, <em>Height</em> (250–4000 m), <em>Density</em>, <em>Puffiness</em>, <em>Cirrus clouds</em>, <em>Random seed</em> pour générer des variantes, et <em>Affected by wind</em>.</p>
+    <p>La section <strong>Dynamic sky &gt; Clouds</strong> est bien plus riche que ce qu'on en fait généralement : préréglages de nuages, <em>Height</em> (250–4000 m), <em>Density</em>, <em>Puffiness</em>, <em>Cirrus clouds</em>, <em>Random seed</em> pour générer des variantes, et <em>Affected by wind</em>.</p>
     <p>Deux choses à savoir :</p>
     <ul>
       <li><strong>Les nuages modifient votre lumière, pas seulement votre ciel.</strong> Une couverture épaisse adoucit les ombres de toute la scène. Si vos ombres deviennent molles d'un coup, levez les yeux.</li>
@@ -2938,7 +2943,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-fix">
       <span class="lbl">Mais il existe une option automatique</span>
-      <p>Sous <strong>Directional light</strong> se trouve un réglage <strong>Match HDRI</strong> qui ajuste automatiquement la lumière d'après le HDRI. Utilisez-le d'abord ; repassez aux <em>Rotation Z</em> et <em>Rotation X</em> manuelles si vous voulez délibérément autre chose. La v5 enseignait la méthode manuelle comme si c'était la seule — savoir que l'automatique existe épargne aux étudiants une demi-heure frustrante.</p>
+      <p>Sous <strong>Directional light</strong> se trouve un réglage <strong>Match HDRI</strong> qui ajuste automatiquement la lumière d'après le HDRI. Utilisez-le d'abord ; repassez aux <em>Rotation Z</em> et <em>Rotation X</em> manuelles si vous voulez délibérément autre chose. La v5 enseignait la méthode manuelle comme si c'était la seule — savoir que l'automatique existe vous épargne une demi-heure frustrante.</p>
     </div>
 
     <p>Les autres réglages de <strong>Directional light</strong> reprennent ceux du soleil : <em>Intensity</em> (0–10), <em>Color</em>, <em>Temperature</em>, <em>Size</em> pour la douceur des ombres, et <em>Reflection</em> pour l'intensité spéculaire.</p>
@@ -3039,7 +3044,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-fix">
       <span class="lbl">Correcting v5</span>
-      <p>v5 sent students to <span class="path">Dev Tools &gt; Lumen Surface Cache View</span> and told them to check for "yellow/magenta coverage". There is no Dev Tools menu, and the colour guidance was invented. The view is real and it is genuinely the right tool — it is reached from the viewport mode icon, and what you are looking for is <em>completeness of coverage</em>, not a particular colour.</p>
+      <p>v5 sent readers to <span class="path">Dev Tools &gt; Lumen Surface Cache View</span> and told them to check for "yellow/magenta coverage". There is no Dev Tools menu, and the colour guidance was invented. The view is real and it is genuinely the right tool — it is reached from the viewport mode icon, and what you are looking for is <em>completeness of coverage</em>, not a particular colour.</p>
     </div>
 
     <figure class="shot" id="fig-9-1">
@@ -3061,7 +3066,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         <tbody>
           <tr><td>1</td><td><strong>Imported with a collapse mode.</strong> The whole building is one mesh, so cards are coarse.</td><td>Re-import with <strong>Keep hierarchy</strong>. Check this first — it is the cheapest to test and the most common.</td></tr>
           <tr><td>2</td><td><strong>Walls and slabs have no thickness.</strong> Light goes around a zero-depth plane.</td><td>Give them real thickness in the source model (Chapter 2.2). Re-export.</td></tr>
-          <tr><td>3</td><td><strong>The volume is not closed.</strong> Gaps at wall-to-slab junctions, a missing ceiling, geometry that does not quite meet.</td><td>Cut a section in SketchUp and look. Students are routinely surprised by what they find.</td></tr>
+          <tr><td>3</td><td><strong>The volume is not closed.</strong> Gaps at wall-to-slab junctions, a missing ceiling, geometry that does not quite meet.</td><td>Cut a section in SketchUp and look. You may well be surprised by what you find.</td></tr>
           <tr><td>4</td><td><strong>Reversed normals.</strong> The surface faces away, so it neither blocks nor bounces correctly.</td><td>Monochrome audit (Chapter 2.1).</td></tr>
         </tbody>
       </table>
@@ -3099,7 +3104,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Studio practice — light the architecture, not the room</span>
-      <p>Students light interiors by placing a lamp in the middle of the ceiling until the room is bright enough. Practising designers light surfaces: wash the wall, graze the timber, pool light on the table. Ask what you want the eye to go to, and light that. A room where everything is equally lit has no hierarchy and therefore no atmosphere.</p>
+      <p>It is tempting to light an interior by putting a lamp in the middle of the ceiling until the room is bright enough. Practising designers light surfaces: wash the wall, graze the timber, pool light on the table. Ask what you want the eye to go to, and light that. A room where everything is equally lit has no hierarchy and therefore no atmosphere.</p>
     </div>
 
     <h3>9.6 Emissive materials</h3>
@@ -3204,7 +3209,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-fix">
       <span class="lbl">Correction de la v5</span>
-      <p>La v5 envoyait les étudiants dans <span class="path">Dev Tools &gt; Lumen Surface Cache View</span> en leur demandant de vérifier une « couverture jaune/magenta ». Il n'existe pas de menu Dev Tools, et l'indication de couleur était inventée. La vue existe bel et bien et c'est le bon outil — on y accède par l'icône de mode d'affichage, et ce qu'on cherche est la <em>complétude de la couverture</em>, pas une couleur particulière.</p>
+      <p>La v5 envoyait le lecteur dans <span class="path">Dev Tools &gt; Lumen Surface Cache View</span> en leur demandant de vérifier une « couverture jaune/magenta ». Il n'existe pas de menu Dev Tools, et l'indication de couleur était inventée. La vue existe bel et bien et c'est le bon outil — on y accède par l'icône de mode d'affichage, et ce qu'on cherche est la <em>complétude de la couverture</em>, pas une couleur particulière.</p>
     </div>
 
     <h3>9.3 Les quatre causes de fuite de lumière, dans l'ordre où les vérifier</h3>
@@ -3214,7 +3219,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
         <tbody>
           <tr><td>1</td><td><strong>Import avec un mode de fusion.</strong> Tout le bâtiment est un seul maillage, donc les cartes sont grossières.</td><td>Réimportez en <strong>Keep hierarchy</strong>. À vérifier en premier — le test le moins coûteux et la cause la plus fréquente.</td></tr>
           <tr><td>2</td><td><strong>Murs et dalles sans épaisseur.</strong> La lumière contourne un plan de profondeur nulle.</td><td>Donnez-leur une vraie épaisseur dans le modèle source (chapitre 2.2). Réexportez.</td></tr>
-          <tr><td>3</td><td><strong>Le volume n'est pas fermé.</strong> Jeux aux jonctions mur-dalle, plafond manquant, géométries qui ne se rejoignent pas tout à fait.</td><td>Faites une coupe dans SketchUp et regardez. Les étudiants sont régulièrement surpris de ce qu'ils y trouvent.</td></tr>
+          <tr><td>3</td><td><strong>Le volume n'est pas fermé.</strong> Jeux aux jonctions mur-dalle, plafond manquant, géométries qui ne se rejoignent pas tout à fait.</td><td>Faites une coupe dans SketchUp et regardez. Vous serez peut-être surpris de ce que vous y trouverez.</td></tr>
           <tr><td>4</td><td><strong>Normales inversées.</strong> La surface est tournée à l'envers : elle ne bloque ni ne renvoie correctement.</td><td>Audit en Monochrome (chapitre 2.1).</td></tr>
         </tbody>
       </table>
@@ -3252,7 +3257,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d'atelier — éclairez l'architecture, pas la pièce</span>
-      <p>Les étudiants éclairent un intérieur en posant une lampe au milieu du plafond jusqu'à ce que la pièce soit assez claire. Les concepteurs éclairent des surfaces : laver le mur, raser le bois, poser une flaque de lumière sur la table. Demandez-vous où vous voulez que l'œil aille, et éclairez cela. Une pièce où tout est éclairé également n'a aucune hiérarchie, donc aucune atmosphère.</p>
+      <p>Il est tentant d'éclairer un intérieur en posant une lampe au milieu du plafond jusqu'à ce que la pièce soit assez claire. Les concepteurs éclairent des surfaces : laver le mur, raser le bois, poser une flaque de lumière sur la table. Demandez-vous où vous voulez que l'œil aille, et éclairez cela. Une pièce où tout est éclairé également n'a aucune hiérarchie, donc aucune atmosphère.</p>
     </div>
 
     <h3>9.6 Les matériaux émissifs</h3>
@@ -3361,7 +3366,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <p>The camera is where your render stops being a model and becomes an image. Everything in this chapter lives under <span class="path">Ambience &gt; Camera</span>, and almost all of it is borrowed directly from architectural photography — a discipline with a hundred years of accumulated judgement you are allowed to steal from.</p>
 
     <h3>10.1 Eye height is not negotiable</h3>
-    <p>Set your camera at <strong>1.5–1.7 m</strong> for any view a person would occupy. This is the single most common failure in student renders: the camera floats at three metres, or drops to knee height, and the building reads as a model on a table rather than a place you could stand in.</p>
+    <p>Set your camera at <strong>1.5–1.7 m</strong> for any view a person would occupy. This is the single most common mistake of all: the camera floats at three metres, or drops to knee height, and the building reads as a model on a table rather than a place you could stand in.</p>
     <p>Deliberate exceptions exist — an aerial to explain a site plan, a low view to dramatise a canopy — but they must be arguments, not accidents. If you cannot say why the camera is where it is, put it at 1.6 m.</p>
 
     <h3>10.2 Focal length is an argument about the building</h3>
@@ -3455,7 +3460,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ul>
 
     <h3>10.6 Building a camera set that tells the story</h3>
-    <p>Students photograph every room. Practising designers choose four or five images that make an argument.</p>
+    <p>It is tempting to photograph every room. Practising designers choose four or five images that make an argument.</p>
     <p>A defensible set for a studio project:</p>
     <ol>
       <li><strong>The approach</strong> — how you arrive, in context. Establishes site and scale.</li>
@@ -3490,7 +3495,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <p>La caméra est le moment où votre rendu cesse d'être une maquette pour devenir une image. Tout ce chapitre se joue sous <span class="path">Ambiance &gt; Camera</span>, et l'essentiel est emprunté à la photographie d'architecture — une discipline riche d'un siècle de jugement accumulé, dans laquelle vous avez le droit de puiser.</p>
 
     <h3>10.1 La hauteur d'œil n'est pas négociable</h3>
-    <p>Placez votre caméra à <strong>1,50–1,70 m</strong> pour toute vue qu'un être humain pourrait occuper. C'est l'erreur la plus fréquente des rendus étudiants : la caméra flotte à trois mètres, ou tombe à hauteur de genou, et le bâtiment se lit comme une maquette sur une table plutôt que comme un lieu où l'on pourrait se tenir.</p>
+    <p>Placez votre caméra à <strong>1,50–1,70 m</strong> pour toute vue qu'un être humain pourrait occuper. C'est l'erreur la plus fréquente de toutes : la caméra flotte à trois mètres, ou tombe à hauteur de genou, et le bâtiment se lit comme une maquette sur une table plutôt que comme un lieu où l'on pourrait se tenir.</p>
     <p>Des exceptions délibérées existent — une vue aérienne pour expliquer un plan-masse, une contre-plongée pour dramatiser un auvent — mais ce doivent être des arguments, pas des accidents. Si vous ne savez pas dire pourquoi la caméra est là, mettez-la à 1,60 m.</p>
 
     <h3>10.2 La focale est un argument sur le bâtiment</h3>
@@ -3552,7 +3557,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ul>
 
     <h3>10.6 Constituer un jeu de caméras qui raconte</h3>
-    <p>Les étudiants photographient chaque pièce. Les concepteurs choisissent quatre ou cinq images qui construisent un argument.</p>
+    <p>Il est tentant de photographier chaque pièce. Les concepteurs choisissent quatre ou cinq images qui construisent un argument.</p>
     <p>Un jeu défendable pour un projet de studio :</p>
     <ol>
       <li><strong>L'approche</strong> — comment on arrive, en contexte. Établit le site et l'échelle.</li>
@@ -3667,7 +3672,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-warn">
       <span class="lbl">The mistake that costs a night</span>
-      <p>Working at final settings. Students set 2000 samples early "to see it properly", then wait four minutes for every camera nudge, and get three iterations done in an evening instead of forty. Compose at 64. The image you are judging at that stage is composition and light direction, both of which are perfectly legible through noise.</p>
+      <p>Working at final settings. Set 2000 samples early "to see it properly" and you will wait four minutes for every camera nudge, getting three iterations done in an evening instead of forty. Compose at 64. The image you are judging at that stage is composition and light direction, both of which are perfectly legible through noise.</p>
     </div>
 
     <h3>11.3 Learn to read noise, not to copy numbers</h3>
@@ -3777,7 +3782,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-warn">
       <span class="lbl">L'erreur qui coûte une nuit</span>
-      <p>Travailler aux réglages finaux. L'étudiant règle 2000 échantillons dès le début « pour bien voir », attend ensuite quatre minutes à chaque déplacement de caméra, et réalise trois itérations dans la soirée au lieu de quarante. Composez à 64. Ce que vous jugez à ce stade, c'est la composition et la direction de la lumière, parfaitement lisibles à travers le bruit.</p>
+      <p>Travailler aux réglages finaux. Réglez 2000 échantillons dès le début « pour bien voir » et vous attendrez quatre minutes à chaque déplacement de caméra, pour trois itérations dans la soirée au lieu de quarante. Composez à 64. Ce que vous jugez à ce stade, c'est la composition et la direction de la lumière, parfaitement lisibles à travers le bruit.</p>
     </div>
 
     <h3>11.3 Apprenez à lire le bruit, pas à recopier des chiffres</h3>
@@ -3846,7 +3851,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   <h2 class="chapter en-only">Video &amp; animation</h2>
   <h2 class="chapter fr-only">Vidéo &amp; animation</h2>
   <div class="en-only">
-    <p>Video is where students most often run out of time, and it is entirely predictable arithmetic. This chapter is as much about planning as about keyframes.</p>
+    <p>Video is where projects most often run out of time, and it is entirely predictable arithmetic. This chapter is as much about planning as about keyframes.</p>
 
     <h3>12.1 The arithmetic, before anything else</h3>
     <p>Do this calculation in week one of the video task, not the night before submission.</p>
@@ -3903,7 +3908,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li><strong>Render the shots separately</strong> and edit them together afterwards, rather than animating one long path. If shot four is wrong, you re-render eight seconds and not four minutes.</li>
       <li><strong>Export an image sequence rather than a single video file</strong> for any long render. If the machine crashes at frame 700 of 900, you resume from 700 instead of starting again.</li>
       <li><strong>Assemble in an editor</strong> — DaVinci Resolve is free and more than sufficient. Add cuts, titles and sound there.</li>
-      <li><strong>Sound matters more than students expect.</strong> Even simple ambient sound — birds, traffic, footsteps — transforms how a silent walkthrough is received in a crit. It costs nothing to add.</li>
+      <li><strong>Sound matters more than you would expect.</strong> Even simple ambient sound — birds, traffic, footsteps — transforms how a silent walkthrough is received in a crit. It costs nothing to add.</li>
     </ul>
 
     <div class="exercise">
@@ -3922,7 +3927,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 
   <div class="fr-only">
-    <p>La vidéo est l'endroit où les étudiants manquent le plus souvent de temps, et c'est une arithmétique parfaitement prévisible. Ce chapitre traite autant de planification que d'images-clés.</p>
+    <p>La vidéo est l'endroit où les projets manquent le plus souvent de temps, et c'est une arithmétique parfaitement prévisible. Ce chapitre traite autant de planification que d'images-clés.</p>
 
     <h3>12.1 Le calcul, avant toute chose</h3>
     <p>Faites ce calcul la première semaine de l'étape vidéo, pas la veille du rendu.</p>
@@ -3979,7 +3984,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       <li><strong>Rendez les plans séparément</strong> et montez-les ensuite, plutôt que d'animer une seule longue trajectoire. Si le plan 4 est raté, vous recalculez huit secondes et non quatre minutes.</li>
       <li><strong>Exportez une séquence d'images plutôt qu'un fichier vidéo unique</strong> pour tout rendu long. Si la machine plante à l'image 700 sur 900, vous reprenez à 700 au lieu de tout recommencer.</li>
       <li><strong>Assemblez dans un logiciel de montage</strong> — DaVinci Resolve est gratuit et largement suffisant. Coupes, titres et son s'y ajoutent.</li>
-      <li><strong>Le son compte plus que les étudiants ne le croient.</strong> Même une ambiance simple — oiseaux, circulation, pas — transforme la réception d'une visite silencieuse en jury. Cela ne coûte rien.</li>
+      <li><strong>Le son compte plus qu'on ne le croit.</strong> Même une ambiance simple — oiseaux, circulation, pas — transforme la réception d'une visite silencieuse en jury. Cela ne coûte rien.</li>
     </ul>
 
     <div class="exercise">
@@ -4520,7 +4525,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <summary><span class="en-only">What is roughness, in plain language?</span><span class="fr-only">Qu'est-ce que la rugosité, en clair ?</span></summary>
     <div class="faq-body">
       <p class="en-only">How scattered a surface's reflection is. 0 is a mirror, 1 is completely diffuse. It is not a "shininess" slider — it is the single most important channel for material identity, and setting everything to a mid value is exactly why student renders look like plastic. See the value table in <a href="#ch6">Chapter 6.2</a>.</p>
-      <p class="fr-only">À quel point la réflexion d'une surface est dispersée. 0 = miroir, 1 = totalement diffus. Ce n'est pas un curseur de « brillance » — c'est le canal le plus important pour l'identité d'un matériau, et tout régler sur une valeur moyenne explique précisément l'aspect plastique des rendus étudiants. Voir le tableau du <a href="#ch6">chapitre 6.2</a>.</p>
+      <p class="fr-only">À quel point la réflexion d'une surface est dispersée. 0 = miroir, 1 = totalement diffus. Ce n'est pas un curseur de « brillance » — c'est le canal le plus important pour l'identité d'un matériau, et tout régler sur une valeur moyenne explique précisément cet aspect plastique si répandu. Voir le tableau du <a href="#ch6">chapitre 6.2</a>.</p>
     </div>
   </details>
 
@@ -4551,8 +4556,8 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   <details class="faq" data-level="y2">
     <summary><span class="en-only">My brick texture looks wrong but I cannot say why.</span><span class="fr-only">Ma texture de brique paraît fausse sans que je sache pourquoi.</span></summary>
     <div class="faq-body">
-      <p class="en-only">It is almost certainly the scale. Put a person in the render and check: a brick should read as roughly 215 mm long. Students routinely leave textures at twice or half real size, and the building silently loses its scale — which is the one thing an architectural image must not do.</p>
-      <p class="fr-only">C'est presque certainement l'échelle. Mettez un personnage dans le rendu et vérifiez : une brique doit faire environ 215 mm de long. Les étudiants laissent souvent les textures au double ou à la moitié de la taille réelle, et le bâtiment perd silencieusement son échelle — la seule chose qu'une image d'architecture ne doit pas faire.</p>
+      <p class="en-only">It is almost certainly the scale. Put a person in the render and check: a brick should read as roughly 215 mm long. It is very easy to leave textures at twice or half real size, and the building silently loses its scale — which is the one thing an architectural image must not do.</p>
+      <p class="fr-only">C'est presque certainement l'échelle. Mettez un personnage dans le rendu et vérifiez : une brique doit faire environ 215 mm de long. On laisse souvent les textures au double ou à la moitié de la taille réelle, et le bâtiment perd silencieusement son échelle — la seule chose qu'une image d'architecture ne doit pas faire.</p>
     </div>
   </details>
 
@@ -4686,7 +4691,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <summary><span class="en-only">What height should my camera be?</span><span class="fr-only">À quelle hauteur placer ma caméra ?</span></summary>
     <div class="faq-body">
       <p class="en-only"><strong>1.5–1.7 m</strong> for any view a person would occupy. This is the most common failure in student renders — a camera floating at three metres makes the building read as a model on a table. Exceptions must be arguments, not accidents. If you cannot say why the camera is where it is, put it at 1.6 m.</p>
-      <p class="fr-only"><strong>1,50–1,70 m</strong> pour toute vue qu'une personne occuperait. C'est l'erreur la plus fréquente des rendus étudiants — une caméra flottant à trois mètres fait lire le bâtiment comme une maquette. Les exceptions doivent être des arguments, pas des accidents. Si vous ne savez pas dire pourquoi la caméra est là, mettez-la à 1,60 m.</p>
+      <p class="fr-only"><strong>1,50–1,70 m</strong> pour toute vue qu'une personne occuperait. C'est l'erreur la plus fréquente de toutes — une caméra flottant à trois mètres fait lire le bâtiment comme une maquette. Les exceptions doivent être des arguments, pas des accidents. Si vous ne savez pas dire pourquoi la caméra est là, mettez-la à 1,60 m.</p>
     </div>
   </details>
 
@@ -4870,8 +4875,8 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   <details class="faq" data-level="y2">
     <summary><span class="en-only">How many people should I put in my render?</span><span class="fr-only">Combien de personnages mettre dans mon rendu ?</span></summary>
     <div class="faq-body">
-      <p class="en-only">As many as the space would genuinely hold at that moment — which is usually far fewer than students add. Three people in a courtyard reads as a calm Tuesday morning. Thirty reads as a stock photo. People also give scale, so place at least one where the eye needs a reference.</p>
-      <p class="fr-only">Autant que l'espace en accueillerait réellement à ce moment — soit bien moins que ce qu'ajoutent les étudiants. Trois personnes dans une cour, c'est un mardi matin calme. Trente, c'est une banque d'images. Les personnages donnent aussi l'échelle : placez-en au moins un là où l'œil a besoin d'un repère.</p>
+      <p class="en-only">As many as the space would genuinely hold at that moment — which is usually far fewer than you would think. Three people in a courtyard reads as a calm Tuesday morning. Thirty reads as a stock photo. People also give scale, so place at least one where the eye needs a reference.</p>
+      <p class="fr-only">Autant que l'espace en accueillerait réellement à ce moment — soit bien moins qu'on ne l'imagine. Trois personnes dans une cour, c'est un mardi matin calme. Trente, c'est une banque d'images. Les personnages donnent aussi l'échelle : placez-en au moins un là où l'œil a besoin d'un repère.</p>
     </div>
   </details>
 
@@ -5098,208 +5103,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
   </div>
 </section>
 
-<!-- ======================= SHOT LIST ======================= -->
-<section class="chap" id="shotlist">
-  <span class="chapter-eyebrow en-only">Reference</span>
-  <span class="chapter-eyebrow fr-only">Référence</span>
-  <h2 class="chapter en-only">Screenshot capture guide</h2>
 
-  <div class="en-only">
-    <p>Eight of this manual's figures are drawn diagrams and need nothing from you. The eleven below cannot be drawn — they are either an interface you have to photograph, or a comparison that only means something when it comes from a real project. This page tells you exactly how to get each one.</p>
-
-    <div class="callout c-doc">
-      <span class="lbl">How the image system works</span>
-      <p>Create a folder named <code>images</code> next to this HTML file. Save each capture with <strong>exactly</strong> the filename given below. The page detects it and replaces the dashed placeholder automatically — no code editing. Anything you have not captured yet stays as a labelled box, so the manual is usable at every stage of completion.</p>
-    </div>
-
-    <div class="callout c-warn">
-      <span class="lbl">Take these yourself</span>
-      <p>Screenshots you take of software you are licensed to run are fine for teaching. Frames pulled from someone else's tutorial video, or images lifted from a blog, are their copyright — and this manual is published publicly. Every capture below must be yours.</p>
-    </div>
-
-    <p><strong>Settings for all captures:</strong> PNG, at least 1600 px wide, application window only rather than the whole desktop, interface language matching the edition you are illustrating. If you can produce both an English and a French interface version, add <code>-fr</code> to the French filename.</p>
-
-    <h3>Group 1 — Interface captures</h3>
-    <p>Six dialogs and panels. Roughly forty minutes in total, and they can all be done in one sitting with any model open.</p>
-
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Filename</th><th>How to get there</th><th>Frame it so that</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><code>05-01-import-dialog.png</code><br><span class="lv-tag">do this one first</span></td>
-            <td>Twinmotion → <span class="path">Import &gt; Geometry</span>, choose any <code>.skp</code>, and let the options panel open. Expand every collapsed section.</td>
-            <td>Collapse mode, Enable Nanite, Unit conversion and Up axis are all readable in one frame. This is the most-referenced image in the book.</td>
-          </tr>
-          <tr>
-            <td><code>09-01-lumen-surface-view.png</code><br><span class="lv-tag">do this one second</span></td>
-            <td>With Lumen active, click the <strong>viewport mode icon in the upper-right corner of the viewport</strong> and leave the dropdown open with <strong>Lumen surface</strong> highlighted.</td>
-            <td>The dropdown position is unmistakable. Students look for a "Dev Tools" menu that does not exist — this image is what stops that.</td>
-          </tr>
-          <tr>
-            <td><code>11-01-pathtracer-settings.png</code></td>
-            <td><span class="path">Properties &gt; Ambience &gt; Render</span>, switch to Path tracer, expand its settings.</td>
-            <td>Quality, Samples per pixel, Max bounces, Emissive materials, Denoiser and Fireflies are all visible with their values.</td>
-          </tr>
-          <tr>
-            <td><code>02-02-purge-dialog.png</code></td>
-            <td>SketchUp → <span class="path">Window &gt; Model Info &gt; Statistics</span>.</td>
-            <td>The face and edge counts and the <em>Purge Unused</em> button are in the same frame. Ideally capture a heavy model so the numbers are alarming.</td>
-          </tr>
-          <tr>
-            <td><code>02-03-outliner-naming.png</code></td>
-            <td>SketchUp Outliner panel, on a properly organised model.</td>
-            <td>Your naming scheme is legible and clearly systematic. This is the picture of what Stage 2 is asking for.</td>
-          </tr>
-          <tr>
-            <td><code>04-01-rhino-glb-export.png</code></td>
-            <td>Rhino → <span class="path">File &gt; Export Selected</span>, choose glTF Binary, and let the options dialog open.</td>
-            <td>Material, texture and mesh options are readable. Because McNeel changes these labels between versions, capture the version <em>your students actually use</em>.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>Group 2 — Comparisons from your own project</h3>
-    <p>These five come out of the teaching model. Every one is something the stages already ask students to produce, so if you run through the course once yourself you generate them as a by-product.</p>
-
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Filename</th><th>What to render</th><th>Comes from</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><code>11-02-sample-comparison.png</code></td>
-            <td>One interior at 64, 256 and 2048 samples. Crop all three to the <em>same dark shadow region</em> at 100% zoom and label the render times. The crop is the point — full-frame images at these settings look nearly identical.</td>
-            <td>Stage 11</td>
-          </tr>
-          <tr>
-            <td><code>07-01-engine-comparison.png</code></td>
-            <td>The identical view in Standard, Lumen and Path Tracer, camera and lights untouched, with render time under each.</td>
-            <td>Stage 7</td>
-          </tr>
-          <tr>
-            <td><code>08-02-four-hours.png</code></td>
-            <td>One façade at four times across two seasons, with the correct north offset set. Best if the low winter sun visibly models the façade depth that midsummer flattens.</td>
-            <td>Stage 8</td>
-          </tr>
-          <tr>
-            <td><code>09-03-light-leak-real.png</code></td>
-            <td>A real interior with a visible floor–wall glow, and the same camera after re-importing with Keep hierarchy and adding thickness. The diagram explains the mechanism; this proves it happens.</td>
-            <td>Stage 9</td>
-          </tr>
-          <tr>
-            <td><code>10-02-focal-lengths.png</code></td>
-            <td>The same interior at 16, 28 and 50 mm from an identical point, so the space appears to change size while the room does not.</td>
-            <td>Stage 10</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout c-tip">
-      <span class="lbl">Studio practice</span>
-      <p>If you have a demonstration model you teach from, build all five of these from it once and they will serve for years. If you do not, ask a strong student for permission to use theirs — with credit — which also shows the next cohort what the standard looks like.</p>
-    </div>
-  </div>
-
-  <div class="fr-only">
-    <p>Huit figures de ce manuel sont des schémas dessinés et ne demandent rien de vous. Les onze ci-dessous ne peuvent pas être dessinées : ce sont soit une interface à photographier, soit une comparaison qui n'a de sens que venue d'un vrai projet. Cette page explique exactement comment obtenir chacune.</p>
-
-    <div class="callout c-doc">
-      <span class="lbl">Fonctionnement du système d'images</span>
-      <p>Créez un dossier nommé <code>images</code> à côté de ce fichier HTML. Enregistrez chaque capture sous <strong>exactement</strong> le nom indiqué ci-dessous. La page la détecte et remplace l'encadré pointillé automatiquement — aucune modification de code. Ce qui n'est pas encore capturé reste un encadré étiqueté : le manuel demeure utilisable à tout stade.</p>
-    </div>
-
-    <div class="callout c-warn">
-      <span class="lbl">Réalisez-les vous-même</span>
-      <p>Les captures d'un logiciel dont vous détenez la licence sont légitimes en enseignement. Les images extraites du tutoriel vidéo d'un tiers, ou reprises d'un blog, relèvent de son droit d'auteur — et ce manuel est publié publiquement. Chaque capture ci-dessous doit être la vôtre.</p>
-    </div>
-
-    <p><strong>Réglages pour toutes les captures :</strong> PNG, au moins 1600 px de large, fenêtre de l'application seule et non tout le bureau, langue d'interface correspondant à l'édition illustrée. Si vous produisez une version anglaise et une française, suffixez la française par <code>-fr</code>.</p>
-
-    <h3>Groupe 1 — Captures d'interface</h3>
-    <p>Six boîtes de dialogue et panneaux. Environ quarante minutes au total, réalisables en une seule séance avec n'importe quel modèle ouvert.</p>
-
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Nom de fichier</th><th>Comment y arriver</th><th>Cadrez pour que</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><code>05-01-import-dialog.png</code><br><span class="lv-tag">à faire en premier</span></td>
-            <td>Twinmotion → <span class="path">Import &gt; Geometry</span>, choisissez un <code>.skp</code> et laissez le panneau d'options s'ouvrir. Dépliez toutes les sections repliées.</td>
-            <td>Mode de fusion, Enable Nanite, Unit conversion et Up axis soient tous lisibles d'un coup. C'est l'image la plus citée du livre.</td>
-          </tr>
-          <tr>
-            <td><code>09-01-lumen-surface-view.png</code><br><span class="lv-tag">à faire en second</span></td>
-            <td>Lumen actif, cliquez l'<strong>icône de mode d'affichage en haut à droite de la fenêtre 3D</strong> et laissez le menu ouvert avec <strong>Lumen surface</strong> en surbrillance.</td>
-            <td>La position du menu soit sans ambiguïté. Les étudiants cherchent un menu « Dev Tools » qui n'existe pas — cette image y met fin.</td>
-          </tr>
-          <tr>
-            <td><code>11-01-pathtracer-settings.png</code></td>
-            <td><span class="path">Propriétés &gt; Ambiance &gt; Render</span>, basculez sur Path tracer, dépliez ses réglages.</td>
-            <td>Quality, Samples per pixel, Max bounces, Emissive materials, Denoiser et Fireflies soient visibles avec leurs valeurs.</td>
-          </tr>
-          <tr>
-            <td><code>02-02-purge-dialog.png</code></td>
-            <td>SketchUp → <span class="path">Fenêtre &gt; Infos sur le modèle &gt; Statistiques</span>.</td>
-            <td>Le nombre de faces et d'arêtes et le bouton <em>Purger</em> soient dans le même cadre. Idéalement sur un modèle lourd, pour que les chiffres soient inquiétants.</td>
-          </tr>
-          <tr>
-            <td><code>02-03-outliner-naming.png</code></td>
-            <td>Panneau Structure de SketchUp, sur un modèle correctement organisé.</td>
-            <td>Votre système de nommage soit lisible et manifestement systématique. C'est l'illustration de ce que demande l'étape 2.</td>
-          </tr>
-          <tr>
-            <td><code>04-01-rhino-glb-export.png</code></td>
-            <td>Rhino → <span class="path">Fichier &gt; Exporter la sélection</span>, choisissez glTF binaire et laissez la boîte d'options s'ouvrir.</td>
-            <td>Les options de matériaux, textures et maillage soient lisibles. McNeel changeant ces libellés selon les versions, capturez la version <em>réellement utilisée par vos étudiants</em>.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>Groupe 2 — Comparaisons issues de votre propre projet</h3>
-    <p>Ces cinq images sortent du modèle d'enseignement. Chacune correspond à ce que les étapes demandent déjà aux étudiants : si vous parcourez le cours une fois vous-même, vous les produisez au passage.</p>
-
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Nom de fichier</th><th>Quoi rendre</th><th>Vient de</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><code>11-02-sample-comparison.png</code></td>
-            <td>Un intérieur à 64, 256 et 2048 échantillons. Recadrez les trois sur la <em>même zone d'ombre sombre</em> à 100 % et indiquez les durées. Le recadrage est l'essentiel — en plein cadre, ces réglages semblent presque identiques.</td>
-            <td>Étape 11</td>
-          </tr>
-          <tr>
-            <td><code>07-01-engine-comparison.png</code></td>
-            <td>La vue identique en Standard, Lumen et Path Tracer, caméra et lumières inchangées, durée sous chacune.</td>
-            <td>Étape 7</td>
-          </tr>
-          <tr>
-            <td><code>08-02-four-hours.png</code></td>
-            <td>Une façade à quatre moments sur deux saisons, orientation du nord correcte. Idéalement, le soleil bas d'hiver y modèle visiblement l'épaisseur que le plein été aplatit.</td>
-            <td>Étape 8</td>
-          </tr>
-          <tr>
-            <td><code>09-03-light-leak-real.png</code></td>
-            <td>Un vrai intérieur avec un halo visible au sol, et la même caméra après réimport en Keep hierarchy et ajout d'épaisseur. Le schéma explique le mécanisme ; ceci prouve qu'il se produit.</td>
-            <td>Étape 9</td>
-          </tr>
-          <tr>
-            <td><code>10-02-focal-lengths.png</code></td>
-            <td>Le même intérieur à 16, 28 et 50 mm depuis un point identique, pour que l'espace paraisse changer de taille alors que la pièce ne bouge pas.</td>
-            <td>Étape 10</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout c-tip">
-      <span class="lbl">Pratique d'atelier</span>
-      <p>Si vous disposez d'un modèle de démonstration, produisez ces cinq images une fois à partir de lui et elles serviront des années. Sinon, demandez à un bon étudiant l'autorisation d'utiliser le sien — avec mention — ce qui montre en outre à la promotion suivante le niveau attendu.</p>
-    </div>
-  </div>
-</section>
 
 <footer class="book">
   <p class="en-only">Production Manual — SketchUp · Rhino 3D · Twinmotion 2026 · Design Studio Years 2 &amp; 3</p>
@@ -5410,6 +5214,10 @@ document.querySelectorAll('section.chap').forEach(s=>obs.observe(s));
 
 /* close the mobile drawer on navigation */
 links.forEach(l=>l.addEventListener('click',()=>document.body.classList.remove('nav-open')));
+
+
+/* ---------- figure placeholders (maintainers only) ---------- */
+if (/[?&]figures\b/.test(location.search)) document.body.classList.add('show-figures');
 
 /* ---------- Init ---------- */
 (function(){

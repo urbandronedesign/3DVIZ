@@ -47,22 +47,24 @@ Because the native model is submitted, the modelling-hygiene chapters are direct
 
 ## Figures
 
-Eight of the manual's figures are **drawn diagrams** — inline SVG, in both languages, needing nothing from you. They cover the things a screenshot explains badly: why light rounds a zero-thickness wall, what tessellation costs in triangles, what `Collapse all` does to the scene graph, why parallelism matters.
+Eight figures are **drawn diagrams** — inline SVG in both languages, needing nothing from you. They cover the things a screenshot explains badly: why light rounds a zero-thickness wall, what tessellation costs in triangles, what `Collapse all` does to the scene graph, why parallelism matters.
 
-The remaining **11 are photographs** that cannot be drawn — six interface captures and five comparisons from a real project. The manual's *Screenshot capture guide* gives click-by-click instructions for each.
+Eleven more are **photographs** that cannot be drawn — six interface captures and five comparisons from a real project. See **[CAPTURE-GUIDE.md](CAPTURE-GUIDE.md)** for click-by-click instructions.
 
-To fill one, save it into `images/` using **exactly** the filename from the guide. The page detects it and swaps the placeholder automatically — no code editing. Anything not yet captured stays as a labelled dashed box, so the manual is usable at every stage of completion.
+Until a file exists, that figure is **hidden from readers**, so the manual never looks unfinished. To see what is still missing, add `?figures` to the URL:
 
 ```
-images/
-  05-01-import-dialog.png          ← do this one first
-  09-01-lumen-surface-view.png     ← and this one second
-  ...
+https://urbandronedesign.github.io/3DVIZ/twinmotion_2026_manual-v6.html?figures
 ```
 
-Recommended: PNG, 1600 px wide minimum, application window only, interface language matching the edition you are illustrating.
+## A note on the writing
 
-> **Take them yourself.** Screenshots of software you are licensed to run are fine for teaching. Frames pulled from someone else's tutorial video, or images lifted from a blog, are their copyright — and this repo is public.
+The manual is written **for students, not about them.** It is addressed to the reader in the second person throughout and contains no instructions to a tutor, no assessment-setting advice, and no marking commentary — students have access to this document, so anything that would only make sense to whoever is teaching lives outside it, in [CAPTURE-GUIDE.md](CAPTURE-GUIDE.md).
+
+Two conventions carry the difference between fact and opinion:
+
+- **Documented** — verified against official Epic Games, Trimble or McNeel documentation
+- **Studio practice** — craft and judgement, which a student is invited to argue with
 
 ## Accuracy
 
