@@ -451,10 +451,10 @@ body.show-figures .shot-todo{display:block}
   </div>
 
   <div class="fr-only">
-    <p>Ce manuel est conçu pour être lu de trois manières différentes, parce qu’un étudiant utilise un manuel dans trois situations différentes.</p>
+    <p>Ce manuel se lit de trois façons, parce qu’on ne consulte pas un manuel dans le même état d’esprit selon le moment.</p>
     <ul>
-      <li><strong>Du début à la fin</strong>, comme un cours. Les parties I à IV suivent l’ordre réel de production : modéliser, exporter, importer, éclairer, rendre. Tout le livre repose sur <a href="#project">un seul projet</a>, et chaque chapitre se termine par une de ses étapes.</li>
-      <li><strong>Par symptôme</strong>, quand quelque chose casse à 23 h la veille du jury. Allez directement à l’<a href="#troubleshoot">Index Symptôme → Solution</a>. Il est organisé selon ce que vous <em>voyez à l’écran</em>, pas par chapitre.</li>
+      <li><strong>Du début à la fin</strong>, comme un cours. Les parties I à IV suivent l’ordre réel de la production : modéliser, exporter, importer, éclairer, rendre. Tout le livre repose sur <a href="#project">un seul projet</a>, et chaque chapitre s’achève sur une de ses étapes.</li>
+      <li><strong>Par symptôme</strong>, quand tout casse à 23 h la veille du jury. Filez à l’<a href="#troubleshoot">Index Symptôme → Solution</a> : il est classé selon ce que vous <em>voyez à l’écran</em>, et non par chapitre.</li>
       <li><strong>Par question</strong>, via la recherche en haut de page ou la <a href="#faq">FAQ Étudiants</a>.</li>
     </ul>
 
@@ -465,7 +465,7 @@ body.show-figures .shot-todo{display:block}
     <ul>
       <li><span class="path">Menu &gt; Sous-menu</span>  : un chemin d’interface à cliquer.</li>
       <li><code>Commande</code>, quelque chose à taper, ou le nom exact d’un réglage.</li>
-      <li>Toute affirmation issue de la documentation officielle est signalée par un encadré <strong>Documenté</strong> et peut être considérée comme fiable. Tout ce qui est marqué <strong>Pratique d’atelier</strong> relève du métier, pas de la spécification : discutez-en si vous avez mieux.</li>
+      <li>Toute affirmation tirée de la documentation officielle porte la mention <strong>Documenté</strong> et peut être tenue pour fiable. Ce qui est marqué <strong>Pratique d’atelier</strong> relève du métier et non de la spécification : discutez-en si vous avez mieux.</li>
     </ul>
   </div>
 
@@ -473,7 +473,7 @@ body.show-figures .shot-todo{display:block}
     <span class="lbl en-only">Interface language warning</span>
     <span class="lbl fr-only">Avertissement sur la langue de l’interface</span>
     <p class="en-only">Menu paths in this manual are given for the <strong>English</strong> Twinmotion, SketchUp and Rhino interfaces. If your software is running in French, the French text of this manual gives the French menu names where they differ. If a menu name in this book does not exist in your copy, check your interface language before assuming the manual is wrong.</p>
-    <p class="fr-only">Les chemins de menus sont donnés pour les interfaces <strong>anglaises</strong> de Twinmotion, SketchUp et Rhino, avec l’équivalent français entre parenthèses lorsqu’il diffère. Si un nom de menu cité n’existe pas chez vous, vérifiez d’abord la langue de votre interface avant de conclure que le manuel a tort.</p>
+    <p class="fr-only">Les chemins de menus renvoient aux interfaces <strong>anglaises</strong> de Twinmotion, SketchUp et Rhino, l’équivalent français figurant entre parenthèses lorsqu’il diffère. Si un nom cité reste introuvable chez vous, vérifiez d’abord la langue de votre interface avant d’en conclure que le manuel se trompe.</p>
   </div>
 </section>
 
@@ -560,7 +560,7 @@ body.show-figures .shot-todo{display:block}
   </div>
 
   <div class="fr-only">
-    <p>Ce cours repose sur <strong>un seul projet, mené de bout en bout</strong>. Il n’y a pas d’exercices séparés avec des modèles séparés. Chaque chapitre se termine par une <strong>étape</strong> de ce projet unique, et chaque étape produit quelque chose qui se retrouve dans le rendu final ou dans les décisions qui le fondent.</p>
+    <p>Ce cours repose sur <strong>un seul projet, mené de bout en bout</strong>. Pas d’exercices séparés, pas de modèles jetables. Chaque chapitre s’achève sur une <strong>étape</strong> de ce projet unique, et chaque étape produit quelque chose qui se retrouvera dans le rendu final ou dans les décisions qui le fondent.</p>
 
     <h3>Les trois livrables</h3>
     <div class="tbl-wrap">
@@ -588,12 +588,12 @@ body.show-figures .shot-todo{display:block}
 
     <div class="callout c-doc">
       <span class="lbl">Le livrable A est un travail évalué, pas un sous-produit</span>
-      <p>Puisque le modèle natif est rendu, tout ce qui figure aux <a href="#ch3">chapitres 3</a> et <a href="#ch4">4</a> est évalué directement : orientation des faces, volumes fermés, épaisseur des murs, structure des groupes, nommage, balises, calques, et purge du fichier. Un modèle qui produit un beau rendu mais s’ouvre sur un fouillis illisible de <code>Groupe#82</code> est un livrable A faible, quelle que soit la qualité du B.</p>
+      <p>Puisque le modèle natif fait partie du rendu, tout ce qu’exposent les <a href="#ch3">chapitres 3</a> et <a href="#ch4">4</a> est évalué directement : orientation des faces, volumes fermés, épaisseur des murs, structure des groupes, nommage, balises, calques, purge du fichier. Un modèle qui produit une belle image mais s’ouvre sur un fouillis de <code>Groupe#82</code> reste un livrable A médiocre, si brillant soit le B.</p>
     </div>
 
     <div class="callout c-warn">
       <span class="lbl">La règle de réconciliation</span>
-      <p>Le modèle que vous rendez doit être <strong>celui dont proviennent vos images</strong>. Vous découvrirez des défauts aux étapes 5 et 9  : un mur sans épaisseur, une face inversée, un volume qui ne ferme pas. Ils doivent être corrigés <em>dans le modèle source puis réimportés</em>, jamais contournés dans Twinmotion. Si A et B divergent, les deux sont faux.</p>
+      <p>Le modèle que vous remettez doit être <strong>celui dont proviennent vos images</strong>. Les étapes 5 et 9 vous feront découvrir des défauts : un mur sans épaisseur, une face inversée, un volume qui ne ferme pas. Corrigez-les <em>dans le modèle source, puis réimportez</em> ; ne les contournez jamais dans Twinmotion. Si A et B divergent, les deux sont faux.</p>
     </div>
 
     <h3>Le journal de projet</h3>
@@ -607,7 +607,7 @@ body.show-figures .shot-todo{display:block}
       <li>Votre nombre d’échantillons, avec la preuve qui le fonde (étape 12).</li>
       <li>Votre calcul de temps de rendu et ce que vous avez modifié ensuite (étape 13).</li>
     </ul>
-    <p>Le journal existe parce qu’en jury on vous demandera <em>pourquoi</em>, et « c’était plus joli » n’est pas une réponse. Écrire la décision au moment où on la prend, c’est ainsi qu’on en conserve le raisonnement.</p>
+    <p>Ce journal existe parce qu’en jury la question tombera toujours : <em>pourquoi</em> ? Et « c’était plus joli » n’est pas une réponse. Écrire la décision au moment où on la prend, c’est le seul moyen d’en conserver le raisonnement.</p>
 
     <h3>Correspondance des étapes et des livrables</h3>
     <pre><span class="cm"># Un projet, quatorze étapes</span>
@@ -791,7 +791,7 @@ body.show-figures .shot-todo{display:block}
 
     <div class="callout c-tip">
       <span class="lbl">Where projects go wrong</span>
-      <p>Stage 5 is where most projects break, and a stage 4 problem is almost always a stage 2 problem that was skipped. If your import behaves strangely, the cause is in your model, not in Twinmotion. Ten minutes of model hygiene saves an evening of firefighting — which is why the next chapter is the highest-value hour in the course.</p>
+      <p>Stage 4 is where most projects break, and a stage 4 problem is almost always a stage 2 problem that was skipped. If your import behaves strangely, the cause is in your model, not in Twinmotion. Ten minutes of model hygiene saves an evening of firefighting — which is why Chapter 3 is the highest-value hour in the course.</p>
     </div>
 
     <h3>1.4 Iteration is normal — plan for the round trip</h3>
@@ -868,7 +868,7 @@ body.show-figures .shot-todo{display:block}
   </div>
 
   <div class="fr-only">
-    <p>Avant d’appuyer sur le moindre bouton, il vous faut un modèle mental de ce qui se passe réellement lorsqu’un bâtiment dessiné dans SketchUp apparaît dans Twinmotion. Presque tous les problèmes que vous rencontrerez dans ce cours découlent de l’absence de ce modèle mental.</p>
+    <p>Avant de toucher au moindre bouton, il faut vous représenter ce qui se joue lorsqu’un bâtiment dessiné dans SketchUp apparaît dans Twinmotion. Presque toutes les difficultés que vous rencontrerez dans ce cours viennent de l’absence de cette représentation.</p>
 
     <h3>1.1 Trois logiciels, trois idées totalement différentes de ce qu’est un mur</h3>
     <p>C’est l’élément le plus utile de ce chapitre.</p>
@@ -886,24 +886,24 @@ body.show-figures .shot-todo{display:block}
 
     <div class="callout c-teach">
       <span class="lbl">La version en une phrase</span>
-      <p>SketchUp pense en surfaces, Rhino pense en mathématiques, Twinmotion pense en lumière, et la lumière se moque de ce que vous vouliez dessiner, elle ne voit que ce que vous avez réellement dessiné.</p>
+      <p>SketchUp raisonne en surfaces, Rhino en équations, Twinmotion en lumière. Et la lumière ignore vos intentions : elle ne voit que ce que vous avez effectivement construit.</p>
     </div>
 
     <h3>1.2 Pourquoi ce cours utilise l’export statique et non le Direct Link</h3>
-    <p>Twinmotion propose un plugin <strong>Datasmith Direct Link</strong> qui synchronise SketchUp et Twinmotion en direct. Il est réellement utile, et de nombreuses agences l’utilisent. Ce cours enseigne d’abord la voie de l’<strong>export statique</strong>, pour trois raisons pédagogiques :</p>
+    <p>Twinmotion propose un plugin <strong>Datasmith Direct Link</strong> qui synchronise les deux logiciels en direct. L’outil est solide et beaucoup d’agences s’en servent. Si ce cours commence néanmoins par l’<strong>export statique</strong>, c’est pour trois raisons pédagogiques :</p>
     <ol>
-      <li><strong>Il rend le passage de relais visible.</strong> Quand vous exportez puis importez un fichier, vous voyez exactement ce qui a franchi la frontière. Le Direct Link masque cela : en cas de problème, impossible de savoir de quel côté ça a cassé.</li>
-      <li><strong>Il est reproductible pour l’évaluation.</strong> Un fichier <code>.skp</code> ou <code>.glb</code> se rend, se corrige et s’ouvre chez l’enseignant. Un lien live, non.</li>
-      <li><strong>Il résiste aux écarts de version.</strong> Le plugin Direct Link dépend de versions hôtes précises ; une machine de l’atelier, un portable personnel et l’installation d’un camarade sont rarement à la même version.</li>
+      <li><strong>Il rend le passage de relais visible.</strong> En exportant puis en important, vous voyez exactement ce qui a franchi la frontière. Le Direct Link escamote ce moment : quand un problème surgit, rien n’indique de quel côté il est né.</li>
+      <li><strong>Il se prête à l’évaluation.</strong> Un fichier <code>.skp</code> ou <code>.glb</code> se remet, se corrige et s’ouvre chez l’enseignant ; une synchronisation en direct, non.</li>
+      <li><strong>Il résiste aux écarts de version.</strong> Le plugin dépend étroitement de la version hôte, or une machine d’atelier, un portable personnel et l’installation d’un camarade sont rarement alignés.</li>
     </ol>
 
     <div class="callout c-fix">
       <span class="lbl">Un choix pédagogique, pas un jugement sur le Direct Link</span>
-      <p>Le Direct Link est une fonctionnalité Epic officiellement prise en charge et un choix professionnel parfaitement légitime. Les trois raisons ci-dessus concernent l’apprentissage du pipeline et la possibilité de rendre un fichier, et non une prétendue instabilité du plugin. Une fois compris ce qui franchit la frontière, utilisez la voie qui convient au travail. Le chapitre 6 traite le Direct Link en détail.</p>
+      <p>Le Direct Link est une fonctionnalité Epic officiellement prise en charge, et un choix professionnel parfaitement défendable. Les trois raisons ci-dessus tiennent à l’apprentissage du pipeline et à la remise d’un fichier, non à une prétendue instabilité. Une fois compris ce qui franchit la frontière, employez la méthode qui sert le travail. Le chapitre 6 y revient en détail.</p>
     </div>
 
     <h3>1.3 Les sept étapes</h3>
-    <p>Chaque projet de ce cours traverse les mêmes sept étapes. Apprenez-en les noms  : tout le livre est bâti sur elles, et le schéma ci-dessous est la carte que vous devriez savoir redessiner de mémoire à la fin.</p>
+    <p>Tout projet mené dans ce cours traverse les mêmes sept étapes. Retenez-en les noms : le livre entier s’y adosse, et le schéma ci-dessous est la carte que vous devriez savoir redessiner de mémoire en fin de semestre.</p>
 
     <figure class="diagram diagram-wide" id="fig-1-2-fr">
       <svg viewBox="-10 -46 744 952" role="img" aria-labelledby="t12f">
@@ -994,17 +994,17 @@ body.show-figures .shot-todo{display:block}
         <path class="dg-return" d="M664 700 C 698 700, 698 230, 670 216"/>
         <text class="dg-treturn" transform="translate(710,470) rotate(90)" text-anchor="middle">constaté ici · causé ici</text>
       </svg>
-      <figcaption><strong>Fig 1.2  : Le pipeline complet.</strong> Le chemin de retour est ce qu’il faut retenir : un défaut constaté à l’étape 7 a presque toujours été créé à l’étape 3 ou 4. Une fuite de lumière est un problème d’épaisseur ou de mode de fusion. Un modèle à la mauvaise taille est un problème d’unités. Une surface noire est un problème de normales. Aucun ne se corrige là où on le trouve.</figcaption>
+      <figcaption><strong>Fig 1.2  : Le pipeline complet.</strong> Le chemin de retour est ce qu’il faut retenir : un défaut constaté à l’étape 6 a presque toujours été créé à l’étape 2 ou 4. Une fuite de lumière est un problème d’épaisseur ou de mode de fusion. Un modèle à la mauvaise taille est un problème d’unités. Une surface noire est un problème de normales. Aucun ne se corrige là où on le trouve.</figcaption>
     </figure>
 
     <div class="callout c-tip">
       <span class="lbl">Là où les projets déraillent</span>
-      <p>C’est à l’étape 5 que la plupart des projets cassent, et un problème d’étape 5 est presque toujours un problème d’étape 3 qu’on a sauté. Si votre import se comporte bizarrement, la cause est dans votre modèle, pas dans Twinmotion. Dix minutes d’hygiène épargnent une soirée de dépannage, d’où le fait que le chapitre suivant soit l’heure la plus rentable du cours.</p>
+      <p>C’est à l’étape 4 que la plupart des projets déraillent, et un incident d’étape 4 trahit presque toujours une étape 2 bâclée. Si votre import se comporte étrangement, cherchez la cause dans votre modèle, non dans Twinmotion. Dix minutes d’hygiène épargnent une soirée de dépannage : c’est ce qui fait du chapitre 3 l’heure la plus rentable du cours.</p>
     </div>
 
     <h3>1.4 L’itération est normale, anticipez l’aller-retour</h3>
-    <p>Vous ne modéliserez pas une fois pour rendre une fois. Vous allez rendre, constater que le balcon ne va pas, revenir dans SketchUp, corriger, et réimporter. Twinmotion gère cela correctement : réimporter un fichier mis à jour par-dessus l’existant conserve vos matériaux, lumières et caméras Twinmotion, <em>à condition que les noms d’objets du fichier source n’aient pas changé</em>.</p>
-    <p>Cette dernière condition est toute l’astuce, et c’est pourquoi le chapitre 3 insiste tant sur le nommage et le groupement. <strong>Renommez un groupe dans SketchUp et vous orphelinez tous les matériaux que vous lui aviez attribués dans Twinmotion.</strong></p>
+    <p>Vous ne modéliserez pas une fois pour rendre une fois. Vous rendrez, vous trouverez le balcon manqué, vous retournerez dans SketchUp, vous corrigerez, vous réimporterez. Twinmotion l’accepte très bien : réimporter un fichier mis à jour par-dessus l’existant conserve matériaux, lumières et caméras, <em>à condition que les noms d’objets n’aient pas bougé</em>.</p>
+    <p>Toute la subtilité tient dans cette réserve, d’où l’insistance du chapitre 3 sur le nommage et le groupement. <strong>Renommez un groupe dans SketchUp et vous orphelinez d’un coup tous les matériaux que vous lui aviez attribués.</strong></p>
 
     <figure class="diagram" id="fig-1-1-fr">
       <svg viewBox="0 0 720 250" role="img" aria-labelledby="t11f">
@@ -1066,7 +1066,7 @@ body.show-figures .shot-todo{display:block}
         <li>Vous avez parcouru les sept étapes une fois, même mal.</li>
         <li>Votre liste de blocages est écrite, et non mémorisée.</li>
       </ul>
-      <p style="margin-top:1rem"><em>On n’optimise pas un processus qu’on n’a jamais mené à terme. Faites d’abord la version moche, rien de tout cela n’est rendu.</em></p>
+      <p style="margin-top:1rem"><em>On n’optimise pas un processus qu’on n’a jamais mené à terme. Commencez par la version bâclée : rien de tout cela ne sera rendu.</em></p>
     </div>
   </div>
 </section>
@@ -1265,18 +1265,18 @@ body.show-figures .shot-todo{display:block}
   </div>
 
   <div class="fr-only">
-    <p>À mettre en place avant de tracer la moindre ligne. Quinze minutes une seule fois, et cela détermine si votre projet survivra aux déplacements, aux révisions, au partage, à la correction et à l’archivage, ou s’il se délitera silencieusement la première fois qu’il quittera la machine qui l’a vu naître.</p>
+    <p>À mettre en place avant de tracer la moindre ligne. Un quart d’heure, une fois pour toutes, et de là dépend la suite : ou bien votre projet survit aux déplacements, aux révisions, au partage, à la correction et à l’archivage, ou bien il se délite en silence dès qu’il quitte la machine qui l’a vu naître.</p>
 
     <h3>2.1 Pourquoi c’est plus important qu’il n’y paraît</h3>
-    <p>Une scène Twinmotion n’est pas un conteneur. C’est un ensemble de <em>pointeurs</em>. Quand vous importez votre modèle, Twinmotion enregistre l’emplacement du fichier et y retourne à chaque mise à jour. Il en va de même des textures personnalisées, des HDRI, des profils IES et des LUT. Déplacez l’un d’eux et le pointeur casse.</p>
-    <p>D’où la panne la plus décourageante du cours : vous ouvrez votre scène sur une autre machine et tout est gris. Rien n’est corrompu. La scène ne trouve simplement pas ce qu’on lui a dit de chercher.</p>
+    <p>Une scène Twinmotion n’est pas un conteneur, mais un jeu de <em>renvois</em>. À l’import, Twinmotion retient l’emplacement du fichier et y revient à chaque mise à jour. Il en va de même des textures personnalisées, des HDRI, des profils IES et des LUT. Déplacez l’un d’eux et le renvoi ne mène plus nulle part.</p>
+    <p>D’où la panne la plus décourageante du cours : vous ouvrez votre scène sur une autre machine, et tout est gris. Rien n’est corrompu pour autant. La scène ne trouve simplement plus ce qu’on lui avait appris à chercher.</p>
 
     <div class="callout c-teach">
       <span class="lbl">La version en une phrase</span>
-      <p>Votre fichier Twinmotion est une liste d’instructions pour retrouver des choses. Si les choses bougent, les instructions sont fausses.</p>
+      <p>Votre fichier Twinmotion n’est qu’une liste d’adresses. Si ce qui s’y trouve déménage, les adresses ne valent plus rien.</p>
     </div>
 
-    <p>Vous déplacerez ce projet plus souvent que prévu : machine de l’atelier vers portable, portable vers la machine d’un camarade pour un rendu, machine vers clé USB pour le rendu final, rendu vers archive. Chaque déplacement est une occasion de perdre quelque chose, et ces pertes sont généralement silencieuses.</p>
+    <p>Vous déplacerez ce projet bien plus souvent que vous ne l’imaginez : de la machine d’atelier au portable, du portable à celle d’un camarade pour un rendu, de la machine à la clé USB pour la remise, de la remise à l’archive. Chaque déplacement offre une occasion de perdre quelque chose, et ces pertes se font sans bruit.</p>
 
     <h3>2.2 La structure</h3>
     <p>Un dossier, au nom du projet, contenant tout. Les préfixes numérotés imposent un tri utile et suivent le pipeline du chapitre 1.</p>
@@ -1308,7 +1308,7 @@ body.show-figures .shot-todo{display:block}
 
     <p>Deux dossiers méritent leur place pour des raisons peu évidentes :</p>
     <ul>
-      <li><strong><code>4_assets/</code></strong> est celui qu’on saute, et c’est celui qui casse la portabilité. Chaque HDRI téléchargé, chaque profil IES, chaque texture et LUT personnalisée y appartient, <em>copiés dedans</em>, et non liés depuis votre dossier Téléchargements.</li>
+      <li><strong><code>4_assets/</code></strong> est le dossier qu’on néglige, et précisément celui qui ruine la portabilité. Chaque HDRI téléchargé, chaque profil IES, chaque texture et chaque LUT personnalisée y trouve sa place, recopiés dedans et jamais appelés depuis vos Téléchargements.</li>
       <li><strong><code>5_sorties/video/frames/</code></strong> existe parce que les animations longues doivent être rendues en séquences d’images, pas en fichiers vidéo uniques. Quand un rendu meurt à l’image 700 sur 900, on reprend au lieu de tout refaire.</li>
     </ul>
 
@@ -1340,7 +1340,7 @@ body.show-figures .shot-todo{display:block}
 
     <div class="callout c-tip">
       <span class="lbl">Pratique d’atelier</span>
-      <p>Si des textures disparaissent après un changement de version ou un déplacement, ne réimportez pas pour tout refaire. Utilisez la fenêtre des fichiers manquants et pointez-la sur <code>2_echange/</code>. Refaire, c’est des heures ; relier, c’est quelques secondes.</p>
+      <p>Si des textures disparaissent après un changement de version ou un déplacement, ne réimportez pas pour tout refaire. Ouvrez la fenêtre des fichiers manquants et pointez-la sur <code>2_echange/</code>. Refaire coûte des heures ; relier, quelques secondes.</p>
     </div>
 
     <h3>2.4 La règle qui rend le projet portable</h3>
@@ -1348,7 +1348,7 @@ body.show-figures .shot-todo{display:block}
       <span class="lbl">La règle</span>
       <p>Rien de ce dont le projet dépend ne vit hors du dossier de projet. Jamais. Ni sur le Bureau, ni dans Téléchargements, ni sur un lecteur réseau, ni dans le dossier partagé de quelqu’un d’autre.</p>
     </div>
-    <p>Si cette règle tient, le dossier est un objet autonome. Copiez-le n’importe où et il fonctionne. Sinon, vous avez un projet qui ne tourne que sur une seule machine et qu’on ne peut remettre à personne, y compris à qui le corrigera.</p>
+    <p>Si la règle tient, le dossier devient un objet autonome : copiez-le où vous voulez, il fonctionne. Sinon, vous détenez un projet qui ne tourne que sur une machine et que vous ne pouvez remettre à personne, pas même à votre correcteur.</p>
 
     <div class="callout c-warn">
       <span class="lbl">Le piège des Téléchargements</span>
@@ -1356,7 +1356,7 @@ body.show-figures .shot-todo{display:block}
     </div>
 
     <h3>2.5 Nommer les fichiers pour que les noms tiennent jusqu’en semaine douze</h3>
-    <p>Vous produirez des dizaines de fichiers. Un système inventé en semaine une et suivi sans réfléchir vaut bien mieux qu’un système ingénieux abandonné en semaine trois.</p>
+    <p>Vous produirez des dizaines de fichiers. Un système adopté dès la première semaine et suivi machinalement vaut infiniment mieux qu’un système ingénieux abandonné à la troisième.</p>
 
     <pre><span class="cm"># le motif</span>
   cours_projet_version_role.ext
@@ -1379,7 +1379,7 @@ body.show-figures .shot-todo{display:block}
     </div>
 
     <h3>2.6 Ce qui voyage réellement <span class="lv-tag lv-y3">Y3</span></h3>
-    <p>Les types de fichiers se comportent très différemment au déplacement. Savoir lequel fait quoi indique où être vigilant.</p>
+    <p>Les formats ne réagissent pas de la même façon au déplacement. Savoir lequel fait quoi vous indique où porter votre attention.</p>
 
     <div class="tbl-wrap">
       <table>
@@ -1398,19 +1398,19 @@ body.show-figures .shot-todo{display:block}
 
     <div class="callout c-tip">
       <span class="lbl">Le seul test qui prouve la portabilité</span>
-      <p>Ne raisonnez pas, testez. Copiez tout le dossier sur une clé USB, ouvrez-le sur une <em>autre machine</em>, et chargez la scène Twinmotion. Tout ce qui manque vivait hors du dossier. Faites-le en semaine trois, pas la veille du rendu.</p>
+      <p>Ne raisonnez pas : testez. Copiez tout le dossier sur une clé USB, ouvrez-le sur une <em>autre machine</em>, puis chargez la scène Twinmotion. Tout ce qui manque à l’appel vivait hors du dossier. Faites-le en semaine trois, pas la veille de la remise.</p>
     </div>
 
     <h3>2.7 Sauvegarder</h3>
     <ul>
       <li><strong>Versionnez tout le dossier</strong>, pas seulement le fichier de scène. La scène ne vaut rien sans ses sources.</li>
-      <li><strong>Copiez-le ailleurs chaque semaine</strong>, et toujours avant une opération risquée, réimport, conversion Nanite, gros changement de géométrie.</li>
+      <li><strong>Copiez-le ailleurs chaque semaine</strong>, et systématiquement avant une opération risquée : réimport, conversion Nanite, refonte de géométrie.</li>
       <li><strong>La synchronisation cloud n’est pas une sauvegarde.</strong> Elle réplique fidèlement vos erreurs, suppressions comprises, sur toutes les autres copies. Elle protège d’un portable perdu, pas d’une mauvaise décision.</li>
-      <li><strong>Gardez une copie hors de la machine</strong>, disque externe ou dossier cloud dans lequel vous ne travaillez pas directement.</li>
+      <li><strong>Gardez une copie hors de la machine</strong> : disque externe, ou dossier cloud dans lequel vous ne travaillez jamais directement.</li>
     </ul>
 
     <h3>2.8 Travailler en groupe</h3>
-    <p>Les fichiers 3D ne se fusionnent pas comme du texte. Si deux personnes modifient le même modèle, l’une des deux modifications sera perdue, aucun outil ne les réconcilie. La prévention est la seule stratégie.</p>
+    <p>Les fichiers 3D ne se fusionnent pas comme du texte. Si deux personnes modifient le même modèle, l’une des deux versions sera perdue : aucun outil ne les réconcilie. Seule la prévention fonctionne.</p>
     <ul>
       <li><strong>Découpez le modèle par zone ou par système</strong>, et attribuez à chacun des groupes nommés que personne d’autre ne touche.</li>
       <li><strong>Importez les parties dans une seule scène Twinmotion comme fichiers distincts</strong>, pour que chacun mette à jour la sienne sans perturber les autres.</li>
