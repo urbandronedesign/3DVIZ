@@ -258,6 +258,87 @@ footer{border-top:1px solid var(--rule); margin-top:4rem; padding:2rem 0; color:
     </ul>
   </div>
 
+  <h3 class="en-only">Running English commands on a French Rhino</h3>
+  <h3 class="fr-only">Utiliser les commandes anglaises sur un Rhino en français</h3>
+
+  <div class="en-only">
+    <p>If Rhino is installed in French, its commands are French too: <span class="cmd">Maillage</span> rather than <span class="cmd">Mesh</span>, <span class="cmd">Direction</span> rather than <span class="cmd">Dir</span>. That becomes a problem the moment you follow an English tutorial, or this manual.</p>
+    <p><strong>Type an underscore in front of the command and Rhino accepts the English name, whatever language the interface is in.</strong> So <span class="cmd">_QuadRemesh</span> works on a French installation exactly as <span class="cmd">QuadRemesh</span> does on an English one.</p>
+  </div>
+  <div class="fr-only">
+    <p>Si Rhino est installé en français, ses commandes le sont aussi : <span class="cmd">Maillage</span> et non <span class="cmd">Mesh</span>, <span class="cmd">Direction</span> et non <span class="cmd">Dir</span>. L’ennui commence dès qu’on suit un tutoriel anglais, ou ce manuel.</p>
+    <p><strong>Tapez un tiret bas devant la commande et Rhino accepte le nom anglais, quelle que soit la langue de l’interface.</strong> Ainsi <span class="cmd">_QuadRemesh</span> fonctionne sur une installation française exactement comme <span class="cmd">QuadRemesh</span> sur une anglaise.</p>
+  </div>
+
+  <div class="doc">
+    <span class="lbl en-only">Documented</span>
+    <span class="lbl fr-only">Documenté</span>
+    <p class="en-only">McNeel’s macro documentation: the underscore “tell[s] Rhino that the command which follows is in English (no matter what the language you are running Rhino in), which will make your macro universal.”</p>
+    <p class="fr-only">Documentation McNeel sur les macros : le tiret bas « indique à Rhino que la commande qui suit est en anglais (quelle que soit la langue dans laquelle vous utilisez Rhino), ce qui rend votre macro universelle ».</p>
+  </div>
+
+  <p class="en-only">Two other prefixes are worth knowing, because they combine with it:</p>
+  <p class="fr-only">Deux autres préfixes méritent d’être connus, car ils se combinent avec lui :</p>
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th><span class="en-only">Prefix</span><span class="fr-only">Préfixe</span></th>
+        <th><span class="en-only">What it does</span><span class="fr-only">Ce qu’il fait</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="cmd">_</span></td>
+            <td><span class="en-only">Interprets the command name as English, whatever the interface language.</span><span class="fr-only">Interprète le nom de la commande comme de l’anglais, quelle que soit la langue de l’interface.</span></td></tr>
+        <tr><td><span class="cmd">-</span></td>
+            <td><span class="en-only">Runs the command-line version, bypassing its dialog box, so the options can be typed or scripted.</span><span class="fr-only">Lance la version en ligne de commande, sans boîte de dialogue, pour taper ou scripter les options.</span></td></tr>
+        <tr><td><span class="cmd">!</span></td>
+            <td><span class="en-only">Cancels whatever command is already running, as a safety.</span><span class="fr-only">Annule la commande en cours, par sécurité.</span></td></tr>
+        <tr><td><span class="cmd">!_</span></td>
+            <td><span class="en-only">The usual opening of a macro: cancel anything running, then run the English command.</span><span class="fr-only">L’ouverture habituelle d’une macro : annuler ce qui tourne, puis lancer la commande anglaise.</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="en-only">The course’s commands, both ways</h3>
+  <h3 class="fr-only">Les commandes du cours, dans les deux langues</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th><span class="en-only">Type this anywhere</span><span class="fr-only">À taper partout</span></th>
+        <th><span class="en-only">English UI</span><span class="fr-only">Interface anglaise</span></th>
+        <th><span class="en-only">French UI</span><span class="fr-only">Interface française</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="cmd">_QuadRemesh</span></td><td><span class="cmd">QuadRemesh</span></td><td><span class="cmd">RemaillageQuad</span></td></tr>
+        <tr><td><span class="cmd">_Dir</span></td><td><span class="cmd">Dir</span></td><td><span class="cmd">Direction</span></td></tr>
+        <tr><td><span class="cmd">_ShowEdges</span></td><td><span class="cmd">ShowEdges</span></td><td><span class="cmd">AfficherBords</span></td></tr>
+        <tr><td><span class="cmd">_Mesh</span></td><td><span class="cmd">Mesh</span></td><td><span class="cmd">Maillage</span></td></tr>
+        <tr><td><span class="cmd">_Export</span></td><td><span class="cmd">Export</span></td><td><span class="cmd">Exporter</span></td></tr>
+        <tr><td><span class="cmd">_Purge</span></td><td><span class="cmd">Purge</span></td><td><span class="cmd">Purger</span></td></tr>
+        <tr><td><span class="cmd">_Join</span></td><td><span class="cmd">Join</span></td><td><span class="cmd">Joindre</span></td></tr>
+        <tr><td><span class="cmd">_Explode</span></td><td><span class="cmd">Explode</span></td><td><span class="cmd">Décomposer</span></td></tr>
+        <tr><td><span class="cmd">_Options</span></td><td><span class="cmd">Options</span></td><td><span class="cmd">Options</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="doc">
+    <span class="lbl en-only">The full list, English ↔ French</span>
+    <span class="lbl fr-only">La liste complète, anglais ↔ français</span>
+    <ul>
+      <li><a href="https://wiki.mcneel.com/fr/rhino/commandlist" target="_blank" rel="noopener">Liste des commandes de Rhino en anglais et en français</a> <span class="note">— <span class="en-only">McNeel’s own wiki, the page to bookmark. It lags slightly behind the newest releases, so a very recent command may not appear.</span><span class="fr-only">le wiki de McNeel, la page à mettre en favori. Elle accuse un léger retard sur les dernières versions : une commande très récente peut y manquer.</span></span></li>
+      <li><a href="https://docs.mcneel.com/rhino/8/help/fr-fr/index.htm" target="_blank" rel="noopener">Aide de Rhino 8 en français</a></li>
+      <li><a href="https://developer.rhino3d.com/guides/general/creating-command-macros/" target="_blank" rel="noopener">Creating Command Macros</a> <span class="note">— <span class="en-only">where the prefixes are documented</span><span class="fr-only">où les préfixes sont documentés</span></span></li>
+      <li><a href="https://docs.mcneel.com/rhino/8/help/en-us/commands/commands.htm" target="_blank" rel="noopener">Rhino command reference</a></li>
+    </ul>
+  </div>
+
+  <div class="warnbox">
+    <span class="lbl en-only">Use the underscore even in English</span>
+    <span class="lbl fr-only">Mettez le tiret bas même en anglais</span>
+    <p class="en-only">The underscore costs one keystroke and makes everything you write portable. An alias or a macro you build on an English machine will then still work when you sit down at a French one in the studio — and when you paste a command to a classmate, it works on their installation too. Get into the habit now rather than debugging it later.</p>
+    <p class="fr-only">Le tiret bas coûte une frappe et rend portable tout ce que vous écrivez. Un alias ou une macro composés sur une machine anglaise fonctionneront encore devant une machine française de l’atelier, et une commande transmise à un camarade marchera aussi chez lui. Prenez l’habitude maintenant plutôt que de déboguer plus tard.</p>
+  </div>
+
   <h3 class="en-only">Commands this course uses</h3>
   <h3 class="fr-only">Commandes utilisées dans ce cours</h3>
   <div class="tbl">
