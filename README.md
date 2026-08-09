@@ -6,6 +6,10 @@ A complete bilingual (EN/FR) production manual for architectural visualisation, 
 
 That is the link to give students — no download, no install, works on a phone.
 
+### ⌨️ **[Commands & shortcuts →](https://urbandronedesign.github.io/3DVIZ/commands.html)**
+
+A companion reference page: every key and command the course uses in SketchUp, Rhino 3D and Twinmotion, taken from the official documentation and linked back to it. Also arranged by task, so you can look up "check face orientation" rather than hunting for a key.
+
 To use it offline instead, download **[`twinmotion_2026_manual-v6.html`](twinmotion_2026_manual-v6.html)** and open it in any browser. One self-contained file, ~430 KB, no build step and no dependencies. It works from a USB key with no internet connection.
 
 ---

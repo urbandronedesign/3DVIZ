@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>Commands &amp; Shortcuts — SketchUp · Rhino 3D · Twinmotion</title>
+<style>
+:root{
+  --paper:#ffffff; --ink:#1a1c1e; --ink-2:#52585f; --ink-3:#6d747b;
+  --rule:#e8eaec; --rule-2:#c8ccd1; --accent:#1b4fa0; --wash:#f6f7f8;
+  --warn:#a4352c; --fix:#8a5c14;
+  --topbar:rgba(255,255,255,.94);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
+  --measure:52rem;
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14161a; --ink:#e4e7ea; --ink-2:#a6aeb6; --ink-3:#79828b;
+    --rule:#252a30; --rule-2:#39424b; --accent:#7fa9e8; --wash:#1a1d22;
+    --warn:#e59288; --fix:#d5a557; --topbar:rgba(20,22,26,.94);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14161a; --ink:#e4e7ea; --ink-2:#a6aeb6; --ink-3:#79828b;
+  --rule:#252a30; --rule-2:#39424b; --accent:#7fa9e8; --wash:#1a1d22;
+  --warn:#e59288; --fix:#d5a557; --topbar:rgba(20,22,26,.94);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:100%;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(min-width:1001px){html{font-size:110%}}
+@media(min-width:1400px){html{font-size:115%}}
+body{
+  font-family:var(--sans); background:var(--paper); color:var(--ink);
+  font-size:1.03rem; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+body.lang-en .fr-only, body.lang-fr .en-only{display:none !important}
+
+main{max-width:var(--measure); margin:0 auto; padding:0 2rem 6rem}
+#topbar{
+  position:sticky; top:0; z-index:900; background:var(--topbar);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--rule);
+  margin:0 -2rem 3rem; padding:.7rem 2rem;
+  display:flex; gap:.6rem; align-items:center; flex-wrap:wrap;
+}
+#topbar .back{flex:1; min-width:150px; font-size:.84rem}
+a{color:var(--accent); text-underline-offset:.15em}
+.seg{display:flex; border:1px solid var(--rule); border-radius:2px; overflow:hidden}
+.seg button{
+  background:none; border:none; color:var(--ink-3); padding:.3rem .68rem;
+  font:500 .73rem var(--sans); letter-spacing:.06em; cursor:pointer;
+  border-right:1px solid var(--rule); transition:.12s;
+}
+.seg button:last-child{border-right:none}
+.seg button:hover{color:var(--ink)}
+.seg button.on{background:var(--ink); color:var(--paper)}
+
+header.cover{padding:3.5rem 0 2.5rem; border-bottom:1px solid var(--rule); margin-bottom:3rem}
+header.cover h1{font-size:2.1rem; font-weight:600; letter-spacing:-.026em; line-height:1.18; margin-bottom:.9rem}
+header.cover p{color:var(--ink-2); font-size:1.02rem; max-width:38rem}
+header.cover .meta{color:var(--ink-3); font-size:.72rem; margin-top:1.6rem; letter-spacing:.11em; text-transform:uppercase}
+
+section{scroll-margin-top:70px; margin-bottom:4.5rem}
+h2{font-size:1.55rem; font-weight:600; letter-spacing:-.02em; padding-top:1.5rem; margin-bottom:.4rem}
+h2 .eyebrow{display:block; color:var(--ink-3); font-size:.68rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.5rem}
+h3{font-size:1.02rem; font-weight:600; margin:2.2rem 0 .7rem}
+p{margin-bottom:1rem}
+.lede{color:var(--ink-2); margin-bottom:1.4rem}
+
+.doc{border-left:2px solid var(--ink); padding:.15rem 0 .15rem 1.2rem; margin:1.4rem 0; font-size:.93rem}
+.doc .lbl{display:block; font-size:.63rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.4rem}
+.doc ul{margin:.5rem 0 0}
+.warnbox{border-left:2px solid var(--warn); padding:.15rem 0 .15rem 1.2rem; margin:1.6rem 0; font-size:.93rem}
+.warnbox .lbl{display:block; font-size:.63rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.4rem; color:var(--warn)}
+
+ul{list-style:none; margin:0 0 1.1rem}
+ul li{position:relative; padding-left:1.5rem; margin-bottom:.5rem}
+ul li::before{content:""; position:absolute; left:.35rem; top:.72em; width:4px; height:1px; background:var(--rule-2)}
+
+.tbl{overflow-x:auto; margin:1.4rem 0}
+table{width:100%; border-collapse:collapse; font-size:.9rem; min-width:420px;
+      font-variant-numeric:lining-nums tabular-nums}
+th,td{padding:.55rem .9rem .55rem 0; text-align:left; vertical-align:top; border-bottom:1px solid var(--rule)}
+th{border-bottom:1px solid var(--ink); font-size:.66rem; font-weight:600; letter-spacing:.1em;
+   text-transform:uppercase; color:var(--ink-3); padding-bottom:.45rem}
+td:last-child,th:last-child{padding-right:0}
+tr:last-child td{border-bottom:none}
+
+kbd{
+  display:inline-block; font:600 .8rem var(--mono); line-height:1.4;
+  padding:.1rem .42rem; margin:0 .05rem; white-space:nowrap;
+  border:1px solid var(--rule-2); border-bottom-width:2px; border-radius:4px;
+  background:var(--wash); color:var(--ink);
+}
+code{font-family:var(--mono); font-size:.85em; background:var(--wash); padding:.08rem .32rem; border-radius:2px}
+.cmd{font-family:var(--mono); font-size:.86em; font-weight:600}
+.path{font-weight:600; white-space:nowrap; font-size:.95em}
+.note{color:var(--ink-3); font-size:.86rem}
+.tag{display:inline-block; font-size:.6rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+     padding:.06rem .34rem; border:1px solid var(--rule-2); color:var(--ink-3); border-radius:2px; margin-left:.4rem}
+
+nav.toc{border:1px solid var(--rule); padding:1.2rem 1.4rem; margin-bottom:3rem}
+nav.toc b{display:block; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin-bottom:.6rem}
+nav.toc a{display:inline-block; margin-right:1.4rem; font-size:.9rem}
+
+footer{border-top:1px solid var(--rule); margin-top:4rem; padding:2rem 0; color:var(--ink-3); font-size:.8rem}
+
+@media(max-width:1000px){ main{padding:0 1.2rem 4rem} #topbar{margin:0 -1.2rem 2rem; padding:.6rem 1.2rem} header.cover h1{font-size:1.6rem} }
+@media print{
+  :root{--paper:#fff;--ink:#000;--ink-2:#333;--ink-3:#666;--rule:#ccc;--rule-2:#999;--wash:#f4f4f4;--accent:#000;--topbar:#fff}
+  #topbar,nav.toc{display:none !important}
+  body{font-size:9.5pt}
+  section{page-break-inside:avoid}
+  a{color:#000; text-decoration:none}
+}
+</style>
+</head>
+<body class="lang-en">
+
+<main>
+
+<div id="topbar">
+  <span class="back"><a href="twinmotion_2026_manual-v6.html">&larr; <span class="en-only">Back to the manual</span><span class="fr-only">Retour au manuel</span></a></span>
+  <div class="seg">
+    <button data-lang="en" class="on" onclick="setLang('en')">EN</button>
+    <button data-lang="fr" onclick="setLang('fr')">FR</button>
+  </div>
+  <div class="seg">
+    <button data-theme-btn="light" onclick="setTheme('light')" aria-label="Light">☀</button>
+    <button data-theme-btn="dark" onclick="setTheme('dark')" aria-label="Dark">☾</button>
+  </div>
+</div>
+
+<header class="cover">
+  <div class="en-only">
+    <h1>Commands &amp; Shortcuts</h1>
+    <p>The keys and commands this course actually uses, in SketchUp, Rhino 3D and Twinmotion — with a link to the official documentation for each, so you can check anything here against the source.</p>
+  </div>
+  <div class="fr-only">
+    <h1>Commandes &amp; raccourcis</h1>
+    <p>Les touches et les commandes réellement utilisées dans ce cours, sous SketchUp, Rhino 3D et Twinmotion, avec un lien vers la documentation officielle de chacun pour vérifier n’importe quelle ligne à la source.</p>
+  </div>
+  <p class="meta">SketchUp · Rhino 3D · Twinmotion 2026</p>
+</header>
+
+<div class="warnbox">
+  <span class="lbl en-only">Read this before trusting a single line</span>
+  <span class="lbl fr-only">À lire avant de faire confiance à une seule ligne</span>
+  <p class="en-only">Shortcuts change between versions, differ between Windows and macOS, and in SketchUp and Rhino they can be reassigned by whoever set the machine up before you. Everything below is taken from the official documentation and linked back to it. If a key does nothing on your machine, check your own shortcut settings before assuming this page is wrong.</p>
+  <p class="fr-only">Les raccourcis changent d’une version à l’autre, diffèrent entre Windows et macOS, et sous SketchUp comme sous Rhino ils ont pu être réattribués par qui a configuré la machine avant vous. Tout ce qui suit provient de la documentation officielle et y renvoie. Si une touche ne fait rien chez vous, vérifiez vos propres réglages avant de conclure que cette page se trompe.</p>
+</div>
+
+<nav class="toc">
+  <b class="en-only">On this page</b><b class="fr-only">Sur cette page</b>
+  <a href="#sketchup">SketchUp</a>
+  <a href="#rhino">Rhino 3D</a>
+  <a href="#twinmotion">Twinmotion</a>
+  <a href="#workflow"><span class="en-only">By task</span><span class="fr-only">Par tâche</span></a>
+</nav>
+
+<!-- ==================== SKETCHUP ==================== -->
+<section id="sketchup">
+  <h2><span class="eyebrow">01</span>SketchUp</h2>
+  <p class="lede en-only">SketchUp ships with relatively few default shortcuts and expects you to add your own. These are the defaults as published by Trimble.</p>
+  <p class="lede fr-only">SketchUp est livré avec peu de raccourcis par défaut et suppose que vous ajouterez les vôtres. Voici ceux publiés par Trimble.</p>
+
+  <div class="doc">
+    <span class="lbl en-only">Official documentation</span>
+    <span class="lbl fr-only">Documentation officielle</span>
+    <ul>
+      <li><a href="https://help.sketchup.com/en/default-keyboard-shortcuts" target="_blank" rel="noopener">Default Keyboard Shortcuts</a> — <span class="en-only">the full published list</span><span class="fr-only">la liste complète publiée</span></li>
+      <li><a href="https://help.sketchup.com/en/sketchup/shortcuts" target="_blank" rel="noopener">Shortcuts overview</a> — <span class="en-only">creating, editing, importing and exporting your own</span><span class="fr-only">créer, modifier, importer et exporter les vôtres</span></li>
+      <li><a href="https://help.sketchup.com/en" target="_blank" rel="noopener">SketchUp Help centre</a></li>
+    </ul>
+  </div>
+
+  <h3 class="en-only">Default keyboard shortcuts</h3>
+  <h3 class="fr-only">Raccourcis clavier par défaut</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th><span class="en-only">Key</span><span class="fr-only">Touche</span></th>
+        <th><span class="en-only">Tool</span><span class="fr-only">Outil</span></th>
+        <th><span class="en-only">Key</span><span class="fr-only">Touche</span></th>
+        <th><span class="en-only">Tool</span><span class="fr-only">Outil</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><kbd>Space</kbd></td><td><span class="en-only">Select</span><span class="fr-only">Sélectionner</span></td>
+            <td><kbd>M</kbd></td><td><span class="en-only">Move</span><span class="fr-only">Déplacer</span></td></tr>
+        <tr><td><kbd>Shift</kbd>+<kbd>Space</kbd></td><td><span class="en-only">Lasso Select</span><span class="fr-only">Sélection lasso</span></td>
+            <td><kbd>P</kbd></td><td><span class="en-only">Push/Pull</span><span class="fr-only">Pousser/Tirer</span></td></tr>
+        <tr><td><kbd>L</kbd></td><td><span class="en-only">Line</span><span class="fr-only">Ligne</span></td>
+            <td><kbd>Q</kbd></td><td><span class="en-only">Rotate</span><span class="fr-only">Faire pivoter</span></td></tr>
+        <tr><td><kbd>R</kbd></td><td><span class="en-only">Rectangle</span><span class="fr-only">Rectangle</span></td>
+            <td><kbd>S</kbd></td><td><span class="en-only">Scale</span><span class="fr-only">Échelle</span></td></tr>
+        <tr><td><kbd>C</kbd></td><td><span class="en-only">Circle</span><span class="fr-only">Cercle</span></td>
+            <td><kbd>F</kbd></td><td><span class="en-only">Offset</span><span class="fr-only">Décalage</span></td></tr>
+        <tr><td><kbd>A</kbd></td><td><span class="en-only">2 Point Arc</span><span class="fr-only">Arc à 2 points</span></td>
+            <td><kbd>T</kbd></td><td><span class="en-only">Tape Measure</span><span class="fr-only">Mètre</span></td></tr>
+        <tr><td><kbd>E</kbd></td><td><span class="en-only">Eraser</span><span class="fr-only">Gomme</span></td>
+            <td><kbd>G</kbd></td><td><span class="en-only">Make Component</span><span class="fr-only">Créer un composant</span></td></tr>
+        <tr><td><kbd>B</kbd></td><td><span class="en-only">Paint Bucket</span><span class="fr-only">Pot de peinture</span></td>
+            <td><kbd>K</kbd></td><td><span class="en-only">Back Edges</span><span class="fr-only">Arêtes arrière</span></td></tr>
+        <tr><td><kbd>O</kbd></td><td><span class="en-only">Orbit</span><span class="fr-only">Orbite</span></td>
+            <td><kbd>I</kbd></td><td><span class="en-only">Image Igloo</span><span class="fr-only">Image Igloo</span></td></tr>
+        <tr><td><kbd>H</kbd></td><td><span class="en-only">Pan</span><span class="fr-only">Panoramique</span></td>
+            <td><kbd>Shift</kbd>+<kbd>S</kbd></td><td><span class="en-only">Search</span><span class="fr-only">Recherche</span></td></tr>
+        <tr><td><kbd>Z</kbd></td><td><span class="en-only">Zoom</span><span class="fr-only">Zoom</span></td>
+            <td><kbd>Shift</kbd>+<kbd>Z</kbd></td><td><span class="en-only">Zoom Extents</span><span class="fr-only">Zoom étendu</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note en-only">Mouse equivalents: orbit with the middle button, pan with <kbd>Shift</kbd> + middle button, zoom with the scroll wheel.</p>
+  <p class="note fr-only">Équivalents souris : orbite au bouton du milieu, panoramique avec <kbd>Maj</kbd> + bouton du milieu, zoom à la molette.</p>
+
+  <h3 class="en-only">Menu paths this course relies on</h3>
+  <h3 class="fr-only">Chemins de menus utilisés dans ce cours</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th><span class="en-only">What for</span><span class="fr-only">Pour quoi faire</span></th>
+        <th><span class="en-only">Where</span><span class="fr-only">Où</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="en-only">Audit face orientation</span><span class="fr-only">Auditer l’orientation des faces</span></td>
+            <td><span class="path en-only">View &gt; Face Style &gt; Monochrome</span><span class="path fr-only">Affichage &gt; Style de face &gt; Monochrome</span></td></tr>
+        <tr><td><span class="en-only">Fix a reversed face</span><span class="fr-only">Corriger une face inversée</span></td>
+            <td><span class="en-only">Right-click &gt; <em>Reverse Faces</em></span><span class="fr-only">Clic droit &gt; <em>Inverser les faces</em></span></td></tr>
+        <tr><td><span class="en-only">Propagate correct orientation</span><span class="fr-only">Propager la bonne orientation</span></td>
+            <td><span class="en-only">Right-click a correct face &gt; <em>Orient Faces</em></span><span class="fr-only">Clic droit sur une face correcte &gt; <em>Orienter les faces</em></span></td></tr>
+        <tr><td><span class="en-only">Face count / purge</span><span class="fr-only">Nombre de faces / purge</span></td>
+            <td><span class="path en-only">Window &gt; Model Info &gt; Statistics</span><span class="path fr-only">Fenêtre &gt; Infos sur le modèle &gt; Statistiques</span></td></tr>
+        <tr><td><span class="en-only">Group / component structure</span><span class="fr-only">Structure des groupes / composants</span></td>
+            <td><span class="path en-only">Window &gt; Outliner</span><span class="path fr-only">Fenêtre &gt; Structure</span></td></tr>
+        <tr><td><span class="en-only">Tags (Layers before 2020)</span><span class="fr-only">Balises (Calques avant 2020)</span></td>
+            <td><span class="path en-only">Window &gt; Tags</span><span class="path fr-only">Fenêtre &gt; Balises</span></td></tr>
+        <tr><td><span class="en-only">Customise shortcuts</span><span class="fr-only">Personnaliser les raccourcis</span></td>
+            <td><span class="path en-only">Window &gt; Preferences &gt; Shortcuts</span><span class="path fr-only">Fenêtre &gt; Préférences &gt; Raccourcis</span><span class="note"> · macOS: SketchUp &gt; Settings &gt; Shortcuts</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== RHINO ==================== -->
+<section id="rhino">
+  <h2><span class="eyebrow">02</span>Rhino 3D</h2>
+  <p class="lede en-only">Rhino is driven by typed commands more than by keys. The command line is the interface — type the first letters and it autocompletes. Aliases let you shorten anything you use often.</p>
+  <p class="lede fr-only">Rhino se pilote davantage par commandes tapées que par touches. La ligne de commande <em>est</em> l’interface : tapez les premières lettres et elle complète. Les alias permettent d’abréger ce que vous utilisez souvent.</p>
+
+  <div class="doc">
+    <span class="lbl en-only">Official documentation</span>
+    <span class="lbl fr-only">Documentation officielle</span>
+    <ul>
+      <li><a href="https://docs.mcneel.com/rhino/8/help/en-us/user_interface/shortcuts.htm" target="_blank" rel="noopener">Shortcuts by function</a> — <span class="en-only">the published key list</span><span class="fr-only">la liste des touches publiée</span></li>
+      <li><a href="https://docs.mcneel.com/rhino/mac/help/en-us/options/aliases.htm" target="_blank" rel="noopener">Aliases options</a> — <span class="en-only">creating your own command abbreviations</span><span class="fr-only">créer vos propres abréviations de commandes</span></li>
+      <li><a href="https://docs.mcneel.com/rhino/8/help/en-us/index.htm" target="_blank" rel="noopener">Rhino 8 Help</a> — <span class="en-only">full command reference</span><span class="fr-only">référence complète des commandes</span></li>
+    </ul>
+  </div>
+
+  <h3 class="en-only">Commands this course uses</h3>
+  <h3 class="fr-only">Commandes utilisées dans ce cours</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th><span class="en-only">Command</span><span class="fr-only">Commande</span></th>
+        <th><span class="en-only">What it does</span><span class="fr-only">Ce qu’elle fait</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><a class="cmd" href="https://docs.mcneel.com/rhino/8/help/en-us/commands/quadremesh.htm" target="_blank" rel="noopener">QuadRemesh</a></td>
+            <td><span class="en-only">Rebuilds an object as an evenly-distributed quad mesh. Use on SubD furniture, sculpted terrain, stitched surfaces, and anything destined for Nanite.</span><span class="fr-only">Reconstruit un objet en maillage de quadrilatères réguliers. À utiliser sur le mobilier SubD, les terrains sculptés, les surfaces raccordées, et tout ce qui ira sous Nanite.</span></td></tr>
+        <tr><td><a class="cmd" href="https://docs.mcneel.com/rhino/8/help/en-us/commands/dir.htm" target="_blank" rel="noopener">Dir</a></td>
+            <td><span class="en-only">Shows and flips surface normal direction — Rhino’s equivalent of SketchUp’s face orientation check.</span><span class="fr-only">Affiche et inverse la direction des normales de surface, l’équivalent Rhino du contrôle d’orientation des faces sous SketchUp.</span></td></tr>
+        <tr><td><a class="cmd" href="https://docs.mcneel.com/rhino/8/help/en-us/commands/showedges.htm" target="_blank" rel="noopener">ShowEdges</a></td>
+            <td><span class="en-only">Highlights naked edges, so you can find where surfaces that should be joined are not.</span><span class="fr-only">Met en évidence les arêtes nues, pour repérer les surfaces qui devraient être jointes et ne le sont pas.</span></td></tr>
+        <tr><td><a class="cmd" href="https://docs.mcneel.com/rhino/8/help/en-us/commands/mesh.htm" target="_blank" rel="noopener">Mesh</a></td>
+            <td><span class="en-only">Converts NURBS to a polygon mesh, with the detailed controls that decide your triangle count.</span><span class="fr-only">Convertit les NURBS en maillage polygonal, avec les contrôles détaillés qui déterminent votre nombre de triangles.</span></td></tr>
+        <tr><td><span class="cmd">Export / ExportSelected</span></td>
+            <td><span class="en-only">Writes the selection out. Choose glTF Binary for <code>.glb</code>.</span><span class="fr-only">Écrit la sélection. Choisissez glTF binaire pour le <code>.glb</code>.</span></td></tr>
+        <tr><td><span class="cmd">Purge</span></td>
+            <td><span class="en-only">Removes unused blocks, materials and layers before export.</span><span class="fr-only">Supprime blocs, matériaux et calques inutilisés avant export.</span></td></tr>
+        <tr><td><span class="cmd">Options</span></td>
+            <td><span class="en-only">Units, aliases, keyboard, and document mesh settings all live here.</span><span class="fr-only">Unités, alias, clavier et réglages de maillage du document s’y trouvent tous.</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note"><span class="en-only">glTF / GLB import and export options are documented separately:</span><span class="fr-only">Les options d’import et d’export glTF / GLB sont documentées à part :</span> <a href="https://docs.mcneel.com/rhino/8/help/en-us/fileio/gltf_import_export.htm" target="_blank" rel="noopener">GL Transmission Format (.glb, .gltf)</a></p>
+
+  <h3 class="en-only">Keyboard and mouse</h3>
+  <h3 class="fr-only">Clavier et souris</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th><span class="en-only">Keys</span><span class="fr-only">Touches</span></th>
+        <th><span class="en-only">Action</span><span class="fr-only">Action</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd></td><td><span class="en-only">Rotate perspective views</span><span class="fr-only">Faire pivoter les vues en perspective</span></td></tr>
+        <tr><td><kbd>Shift</kbd>+<span class="en-only">arrows</span><span class="fr-only">flèches</span></td><td><span class="en-only">Pan parallel views</span><span class="fr-only">Panoramique des vues parallèles</span></td></tr>
+        <tr><td><kbd>Page&nbsp;Up</kbd> / <kbd>Page&nbsp;Dn</kbd></td><td><span class="en-only">Zoom in / out</span><span class="fr-only">Zoom avant / arrière</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Page&nbsp;Up/Dn</kbd></td><td><span class="en-only">Pan perspective views</span><span class="fr-only">Panoramique des vues en perspective</span></td></tr>
+        <tr><td><kbd>Shift</kbd>+<kbd>Page&nbsp;Up/Dn</kbd></td><td><span class="en-only">Lens length — telephoto / wide angle</span><span class="fr-only">Focale : téléobjectif / grand angle</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Tab</kbd></td><td><span class="en-only">Cycle to the next viewport</span><span class="fr-only">Passer à la fenêtre suivante</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<span class="en-only">RMB drag</span><span class="fr-only">glisser bouton droit</span></td><td><span class="en-only">Rotate the camera</span><span class="fr-only">Faire pivoter la caméra</span></td></tr>
+        <tr><td><kbd>Shift</kbd>+<kbd>Alt</kbd>+<span class="en-only">RMB drag</span><span class="fr-only">glisser bouton droit</span></td><td><span class="en-only">Tilt the view</span><span class="fr-only">Incliner la vue</span></td></tr>
+        <tr><td><span class="en-only">Click</span><span class="fr-only">Clic</span></td><td><span class="en-only">Select, clearing the previous selection</span><span class="fr-only">Sélectionner, en effaçant la sélection précédente</span></td></tr>
+        <tr><td><kbd>Shift</kbd>+<span class="en-only">click</span><span class="fr-only">clic</span></td><td><span class="en-only">Add to the selection</span><span class="fr-only">Ajouter à la sélection</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<span class="en-only">click</span><span class="fr-only">clic</span></td><td><span class="en-only">Remove from the selection</span><span class="fr-only">Retirer de la sélection</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<span class="en-only">click</span><span class="fr-only">clic</span></td><td><span class="en-only">Add sub-objects to the selection</span><span class="fr-only">Ajouter des sous-objets à la sélection</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== TWINMOTION ==================== -->
+<section id="twinmotion">
+  <h2><span class="eyebrow">03</span>Twinmotion</h2>
+  <p class="lede en-only">Twinmotion has by far the richest shortcut set of the three, and the one worth learning properly — navigation is where you spend most of your time.</p>
+  <p class="lede fr-only">Twinmotion possède de loin le jeu de raccourcis le plus riche des trois, et celui qui mérite vraiment d’être appris : c’est dans la navigation que passe l’essentiel du temps.</p>
+
+  <div class="doc">
+    <span class="lbl en-only">Official documentation</span>
+    <span class="lbl fr-only">Documentation officielle</span>
+    <ul>
+      <li><a href="https://dev.epicgames.com/documentation/twinmotion/keyboard-and-mouse-shortcuts-in-twinmotion" target="_blank" rel="noopener">Keyboard and Mouse Shortcuts</a></li>
+      <li><a href="https://dev.epicgames.com/documentation/twinmotion/navigation-keyboard-and-mouse-shortcuts" target="_blank" rel="noopener">Navigation Keyboard and Mouse Shortcuts</a></li>
+      <li><a href="https://dev.epicgames.com/documentation/twinmotion" target="_blank" rel="noopener">Twinmotion documentation</a></li>
+    </ul>
+  </div>
+
+  <h3 class="en-only">Moving in the viewport</h3>
+  <h3 class="fr-only">Se déplacer dans la fenêtre</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th><span class="en-only">Keys</span><span class="fr-only">Touches</span></th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td><span class="en-only">Forward, left, back, right</span><span class="fr-only">Avancer, gauche, reculer, droite</span></td></tr>
+        <tr><td><kbd>Q</kbd> / <kbd>E</kbd></td><td><span class="en-only">Straight up / straight down</span><span class="fr-only">Monter / descendre à la verticale</span></td></tr>
+        <tr><td><kbd>Shift</kbd>+<span class="en-only">move keys</span><span class="fr-only">touches de déplacement</span></td><td><span class="en-only">Temporarily boost speed</span><span class="fr-only">Accélérer temporairement</span></td></tr>
+        <tr><td><kbd>Alt</kbd>+<span class="en-only">move keys</span><span class="fr-only">touches de déplacement</span></td><td><span class="en-only">Temporarily reduce speed</span><span class="fr-only">Ralentir temporairement</span> <span class="note">· macOS <kbd>⌥</kbd></span></td></tr>
+        <tr><td><span class="en-only">RMB + drag</span><span class="fr-only">Clic droit + glisser</span></td><td><span class="en-only">Look around</span><span class="fr-only">Regarder autour</span></td></tr>
+        <tr><td><span class="en-only">RMB + WASD</span><span class="fr-only">Clic droit + WASD</span></td><td><span class="en-only">Move and look at the same time</span><span class="fr-only">Se déplacer et regarder simultanément</span></td></tr>
+        <tr><td><span class="en-only">LMB + drag</span><span class="fr-only">Clic gauche + glisser</span></td><td><span class="en-only">Orbit the scene</span><span class="fr-only">Orbiter autour de la scène</span></td></tr>
+        <tr><td><span class="en-only">MMB + drag</span><span class="fr-only">Bouton milieu + glisser</span></td><td><span class="en-only">Pan</span><span class="fr-only">Panoramique</span></td></tr>
+        <tr><td><kbd>F</kbd></td><td><span class="en-only">Focus on the selected object</span><span class="fr-only">Centrer sur l’objet sélectionné</span></td></tr>
+        <tr><td><kbd>1</kbd>…<kbd>6</kbd></td><td><span class="en-only">Inspect, Handle, Walk, Cycle, Drive, Fly</span><span class="fr-only">Inspection, Manipulation, Marche, Vélo, Conduite, Vol</span></td></tr>
+        <tr><td><kbd>M</kbd></td><td><span class="en-only">Switch Pedestrian / Drone</span><span class="fr-only">Basculer Piéton / Drone</span></td></tr>
+        <tr><td><kbd>O</kbd></td><td><span class="en-only">Cycle orthographic views</span><span class="fr-only">Faire défiler les vues orthographiques</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="en-only">Tools and objects</h3>
+  <h3 class="fr-only">Outils et objets</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th><span class="en-only">Keys</span><span class="fr-only">Touches</span></th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>7</kbd> / <kbd>8</kbd> / <kbd>9</kbd></td><td><span class="en-only">Translate / Rotate / Scale</span><span class="fr-only">Déplacer / Pivoter / Redimensionner</span></td></tr>
+        <tr><td><kbd>Tab</kbd></td><td><span class="en-only">Cycle Translate / Rotate / Scale</span><span class="fr-only">Faire défiler Déplacer / Pivoter / Redimensionner</span></td></tr>
+        <tr><td><kbd>Z</kbd></td><td><span class="en-only">Toggle Local / World axis</span><span class="fr-only">Basculer axe Local / Monde</span></td></tr>
+        <tr><td><kbd>Shift</kbd>+<kbd>X</kbd></td><td><span class="en-only">Gravity</span><span class="fr-only">Gravité</span></td></tr>
+        <tr><td><kbd>R</kbd></td><td><span class="en-only">Path tracer</span><span class="fr-only">Path tracer</span> <span class="tag">Y3</span></td></tr>
+        <tr><td><kbd>T</kbd></td><td><span class="en-only">Material picker</span><span class="fr-only">Pipette à matériaux</span></td></tr>
+        <tr><td><kbd>G</kbd></td><td><span class="en-only">Toggle visual helpers</span><span class="fr-only">Afficher/masquer les repères visuels</span></td></tr>
+        <tr><td><kbd>H</kbd></td><td><span class="en-only">Show / hide selected objects</span><span class="fr-only">Afficher / masquer les objets sélectionnés</span></td></tr>
+        <tr><td><span class="en-only">Shift + LMB + drag</span><span class="fr-only">Maj + clic gauche + glisser</span></td><td><span class="en-only">Duplicate an object</span><span class="fr-only">Dupliquer un objet</span></td></tr>
+        <tr><td><kbd>F2</kbd></td><td><span class="en-only">Rename an item</span><span class="fr-only">Renommer un élément</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="en-only">File, editing and interface</h3>
+  <h3 class="fr-only">Fichier, édition et interface</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th><span class="en-only">Keys</span><span class="fr-only">Touches</span></th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td><span class="en-only">Save</span><span class="fr-only">Enregistrer</span> <span class="note">· <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> <span class="en-only">save as</span><span class="fr-only">enregistrer sous</span></span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>O</kbd> / <kbd>Ctrl</kbd>+<kbd>N</kbd></td><td><span class="en-only">Open / new project</span><span class="fr-only">Ouvrir / nouveau projet</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>I</kbd></td><td><span class="en-only">Open the Import window</span><span class="fr-only">Ouvrir la fenêtre d’import</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>M</kbd></td><td><span class="en-only">Open the Merge window</span><span class="fr-only">Ouvrir la fenêtre de fusion</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td><span class="en-only">Undo / redo</span><span class="fr-only">Annuler / rétablir</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td><span class="en-only">Select all</span><span class="fr-only">Tout sélectionner</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td><span class="en-only">Open Preferences</span><span class="fr-only">Ouvrir les Préférences</span></td></tr>
+        <tr><td><kbd>F9</kbd></td><td><span class="en-only">Screenshot to the desktop, as PNG</span><span class="fr-only">Capture d’écran sur le Bureau, en PNG</span></td></tr>
+        <tr><td><kbd>F10</kbd></td><td><span class="en-only">VR mode (headset required)</span><span class="fr-only">Mode VR (casque requis)</span></td></tr>
+        <tr><td><kbd>F11</kbd> / <kbd>F12</kbd></td><td><span class="en-only">Windowed / fullscreen · windowed / presenter</span><span class="fr-only">Fenêtré / plein écran · fenêtré / présentateur</span></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<span class="en-only">wheel</span><span class="fr-only">molette</span></td><td><span class="en-only">Zoom the sequence timeline</span><span class="fr-only">Zoomer la timeline de séquence</span> <span class="note">· <kbd>Shift</kbd>+<span class="en-only">wheel</span><span class="fr-only">molette</span> <span class="en-only">pans it</span><span class="fr-only">la fait défiler</span></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note en-only">macOS: substitute <kbd>⌘</kbd> for <kbd>Ctrl</kbd> throughout, and <kbd>⌥</kbd> for <kbd>Alt</kbd>. Fullscreen is <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>F</kbd>.</p>
+  <p class="note fr-only">Sous macOS : remplacez <kbd>Ctrl</kbd> par <kbd>⌘</kbd> et <kbd>Alt</kbd> par <kbd>⌥</kbd> partout. Le plein écran est <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>F</kbd>.</p>
+</section>
+
+<!-- ==================== BY TASK ==================== -->
+<section id="workflow">
+  <h2><span class="eyebrow">04</span><span class="en-only">By task</span><span class="fr-only">Par tâche</span></h2>
+  <p class="lede en-only">The same information arranged the way you actually need it — by what you are trying to do, in the order the course does it.</p>
+  <p class="lede fr-only">Les mêmes informations rangées comme on en a besoin : selon ce que l’on cherche à faire, dans l’ordre où le cours procède.</p>
+
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th><span class="en-only">Task</span><span class="fr-only">Tâche</span></th>
+        <th><span class="en-only">Where</span><span class="fr-only">Où</span></th>
+        <th><span class="en-only">Manual</span><span class="fr-only">Manuel</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="en-only">Check face orientation</span><span class="fr-only">Vérifier l’orientation des faces</span></td>
+            <td>SketchUp · <span class="path en-only">View &gt; Face Style &gt; Monochrome</span><span class="path fr-only">Affichage &gt; Style de face &gt; Monochrome</span></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch3">3.1</a></td></tr>
+        <tr><td><span class="en-only">Purge before export</span><span class="fr-only">Purger avant export</span></td>
+            <td>SketchUp · <span class="path en-only">Model Info &gt; Statistics</span><span class="path fr-only">Infos sur le modèle &gt; Statistiques</span></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch3">3.6</a></td></tr>
+        <tr><td><span class="en-only">Check surface normals</span><span class="fr-only">Vérifier les normales de surface</span></td>
+            <td>Rhino · <span class="cmd">Dir</span></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch4">4.8</a></td></tr>
+        <tr><td><span class="en-only">Find unjoined surfaces</span><span class="fr-only">Trouver les surfaces non jointes</span></td>
+            <td>Rhino · <span class="cmd">ShowEdges</span></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch4">4.8</a></td></tr>
+        <tr><td><span class="en-only">Remesh organic geometry</span><span class="fr-only">Remailler une géométrie organique</span></td>
+            <td>Rhino · <span class="cmd">QuadRemesh</span></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch4">4.4</a></td></tr>
+        <tr><td><span class="en-only">Import geometry</span><span class="fr-only">Importer une géométrie</span></td>
+            <td>Twinmotion · <kbd>Ctrl</kbd>+<kbd>I</kbd></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch6">6.1</a></td></tr>
+        <tr><td><span class="en-only">Check the scale of an import</span><span class="fr-only">Vérifier l’échelle d’un import</span></td>
+            <td>Twinmotion · <span class="en-only">place a character, press</span><span class="fr-only">posez un personnage, puis</span> <kbd>F</kbd></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch6">6.6</a></td></tr>
+        <tr><td><span class="en-only">Diagnose light leaks</span><span class="fr-only">Diagnostiquer les fuites de lumière</span></td>
+            <td>Twinmotion · <span class="en-only">viewport mode icon &gt; <em>Lumen surface</em></span><span class="fr-only">icône de mode d’affichage &gt; <em>Lumen surface</em></span></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch10">10.2</a></td></tr>
+        <tr><td><span class="en-only">Switch to the Path Tracer</span><span class="fr-only">Passer au Path Tracer</span></td>
+            <td>Twinmotion · <kbd>R</kbd></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch12">12.1</a></td></tr>
+        <tr><td><span class="en-only">Quick reference screenshot</span><span class="fr-only">Capture de référence rapide</span></td>
+            <td>Twinmotion · <kbd>F9</kbd></td>
+            <td>—</td></tr>
+        <tr><td><span class="en-only">Present without the interface</span><span class="fr-only">Présenter sans l’interface</span></td>
+            <td>Twinmotion · <kbd>F12</kbd></td>
+            <td><a href="twinmotion_2026_manual-v6.html#ch14">14.2</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p class="en-only">Companion to the <a href="twinmotion_2026_manual-v6.html">SketchUp &amp; Rhino to Twinmotion 2026 production manual</a>. Every table on this page is drawn from the official documentation linked in its section.</p>
+  <p class="fr-only">Complément au <a href="twinmotion_2026_manual-v6.html">manuel de production SketchUp &amp; Rhino vers Twinmotion 2026</a>. Chaque tableau de cette page provient de la documentation officielle liée dans sa section.</p>
+</footer>
+
+</main>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.querySelectorAll('[data-lang]').forEach(function(b){b.classList.toggle('on', b.dataset.lang===l)});
+  document.documentElement.lang=l;
+  try{localStorage.setItem('tm-lang',l)}catch(e){}
+}
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.querySelectorAll('[data-theme-btn]').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-theme-btn')===t);
+  });
+  try{localStorage.setItem('tm-theme',t)}catch(e){}
+}
+(function(){
+  var l='en', th=null;
+  try{ l=localStorage.getItem('tm-lang')||'en'; th=localStorage.getItem('tm-theme'); }catch(e){}
+  setLang(l);
+  if(th){ setTheme(th); }
+  else {
+    var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.querySelectorAll('[data-theme-btn]').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-theme-btn')===(dark?'dark':'light'));
+    });
+  }
+})();
+</script>
+</body>
+</html>
