@@ -341,7 +341,6 @@ body.show-figures .shot-todo{display:block}
   <div class="toc-part"><span class="en-only">Front matter</span><span class="fr-only">Préambule</span></div>
   <a href="#how-to-use"><span class="en-only">How to use this book</span><span class="fr-only">Comment utiliser ce livre</span></a>
   <a href="#project"><span class="en-only">The project &amp; what you submit</span><span class="fr-only">Le projet &amp; ce que vous rendez</span></a>
-  <a href="#corrections"><span class="en-only">Corrections from v5</span><span class="fr-only">Corrections depuis la v5</span></a>
 
   <div class="toc-part"><span class="en-only">Part I · Foundations</span><span class="fr-only">Partie I · Fondations</span></div>
   <a href="#ch1"><span class="num">1</span><span class="en-only">The pipeline, end to end</span><span class="fr-only">Le pipeline, de bout en bout</span></a>
@@ -616,69 +615,7 @@ body.show-figures .shot-todo{display:block}
   </div>
 </section>
 
-<!-- ======================= CORRECTIONS ======================= -->
-<section class="chap" id="corrections">
-  <span class="chapter-eyebrow en-only">Front matter</span>
-  <span class="chapter-eyebrow fr-only">Préambule</span>
-  <h2 class="chapter en-only">Corrections from the v5 workflow sheet</h2>
-  <h2 class="chapter fr-only">Corrections apportées à la fiche v5</h2>
 
-  <p class="en-only">The previous workflow document contained several statements that do not match Twinmotion's actual documentation. They are corrected here, and corrected throughout the book. This page exists so that anyone who studied from the old sheet knows exactly what changed.</p>
-  <p class="fr-only">Le document de workflow précédent contenait plusieurs affirmations qui ne correspondent pas à la documentation réelle de Twinmotion. Elles sont corrigées ici, et dans tout le livre. Cette page existe pour que ceux qui ont travaillé sur l'ancienne fiche sachent exactement ce qui a changé.</p>
-
-  <div class="callout c-fix">
-    <span class="lbl">1 — Collapse mode <span class="en-only">vs Lumen</span><span class="fr-only">et Lumen</span></span>
-    <div class="en-only">
-      <p><strong>v5 said:</strong> choose <em>Collapse by Material</em> for static architectural envelopes.</p>
-      <p><strong>Correct:</strong> Epic's Lumen documentation explicitly instructs you to select <strong>Keep hierarchy</strong> when importing, because collapsing the model into one mesh limits Lumen's ability to generate Surface Cache cards and <em>causes light bleeding</em>. Nanite also requires <strong>Keep hierarchy</strong>. The v5 advice therefore causes the exact interior light-leak problem that its own Chapter 6 tries to solve. See <a href="#ch5">Chapter 5</a>.</p>
-    </div>
-    <div class="fr-only">
-      <p><strong>La v5 disait :</strong> choisir <em>Fusionner par Matériau</em> pour les enveloppes architecturales statiques.</p>
-      <p><strong>Correct :</strong> la documentation Lumen d'Epic demande explicitement de sélectionner <strong>Keep hierarchy</strong> (Conserver la hiérarchie) à l'import, car fusionner le modèle en un seul maillage limite la génération des cartes du Surface Cache et <em>provoque des fuites de lumière</em>. Nanite exige également <strong>Keep hierarchy</strong>. Le conseil de la v5 provoque donc précisément le problème que son propre chapitre 6 cherchait à résoudre. Voir le <a href="#ch5">chapitre 5</a>.</p>
-    </div>
-  </div>
-
-  <div class="callout c-fix">
-    <span class="lbl">2 — Lumen Surface Cache <span class="en-only">menu path</span><span class="fr-only">chemin de menu</span></span>
-    <div class="en-only">
-      <p><strong>v5 said:</strong> <span class="path">Dev Tools &gt; Lumen Surface Cache View</span>.</p>
-      <p><strong>Correct:</strong> there is no Dev Tools menu in Twinmotion. The view exists, but you reach it from the <strong>viewport mode icon in the upper-right corner of the viewport</strong>, then choose <strong>Lumen surface</strong>. See <a href="#ch9">Chapter 9</a>.</p>
-    </div>
-    <div class="fr-only">
-      <p><strong>La v5 disait :</strong> <span class="path">Dev Tools &gt; Lumen Surface Cache View</span>.</p>
-      <p><strong>Correct :</strong> il n'existe pas de menu « Dev Tools » dans Twinmotion. Le mode existe bien, mais on y accède par l'<strong>icône de mode d'affichage en haut à droite de la fenêtre 3D</strong>, puis <strong>Lumen surface</strong>. Voir le <a href="#ch9">chapitre 9</a>.</p>
-    </div>
-  </div>
-
-  <div class="callout c-fix">
-    <span class="lbl">3 — Nanite <span class="en-only">on glass</span><span class="fr-only">et le verre</span></span>
-    <div class="en-only">
-      <p><strong>v5 said:</strong> enable Nanite on high-poly meshes, unconditionally.</p>
-      <p><strong>Correct:</strong> Nanite does <strong>not</strong> support objects with translucent materials such as glass, nor animated files, nor Twinmotion/Quixel library assets, nor Megascans <em>Surfaces</em> and <em>Decals</em>. Enabling it on a glazed façade is a real failure mode, not a micro-optimisation. See <a href="#ch5">Chapter 5</a>.</p>
-    </div>
-    <div class="fr-only">
-      <p><strong>La v5 disait :</strong> activer Nanite sur tous les maillages lourds, sans condition.</p>
-      <p><strong>Correct :</strong> Nanite ne prend <strong>pas</strong> en charge les objets à matériaux translucides comme le verre, ni les fichiers animés, ni les assets des bibliothèques Twinmotion/Quixel, ni les catégories Megascans <em>Surfaces</em> et <em>Decals</em>. L'activer sur une façade vitrée est une vraie panne, pas une micro-optimisation. Voir le <a href="#ch5">chapitre 5</a>.</p>
-    </div>
-  </div>
-
-  <div class="callout c-fix">
-    <span class="lbl">4 — Path Tracer <span class="en-only">is Windows-only</span><span class="fr-only">est réservé à Windows</span></span>
-    <div class="en-only">
-      <p><strong>v5 omitted this entirely.</strong> The Path Tracer is supported on <strong>Windows only</strong>, requires DirectX 12 (DXR), an NVIDIA RTX card (except the T1000) or AMD RX 6000 series or newer, and at least <strong>8 GB of VRAM</strong>. If you are on a Mac, or on a laptop with integrated graphics, you cannot use it at all and should plan your deliverables around Lumen. Far better to know that on day one than to discover it in week ten.</p>
-    </div>
-    <div class="fr-only">
-      <p><strong>La v5 l'omettait totalement.</strong> Le Path Tracer fonctionne <strong>uniquement sous Windows</strong>, exige DirectX 12 (DXR), une carte NVIDIA RTX (sauf la T1000) ou AMD RX 6000 ou supérieure, et au moins <strong>8 Go de VRAM</strong>. Si vous êtes sur Mac, ou sur un portable à carte graphique intégrée, vous ne pouvez pas l'utiliser du tout et devez concevoir vos livrables autour de Lumen. Mieux vaut le savoir dès le premier jour que le découvrir en semaine dix.</p>
-    </div>
-  </div>
-
-  <div class="callout c-doc">
-    <span class="lbl en-only">What v5 got right</span>
-    <span class="lbl fr-only">Ce que la v5 avait juste</span>
-    <p class="en-only">To be fair to the original: the Path Tracer <em>does</em> expose <code>Samples per pixel</code>, <code>Max bounces</code>, <code>Denoiser</code> and <code>Fireflies</code> as real user controls; the three collapse modes <em>are</em> named <em>Keep hierarchy</em>, <em>Collapse by material</em> and <em>Collapse all</em>; auto-softening of edges <em>is</em> a genuine 2026.1 feature (Autosoft edge). Those parts carry over unchanged.</p>
-    <p class="fr-only">Pour être juste avec l'original : le Path Tracer expose bien <code>Samples per pixel</code>, <code>Max bounces</code>, <code>Denoiser</code> et <code>Fireflies</code> comme réglages utilisateur ; les trois modes de fusion s'appellent bien <em>Keep hierarchy</em>, <em>Collapse by material</em> et <em>Collapse all</em> ; l'adoucissement automatique des arêtes est bien une fonctionnalité réelle de la 2026.1 (Autosoft edge). Ces points sont repris tels quels.</p>
-  </div>
-</section>
 
 <!-- ======================= PART I ======================= -->
 <div class="part-divider">
@@ -725,8 +662,8 @@ body.show-figures .shot-todo{display:block}
     </ol>
 
     <div class="callout c-fix">
-      <span class="lbl">Honest caveat</span>
-      <p>The v5 sheet justified static export by claiming Direct Link "frequently suffers from memory leak errors" and "asset duplication". That is anecdote, not documentation, and it is unfair to a supported Epic feature. The real reasons are the three above: visibility, reproducibility, and version robustness. Once you understand the pipeline, Direct Link is a perfectly legitimate professional choice — and Chapter 5 covers it.</p>
+      <span class="lbl">A teaching choice, not a verdict on Direct Link</span>
+      <p>Direct Link is a supported Epic feature and a perfectly legitimate professional choice. The three reasons above are about learning the pipeline and being able to hand work in — not about the plugin being unreliable. Once you understand what crosses the boundary, use whichever route suits the job. Chapter 5 covers Direct Link properly.</p>
     </div>
 
     <h3>1.3 The seven stages</h3>
@@ -852,8 +789,8 @@ body.show-figures .shot-todo{display:block}
     </ol>
 
     <div class="callout c-fix">
-      <span class="lbl">Réserve honnête</span>
-      <p>La fiche v5 justifiait l'export statique en affirmant que le Direct Link « souffre fréquemment de fuites de mémoire » et de « doublons d'assets ». C'est de l'anecdote, pas de la documentation, et c'est injuste envers une fonctionnalité Epic officiellement prise en charge. Les vraies raisons sont les trois ci-dessus : visibilité, reproductibilité, robustesse aux versions. Une fois le pipeline compris, le Direct Link est un choix professionnel parfaitement légitime — et le chapitre 5 le traite.</p>
+      <span class="lbl">Un choix pédagogique, pas un jugement sur le Direct Link</span>
+      <p>Le Direct Link est une fonctionnalité Epic officiellement prise en charge et un choix professionnel parfaitement légitime. Les trois raisons ci-dessus concernent l'apprentissage du pipeline et la possibilité de rendre un fichier — pas une prétendue instabilité du plugin. Une fois compris ce qui franchit la frontière, utilisez la voie qui convient au travail. Le chapitre 5 traite le Direct Link en détail.</p>
     </div>
 
     <h3>1.3 Les sept étapes</h3>
@@ -1020,8 +957,8 @@ body.show-figures .shot-todo{display:block}
     </div>
 
     <div class="callout c-fix">
-      <span class="lbl">Note on the v5 figure</span>
-      <p>The v5 sheet gave "minimum 150 mm to 200 mm" as though it were an Epic specification. It is not: Epic documents that light leaks are caused by geometry that is not closed, but publishes no minimum thickness value. Treat 150–200 mm as sound studio practice, not as a documented threshold. What actually matters is that the volume is <em>closed</em> and the surfaces are correctly oriented.</p>
+      <span class="lbl">Studio practice, not specification</span>
+      <p>You will see minimum thickness figures quoted as though they were an engine requirement. They are not: Epic documents that light leaks come from geometry that is not closed, but publishes no minimum thickness value. Treat any such number as sound construction sense rather than a documented threshold. What actually matters is that the volume is <em>closed</em> and the surfaces are correctly oriented.</p>
     </div>
 
     <h3>2.3 Groups, components and the re-import contract</h3>
@@ -1034,8 +971,8 @@ body.show-figures .shot-todo{display:block}
     </ul>
 
     <div class="callout c-fix">
-      <span class="lbl">Note on the v5 figure</span>
-      <p>v5 stated a hard limit of "below 3 levels deep to prevent hierarchy errors". There is no documented nesting limit and no such error. Shallow nesting is a usability recommendation, not a technical constraint — deep nesting will not break your import, it will just make your scene graph miserable to work in.</p>
+      <span class="lbl">A recommendation, not a limit</span>
+      <p>You will see hard nesting limits quoted — usually "no more than three levels, to prevent hierarchy errors". There is no documented nesting limit and no such error. Shallow nesting is a usability recommendation, not a technical constraint: deep nesting will not break your import, it will just make your scene graph miserable to work in.</p>
     </div>
 
     <figure class="shot" id="fig-02-03">
@@ -1156,8 +1093,8 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
     </div>
 
     <div class="callout c-fix">
-      <span class="lbl">Remarque sur le chiffre de la v5</span>
-      <p>La fiche v5 donnait « minimum 150 à 200 mm » comme s'il s'agissait d'une spécification Epic. Ce n'en est pas une : Epic documente que les fuites de lumière viennent d'une géométrie non fermée, mais ne publie aucune valeur d'épaisseur minimale. Traitez 150–200 mm comme une bonne pratique d'atelier, pas comme un seuil documenté. Ce qui compte réellement, c'est que le volume soit <em>fermé</em> et les surfaces correctement orientées.</p>
+      <span class="lbl">Pratique d'atelier, pas spécification</span>
+      <p>Vous verrez des épaisseurs minimales citées comme s'il s'agissait d'une exigence du moteur. Ce n'en est pas une : Epic documente que les fuites viennent d'une géométrie non fermée, mais ne publie aucune valeur d'épaisseur minimale. Traitez ces chiffres comme du bon sens constructif, pas comme un seuil documenté. Ce qui compte réellement, c'est que le volume soit <em>fermé</em> et les surfaces correctement orientées.</p>
     </div>
 
     <h3>2.3 Groupes, composants et le contrat de réimportation</h3>
@@ -1170,8 +1107,8 @@ CONTEXT-BUILDINGS   EXT-STRUCTURE       INT-LIGHTING
     </ul>
 
     <div class="callout c-fix">
-      <span class="lbl">Remarque sur le chiffre de la v5</span>
-      <p>La v5 énonçait une limite stricte de « moins de 3 niveaux d'imbrication pour éviter les erreurs de hiérarchie ». Il n'existe aucune limite documentée ni aucune erreur de ce type. La faible imbrication est une recommandation d'ergonomie, pas une contrainte technique : une imbrication profonde ne cassera pas votre import, elle rendra simplement votre graphe de scène pénible.</p>
+      <span class="lbl">Une recommandation, pas une limite</span>
+      <p>Vous verrez citer des limites strictes d'imbrication — souvent « pas plus de trois niveaux, pour éviter les erreurs de hiérarchie ». Il n'existe aucune limite documentée ni aucune erreur de ce type. La faible imbrication est une recommandation d'ergonomie, pas une contrainte technique : une imbrication profonde ne cassera pas votre import, elle rendra simplement votre graphe de scène pénible.</p>
     </div>
 
     <figure class="shot" id="fig-02-03-fr">
@@ -1673,7 +1610,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-fix">
       <span class="lbl">Why this section names intentions, not checkboxes</span>
-      <p>The v5 sheet listed a five-line export "configuration" as though it were a fixed dialog. It is not — McNeel has changed these options across Rhino versions, and a student following a stale label list concludes the manual is wrong. Match the intentions above to whatever your dialog actually offers, and consult McNeel's glTF page for your version if something is ambiguous.</p>
+      <p>You will find export "configurations" written out as fixed lists of checkbox names. Treat them with suspicion: McNeel has changed these options across Rhino versions, and following a stale label list leads you to conclude the software is broken when it is only different. Match the intentions above to whatever your dialog actually offers, and consult McNeel's glTF page for your version if something is ambiguous.</p>
     </div>
 
     <figure class="shot" id="fig-04-01">
@@ -1784,7 +1721,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
     <div class="callout c-fix">
       <span class="lbl">Pourquoi cette section nomme des intentions et non des cases</span>
-      <p>La fiche v5 listait une « configuration » d'export en cinq lignes comme s'il s'agissait d'une boîte de dialogue figée. Ce n'est pas le cas — McNeel a fait évoluer ces options selon les versions, et en suivant une liste de libellés périmés, on en conclut que le manuel a tort. Faites correspondre les intentions ci-dessus à ce que propose réellement votre boîte de dialogue, et consultez la page glTF de McNeel en cas de doute.</p>
+      <p>Vous trouverez des « configurations » d'export écrites comme des listes figées de noms de cases. Méfiez-vous-en : McNeel a fait évoluer ces options selon les versions, et suivre une liste de libellés périmés fait conclure que le logiciel est cassé alors qu'il est seulement différent. Faites correspondre les intentions ci-dessus à ce que propose réellement votre boîte de dialogue, et consultez la page glTF de McNeel en cas de doute.</p>
     </div>
 
     <figure class="shot" id="fig-04-01-fr">
@@ -1884,11 +1821,6 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <div class="callout c-doc">
       <span class="lbl">Documented — and this is the important one</span>
       <p>Epic's Lumen documentation instructs you to select the <strong>Keep hierarchy</strong> collapse mode when importing files, rather than <em>Collapse all</em>, because collapsing the model into a single mesh limits Lumen's ability to generate its Surface Cache cards and <strong>causes light bleeding artifacts</strong>. Separately, Nanite documentation states that <strong>Keep hierarchy must be selected before enabling Nanite</strong>.</p>
-    </div>
-
-    <div class="callout c-fix">
-      <span class="lbl">This corrects the v5 sheet</span>
-      <p>v5 recommended <em>Collapse by Material</em> for "static architectural envelopes". Follow that advice and you hand yourself the interior light leaks that v5's own interior chapter then tries to cure with wall thickness. Fix the cause, not the symptom: import with <strong>Keep hierarchy</strong>.</p>
     </div>
 
     <figure class="shot" id="fig-5-1">
@@ -2073,11 +2005,6 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     <div class="callout c-doc">
       <span class="lbl">Documenté — et c'est le point important</span>
       <p>La documentation Lumen d'Epic demande de sélectionner le mode <strong>Keep hierarchy</strong> à l'import plutôt que <em>Collapse all</em>, parce que fusionner le modèle en un maillage unique limite la capacité de Lumen à générer les cartes de son Surface Cache et <strong>provoque des artefacts de fuite de lumière</strong>. Par ailleurs, la documentation Nanite précise que <strong>Keep hierarchy doit être sélectionné avant d'activer Nanite</strong>.</p>
-    </div>
-
-    <div class="callout c-fix">
-      <span class="lbl">Ceci corrige la fiche v5</span>
-      <p>La v5 recommandait <em>Fusionner par Matériau</em> pour les « enveloppes architecturales statiques ». Suivez ce conseil et vous vous offrez les fuites de lumière intérieures que le chapitre intérieur de la v5 tente ensuite de soigner par l'épaisseur des murs. Traitez la cause, pas le symptôme : importez en <strong>Keep hierarchy</strong>.</p>
     </div>
 
     <h3>5.2 Nanite — puissant, et plus étroit qu'il n'y paraît <span class="lv-tag lv-y3">Y3</span></h3>
@@ -2793,13 +2720,13 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       </table>
     </div>
 
-    <h3>8.4 The hybrid setup — and a shortcut v5 missed</h3>
+    <h3>8.4 The hybrid setup, and the automatic shortcut</h3>
     <p>The classic problem: your HDRI shows a sun in a particular position, but Twinmotion's own directional light points somewhere else, so the shadows in your render disagree with the shadows in the sky behind them. The eye catches this instantly even when it cannot name it.</p>
-    <p>The v5 sheet told you to fix this by manually matching the Twinmotion sun's altitude and azimuth to the sun disk in the HDRI image. That works, and it is worth doing once by hand so you understand it.</p>
+    <p>You can fix it by hand, matching the Twinmotion sun's altitude and azimuth to the sun disc in the HDRI image. That works, and it is worth doing once so you understand what is being aligned.</p>
 
     <div class="callout c-fix">
-      <span class="lbl">But there is an automatic option</span>
-      <p>Under <strong>Directional light</strong> there is a <strong>Match HDRI</strong> setting that adjusts the light automatically from the HDRI. Use it first; fall back to manual <em>Rotation Z</em> and <em>Rotation X</em> if you want a deliberately different result. v5 taught the manual method as though it were the only one — knowing the automatic option exists saves you a frustrating half hour.</p>
+      <span class="lbl">There is an automatic option</span>
+      <p>Under <strong>Directional light</strong> there is a <strong>Match HDRI</strong> setting that adjusts the light automatically from the HDRI. Use it first, and fall back to manual <em>Rotation Z</em> and <em>Rotation X</em> only when you want a deliberately different result. Plenty of tutorials teach the manual method as though it were the only one; knowing this exists saves a frustrating half hour.</p>
     </div>
 
     <p>The remaining <strong>Directional light</strong> controls mirror the sun: <em>Intensity</em> (0–10), <em>Color</em>, <em>Temperature</em>, <em>Size</em> for shadow softness, and <em>Reflection</em> for specular strength.</p>
@@ -2937,13 +2864,13 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
       </table>
     </div>
 
-    <h3>8.4 Le montage hybride — et un raccourci que la v5 ignorait</h3>
+    <h3>8.4 Le montage hybride, et le raccourci automatique</h3>
     <p>Le problème classique : votre HDRI montre un soleil à une position donnée, mais la lumière directionnelle de Twinmotion pointe ailleurs, si bien que les ombres de votre rendu contredisent les ombres du ciel derrière. L'œil le repère immédiatement, même sans savoir le nommer.</p>
-    <p>La fiche v5 vous demandait de corriger cela en alignant manuellement la hauteur et l'azimut du soleil Twinmotion sur le disque solaire du HDRI. Cela fonctionne, et cela vaut la peine de le faire une fois à la main pour comprendre.</p>
+    <p>Vous pouvez le corriger à la main, en alignant la hauteur et l'azimut du soleil Twinmotion sur le disque solaire du HDRI. Cela fonctionne, et cela vaut la peine de le faire une fois pour comprendre ce qu'on aligne.</p>
 
     <div class="callout c-fix">
-      <span class="lbl">Mais il existe une option automatique</span>
-      <p>Sous <strong>Directional light</strong> se trouve un réglage <strong>Match HDRI</strong> qui ajuste automatiquement la lumière d'après le HDRI. Utilisez-le d'abord ; repassez aux <em>Rotation Z</em> et <em>Rotation X</em> manuelles si vous voulez délibérément autre chose. La v5 enseignait la méthode manuelle comme si c'était la seule — savoir que l'automatique existe vous épargne une demi-heure frustrante.</p>
+      <span class="lbl">Il existe une option automatique</span>
+      <p>Sous <strong>Directional light</strong> se trouve un réglage <strong>Match HDRI</strong> qui ajuste automatiquement la lumière d'après le HDRI. Utilisez-le d'abord, et ne repassez aux <em>Rotation Z</em> et <em>Rotation X</em> manuelles que si vous voulez délibérément autre chose. Beaucoup de tutoriels enseignent la méthode manuelle comme si c'était la seule ; savoir que celle-ci existe vous épargne une demi-heure frustrante.</p>
     </div>
 
     <p>Les autres réglages de <strong>Directional light</strong> reprennent ceux du soleil : <em>Intensity</em> (0–10), <em>Color</em>, <em>Temperature</em>, <em>Size</em> pour la douceur des ombres, et <em>Reflection</em> pour l'intensité spéculaire.</p>
@@ -3043,8 +2970,8 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ul>
 
     <div class="callout c-fix">
-      <span class="lbl">Correcting v5</span>
-      <p>v5 sent readers to <span class="path">Dev Tools &gt; Lumen Surface Cache View</span> and told them to check for "yellow/magenta coverage". There is no Dev Tools menu, and the colour guidance was invented. The view is real and it is genuinely the right tool — it is reached from the viewport mode icon, and what you are looking for is <em>completeness of coverage</em>, not a particular colour.</p>
+      <span class="lbl">If a tutorial sends you somewhere else</span>
+      <p>There is no "Dev Tools" menu in Twinmotion, and no particular colour to hunt for. Older guidance naming either one is out of date. The view is reached from the viewport mode icon in the corner of the viewport, and what you are reading is <em>completeness of coverage</em>.</p>
     </div>
 
     <figure class="shot" id="fig-9-1">
@@ -3208,8 +3135,8 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </ul>
 
     <div class="callout c-fix">
-      <span class="lbl">Correction de la v5</span>
-      <p>La v5 envoyait le lecteur dans <span class="path">Dev Tools &gt; Lumen Surface Cache View</span> en leur demandant de vérifier une « couverture jaune/magenta ». Il n'existe pas de menu Dev Tools, et l'indication de couleur était inventée. La vue existe bel et bien et c'est le bon outil — on y accède par l'icône de mode d'affichage, et ce qu'on cherche est la <em>complétude de la couverture</em>, pas une couleur particulière.</p>
+      <span class="lbl">Si un tutoriel vous envoie ailleurs</span>
+      <p>Il n'existe pas de menu « Dev Tools » dans Twinmotion, et aucune couleur particulière à chercher. Les indications qui nomment l'un ou l'autre sont périmées. On accède à la vue par l'icône de mode d'affichage dans le coin de la fenêtre, et ce qu'on y lit est la <em>complétude de la couverture</em>.</p>
     </div>
 
     <h3>9.3 Les quatre causes de fuite de lumière, dans l'ordre où les vérifier</h3>
@@ -3900,7 +3827,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>12.4 Frame rate</h3>
-    <p><strong>30 fps</strong> is right for almost all architectural video and halves your render time compared to 60. <strong>60 fps</strong> earns its cost only for fast movement or where the deliverable specifically calls for it. The v5 sheet treated 60 fps as a quality standard; it is not, it is a trade, and for a slow architectural walkthrough it is usually the wrong side of that trade.</p>
+    <p><strong>30 fps</strong> is right for almost all architectural video and halves your render time compared to 60. <strong>60 fps</strong> earns its cost only for fast movement or where the deliverable specifically calls for it. 60 fps is often presented as a quality standard; it is not, it is a trade, and for a slow architectural walkthrough it is usually the wrong side of that trade.</p>
 
     <h3>12.5 Exporting</h3>
     <p>Export settings for video are reached through the Export panel; clicking a video in the <strong>Media</strong> dock adds a <strong>Video</strong> tab to the Ambience panel carrying that clip's individual settings. Some settings are global to all videos, others per-clip.</p>
@@ -3976,7 +3903,7 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
     </div>
 
     <h3>12.4 La fréquence d'images</h3>
-    <p><strong>30 im/s</strong> convient à la quasi-totalité de la vidéo architecturale et divise par deux votre temps de calcul par rapport à 60. Le <strong>60 im/s</strong> ne justifie son coût que pour des mouvements rapides ou si le livrable l'exige explicitement. La fiche v5 traitait le 60 im/s comme un standard de qualité ; ce n'en est pas un, c'est un arbitrage, et pour une visite architecturale lente c'est généralement le mauvais côté de l'arbitrage.</p>
+    <p><strong>30 im/s</strong> convient à la quasi-totalité de la vidéo architecturale et divise par deux votre temps de calcul par rapport à 60. Le <strong>60 im/s</strong> ne justifie son coût que pour des mouvements rapides ou si le livrable l'exige explicitement. Le 60 im/s est souvent présenté comme un standard de qualité ; ce n'en est pas un, c'est un arbitrage, et pour une visite architecturale lente c'est généralement le mauvais côté de l'arbitrage.</p>
 
     <h3>12.5 L'export</h3>
     <p>Les réglages d'export vidéo passent par le panneau Export ; cliquer une vidéo dans le dock <strong>Media</strong> ajoute un onglet <strong>Video</strong> au panneau Ambiance, portant les réglages propres à ce plan. Certains réglages sont globaux à toutes les vidéos, d'autres propres à chaque plan.</p>

@@ -73,7 +73,7 @@ Technical claims are marked in the text:
 - **Documented** — verified against official Epic Games, Trimble or McNeel documentation
 - **Studio practice** — craft and judgement, not specification
 
-A [corrections page](twinmotion_2026_manual-v6.html) in the front matter records five claims from the previous version of this material that did not match the official documentation, including a collapse-mode recommendation that was causing the exact interior light-leaking problem a later chapter tried to solve.
+Several widely-repeated claims about this pipeline turn out not to be documented anywhere — minimum wall thicknesses quoted as engine requirements, hard limits on group nesting, a "Dev Tools" menu that does not exist. Where the manual contradicts common advice it says so, and says what the documentation actually supports.
 
 Twinmotion changes yearly. Where the manual and your copy of the software disagree about a menu path, trust the software and check the current documentation.
 
