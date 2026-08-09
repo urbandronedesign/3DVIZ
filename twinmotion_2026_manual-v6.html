@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 <title>The Complete Production Manual — SketchUp &amp; Rhino to Twinmotion 2026</title>
 <style>
 :root{
   --paper:#ffffff;
   --ink:#1a1c1e;
   --ink-2:#52585f;
-  --ink-3:#8c9299;
+  --ink-3:#6d747b;
   --rule:#e8eaec;
   --rule-2:#c8ccd1;
   --accent:#1b4fa0;
@@ -17,6 +18,11 @@
   --warn:#a4352c;
   --fix:#8a5c14;
   --sidebar-w:18rem;
+  --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,"Iowan Old Style",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
+  --topbar:rgba(255,255,255,.94);
+  --shadow:rgba(0,0,0,.10);
   --measure:41rem;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -27,6 +33,36 @@ body{
   line-height:1.68; font-size:1.03rem;
   -webkit-font-smoothing:antialiased;
 }
+
+
+/* ===== dark palette ===== */
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14161a; --ink:#e4e7ea; --ink-2:#a6aeb6; --ink-3:#79828b;
+    --rule:#252a30; --rule-2:#39424b; --accent:#7fa9e8; --wash:#1a1d22;
+    --warn:#e59288; --fix:#d5a557;
+    --topbar:rgba(20,22,26,.94); --shadow:rgba(0,0,0,.55);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14161a; --ink:#e4e7ea; --ink-2:#a6aeb6; --ink-3:#79828b;
+  --rule:#252a30; --rule-2:#39424b; --accent:#7fa9e8; --wash:#1a1d22;
+  --warn:#e59288; --fix:#d5a557;
+  --topbar:rgba(20,22,26,.94); --shadow:rgba(0,0,0,.55);
+}
+
+/* ===== typography: serif prose, sans furniture ===== */
+body{font-family:var(--serif); font-size:1.06rem; line-height:1.72}
+h1,h2,h3,h4,.chapter-eyebrow,.part-divider h2,.brand b,.brand span,.toc-part,
+#sidebar a,#topbar,#search,.seg button,.callout .lbl,th,.lv-tag,.status,
+.exercise>.hd,.exercise h4,details.faq summary,figcaption,
+.shot-todo .id,.shot-todo .what,.shot-todo .file,
+.res em,.res b,.res span,.cover .meta,footer.book{font-family:var(--sans)}
+code,pre{font-family:var(--mono)}
+.cover .sub{font-family:var(--serif)}
+.faq-body,.callout,td{font-family:var(--serif)}
+/* le serif a besoin d un peu plus d air dans les listes */
+ul li,ol li{margin-bottom:.6rem}
 
 /* ===== filtering ===== */
 body.lang-en .fr-only, body.lang-fr .en-only{display:none !important}
@@ -63,7 +99,7 @@ main{flex:1; min-width:0; padding:0 3.5rem 8rem; max-width:calc(var(--measure) +
 
 /* ===== topbar ===== */
 #topbar{
-  position:sticky; top:0; z-index:900; background:rgba(255,255,255,.94);
+  position:sticky; top:0; z-index:900; background:var(--topbar);
   backdrop-filter:blur(10px); border-bottom:1px solid var(--rule);
   margin:0 -3.5rem 3rem; padding:.7rem 3.5rem;
   display:flex; gap:.55rem; align-items:center; flex-wrap:wrap;
@@ -85,7 +121,7 @@ main{flex:1; min-width:0; padding:0 3.5rem 8rem; max-width:calc(var(--measure) +
 }
 .seg button:last-child{border-right:none}
 .seg button:hover{color:var(--ink)}
-.seg button.on{background:var(--ink); color:#fff}
+.seg button.on{background:var(--ink); color:var(--paper)}
 #menu-btn{color:var(--ink)}
 
 /* ===== search results ===== */
@@ -223,7 +259,7 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
 @media(max-width:1000px){
   #sidebar{
     position:fixed; left:0; top:0; z-index:1000; transform:translateX(-100%);
-    transition:transform .2s ease; box-shadow:0 0 40px rgba(0,0,0,.1);
+    transition:transform .2s ease; box-shadow:0 0 40px var(--shadow);
   }
   body.nav-open #sidebar{transform:translateX(0)}
   #menu-btn{display:block}
@@ -250,6 +286,8 @@ footer.book{border-top:1px solid var(--rule); margin-top:6rem; padding:2.5rem 0;
 
 /* ===== print ===== */
 @media print{
+  :root{--paper:#fff; --ink:#000; --topbar:#fff; --shadow:transparent; --ink-2:#333; --ink-3:#666;
+        --rule:#ccc; --rule-2:#999; --wash:#f4f4f4; --accent:#000; --warn:#000; --fix:#000}
   #sidebar,#topbar,#results,.video{display:none !important}
   body{font-size:10.5pt; color:#000}
   main{max-width:none; padding:0}
@@ -417,6 +455,10 @@ body.show-figures .shot-todo{display:block}
   <div class="seg">
     <button data-lang="en" class="on" onclick="setLang('en')">EN</button>
     <button data-lang="fr" onclick="setLang('fr')">FR</button>
+  </div>
+  <div class="seg">
+    <button data-theme-btn="light" onclick="setTheme('light')" title="Thème clair" aria-label="Thème clair">☀</button>
+    <button data-theme-btn="dark" onclick="setTheme('dark')" title="Thème sombre" aria-label="Thème sombre">☾</button>
   </div>
 </div>
 
@@ -5620,6 +5662,15 @@ function setLang(l){
   buildIndex();
 }
 
+/* ---------- Theme ---------- */
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  document.querySelectorAll('[data-theme-btn]').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-theme-btn') === t);
+  });
+  try{localStorage.setItem('tm-theme', t)}catch(e){}
+}
+
 /* ---------- Level filter ---------- */
 function setLevel(lv){
   document.body.classList.remove('hide-y2','hide-y3');
@@ -5714,9 +5765,18 @@ if (/[?&]figures\b/.test(location.search)) document.body.classList.add('show-fig
 
 /* ---------- Init ---------- */
 (function(){
-  var l='en', lv='all';
-  try{ l=localStorage.getItem('tm-lang')||'en'; lv=localStorage.getItem('tm-level')||'all'; }catch(e){}
+  var l='en', lv='all', th=null;
+  try{ l=localStorage.getItem('tm-lang')||'en'; lv=localStorage.getItem('tm-level')||'all';
+       th=localStorage.getItem('tm-theme'); }catch(e){}
   setLang(l); setLevel(lv);
+  if(th){ setTheme(th); }
+  else {
+    /* aucune préférence enregistrée : on suit le système sans rien stocker */
+    var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.querySelectorAll('[data-theme-btn]').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-theme-btn') === (dark ? 'dark' : 'light'));
+    });
+  }
 })();
 </script>
 </body>
