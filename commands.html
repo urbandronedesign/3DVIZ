@@ -546,12 +546,17 @@ footer{border-top:1px solid var(--rule); margin-top:4rem; padding:2rem 0; color:
 </main>
 
 <script>
+/* ---------- Language in the URL ----------
+   ?lang=fr|en wins over the saved choice and switching rewrites it, so a copied
+   link opens in the language it was read in. The #anchor is kept. */
+function urlLang(){ var m=/[?&]lang=(fr|en)(?:&|$)/.exec(location.search); return m?m[1]:null; }
+function langUrl(l){ try{ var u=new URL(location.href); if(u.searchParams.get('lang')===l) return; u.searchParams.set('lang',l); history.replaceState(history.state,'',u.href); }catch(e){} }
 function setLang(l){
   document.body.classList.remove('lang-en','lang-fr');
   document.body.classList.add('lang-'+l);
   document.querySelectorAll('[data-lang]').forEach(function(b){b.classList.toggle('on', b.dataset.lang===l)});
   document.documentElement.lang=l;
-  try{localStorage.setItem('tm-lang',l)}catch(e){}
+  try{localStorage.setItem('tm-lang',l)}catch(e){} langUrl(l);
 }
 function setTheme(t){
   document.documentElement.setAttribute('data-theme',t);
@@ -562,7 +567,7 @@ function setTheme(t){
 }
 (function(){
   var l='en', th=null;
-  try{ l=localStorage.getItem('tm-lang')||'en'; th=localStorage.getItem('tm-theme'); }catch(e){}
+  try{ l=urlLang()||localStorage.getItem('tm-lang')||'en'; th=localStorage.getItem('tm-theme'); }catch(e){}
   setLang(l);
   if(th){ setTheme(th); }
   else {

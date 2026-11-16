@@ -5940,6 +5940,11 @@ CONTEXTE-BATI       EXT-STRUCTURE       INT-LUMINAIRE
 
 <script>
 /* ---------- Language ---------- */
+/* ---------- Language in the URL ----------
+   ?lang=fr|en wins over the saved choice and switching rewrites it, so a copied
+   link opens in the language it was read in. The #anchor is kept. */
+function urlLang(){ var m=/[?&]lang=(fr|en)(?:&|$)/.exec(location.search); return m?m[1]:null; }
+function langUrl(l){ try{ var u=new URL(location.href); if(u.searchParams.get('lang')===l) return; u.searchParams.set('lang',l); history.replaceState(history.state,'',u.href); }catch(e){} }
 function setLang(l){
   document.body.classList.remove('lang-en','lang-fr');
   document.body.classList.add('lang-'+l);
@@ -5947,7 +5952,7 @@ function setLang(l){
   var s=document.getElementById('search');
   s.placeholder = s.dataset['ph'+(l==='en'?'En':'Fr')];
   document.documentElement.lang = l;
-  try{localStorage.setItem('tm-lang',l)}catch(e){}
+  try{localStorage.setItem('tm-lang',l)}catch(e){} langUrl(l);
   buildIndex();
 }
 
@@ -6055,7 +6060,7 @@ if (/[?&]figures\b/.test(location.search)) document.body.classList.add('show-fig
 /* ---------- Init ---------- */
 (function(){
   var l='en', lv='all', th=null;
-  try{ l=localStorage.getItem('tm-lang')||'en'; lv=localStorage.getItem('tm-level')||'all';
+  try{ l=urlLang()||localStorage.getItem('tm-lang')||'en'; lv=localStorage.getItem('tm-level')||'all';
        th=localStorage.getItem('tm-theme'); }catch(e){}
   setLang(l); setLevel(lv);
   if(th){ setTheme(th); }
